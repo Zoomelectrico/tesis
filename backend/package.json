@@ -1,0 +1,44 @@
+{
+  "name": "backend-tesis",
+  "version": "0.1.0",
+  "description": "The backend of my thesis",
+  "main": "start.js",
+  "scripts": {
+    "start": "nodemon ./start.js",
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "express",
+    "blockchain",
+    "fabrix"
+  ],
+  "author": "Jose Roberto Quevedo",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "es6-promisify": "^6.0.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.4",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-mongodb-errors": "0.0.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "slugs": "^0.1.3",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
