@@ -1,0 +1,223 @@
+namespace ve.edu.unimet.ceu
+
+participant RepresentanteElectoral identified by uuid {
+  o String uuid
+  o String name
+  o String email
+  o String dni
+}
+
+participant PresidenteElectoral identified by uuid {
+  o String uuid
+  o String name
+  o String email
+  o DateTime startDate
+}
+
+participant Votante identified by uuid {
+  o String uuid
+  o String name
+  o String email
+  o Boolean canVote
+  o Integer[] electionsYears
+}
+
+concept Human {
+  o String name
+  o String dni
+}
+
+concept Postulado extends Human {
+  o String school default = "N/A"
+  o String charge
+  --> GrupoElectoral electoralGroup
+}
+
+concept Consejero extends Human {
+  o Boolean titular
+}
+
+concept Coordinador extends Human {
+  o Boolean titular
+  --> GrupoElectoral electoralGroup
+}
+
+// Junta Directiva Centro de Estudiantes
+concept PostulacionFCE {
+  o Postulado president
+  o Postulado secretaryGeneral
+  o Postulado interalAffairs
+  o Postulado generalCoordinator
+  o Postulado treasurer
+}
+
+// Coordinacion de Deportes
+concept PostulacionCoD {
+  o Coordinador[] coordinators
+}
+
+// Coordinacion de Cultura
+concept PostulacionCoC {
+  o Coordinador[] coordinators
+}
+
+// Coordinacion de Servicios
+concept PostulacionCoS {
+  o Coordinador[] coordinators
+}
+
+// Coordinacion de Academica
+concept PostulacionCoA {
+  o Coordinador[] coordinators
+}
+
+// Coordinacion de Resp. social Universitaria
+concept PostulacionCoRSU {
+  o Coordinador[] coordinators
+}
+
+// Centro de Estudiante de Escuela
+concept PostulacionCEE {
+  o Postulado president
+  o Postulado generalCoordinator
+  o Postulado treasurer
+}
+
+// Consejo de Escuela
+concept PostulacionCE {
+  o Consejero[] advisers
+}
+
+// Consejo de Facultad
+concept PostulacionCF {
+  o Consejero[] advisers
+}
+
+// Consejo Academico
+concept PostulacionCA {
+  o Consejero[] advisers
+}
+
+// Postulacion: Es el resumen de la una postulacion para un grupo electoral
+asset Postulacion identified by uuid {
+  o String uuid
+  o PostulacionFCE fce
+  o PostulacionCoD sports
+  o PostulacionCoS services
+  o PostulacionCoC culture
+  o PostulacionCoA academic
+  o PostulacionCoRSU social
+  o PostulacionCA academicCouncil
+  o PostulacionCE[] schoolsCouncil
+  o PostulacionCF[] facultyCouncil
+  o PostulacionCEE[] studentsCenters
+  --> GrupoElectoral electoralGroup
+}
+
+// Grupo Electoral: Es una org que inscrita por un representate
+asset GrupoElectoral identified by uuid {
+  o String uuid
+  o String name
+  o String colorHex
+  o String colorName
+  o String logo
+  o Integer number
+  o Integer electionYear
+  --> RepresentanteElectoral electoralRepresentative
+  --> PresidenteElectoral electoralPresident
+}
+
+// Voto: Representacion del voto
+asset Voto identified by uuid {
+  o String uuid
+  o PostulacionFCE fce
+  o PostulacionCoD sports
+  o PostulacionCoS services
+  o PostulacionCoC culture
+  o PostulacionCoA academic
+  o PostulacionCoRSU social
+  o Consejero academicCouncil
+  o PostulacionCE schoolsCouncil
+  o PostulacionCF facultyCouncil
+  o PostulacionCEE studentsCenters
+}
+
+// Constructor Transations
+transaction buildPresident {
+  o String uuid
+  o String name
+  o String email
+  o DateTime startDate
+}
+
+transaction buildElectoralRepresentative {
+  o String uuid
+  o String name
+  o String email
+  o String dni
+}
+
+transaction buildElectoralGroup {
+  o String uuid
+  o String name
+  o String colorHex
+  o String colorName
+  o String logo
+  o Integer number
+  o Integer electionYear
+  o String electoralRepresentative
+  o String electoralPresident
+}
+
+transaction buildPostulation {
+  o String uuid
+  o PostulacionFCE fce
+  o PostulacionCoD sports
+  o PostulacionCoS services
+  o PostulacionCoC culture
+  o PostulacionCoA academic
+  o PostulacionCoRSU social
+  o PostulacionCA academicCouncil
+  o PostulacionCE[] schoolsCouncil
+  o PostulacionCF[] facultyCouncil
+  o PostulacionCEE[] studentsCenters
+  o String electoralGroup
+}
+
+transaction buildVoter {
+  o String uuid
+  o String name
+  o String email
+}
+
+// Updates Transations
+
+transaction updatePresident {
+  o String uuid
+  o String name
+  o String email
+  o DateTime startDate
+}
+
+transaction updateVoter {
+  o String uuid
+  o Integer electionsYear
+  o Boolean canVote
+}
+
+// Specific App Transations
+
+transaction vote {
+  o String uuid
+  o PostulacionFCE fce
+  o PostulacionCoD sports
+  o PostulacionCoS services
+  o PostulacionCoC culture
+  o PostulacionCoA academic
+  o PostulacionCoRSU social
+  o PostulacionCA academicCouncil
+  o PostulacionCE schoolsCouncil
+  o PostulacionCF facultyCouncil
+  o PostulacionCEE studentsCenters
+}
+

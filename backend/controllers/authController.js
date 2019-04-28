@@ -6,6 +6,7 @@ const User = mongoose.model("User");
 const { SECRET_JWT } = process.env;
 
 exports.login = async (req, res, next) => {
+  console.log("login");
   const user = req.user;
   await req.login(user);
   const {

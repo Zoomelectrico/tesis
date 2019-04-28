@@ -18,11 +18,11 @@ exports.validateUser = async (req, res, next) => {
     email.endsWith("@correo.unimet.edu.ve") || email.endsWith("@unimet.edu.ve"),
     password === rePassword
   ];
-  console.log(JSON.stringify(checks));
   if (!checks.includes(false)) {
     if (/\./g.test(dni)) {
       req.body.dni = dni.replace(/\./g, "");
     }
+    console.log("next");
     return next();
   }
   throw new Error("Email invalido");
@@ -31,6 +31,7 @@ exports.validateUser = async (req, res, next) => {
 exports.createUser = async (req, res, next) => {
   try {
     const { firstName, lastName, dni, carnet, email, password } = req.body;
+    console.log({ firstName, lastName, dni, carnet, email, password });
     const user = await User.create({
       firstName,
       lastName,
@@ -39,6 +40,7 @@ exports.createUser = async (req, res, next) => {
       email,
       password
     });
+    console.log(JSON.stringify(user));
     next();
   } catch (err) {
     console.log(err);
