@@ -11,40 +11,9 @@ import {
   Input
 } from "reactstrap";
 
-import { majors } from "../../../utils";
+import { majors, postulationFields } from "../../../utils";
 
-const fields = [
-  {
-    label: "Nombre del Presidente",
-    id: "president-name",
-    type: "text"
-  },
-  {
-    label: "Cedula del Presidente",
-    id: "president-dni",
-    type: "number"
-  },
-  {
-    label: "Nombre del Coordinador General",
-    id: "coordinator-name",
-    type: "text"
-  },
-  {
-    label: "Cedula del Coordinador General",
-    id: "coordinator-dni",
-    type: "number"
-  },
-  {
-    label: "Nombre del Tesorero",
-    id: "treasurer-name",
-    type: "text"
-  },
-  {
-    label: "Cedula del Tesorero",
-    id: "treasurer-dni",
-    type: "number"
-  }
-];
+const { school: fields } = postulationFields;
 
 const School = props => (
   <>
@@ -78,10 +47,7 @@ const School = props => (
                 className="form-control-alternative"
               >
                 {majors.map(major => (
-                  <option
-                    key={major.replace(/[ ]/g, "-")}
-                    value={major.replace(/[ ]/g, "-")}
-                  >
+                  <option key={major} value={major}>
                     {major}
                   </option>
                 ))}

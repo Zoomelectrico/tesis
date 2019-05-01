@@ -11,48 +11,9 @@ import {
   Button
 } from "reactstrap";
 
-const fields = [
-  {
-    label: "Nombre del Consejero #1",
-    id: "adviser-name-1",
-    type: "text"
-  },
-  {
-    label: "Cedula del Consejero #1",
-    id: "adviser-dni-1",
-    type: "number"
-  },
-  {
-    label: "Nombre del Consejero #2",
-    id: "adviser-name-2",
-    type: "text"
-  },
-  {
-    label: "Cedula del Consejero #2",
-    id: "adviser-dni-2",
-    type: "number"
-  },
-  {
-    label: "Nombre del Consejero Suplente #1",
-    id: "adviser-name-3",
-    type: "text"
-  },
-  {
-    label: "Cedula del Consejero Suplente #1",
-    id: "adviser-dni-3",
-    type: "number"
-  },
-  {
-    label: "Nombre del Consejero Suplente #2",
-    id: "adviser-name-4",
-    type: "text"
-  },
-  {
-    label: "Cedula del Consejero Suplente #2",
-    id: "adviser-dni-4",
-    type: "number"
-  }
-];
+import { majors, postulationFields } from "../../../utils";
+
+const { schoolCouncil: fields } = postulationFields;
 
 class SchoolCouncil extends React.Component {
   state = {};
@@ -79,7 +40,23 @@ class SchoolCouncil extends React.Component {
                 </FormGroup>
               </Col>
             ))}
-            <Col md="6" />
+            <Col md="6">
+              <FormGroup>
+                <Label>Escuela</Label>
+                <Input
+                  className="form-control-alternative"
+                  id="school"
+                  name="school"
+                  type="select"
+                >
+                  {majors.map(major => (
+                    <option key={major} value={major}>
+                      {major}
+                    </option>
+                  ))}
+                </Input>
+              </FormGroup>
+            </Col>
             <Col md="6" className="d-flex justify-content-end">
               <Button color="success" className="my-auto">
                 Agregar

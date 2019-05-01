@@ -14,6 +14,7 @@ const DashPostulate = lazy(() => import("./dashboard/Postulate"));
 const DashProfile = lazy(() => import("./dashboard/Profile"));
 const DashVote = lazy(() => import("./dashboard/Vote"));
 const DashResults = lazy(() => import("./dashboard/Results"));
+const DashDemands = lazy(() => import("./dashboard/Demands"));
 
 const routes = [
   {
@@ -24,28 +25,35 @@ const routes = [
     component: props => <DashHome {...props} />
   },
   {
-    name: "Profile",
+    name: "Perfil",
     path: "/app/dashboard/profile",
     icon: "fas fa-user",
     exact: true,
     component: props => <DashProfile {...props} />
   },
   {
-    name: "Postulate",
+    name: "Postular",
     path: "/app/dashboard/postulate",
     icon: "fas fa-user-plus",
     exact: true,
     component: props => <DashPostulate {...props} />
   },
   {
-    name: "Vote",
+    name: "Solicitudes",
+    path: "/app/dashboard/demands",
+    icon: "fas fa-paste",
+    exact: true,
+    component: props => <DashDemands {...props} />
+  },
+  {
+    name: "Votar",
     path: "/app/dashboard/vote",
     icon: "fas fa-receipt",
     exact: true,
     component: props => <DashVote {...props} />
   },
   {
-    name: "Results",
+    name: "Resultados",
     path: "/app/dashboard/results",
     icon: "fas fa-poll",
     exact: true,
@@ -62,7 +70,7 @@ const Dashboard = props => (
         routes={routes}
         logo={{
           link: "/",
-          src: require("../assets/img/logo-1-x2.png"),
+          src: require("../assets/img/logo-color.svg"),
           alt: "logo"
         }}
       />
@@ -74,6 +82,9 @@ const Dashboard = props => (
             path={path}
             component={component}
             exact={exact}
+            user={props.user}
+            updateUser={props.updateUser}
+            onChangeUpdate={props.onChangeUpdate}
           />
         ))}
         <Container fluid>

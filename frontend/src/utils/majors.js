@@ -1,19 +1,19 @@
 const majors = [
   "Ciencias Administrativas",
-  "Economia Empresarial",
-  "Contaduria Publica",
-  "Ingenieria Civil",
-  "Ingenieria Mecanica",
-  "Ingenieria de Produdcion",
-  "Ingenieria Quimica",
-  "Ingenieria de Sistemas",
-  "Ingenieria Electrica",
-  "Estudios Liberales",
-  "Derecho",
-  "Educacion",
+  "Economía Empresarial",
+  "Contaduría Pública",
+  "Ingeniería Civil",
+  "Ingeniería Mecánica",
+  "Ingeniería de Producción",
+  "Ingeniería Química",
+  "Ingeniería de Sistemas",
+  "Ingeniería Eléctrica",
+  "Educación",
   "Idiomas Modernos",
-  "Matematicas Industriales",
-  "Psicologia"
+  "Matemáticas Industriales",
+  "Psicología",
+  "Estudios Liberales",
+  "Derecho"
 ];
 
 export default majors;

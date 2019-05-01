@@ -62,8 +62,7 @@ class App extends React.Component {
   state = {
     user: {},
     registerData: {},
-    loginData: {},
-    updateData: {}
+    loginData: {}
   };
 
   async componentDidMount() {
@@ -129,14 +128,16 @@ class App extends React.Component {
     this.props.history.push("/");
   };
 
-  updateUser = async () => {
-    const datos = this.state.updateData;
-    const { data } = await axios.post(`${env.API_URL}/update-user`, datos);
-    if (data && data.success) {
-      // All good, go the dashboard
-    } else {
-      // Send some flash
-    }
+  updateUser = async (e, user) => {
+    e.preventDefault();
+    console.log(user);
+    // const datos = this.state.updateData;
+    // const { data } = await axios.post(`${env.API_URL}/update-user`, datos);
+    // if (data && data.success) {
+    //   // All good, go the dashboard
+    // } else {
+    //   // Send some flash
+    // }
   };
 
   onChangeRegister = e => {

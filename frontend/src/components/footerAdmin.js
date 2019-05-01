@@ -10,7 +10,7 @@ const FooterAdmin = props => (
         </div>
       </Col>
       <Col xl="6" className="text-right">
-        <a href="https://github.com/zoomelectrico/Frontend_tesis">
+        <a href="https://github.com/zoomelectrico/tesis">
           Read me{" "}
           <span role="img" aria-label="emoji">
             📚

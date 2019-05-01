@@ -15,7 +15,10 @@ import { env } from "../../utils";
 class DashPostulate extends React.Component {
   state = {
     electoralGroupStatus: false,
-    loading: true
+    loading: true,
+    err: false,
+    electoralGroup: {},
+    postulation: {}
   };
 
   async componentDidMount() {
@@ -59,10 +62,9 @@ class DashPostulate extends React.Component {
     }
   }
 
-  onChange = e => {
-    e.preventDefault();
-    const state = { ...this.state };
-    state[e.target.name] = e.target.value;
+  save = (key, value) => {
+    const postulation = { ...this.state.postulation, [key]: value };
+    const state = { ...this.state, postulation };
     this.setState(state);
   };
 
@@ -73,6 +75,18 @@ class DashPostulate extends React.Component {
       reader.onload = () => resolve(reader.result);
       reader.onerror = error => reject(error);
     });
+
+  onChange = e => {
+    e.preventDefault();
+    const state = {
+      ...this.state,
+      electoralGroup: {
+        ...this.state.electoralGroup,
+        [e.target.name]: e.target.value
+      }
+    };
+    this.setState(state);
+  };
 
   onChangeFile = async e => {
     e.preventDefault();
@@ -90,11 +104,11 @@ class DashPostulate extends React.Component {
 
   createElectoralGroup = async e => {
     try {
+      e.preventDefault();
       const { _id } = JSON.parse(localStorage.getItem(env.USER));
       const token = localStorage.getItem(env.KEY);
+      const { denomination, colorName, colorHex, logo, number } = this.state;
       if (_id) {
-        const { denomination, colorName, colorHex, logo, number } = this.state;
-        e.preventDefault();
         const { data } = await axios.post(
           `${env.API_URL}/create-electoral-group/${_id}`,
           { denomination, colorName, colorHex, logo, number },
@@ -139,15 +153,15 @@ class DashPostulate extends React.Component {
                 </div>
               ) : this.state.electoralGroupStatus ? (
                 <>
-                  <School onChange={this.onChange} />
-                  <Council onChange={this.onChange} />
-                  <SchoolCouncil onChange={this.onChange} />
-                  <FacultyCouncil onChange={this.onChange} />
-                  <StudentFederationCenter onChange={this.onChange} />
+                  <School save={this.save} />
+                  <SchoolCouncil save={this.save} />
+                  <FacultyCouncil save={this.save} />
+                  <Council save={this.save} />
+                  <StudentFederationCenter save={this.save} />
                 </>
               ) : (
                 <ElectoralGroup
-                  onChange={this.onChange}
+                  onChage={this.onChange}
                   onChangeFile={this.onChangeFile}
                   createElectoralGroup={this.createElectoralGroup}
                 />

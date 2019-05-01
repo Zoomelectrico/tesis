@@ -11,57 +11,90 @@ import {
   Button
 } from "reactstrap";
 
-const fields = [
-  {
-    label: "Nombre del Consejero",
-    id: "adviser-name",
-    type: "text"
-  },
-  {
-    label: "Correo Electronico del Consejero",
-    id: "adviser-email",
-    type: "email"
-  },
-  {
-    label: "Cedula del Consejero",
-    id: "adviser-dni",
-    type: "number"
-  },
-  {
-    label: "Telefono del Consejero",
-    id: "adviser-phone",
-    type: "tel"
-  }
-];
+import { majors, postulationFields } from "../../../utils";
+
+const { academicCouncil: fields } = postulationFields;
 
 class Council extends React.Component {
-  state = {};
+  state = {
+    academicCouncil: {},
+    ready: false
+  };
+
+  onChange = e => {
+    e.preventDefault();
+    const state = {
+      ...this.state,
+      academicCouncil: {
+        ...this.state.academicCouncil,
+        [e.target.name]: e.targer.value
+      }
+    };
+    this.setState(state);
+  };
+
+  save = e => {
+    e.preventDefault();
+    // TODO: Need to validate
+    this.props.save("academicCouncil", this.state.academicCouncil);
+    this.setState({ ...this.state, ready: true });
+  };
+
+  renderCol = (label, id, type) => (
+    <Col md="4" key={id}>
+      <FormGroup>
+        <Label for={id}>{label}</Label>
+        {type === "select" ? (
+          <Input
+            className="form-control-alternative"
+            type={type}
+            name={id}
+            id={id}
+            placeholder={label}
+          >
+            {majors.map(major => (
+              <option key={major} value={major}>
+                {major}
+              </option>
+            ))}
+          </Input>
+        ) : (
+          <Input
+            className="form-control-alternative"
+            type={type}
+            name={id}
+            id={id}
+            placeholder={label}
+          />
+        )}
+      </FormGroup>
+    </Col>
+  );
 
   render() {
     return (
-      <Card style={{ backgroundColor: "#f5f7f9" }} className="mb-4">
+      <Card
+        style={{ backgroundColor: "#f5f7f9" }}
+        className={`mb-4 ${this.state.ready ? "d-none" : ""}`}
+      >
         <CardHeader>
           <h2>Postulacion para Consejo Academico</h2>
         </CardHeader>
         <CardBody>
           <Row>
-            {fields.map(({ label, id, type }) => (
-              <Col md="6" key={id}>
-                <FormGroup>
-                  <Label for={id}>{label}</Label>
-                  <Input
-                    className="form-control-alternative"
-                    id={id}
-                    name={id}
-                    placeholder={label}
-                    type={type}
-                  />
-                </FormGroup>
-              </Col>
-            ))}
+            {fields.map(({ label, id, type }, i) =>
+              i === fields.length - 1 ? (
+                <React.Fragment key={`${id}-${i}`}>
+                  {this.renderCol(label, id, type)}
+                  <Col md="4" />
+                </React.Fragment>
+              ) : (
+                this.renderCol(label, id, type)
+              )
+            )}
             <Col md="6" />
             <Col md="6" className="d-flex justify-content-end">
-              <Button color="success" className="my-auto">
+              <Button color="success" className="my-auto" onClick={this.save}>
                 Agregar
               </Button>
             </Col>

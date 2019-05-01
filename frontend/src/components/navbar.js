@@ -17,7 +17,7 @@ const Navigationbar = props => (
     <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
       <Container className="px-4">
         <NavbarBrand to="/" tag={Link}>
-          <img src={require("../assets/img/logo-2.png")} alt="UVOTE Logo" />
+          <img src={require("../assets/img/logo-white.svg")} alt="UVOTE Logo" />
         </NavbarBrand>
         <button className="navbar-toggler" id="navbar-collapse-main">
           <span className="navbar-toggler-icon" />
@@ -27,7 +27,10 @@ const Navigationbar = props => (
             <Row>
               <Col className="collapse-brand" xs="6">
                 <Link to="/">
-                  <img alt="..." src={require("../assets/img/logo-1.png")} />
+                  <img
+                    alt="..."
+                    src={require("../assets/img/logo-color.svg")}
+                  />
                 </Link>
               </Col>
               <Col className="collapse-close" xs="6">
