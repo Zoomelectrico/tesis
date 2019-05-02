@@ -35,8 +35,11 @@ class Council extends React.Component {
 
   save = e => {
     e.preventDefault();
-    // TODO: Need to validate
-    this.props.save("academicCouncil", this.state.academicCouncil);
+    // TODO: Need to save current state to parent state
+    localStorage.setItem(
+      "academic-council",
+      JSON.stringify(this.state.academicCouncil)
+    );
     this.setState({ ...this.state, ready: true });
   };
 
@@ -86,18 +89,20 @@ class Council extends React.Component {
               i === fields.length - 1 ? (
                 <React.Fragment key={`${id}-${i}`}>
                   {this.renderCol(label, id, type)}
-                  <Col md="4" />
+                  <Col md="4" className="d-flex justify-content-center">
+                    <Button
+                      color="success"
+                      className="my-auto"
+                      onClick={this.save}
+                    >
+                      Agregar
+                    </Button>
+                  </Col>
                 </React.Fragment>
               ) : (
                 this.renderCol(label, id, type)
               )
             )}
-            <Col md="6" />
-            <Col md="6" className="d-flex justify-content-end">
-              <Button color="success" className="my-auto" onClick={this.save}>
-                Agregar
-              </Button>
-            </Col>
           </Row>
         </CardBody>
       </Card>
