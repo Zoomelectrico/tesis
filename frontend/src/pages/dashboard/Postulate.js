@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Spinner, Button } from "reactstrap";
-import axios from "axios";
 import { Header } from "../../components";
 import {
   Council,
@@ -10,7 +9,7 @@ import {
   SchoolCouncil,
   StudentFederationCenter
 } from "./postulate";
-import { env } from "../../utils";
+import { env, get, post } from "../../utils";
 
 class DashPostulate extends React.Component {
   state = {
@@ -39,12 +38,7 @@ class DashPostulate extends React.Component {
   getElectoralGroup = (_id, token) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const { data } = await axios.get(
-          `${env.API_URL}/electoral-group/${_id}`,
-          {
-            headers: { Authorization: `Bearer ${token}` }
-          }
-        );
+        const { data } = await get(`electoral-group/${_id}`);
         if (data && data.success) {
           const { electoralGroup } = data;
           resolve(electoralGroup);
@@ -156,11 +150,13 @@ class DashPostulate extends React.Component {
   }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const { data } = await axios.post(
-          `${env.API_URL}/create-electoral-group/${_id}`,
-          { denomination, colorName, colorHex, logo, number },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const data = await post(`create-electoral-group/${_id}`, {
+          denomination,
+          colorName,
+          colorHex,
+          logo,
+          number
+        });
         if (data && data.success) {
           const { electoralGroup } = data;
           if (electoralGroup) {

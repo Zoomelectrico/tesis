@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Container, Col, Row, Card, CardHeader, CardBody } from "reactstrap";
 import { Header, Footer } from "../../../components";
 import { env } from "../../../utils";

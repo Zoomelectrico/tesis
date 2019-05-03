@@ -1,10 +1,9 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
-import axios from "axios";
 import { NotFound } from "./pages";
 import { Loading, ProtectedRoute } from "./components";
-import { env } from "./utils";
+import { env, get, post } from "./utils";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Home = lazy(() => import("./pages/Home"));
@@ -62,17 +61,15 @@ class App extends React.Component {
   state = {
     user: {},
     registerData: {},
-    loginData: {}
+    loginData: {},
+    err: false
   };
 
   async componentDidMount() {
     try {
       const token = localStorage.getItem(env.KEY);
       const { id } = JSON.parse(atob(token.split(".")[1]));
-      console.log(id);
-      const { data } = await axios.get(`${env.API_URL}/profile/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const data = await get(`profile/${id}`);
       if (data && data.success) {
         const state = { ...this.state, user: data.user };
         this.setState(state);
@@ -82,41 +79,41 @@ class App extends React.Component {
     }
   }
 
+  setUser = ({ user, token }) => {
+    localStorage.setItem(env.KEY, token);
+    localStorage.setItem(env.USER, JSON.stringify(user));
+    const state = { ...this.state, user };
+    this.setState(state);
+    this.props.history.push("/app/dashboard");
+  };
+
+  setError = err => {
+    this.setState({ ...this.state, err });
+  };
+
   register = async () => {
     try {
       const datos = this.state.registerData;
-      const { data } = await axios.post(`${env.API_URL}/register-user`, datos);
+      const data = await post("register-user", datos);
       if (data && data.success) {
-        const { user, token } = data;
-        localStorage.setItem(env.KEY, token);
-        localStorage.setItem(env.USER, JSON.stringify(user));
-        const state = { ...this.state, user };
-        this.setState(state);
-        this.props.history.push("/app/dashboard");
-      } else {
-        // send some flash
+        return this.setUser(data);
       }
+      this.setError(new Error("Fallo al Registrarse"));
     } catch (err) {
-      console.log(err);
+      this.setError(err);
     }
   };
 
   login = async () => {
     try {
       const datos = this.state.loginData;
-      const { data } = await axios.post(`${env.API_URL}/login`, datos);
+      const data = await post("login", datos);
       if (data && data.success) {
-        const { user, token } = data;
-        localStorage.setItem(env.KEY, token);
-        localStorage.setItem(env.USER, JSON.stringify(user));
-        const state = { ...this.state, user };
-        this.setState(state);
-        this.props.history.push("/app/dashboard");
-      } else {
-        // Send some flash
+        this.setUser(data);
       }
+      this.setError(new Error("Fallo al Iniciar Sesion"));
     } catch (err) {
-      console.log(err);
+      this.setError(err);
     }
   };
 
@@ -140,40 +137,28 @@ class App extends React.Component {
     // }
   };
 
-  onChangeRegister = e => {
+  onChangeFactory = (e, key) => {
     e.preventDefault();
     const state = {
       ...this.state,
-      registerData: {
-        ...this.state.registerData,
+      [key]: {
+        ...this.state[key],
         [e.target.name]: e.target.value
       }
     };
     this.setState(state);
+  };
+
+  onChangeRegister = e => {
+    this.onChangeFactory(e, "registerData");
   };
 
   onChangeLogin = e => {
-    e.preventDefault();
-    const state = {
-      ...this.state,
-      loginData: {
-        ...this.state.loginData,
-        [e.target.name]: e.target.value
-      }
-    };
-    this.setState(state);
+    this.onChangeFactory(e, "loginData");
   };
 
   onChangeUpdate = e => {
-    e.preventDefault();
-    const state = {
-      ...this.state,
-      updateData: {
-        ...this.state.updateData,
-        [e.target.name]: e.target.value
-      }
-    };
-    this.setState(state);
+    this.onChangeFactory(e, "updateData");
   };
 
   render() {

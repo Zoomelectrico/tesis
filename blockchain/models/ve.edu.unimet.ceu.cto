@@ -34,11 +34,11 @@ concept Postulado extends Human {
 }
 
 concept Consejero extends Human {
-  o Boolean titular
+  o Boolean substitute
 }
 
 concept Coordinador extends Human {
-  o Boolean titular
+  o Boolean substitute
   --> GrupoElectoral electoralGroup
 }
 

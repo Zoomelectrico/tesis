@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -15,7 +14,7 @@ import {
   Label
 } from "reactstrap";
 import { Navbar, Footer } from "../components";
-import { majors, env } from "../utils";
+import { majors, env, normalize, post } from "../utils";
 
 const Home = props => {
   useEffect(() => {
@@ -24,6 +23,7 @@ const Home = props => {
       document.body.classList.remove("bg-default");
     };
   }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     major: "",
@@ -49,11 +49,9 @@ const Home = props => {
 
   const sendForm = async e => {
     e.preventDefault();
-    const { data } = await axios.post(`${env.API_URL}/home-form`, formData);
+    const data = await post(`home-form`, formData);
     if (data && data.success) {
       // All good, send a flash
-    } else {
-      // Send a flash
     }
   };
 
@@ -229,7 +227,10 @@ const Home = props => {
                             onChange={onChangeForm}
                           >
                             {majors.map(major => (
-                              <option key={major} value={major}>
+                              <option
+                                key={normalize(major)}
+                                value={normalize(major)}
+                              >
                                 {major}
                               </option>
                             ))}

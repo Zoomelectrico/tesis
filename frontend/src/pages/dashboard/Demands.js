@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import {
   Container,
   Row,
@@ -92,7 +91,7 @@ const table = ({ title, data }) => (
 );
 
 const Demands = props => {
-  const [state, setState] = useState({ loading: false, demands: {} });
+  const [state, setState] = useState({ loading: false, demands: [] });
   return (
     <>
       <Header />

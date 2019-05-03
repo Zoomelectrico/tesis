@@ -22,6 +22,12 @@ Esta sección es un fuerte agradecimiento todas aquellas librerías que facilita
 14. [Mongooser](https://mongoosejs.com)
 15. [Passport](http://www.passportjs.org/)
 
+#### Comandos
+
+```bash
+composer-rest-server -c admin@uvote -n always -w true
+```
+
 #### Alguna Duda?
 
 [Tweet me](https://twitter.com/quevedodev)

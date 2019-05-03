@@ -9,8 +9,9 @@ mongoose.connection.on("error", err => {
 });
 // Require Models
 require("./models/User");
-require("./models/ElectoralRepresentative");
 require("./models/ElectoralGroup");
+require("./models/Demand");
+require("./models/Postulation");
 
 const app = require("./app");
 app.set("port", process.env.PORT || 7777);
