@@ -29,15 +29,17 @@ const postulationSchema = new mongoose.Schema({
       dni: Number,
       school: String,
       faculty: String,
-      substitute: Number
+      substitute: Number,
+      facultyKey: String
     }
   ],
-  school: [
+  schools: [
     {
       name: String,
       dni: Number,
       charge: String,
-      school: String
+      school: String,
+      schoolKey: String
     }
   ],
   schoolCouncil: [
@@ -45,7 +47,8 @@ const postulationSchema = new mongoose.Schema({
       name: String,
       dni: Number,
       school: String,
-      substitute: Number
+      substitute: Number,
+      schoolKey: String
     }
   ]
 });

@@ -39,6 +39,10 @@ const electoralGroupSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
+  postulation: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Postulation"
+  },
   electionYear: {
     type: Number,
     default: new Date().getFullYear()

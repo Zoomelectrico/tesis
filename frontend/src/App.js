@@ -68,11 +68,13 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       const token = localStorage.getItem(env.KEY);
-      const { id } = JSON.parse(atob(token.split(".")[1]));
-      const data = await get(`profile/${id}`);
-      if (data && data.success) {
-        const state = { ...this.state, user: data.user };
-        this.setState(state);
+      if (token) {
+        const { id } = JSON.parse(atob(token.split(".")[1]));
+        const data = await get(`profile/${id}`);
+        if (data && data.success) {
+          const state = { ...this.state, user: data.user };
+          this.setState(state);
+        }
       }
     } catch (err) {
       console.log(err);
@@ -94,7 +96,7 @@ class App extends React.Component {
   register = async () => {
     try {
       const datos = this.state.registerData;
-      const data = await post("register-user", datos);
+      const data = await post("register-user", datos, false);
       if (data && data.success) {
         return this.setUser(data);
       }
@@ -107,7 +109,7 @@ class App extends React.Component {
   login = async () => {
     try {
       const datos = this.state.loginData;
-      const data = await post("login", datos);
+      const data = await post("login", datos, false);
       if (data && data.success) {
         this.setUser(data);
       }

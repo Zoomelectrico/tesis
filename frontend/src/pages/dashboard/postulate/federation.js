@@ -11,7 +11,12 @@ import {
   Label
 } from "reactstrap";
 
-import { postulationFields, majors, normalize } from "../../../utils";
+import {
+  postulationFields,
+  majors,
+  normalize,
+  normalizeInputs
+} from "../../../utils";
 
 const {
   fields,
@@ -24,7 +29,7 @@ const {
 
 class StudentFederationCenter extends React.Component {
   state = {
-    studentFederationCenter: [],
+    fce: [],
     sports: [],
     culture: [],
     services: [],
@@ -40,7 +45,7 @@ class StudentFederationCenter extends React.Component {
     state[key][idx] = {
       ...state[key][idx],
       charge,
-      [e.target.name]: e.target.values
+      [normalizeInputs(e.target.name)]: e.target.value
     };
     this.setState(state);
   };
@@ -87,11 +92,11 @@ class StudentFederationCenter extends React.Component {
 
   save = e => {
     e.preventDefault();
-    // TODO: save current state in parent state
     localStorage.setItem(
       "student-federation-center",
       JSON.stringify(this.state)
     );
+    this.props.save("student-federation-center", this.state);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -105,7 +110,7 @@ class StudentFederationCenter extends React.Component {
           <h2>Postulacion para la Federacion de Centros de Estudiantes</h2>
         </CardHeader>
         <CardBody>
-          <Row>{this.renderForm(fields, "studentFederationCenter")}</Row>
+          <Row>{this.renderForm(fields, "fce")}</Row>
           <Row>
             <div className="mb-3" />
           </Row>

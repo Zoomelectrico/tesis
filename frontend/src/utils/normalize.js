@@ -9,4 +9,13 @@ const normalize = string =>
     .replace(/[ ]/g, "-")
     .toLowerCase();
 
-export default normalize;
+const normalizeInputs = string =>
+  string
+    .replace(/[0-9]/g, "")
+    .replace(
+      /(sports|culture|president|secretaryGeneral|internalAffairs|generalCoordinator|treasurer|services|academic|responsability|adviser|coordinator)/gi,
+      ""
+    )
+    .toLowerCase();
+
+export { normalize, normalizeInputs };

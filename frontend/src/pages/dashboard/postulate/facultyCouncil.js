@@ -16,7 +16,8 @@ import {
   majors,
   postulationFields,
   faculties,
-  normalize
+  normalize,
+  normalizeInputs
 } from "../../../utils";
 
 const { facultyCouncil: fields } = postulationFields;
@@ -59,7 +60,7 @@ class FacultyCouncil extends React.Component {
     const state = { ...this.state };
     state.facultyCouncil[faculty].advisors[idx] = {
       ...state.facultyCouncil[faculty].advisors[idx],
-      [e.target.name]: e.target.value,
+      [normalizeInputs(e.target.name)]: e.target.value,
       substitute
     };
     this.setState(state);
@@ -80,7 +81,11 @@ class FacultyCouncil extends React.Component {
 
   ready = e => {
     e.preventDefault();
-    // TODO: Guardar el progreso actual como postulacion
+    localStorage.setItem(
+      "faculty-council",
+      JSON.stringify(this.state.facultyCouncil)
+    );
+    this.props.save("faculty-council", this.state.facultyCouncil);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -99,7 +104,7 @@ class FacultyCouncil extends React.Component {
         }
       }
     }
-    // TODO: Save to the parent state
+    this.props.save("faculty-council", this.state.facultyCouncil);
     localStorage.setItem(
       "faculty-council",
       JSON.stringify(this.state.facultyCouncil)
@@ -135,6 +140,14 @@ class FacultyCouncil extends React.Component {
         </FormGroup>
       </Col>
       <Col md="6" className="d-flex justify-content-center">
+        <Button
+          color="warning"
+          outline
+          className="my-auto mr-3 mb-3"
+          onClick={this.ready}
+        >
+          Cerrar Postulacion
+        </Button>
         <Button
           color="success"
           className="my-auto"

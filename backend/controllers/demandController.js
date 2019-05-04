@@ -17,9 +17,33 @@ exports.creteDemand = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   try {
-    const demands = await Demand.find({ completed: 0 });
+    const [representative, group, postulation, complain] = await Promise.all([
+      Demand.find({ completed: 0, type: "REPRESENTANTE" })
+        .populate("user")
+        .populate("representative"),
+      Demand.find({ completed: 0, type: "GRUPO" })
+        .populate("user")
+        .populate("electoralGroup"),
+      Demand.find({ completed: 0, type: "POSTULACION" })
+        .populate("user")
+        .populate("postulation")
+        .populate({
+          path: "postulation",
+          populate: {
+            path: "electoralGroup"
+          }
+        }),
+      Demand.find({ completed: 0, type: "QUEJA" }).populate("user")
+    ]);
+    const demands = {
+      representative,
+      group,
+      postulation,
+      complain
+    };
     res.json({ success: true, demands });
   } catch (err) {
+    console.log(err);
     res.json({ success: false, err });
   }
 };

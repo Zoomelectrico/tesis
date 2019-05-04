@@ -12,7 +12,12 @@ import {
   Form
 } from "reactstrap";
 
-import { majors, postulationFields, normalize } from "../../../utils";
+import {
+  majors,
+  postulationFields,
+  normalize,
+  normalizeInputs
+} from "../../../utils";
 
 const { schoolCouncil: fields } = postulationFields;
 
@@ -107,7 +112,7 @@ class SchoolCouncil extends React.Component {
     const schools = { ...this.state.schools };
     schools[school].advisors[idx] = {
       ...schools[school].advisors[idx],
-      [e.target.name]: e.target.value,
+      [normalizeInputs(e.target.name)]: e.target.value,
       substitute
     };
     this.setState({ ...this.state, schools });
@@ -116,13 +121,13 @@ class SchoolCouncil extends React.Component {
   nextSchool = e => {
     e.preventDefault();
     document.getElementById("schoolCouncilForm").reset();
-    this.state({ ...this.state, show: false });
+    this.setState({ ...this.state, show: false });
   };
 
   ready = e => {
     e.preventDefault();
-    // TODO: Save data to parent state
-    localStorage.setItem("school-council", JSON.parse(this.state.schools));
+    localStorage.setItem("school-council", JSON.stringify(this.state.schools));
+    this.props.save("school-council", this.state.schools);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -155,8 +160,16 @@ class SchoolCouncil extends React.Component {
       </Col>
       <Col md="6" className="d-flex justify-content-center">
         <Button
+          color="warning"
+          outline
+          className="my-auto mr-3 mb-3"
+          onClick={this.ready}
+        >
+          Cerrar Postulacion
+        </Button>
+        <Button
           color="success"
-          className="my-auto"
+          className="my-auto mr-3 mb-3"
           onClick={this.onClickSchool}
         >
           Agregar

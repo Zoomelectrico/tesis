@@ -1,3 +1,4 @@
+export { default as Checkout } from "./checkout";
 export { default as Council } from "./council";
 export { default as FacultyCouncil } from "./facultyCouncil";
 export { default as ElectoralGroup } from "./electoralGroup";

@@ -12,7 +12,12 @@ import {
   Form
 } from "reactstrap";
 
-import { majors, postulationFields, normalize } from "../../../utils";
+import {
+  majors,
+  postulationFields,
+  normalize,
+  normalizeInputs
+} from "../../../utils";
 
 const { school: fields } = postulationFields;
 
@@ -113,8 +118,8 @@ class School extends React.Component {
 
   ready = e => {
     e.preventDefault();
-    // TODO: Guardar el progreso actual como postulacion
-    localStorage.setItem("schools", JSON.parse(this.state.schools));
+    localStorage.setItem("schools", JSON.stringify(this.state.schools));
+    this.props.save("schools", this.state.schools);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -125,7 +130,7 @@ class School extends React.Component {
     schools[school].sc[idx] = {
       ...schools[school].sc[idx],
       charge,
-      [e.target.name]: e.target.value
+      [normalizeInputs(e.target.name)]: e.target.value
     };
     this.setState({ ...this.state, school });
   };
@@ -200,8 +205,16 @@ class School extends React.Component {
       </Col>
       <Col md="6" className="d-flex justify-content-center">
         <Button
+          color="warning"
+          outline
+          className="my-auto mr-3 mb-3"
+          onClick={this.ready}
+        >
+          Cerrar Postulacion
+        </Button>
+        <Button
           color="success"
-          className="my-auto"
+          className="my-auto mr-3 mb-3"
           onClick={this.onClickSchool}
         >
           Agregar

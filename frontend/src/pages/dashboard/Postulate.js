@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Spinner, Button } from "reactstrap";
 import { Header } from "../../components";
 import {
+  Checkout,
   Council,
   ElectoralGroup,
   FacultyCouncil,
@@ -11,6 +12,14 @@ import {
 } from "./postulate";
 import { env, get, post } from "../../utils";
 
+const keys = [
+  "academic-council",
+  "faculty-council",
+  "student-federation-center",
+  "schools",
+  "school-council"
+];
+
 class DashPostulate extends React.Component {
   state = {
     electoralGroupStatus: false,
@@ -19,7 +28,9 @@ class DashPostulate extends React.Component {
     electoralGroup: {},
     postulation: {},
     _id: "",
-    token: ""
+    token: "",
+    checkout: false,
+    postulationData: {}
   };
 
   getUserData = () =>
@@ -35,10 +46,10 @@ class DashPostulate extends React.Component {
       }
     });
 
-  getElectoralGroup = (_id, token) => {
+  getElectoralGroup = _id => {
     return new Promise(async (resolve, reject) => {
       try {
-        const { data } = await get(`electoral-group/${_id}`);
+        const data = await get(`electoral-group/${_id}`);
         if (data && data.success) {
           const { electoralGroup } = data;
           resolve(electoralGroup);
@@ -63,13 +74,7 @@ class DashPostulate extends React.Component {
   getCopyOfPostulation = () =>
     new Promise((resolve, reject) => {
       try {
-        const data = [
-          "academic-council",
-          "faculty-council",
-          "student-federation-center",
-          "schools",
-          "school-council"
-        ]
+        const data = keys
           .map(key =>
             localStorage.getItem(key)
               ? { key, data: JSON.parse(localStorage.getItem(key)) }
@@ -84,16 +89,35 @@ class DashPostulate extends React.Component {
 
   async componentDidMount() {
     try {
+      let state = {
+        ...this.state
+      };
       const { _id, token } = await this.getUserData();
       const electoralGroup = await this.getElectoralGroup(_id, token);
-      this.setState({
-        ...this.state,
+      state = {
+        ...state,
         loading: false,
         electoralGroupStatus: true,
         electoralGroup
-      });
-      const data = await this.getCopyOfPostulation();
-      console.log(data);
+      };
+      if (electoralGroup.postulation) {
+        state = {
+          ...state,
+          postulationData: electoralGroup.postulation,
+          checkout: true
+        };
+      } else {
+        const data = await this.getCopyOfPostulation();
+        if (data.length > 0) {
+          data.forEach(({ key, data }) => {
+            state.postulation[key] = {
+              ...state.postulation[key],
+              ...data
+            };
+          });
+        }
+      }
+      this.setState(state);
     } catch (err) {
       this.setErrorState(err);
     }
@@ -145,8 +169,7 @@ class DashPostulate extends React.Component {
     colorHex,
     logo,
     number,
-    _id,
-    token
+    _id
   }) =>
     new Promise(async (resolve, reject) => {
       try {
@@ -185,8 +208,66 @@ class DashPostulate extends React.Component {
     }
   };
 
-  checkout = e => {
+  checkout = async e => {
     e.preventDefault();
+    const postulation = {
+      ...this.state.postulation,
+      userId: this.state._id,
+      electoralGroup: this.state.electoralGroup._id
+    };
+    const data = await post("postulation-create", postulation);
+    keys.forEach(key => localStorage.removeItem(key));
+    this.setState({ ...this.state, checkout: true, postulationData: data });
+  };
+
+  conditionalRender = () => {
+    if (this.state.loading) {
+      return (
+        <div className="d-flex justify-content-center py-4 card">
+          <Spinner
+            className="m-auto"
+            color="primary"
+            style={{ width: "3rem", height: "3rem" }}
+          />
+        </div>
+      );
+    } else {
+      if (this.state.electoralGroupStatus) {
+        if (this.state.checkout) {
+          return <Checkout postulation={this.state.postulationData} />;
+        } else {
+          return (
+            <>
+              <School save={this.save} />
+              <SchoolCouncil save={this.save} />
+              <FacultyCouncil save={this.save} />
+              <Council save={this.save} />
+              <StudentFederationCenter save={this.save} />
+              <Container>
+                <Row className="justify-content-end">
+                  <Button
+                    className="my-auto"
+                    color="info"
+                    outline
+                    onClick={this.checkout}
+                  >
+                    Salvar Postulacion
+                  </Button>
+                </Row>
+              </Container>
+            </>
+          );
+        }
+      } else {
+        return (
+          <ElectoralGroup
+            onChage={this.onChange}
+            onChangeFile={this.onChangeFile}
+            createElectoralGroup={this.createElectoralGroup}
+          />
+        );
+      }
+    }
   };
 
   render() {
@@ -195,43 +276,7 @@ class DashPostulate extends React.Component {
         <Header />
         <Container className="mt--7 py-4">
           <Row>
-            <Col sm="12">
-              {this.state.loading ? (
-                <div className="d-flex justify-content-center py-4 card">
-                  <Spinner
-                    className="m-auto"
-                    color="primary"
-                    style={{ width: "3rem", height: "3rem" }}
-                  />
-                </div>
-              ) : this.state.electoralGroupStatus ? (
-                <>
-                  <School save={this.save} />
-                  <SchoolCouncil save={this.save} />
-                  <FacultyCouncil save={this.save} />
-                  <Council save={this.save} />
-                  <StudentFederationCenter save={this.save} />
-                  <Container>
-                    <Row className="justify-content-end">
-                      <Button
-                        className="my-auto"
-                        color="warning"
-                        outline
-                        onClick={this.checkout}
-                      >
-                        Salvar Postulacion
-                      </Button>
-                    </Row>
-                  </Container>
-                </>
-              ) : (
-                <ElectoralGroup
-                  onChage={this.onChange}
-                  onChangeFile={this.onChangeFile}
-                  createElectoralGroup={this.createElectoralGroup}
-                />
-              )}
-            </Col>
+            <Col sm="12">{this.conditionalRender()}</Col>
           </Row>
         </Container>
       </>

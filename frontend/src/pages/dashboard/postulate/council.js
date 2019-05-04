@@ -11,13 +11,24 @@ import {
   Button
 } from "reactstrap";
 
-import { majors, postulationFields } from "../../../utils";
+import {
+  majors,
+  postulationFields,
+  normalize,
+  normalizeInputs
+} from "../../../utils";
 
 const { academicCouncil: fields } = postulationFields;
 
 class Council extends React.Component {
   state = {
-    academicCouncil: {},
+    academicCouncil: {
+      name: "",
+      email: "",
+      dni: -1,
+      phone: "",
+      school: ""
+    },
     ready: false
   };
 
@@ -27,7 +38,7 @@ class Council extends React.Component {
       ...this.state,
       academicCouncil: {
         ...this.state.academicCouncil,
-        [e.target.name]: e.targer.value
+        [normalizeInputs(e.target.name)]: e.target.value
       }
     };
     this.setState(state);
@@ -35,11 +46,11 @@ class Council extends React.Component {
 
   save = e => {
     e.preventDefault();
-    // TODO: Need to save current state to parent state
     localStorage.setItem(
       "academic-council",
       JSON.stringify(this.state.academicCouncil)
     );
+    this.props.save("academic-council", this.state.academicCouncil);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -56,7 +67,7 @@ class Council extends React.Component {
             placeholder={label}
           >
             {majors.map(major => (
-              <option key={major} value={major}>
+              <option key={normalize(major)} value={normalize(major)}>
                 {major}
               </option>
             ))}
@@ -91,8 +102,16 @@ class Council extends React.Component {
                   {this.renderCol(label, id, type)}
                   <Col md="4" className="d-flex justify-content-center">
                     <Button
+                      color="warning"
+                      outline
+                      className="my-auto mr-3 mb-3"
+                      onClick={this.save}
+                    >
+                      Cerrar
+                    </Button>
+                    <Button
                       color="success"
-                      className="my-auto"
+                      className="my-auto mr-3 mb-3"
                       onClick={this.save}
                     >
                       Agregar

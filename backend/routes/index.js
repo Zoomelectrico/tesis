@@ -59,21 +59,39 @@ router.get(
 );
 
 router.post(
-  "/demand-accept-eg/:egId/:id",
+  "/demand-accept-eg/",
   passport.authenticate("jwt", { session: false }),
   demandController.includeElectoralGroup
 );
 
 router.post(
-  "/demand-accept-rep/:userId/:id",
+  "/demand-accept-rep/",
   passport.authenticate("jwt", { session: false }),
   demandController.makeRepresentative
 );
 
 router.post(
-  "/demand-accept-pos/:pId/:id",
+  "/demand-accept-pos/",
   passport.authenticate("jwt", { session: false }),
   demandController.includePostulation
+);
+
+router.post(
+  "/postulation-create",
+  passport.authenticate("jwt", { session: false }),
+  postulationController.createPostulation
+);
+
+router.get(
+  "/postulation/:id",
+  passport.authenticate("jwt", { session: false }),
+  postulationController.getPostulation
+);
+
+router.get(
+  "/postulations",
+  passport.authenticate("jwt", { session: false }),
+  postulationController.getPostulations
 );
 
 module.exports = router;

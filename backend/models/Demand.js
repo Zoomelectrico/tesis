@@ -14,7 +14,8 @@ const demandSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    required: "Debe proveer un Usuario"
   },
   type: {
     type: String,
@@ -24,7 +25,10 @@ const demandSchema = new mongoose.Schema({
   },
   text: String,
   representative: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  representative: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  electoralGroup: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ElectoralGroup"
+  },
   postulation: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Postulation"

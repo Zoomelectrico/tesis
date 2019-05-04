@@ -44,7 +44,9 @@ exports.createElectoralGroup = async (req, res) => {
 exports.getElectoralGroupByCreatorId = async (req, res) => {
   try {
     const { id } = req.params;
-    const electoralGroup = await ElectoralGroup.findOne({ representative: id });
+    const electoralGroup = await ElectoralGroup.findOne({
+      representative: id
+    }).populate("postulation");
     if (electoralGroup) {
       res.json({ success: true, electoralGroup });
     } else {
