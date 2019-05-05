@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const fetch = require("node-fetch");
+
 mongoose.Promise = global.Promise;
 const User = mongoose.model("User");
 
@@ -22,7 +24,6 @@ exports.validateUser = async (req, res, next) => {
     if (/\./g.test(dni)) {
       req.body.dni = dni.replace(/\./g, "");
     }
-    console.log("next");
     return next();
   }
   throw new Error("Email invalido");
@@ -31,7 +32,6 @@ exports.validateUser = async (req, res, next) => {
 exports.createUser = async (req, res, next) => {
   try {
     const { firstName, lastName, dni, carnet, email, password } = req.body;
-    console.log({ firstName, lastName, dni, carnet, email, password });
     const user = await User.create({
       firstName,
       lastName,
@@ -40,7 +40,16 @@ exports.createUser = async (req, res, next) => {
       email,
       password
     });
-    console.log(JSON.stringify(user));
+    await fetch(`${process.env.BLOCKCHAIN_API_URL}/buildVoter`, {
+      method: "post",
+      body: JSON.stringify({
+        $class: "ve.edu.unimet.ceu.buildVoter",
+        uuid: user._id,
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email
+      }),
+      headers: { "Content-Type": "application/json" }
+    }).then(res2 => res2.json());
     next();
   } catch (err) {
     console.log(err);
