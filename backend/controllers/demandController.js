@@ -86,12 +86,18 @@ exports.makeRepresentative = async (req, res) => {
   try {
     const { userId, id } = req.body;
     const [user, demand] = await Promise.all([
-      User.findById(userId),
-      Demand.findById(id)
+      User.findOneAndUpdate(
+        { _id: userId },
+        { privilege: 2 },
+        { new: true }
+      ).exec(),
+      Demand.findOneAndUpdate(
+        { _id: id },
+        { completed: 1 },
+        { new: true }
+      ).exec()
     ]);
     if (user && demand) {
-      user.privilege = 2; // representante;
-      demand.completed = 1;
       await Promise.all([user.save(), demand.save()]);
       return res.json({ success: true, demand });
     }
@@ -100,6 +106,7 @@ exports.makeRepresentative = async (req, res) => {
       err: new Error("No se ha encontrado la Solicitud o el Usuario")
     });
   } catch (err) {
+    console.log(err);
     res.json({ success: false, err });
   }
 };

@@ -54,8 +54,10 @@ const post = (url, body, auth = true) =>
       if (data && data.success) {
         return resolve(data);
       }
+      console.log(data);
       reject(new Error("La peticion no fue exitosa"));
     } catch (err) {
+      console.log(err);
       reject(err);
     }
   });

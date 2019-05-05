@@ -22,6 +22,7 @@ const routes = [
     path: "/app/dashboard",
     icon: "fas fa-home",
     exact: true,
+    minLevel: 1,
     component: props => <DashHome {...props} />
   },
   {
@@ -29,6 +30,7 @@ const routes = [
     path: "/app/dashboard/profile",
     icon: "fas fa-user",
     exact: true,
+    minLevel: 1,
     component: props => <DashProfile {...props} />
   },
   {
@@ -36,6 +38,7 @@ const routes = [
     path: "/app/dashboard/postulate",
     icon: "fas fa-user-plus",
     exact: true,
+    minLevel: 2,
     component: props => <DashPostulate {...props} />
   },
   {
@@ -43,6 +46,7 @@ const routes = [
     path: "/app/dashboard/demands",
     icon: "fas fa-paste",
     exact: true,
+    minLevel: 3,
     component: props => <DashDemands {...props} />
   },
   {
@@ -50,6 +54,7 @@ const routes = [
     path: "/app/dashboard/vote",
     icon: "fas fa-receipt",
     exact: true,
+    minLevel: 1,
     component: props => <DashVote {...props} />
   },
   {
@@ -57,6 +62,7 @@ const routes = [
     path: "/app/dashboard/results",
     icon: "fas fa-poll",
     exact: true,
+    minLevel: 1,
     component: props => <DashResults {...props} />
   }
 ];
@@ -76,17 +82,19 @@ const Dashboard = props => (
       />
       <div className="main-content">
         <NavbarAdmin {...props} brandText="brand" />
-        {routes.map(({ name, path, component, exact }) => (
-          <ProtectedRoute
-            key={name}
-            path={path}
-            component={component}
-            exact={exact}
-            user={props.user}
-            updateUser={props.updateUser}
-            onChangeUpdate={props.onChangeUpdate}
-          />
-        ))}
+        {routes.map(({ name, path, component, exact, minLevel }) =>
+          minLevel <= props.user.privilege ? (
+            <ProtectedRoute
+              key={name}
+              path={path}
+              component={component}
+              exact={exact}
+              user={props.user}
+              updateUser={props.updateUser}
+              onChangeUpdate={props.onChangeUpdate}
+            />
+          ) : null
+        )}
         <Container fluid>
           <FooterAdmin />
         </Container>

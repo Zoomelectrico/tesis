@@ -38,7 +38,6 @@ class DashPostulate extends React.Component {
       const { _id } = JSON.parse(localStorage.getItem(env.USER));
       const token = localStorage.getItem(env.KEY);
       if (_id && token) {
-        this.setState({ ...this.state, _id, token });
         resolve({ _id, token });
       } else {
         reject(new Error(`Can't do it!`));
@@ -98,7 +97,9 @@ class DashPostulate extends React.Component {
         ...state,
         loading: false,
         electoralGroupStatus: true,
-        electoralGroup
+        electoralGroup,
+        _id,
+        token
       };
       if (electoralGroup.postulation) {
         state = {
@@ -209,15 +210,19 @@ class DashPostulate extends React.Component {
   };
 
   checkout = async e => {
-    e.preventDefault();
-    const postulation = {
-      ...this.state.postulation,
-      userId: this.state._id,
-      electoralGroup: this.state.electoralGroup._id
-    };
-    const data = await post("postulation-create", postulation);
-    keys.forEach(key => localStorage.removeItem(key));
-    this.setState({ ...this.state, checkout: true, postulationData: data });
+    try {
+      e.preventDefault();
+      const postulation = {
+        ...this.state.postulation,
+        userId: this.state._id,
+        electoralGroup: this.state.electoralGroup._id
+      };
+      const data = await post("postulation-create", postulation);
+      keys.forEach(key => localStorage.removeItem(key));
+      this.setState({ ...this.state, checkout: true, postulationData: data });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   conditionalRender = () => {

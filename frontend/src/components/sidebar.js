@@ -21,20 +21,22 @@ const toggleCollapse = (collapseOpen, setCollapseOpen) =>
 
 const closeCollapse = setCollapseOpen => setCollapseOpen(false);
 
-const createLinks = (routes, setCollapseOpen) =>
-  routes.map(link => (
-    <NavItem key={link.name}>
-      <NavLink
-        to={link.path}
-        tag={NavLinkRRD}
-        onClick={() => closeCollapse(setCollapseOpen)}
-        activeClassName="active"
-      >
-        <i className={link.icon} />
-        {link.name}
-      </NavLink>
-    </NavItem>
-  ));
+const createLinks = (routes, setCollapseOpen, user) =>
+  routes.map(link =>
+    link.minLevel <= user.privilege ? (
+      <NavItem key={link.name}>
+        <NavLink
+          to={link.path}
+          tag={NavLinkRRD}
+          onClick={() => closeCollapse(setCollapseOpen)}
+          activeClassName="active"
+        >
+          <i className={link.icon} />
+          {link.name}
+        </NavLink>
+      </NavItem>
+    ) : null
+  );
 
 const Sidebar = props => {
   const [collapseOpen, setCollapseOpen] = useState(false);
@@ -91,7 +93,7 @@ const Sidebar = props => {
             </Row>
           </div>
           <Nav navbar>
-            {createLinks(routes, setCollapseOpen)}
+            {createLinks(routes, setCollapseOpen, props.user)}
             <hr className="my-3" />
             <NavItem>
               <NavLink onClick={props.logout}>

@@ -51,13 +51,67 @@ exports.createUser = async (req, res, next) => {
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    const { firstName, lastName, email, privilege, _id } = user;
+    const {
+      firstName,
+      lastName,
+      email,
+      privilege,
+      _id,
+      dni,
+      carnet,
+      major
+    } = user;
     res.json({
       success: true,
-      user: { firstName, lastName, email, privilege, id: _id }
+      user: {
+        firstName,
+        lastName,
+        email,
+        privilege,
+        id: _id,
+        dni,
+        carnet,
+        major
+      }
     });
   } catch (err) {
     console.log(err);
     res.json({ success: false, err });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { ...req.body },
+      { new: true }
+    ).exec();
+    const {
+      firstName,
+      lastName,
+      email,
+      privilege,
+      _id,
+      dni,
+      carnet,
+      major
+    } = user;
+    res.json({
+      success: true,
+      user: {
+        firstName,
+        lastName,
+        email,
+        privilege,
+        id: _id,
+        dni,
+        carnet,
+        major
+      }
+    });
+  } catch (err) {
+    res.json({ success: false, err });
+    console.log(err);
   }
 };

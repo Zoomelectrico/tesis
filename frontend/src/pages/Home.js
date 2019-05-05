@@ -14,7 +14,7 @@ import {
   Label
 } from "reactstrap";
 import { Navbar, Footer } from "../components";
-import { majors, env, normalize, post } from "../utils";
+import { majors, normalize, post } from "../utils";
 
 const Home = props => {
   useEffect(() => {
@@ -49,7 +49,7 @@ const Home = props => {
 
   const sendForm = async e => {
     e.preventDefault();
-    const data = await post(`home-form`, formData);
+    const data = await post(`home-form`, formData, false);
     if (data && data.success) {
       // All good, send a flash
     }

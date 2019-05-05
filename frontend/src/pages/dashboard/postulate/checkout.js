@@ -107,7 +107,22 @@ const Checkout = ({
                 <h2>Consejo Academico</h2>
               </CardHeader>
               <CardBody>
-                {generateTable(["Cedula", "nombre", "email"], [["", "", ""]])}
+                {academicCouncil.dni !== -1 ? (
+                  generateTable(
+                    ["Cedula", "nombre", "email"],
+                    [
+                      [
+                        academicCouncil.dni,
+                        academicCouncil.name,
+                        academicCouncil.email
+                      ]
+                    ]
+                  )
+                ) : (
+                  <h2 className="text-center">
+                    No Existen Datos de esta Postulacion
+                  </h2>
+                )}
               </CardBody>
             </Card>
           </Col>

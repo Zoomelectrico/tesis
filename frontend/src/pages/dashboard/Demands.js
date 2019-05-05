@@ -10,42 +10,56 @@ import {
   Button
 } from "reactstrap";
 import { Header } from "../../components";
-import { get } from "../../utils";
+import { get, post } from "../../utils";
 
-const table = ({ title, data }) => (
-  <Row className="mb-3 border-0" key={title}>
-    <Col>
-      <Card style={{ backgroundColor: "#f5f7f9" }}>
-        <CardHeader>
-          <h2>{title}</h2>
-        </CardHeader>
-        <CardBody>
-          <Table hover>
-            <thead>
-              <tr>
-                {data.header.map(header => (
-                  <th key={header}>{header}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.body.map(row => (
-                <tr key={row.join("-")}>
-                  {row.map(_data => (
-                    <td key={_data}>{_data}</td>
+const table = (title, data) => {
+  if (data.header && data.body) {
+    return (
+      <Row className="mb-3 border-0" key={title}>
+        <Col>
+          <Card style={{ backgroundColor: "#f5f7f9" }}>
+            <CardHeader>
+              <h2>{title}</h2>
+            </CardHeader>
+            <CardBody>
+              <Table hover>
+                <thead>
+                  <tr>
+                    {data.header.map(header => (
+                      <th key={header}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.body.map(row => (
+                    <tr key={row.join("-")}>
+                      {row.map(_data => (
+                        <td key={_data}>{_data}</td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </CardBody>
-      </Card>
-    </Col>
-  </Row>
-);
+                </tbody>
+              </Table>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    );
+  }
+  return nothingCard(title);
+};
 
-const electoralR = e => {
-  e.preventDefault();
+const electoralR = async (e, representative) => {
+  try {
+    e.preventDefault();
+    const { id, user: userId, idx } = e.target.dataset;
+    const data = await post("demand-accept-rep/", { id, userId });
+    if (data.success) {
+      representative.splice(idx, 1);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const fetch = async (demands, setDemands) => {
@@ -75,19 +89,23 @@ const generateTable = state => {
       {representative.length > 0
         ? table("Solicitud - Representante Electoral", {
             header: ["Codigo", "Nombre del Solicitante", "Atender"],
-            body: representative.map(({ code, user: { name, _id } }) => [
-              code,
-              name,
-              <Button
-                color="info"
-                sm
-                outline
-                onClick={electoralR}
-                data-id={_id}
-              >
-                Aceptar
-              </Button>
-            ])
+            body: representative.map(
+              ({ code, _id: id, user: { firstName, lastName, _id } }, idx) => [
+                code,
+                `${firstName} ${lastName}`,
+                <Button
+                  color="info"
+                  size="sm"
+                  outline
+                  onClick={e => electoralR(e, representative)}
+                  data-user={_id}
+                  data-id={id}
+                  data-idx={idx}
+                >
+                  Atender
+                </Button>
+              ]
+            )
           })
         : nothingCard("Solicitud - Representante Electoral")}
       {group.length > 0
@@ -101,21 +119,21 @@ const generateTable = state => {
             body: group.map(
               ({
                 code,
-                user: { name: uname, _id: u_id },
-                electoralGroup: { name, _id }
+                user: { firstName, lastName, _id: u_id },
+                electoralGroup: { denomination, _id }
               }) => [
                 code,
-                uname,
-                name,
+                `${firstName} ${lastName}`,
+                denomination,
                 <Button
                   color="info"
-                  sm
+                  size="sm"
                   outline
                   onClick={electoralR}
                   data-id={_id}
                   data-uid={u_id}
                 >
-                  Aceptar
+                  Atender
                 </Button>
               ]
             )
@@ -132,24 +150,24 @@ const generateTable = state => {
             body: postulation.map(
               ({
                 code,
-                user: { name: uname, _id: u_id },
+                user: { firstName, lastName, _id: u_id },
                 postulation: {
                   _id,
-                  electoralGroup: { name }
+                  electoralGroup: { denomination }
                 }
               }) => [
                 code,
-                uname,
-                name,
+                `${firstName} ${lastName}`,
+                denomination,
                 <Button
                   color="info"
-                  sm
+                  size="sm"
                   outline
                   onClick={electoralR}
                   data-id={_id}
                   data-uid={u_id}
                 >
-                  Aceptar
+                  Atender
                 </Button>
               ]
             )
@@ -158,13 +176,15 @@ const generateTable = state => {
       {complain.length > 0
         ? table("Solicitud - Queja", {
             header: ["Codigo", "Nombre del Solicitante"],
-            body: complain.map(({ code, user: { name, _id } }) => [
-              code,
-              name,
-              <Button color="success" sm outline data-id={_id}>
-                Atender
-              </Button>
-            ])
+            body: complain.map(
+              ({ code, user: { firstName, lastName, _id } }) => [
+                code,
+                `${firstName} ${lastName}`,
+                <Button color="success" size="sm" outline data-id={_id}>
+                  Atender
+                </Button>
+              ]
+            )
           })
         : nothingCard("Solicitud - Quejas")}
     </>

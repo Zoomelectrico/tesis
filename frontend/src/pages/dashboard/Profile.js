@@ -12,7 +12,7 @@ import {
   Button
 } from "reactstrap";
 import { Header } from "../../components";
-import { majors } from "../../utils";
+import { majors, normalize, post } from "../../utils";
 
 const DashProfile = props => {
   const { updateUser } = props;
@@ -25,14 +25,30 @@ const DashProfile = props => {
     dni: ""
   });
 
-  const onChange = (key, value) => {
-    setUser({ ...user, [key]: value });
-  };
-
   useEffect(() => {
     const { user: _user } = props;
     setUser({ ..._user });
   }, [props.user]);
+
+  const onChange = (key, value) => {
+    setUser({ ...user, [key]: value });
+  };
+
+  const demand = async (e, type) => {
+    try {
+      e.preventDefault();
+      const _demand = { type, user: user.id, representative: user.id };
+      const data = await post("/demand-create", _demand);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const valueProp = {};
+  user.major
+    ? (valueProp.value = user.major)
+    : (valueProp.defaultValue = "none");
 
   return (
     <>
@@ -107,10 +123,16 @@ const DashProfile = props => {
                         name="major"
                         id="major"
                         onChange={e => onChange(e.target.name, e.target.value)}
-                        value={user.major}
+                        {...valueProp}
                       >
+                        <option value="none" disabled>
+                          Selecciona Una Carrera
+                        </option>
                         {majors.map(major => (
-                          <option key={major} value={major}>
+                          <option
+                            key={normalize(major)}
+                            value={normalize(major)}
+                          >
                             {major}
                           </option>
                         ))}
@@ -155,7 +177,7 @@ const DashProfile = props => {
                       <Button
                         color="neutral"
                         className="my-auto"
-                        onClick={e => e.preventDefault()}
+                        onClick={e => demand(e, "REPRESENTANTE")}
                       >
                         Solicitar - Representante Electoral
                       </Button>
@@ -169,7 +191,7 @@ const DashProfile = props => {
                     <Button
                       color="neutral"
                       className="my-auto"
-                      onClick={e => e.preventDefault()}
+                      onClick={e => e.preventDefault() /* Open Modal */}
                     >
                       Realizar Queja Formal
                     </Button>

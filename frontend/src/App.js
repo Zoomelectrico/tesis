@@ -128,15 +128,13 @@ class App extends React.Component {
   };
 
   updateUser = async (e, user) => {
-    e.preventDefault();
-    console.log(user);
-    // const datos = this.state.updateData;
-    // const { data } = await axios.post(`${env.API_URL}/update-user`, datos);
-    // if (data && data.success) {
-    //   // All good, go the dashboard
-    // } else {
-    //   // Send some flash
-    // }
+    try {
+      e.preventDefault();
+      const data = await post(`user-update/${this.state.user.id}`, user);
+      this.setState({ ...this.state, user: data.user });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   onChangeFactory = (e, key) => {

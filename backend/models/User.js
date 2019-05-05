@@ -46,6 +46,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 1
   },
+  major: String,
   electoralGroups: [
     { type: mongoose.Schema.Types.ObjectId, ref: "ElectoralGroup" }
   ],

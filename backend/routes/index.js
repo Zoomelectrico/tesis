@@ -6,6 +6,8 @@ const electoralGroupController = require("../controllers/electoralGroupControlle
 const demandController = require("../controllers/demandController");
 const postulationController = require("../controllers/postulationController");
 
+router.post("/login", passport.authenticate("signin"), authController.login);
+
 router.get(
   "/profile/:id",
   passport.authenticate("jwt", { session: false }),
@@ -20,7 +22,11 @@ router.post(
   authController.login
 );
 
-router.post("/login", passport.authenticate("signin"), authController.login);
+router.post(
+  "/user-update/:id",
+  passport.authenticate("jwt", { session: false }),
+  userController.updateUser
+);
 
 router.post(
   "/create-electoral-group/:id",

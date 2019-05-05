@@ -75,6 +75,7 @@ exports.createPostulation = async (req, res) => {
     data.schoolCouncil = schoolCouncilReducer(data.schoolCouncil);
 
     const postulation = await Postulation.create(data);
+    console.log(req.body.userId);
     const [demand] = await Promise.all([
       Demand.create({
         user: req.body.userId,

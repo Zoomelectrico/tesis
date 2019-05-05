@@ -92,12 +92,76 @@ class StudentFederationCenter extends React.Component {
 
   save = e => {
     e.preventDefault();
-    localStorage.setItem(
-      "student-federation-center",
-      JSON.stringify(this.state)
-    );
-    this.props.save("student-federation-center", this.state);
+    if (this.checkReady()) {
+      localStorage.setItem(
+        "student-federation-center",
+        JSON.stringify(this.state)
+      );
+      this.props.save("student-federation-center", this.state);
+      this.setState({ ...this.state, ready: true });
+    } else {
+      console.log("Not ready");
+    }
+  };
+
+  ready = e => {
+    const state = {
+      fce: [],
+      sports: [],
+      culture: [],
+      services: [],
+      academic: [],
+      responsibility: []
+    };
+    e.preventDefault();
+    localStorage.setItem("student-federation-center", JSON.stringify(state));
+    this.props.save("student-federation-center", state);
     this.setState({ ...this.state, ready: true });
+  };
+
+  checkReady = () => {
+    const {
+      fce,
+      sports,
+      culture,
+      services,
+      academic,
+      responsibility
+    } = this.state;
+    console.log({
+      fce,
+      sports,
+      culture,
+      services,
+      academic,
+      responsibility
+    });
+    if (fce.length < 5) {
+      return false;
+    } else {
+      const bool = !fce
+        .map(nominated => Object.keys(nominated).length === 4)
+        .includes(false);
+      if (bool) {
+        const cordinators = [
+          ...sports,
+          ...culture,
+          ...services,
+          ...academic,
+          ...responsibility
+        ];
+        if (cordinators.length < 10) {
+          console.log(4);
+          return false;
+        } else {
+          return !cordinators
+            .map(cordinator => Object.keys(cordinator).length === 4)
+            .includes(false);
+        }
+      } else {
+        return false;
+      }
+    }
   };
 
   render() {
@@ -168,12 +232,22 @@ class StudentFederationCenter extends React.Component {
           </Row>
           <Row>
             <Col sm="6" />
-            <Col
-              sm="6"
-              className="d-flex justify-content-end"
-              onClick={this.save}
-            >
-              <Button color="success">Agregar</Button>
+            <Col sm="6" className="d-flex justify-content-end">
+              <Button
+                color="warning"
+                outline
+                onClick={this.ready}
+                className="my-auto mr-3 mb-3"
+              >
+                Cerrar Postulacion
+              </Button>
+              <Button
+                color="success"
+                onClick={this.save}
+                className="my-auto mr-3 mb-3"
+              >
+                Agregar
+              </Button>
             </Col>
           </Row>
         </CardBody>
