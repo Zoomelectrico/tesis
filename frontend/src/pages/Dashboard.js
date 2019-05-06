@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "reactstrap";
 import {
@@ -6,7 +6,9 @@ import {
   NavbarAdmin,
   FooterAdmin,
   Loading,
-  ProtectedRoute
+  ProtectedRoute,
+  Toast,
+  notify
 } from "../components";
 
 const DashHome = lazy(() => import("./dashboard/Home"));
@@ -67,40 +69,48 @@ const routes = [
   }
 ];
 
-const Dashboard = props => (
-  <Router>
-    <Suspense fallback={<Loading />}>
-      <Sidebar
-        {...props}
-        bgColor=""
-        routes={routes}
-        logo={{
-          link: "/",
-          src: require("../assets/img/logo-color.svg"),
-          alt: "logo"
-        }}
-      />
-      <div className="main-content">
-        <NavbarAdmin {...props} brandText="brand" />
-        {routes.map(({ name, path, component, exact, minLevel }) =>
-          minLevel <= props.user.privilege ? (
-            <ProtectedRoute
-              key={name}
-              path={path}
-              component={component}
-              exact={exact}
-              user={props.user}
-              updateUser={props.updateUser}
-              onChangeUpdate={props.onChangeUpdate}
-            />
-          ) : null
-        )}
-        <Container fluid>
-          <FooterAdmin />
-        </Container>
-      </div>
-    </Suspense>
-  </Router>
-);
+const Dashboard = props => {
+  useEffect(() => {
+    if (props.user.firstName) {
+      notify(`Hola ${props.user.firstName}!`, true);
+    }
+  }, [props.user]);
+  return (
+    <Router>
+      <Suspense fallback={<Loading />}>
+        <Sidebar
+          {...props}
+          bgColor=""
+          routes={routes}
+          logo={{
+            link: "/",
+            src: require("../assets/img/logo-color.svg"),
+            alt: "logo"
+          }}
+        />
+        <div className="main-content">
+          <NavbarAdmin {...props} brandText="brand" />
+          {routes.map(({ name, path, component, exact, minLevel }) =>
+            minLevel <= props.user.privilege ? (
+              <ProtectedRoute
+                key={name}
+                path={path}
+                component={component}
+                exact={exact}
+                user={props.user}
+                updateUser={props.updateUser}
+                onChangeUpdate={props.onChangeUpdate}
+              />
+            ) : null
+          )}
+          <Container fluid>
+            <FooterAdmin />
+          </Container>
+          <Toast />
+        </div>
+      </Suspense>
+    </Router>
+  );
+};
 
 export default Dashboard;

@@ -31,13 +31,13 @@ passport.use(
       try {
         const user = await User.findOne({ email });
         if (!user)
-          return done(new Error("User not Found"), false, {
-            message: `Email isn't Register`
+          return done(new Error("No se ha encontrado al Usuario"), false, {
+            message: "No se ha encontrado al Usuario"
           });
-        const compare = user.comparePassword(password, user.password);
+        const compare = await user.comparePassword(password, user.password);
         if (!compare)
-          return done(new Error("Email or Password are wrong"), false, {
-            message: "Email or password are wrong"
+          return done(new Error("La Contrasena no es correcta"), false, {
+            message: "La Contrasena no es correcta"
           });
         return done(false, user, { message: "User Logged In" });
       } catch (err) {

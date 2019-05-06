@@ -86,7 +86,6 @@ class App extends React.Component {
     localStorage.setItem(env.USER, JSON.stringify(user));
     const state = { ...this.state, user };
     this.setState(state);
-    this.props.history.push("/app/dashboard");
   };
 
   setError = err => {
@@ -97,12 +96,10 @@ class App extends React.Component {
     try {
       const datos = this.state.registerData;
       const data = await post("register-user", datos, false);
-      if (data && data.success) {
-        return this.setUser(data);
-      }
-      this.setError(new Error("Fallo al Registrarse"));
+      this.setUser(data);
+      return [null, data];
     } catch (err) {
-      this.setError(err);
+      return [err, null];
     }
   };
 
@@ -110,30 +107,30 @@ class App extends React.Component {
     try {
       const datos = this.state.loginData;
       const data = await post("login", datos, false);
-      if (data && data.success) {
-        this.setUser(data);
-      }
-      this.setError(new Error("Fallo al Iniciar Sesion"));
+      this.setUser(data);
+      return [null, data];
     } catch (err) {
-      this.setError(err);
+      return [err, null];
     }
   };
 
   logout = async () => {
     localStorage.removeItem(env.KEY);
+    localStorage.removeItem(env.USER);
     const state = { ...this.state };
     state.user = {};
     this.setState(state);
     this.props.history.push("/");
   };
 
-  updateUser = async (e, user) => {
+  updateUser = async user => {
     try {
-      e.preventDefault();
       const data = await post(`user-update/${this.state.user.id}`, user);
       this.setState({ ...this.state, user: data.user });
+      return [null, data];
     } catch (err) {
       console.log(err);
+      return [err, null];
     }
   };
 

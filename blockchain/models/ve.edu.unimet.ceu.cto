@@ -34,6 +34,7 @@ concept Postulado extends Human {
 }
 
 concept Consejero extends Human {
+  o String school default = "N/A"
   o Boolean substitute
 }
 
@@ -46,7 +47,7 @@ concept Coordinador extends Human {
 concept PostulacionFCE {
   o Postulado president
   o Postulado secretaryGeneral
-  o Postulado interalAffairs
+  o Postulado internalAffairs
   o Postulado generalCoordinator
   o Postulado treasurer
 }
@@ -71,13 +72,14 @@ concept PostulacionCoA {
   o Coordinador[] coordinators
 }
 
-// Coordinacion de Resp. social Universitaria
+// Coordinacion de Resp. Social Universitaria
 concept PostulacionCoRSU {
   o Coordinador[] coordinators
 }
 
 // Centro de Estudiante de Escuela
 concept PostulacionCEE {
+  o String school
   o Postulado president
   o Postulado generalCoordinator
   o Postulado treasurer
@@ -85,17 +87,19 @@ concept PostulacionCEE {
 
 // Consejo de Escuela
 concept PostulacionCE {
+  o String school
   o Consejero[] advisers
 }
 
 // Consejo de Facultad
 concept PostulacionCF {
+  o String faculty
   o Consejero[] advisers
 }
 
 // Consejo Academico
 concept PostulacionCA {
-  o Consejero[] advisers
+  o Consejero advisers
 }
 
 // Postulacion: Es el resumen de la una postulacion para un grupo electoral
@@ -106,7 +110,7 @@ asset Postulacion identified by uuid {
   o PostulacionCoS services
   o PostulacionCoC culture
   o PostulacionCoA academic
-  o PostulacionCoRSU social
+  o PostulacionCoRSU responsibility
   o PostulacionCA academicCouncil
   o PostulacionCE[] schoolsCouncil
   o PostulacionCF[] facultyCouncil
@@ -135,7 +139,7 @@ asset Voto identified by uuid {
   o PostulacionCoS services
   o PostulacionCoC culture
   o PostulacionCoA academic
-  o PostulacionCoRSU social
+  o PostulacionCoRSU responsibility
   o Consejero academicCouncil
   o PostulacionCE schoolsCouncil
   o PostulacionCF facultyCouncil
@@ -176,7 +180,7 @@ transaction buildPostulation {
   o PostulacionCoS services
   o PostulacionCoC culture
   o PostulacionCoA academic
-  o PostulacionCoRSU social
+  o PostulacionCoRSU responsibility
   o PostulacionCA academicCouncil
   o PostulacionCE[] schoolsCouncil
   o PostulacionCF[] facultyCouncil
@@ -214,7 +218,7 @@ transaction vote {
   o PostulacionCoS services
   o PostulacionCoC culture
   o PostulacionCoA academic
-  o PostulacionCoRSU social
+  o PostulacionCoRSU responsibility
   o PostulacionCA academicCouncil
   o PostulacionCE schoolsCouncil
   o PostulacionCF facultyCouncil

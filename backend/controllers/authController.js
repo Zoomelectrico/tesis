@@ -6,31 +6,35 @@ const User = mongoose.model("User");
 const { SECRET_JWT } = process.env;
 
 exports.login = async (req, res, next) => {
-  console.log("login");
-  const user = req.user;
-  await req.login(user);
-  const {
-    privilege,
-    _id,
-    firstName,
-    lastName,
-    dni,
-    carnet,
-    email,
-    code
-  } = user;
-  const token = jwt.sign({ id: user._id }, SECRET_JWT);
-  const _user = {
-    privilege,
-    _id,
-    firstName,
-    lastName,
-    dni,
-    carnet,
-    email,
-    code
-  };
-  return res.json({ user: _user, success: true, token });
+  try {
+    const user = req.user;
+    await req.login(user);
+    const {
+      privilege,
+      _id,
+      firstName,
+      lastName,
+      dni,
+      carnet,
+      email,
+      code
+    } = user;
+    const token = jwt.sign({ id: user._id }, SECRET_JWT);
+    const _user = {
+      privilege,
+      _id,
+      firstName,
+      lastName,
+      dni,
+      carnet,
+      email,
+      code
+    };
+    return res.json({ user: _user, success: true, token });
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, err: new Error(err) });
+  }
 };
 
 exports.logout = (req, res) => {

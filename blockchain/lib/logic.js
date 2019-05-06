@@ -58,7 +58,7 @@ async function buildPostulation(tx) {
       services,
       culture,
       academic,
-      social,
+      responsibility,
       academicCouncil,
       schoolsCouncil,
       facultyCouncil,
@@ -84,7 +84,7 @@ async function buildPostulation(tx) {
     });
 
     // Looping over coordinations to add ref
-    [sports, services, culture, academic, social].forEach(cor => {
+    [sports, services, culture, academic, responsibility].forEach(cor => {
       cor.coordinators.forEach(c => {
         c.electoralGroup = egRef;
       });
@@ -106,7 +106,7 @@ async function buildPostulation(tx) {
     postulation.services = services;
     postulation.culture = culture;
     postulation.academic = academic;
-    postulation.social = social;
+    postulation.responsibility = responsibility;
     postulation.academicCouncil = academicCouncil;
     postulation.schoolsCouncil = schoolsCouncil;
     postulation.facultyCouncil = facultyCouncil;
@@ -237,7 +237,7 @@ async function vote(tx) {
       services,
       culture,
       academic,
-      social,
+      responsibility,
       academicCouncil,
       schoolsCouncil,
       facultyCouncil,
@@ -251,7 +251,7 @@ async function vote(tx) {
     _vote.services = services;
     _vote.culture = culture;
     _vote.academic = academic;
-    _vote.social = social;
+    _vote.responsibility = responsibility;
     _vote.academicCouncil = academicCouncil;
     _vote.schoolsCouncil = schoolsCouncil;
     _vote.facultyCouncil = facultyCouncil;

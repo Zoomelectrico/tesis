@@ -36,4 +36,15 @@ require("./config/passport"); // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api", routes);
+app.use((err, req, res, next) => {
+  if (err) {
+    if (
+      err.message === "La Contrasena no es correcta" ||
+      err.message === "No se ha encontrado al Usuario"
+    ) {
+      res.status(200).json({ success: false, err: new Error(err.message) });
+    }
+  }
+  next();
+});
 module.exports = app;

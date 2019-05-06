@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Spinner, Button } from "reactstrap";
-import { Header } from "../../components";
+import { Header, Toast, notify } from "../../components";
 import {
   Checkout,
   Council,
@@ -49,24 +49,11 @@ class DashPostulate extends React.Component {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await get(`electoral-group/${_id}`);
-        if (data && data.success) {
-          const { electoralGroup } = data;
-          resolve(electoralGroup);
-        } else {
-          reject(new Error(`Can't resolve electoralGroup`));
-        }
+        const { electoralGroup } = data;
+        resolve(electoralGroup);
       } catch (err) {
         reject(new Error(err));
       }
-    });
-  };
-
-  setErrorState = err => {
-    this.setState({
-      ...this.state,
-      err,
-      loading: false,
-      electoralGroup: false
     });
   };
 
@@ -120,7 +107,7 @@ class DashPostulate extends React.Component {
       }
       this.setState(state);
     } catch (err) {
-      this.setErrorState(err);
+      notify("Ha ocurrido un Error al iniciar", false);
     }
   }
 
@@ -159,8 +146,7 @@ class DashPostulate extends React.Component {
       state[name] = base64;
       this.setState(state);
     } else {
-      // FIXME: Handle a non image file
-      console.log("Bad image");
+      notify("No logramos reconocer este archivo", false);
     }
   };
 
@@ -204,7 +190,7 @@ class DashPostulate extends React.Component {
         electoralGroupStatus: true
       });
     } catch (err) {
-      this.setErrorState(err);
+      notify("Un error ha evitado crear el Grupo electoral", false);
       console.log(err);
     }
   };
@@ -221,7 +207,7 @@ class DashPostulate extends React.Component {
       keys.forEach(key => localStorage.removeItem(key));
       this.setState({ ...this.state, checkout: true, postulationData: data });
     } catch (err) {
-      console.log(err);
+      notify("Un Error ha evitado enviar su postulacion", false);
     }
   };
 
@@ -284,6 +270,7 @@ class DashPostulate extends React.Component {
             <Col sm="12">{this.conditionalRender()}</Col>
           </Row>
         </Container>
+        <Toast />
       </>
     );
   }

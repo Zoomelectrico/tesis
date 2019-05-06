@@ -3,10 +3,11 @@
     "composer": "^0.20.8"
   },
   "name": "uvote",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "An electoral Network",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/uvote.bna",
+    "publish": "composer archive create -t dir -n . && composer network install --card PeerAdmin@hlfv1 --archiveFile uvote@0.0.5.bna && composer network start --networkName uvote --networkVersion 0.0.5 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card && composer card import --file networkadmin.card && composer network ping --card admin@tutorial-network",
     "pretest": "npm run lint",
     "lint": "eslint .",
     "test": "nyc mocha -t 0 test/*.js && cucumber-js"

@@ -6,3 +6,4 @@ export { default as Navbar } from "./navbar";
 export { default as NavbarAdmin } from "./navbarAdmin";
 export { default as ProtectedRoute } from "./protectedRoute";
 export { default as Sidebar } from "./sidebar";
+export { Toast, notify } from "./toast";

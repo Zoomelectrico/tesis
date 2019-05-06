@@ -11,11 +11,23 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { Header } from "../../components";
+
+import { Header, Toast, notify } from "../../components";
 import { majors, normalize, post } from "../../utils";
 
 const DashProfile = props => {
   const { updateUser } = props;
+
+  const update = async (e, user) => {
+    e.preventDefault();
+    const [err, data] = await updateUser(user);
+    console.log(data);
+    if (err) {
+      return notify("Ha Ocurrido un Error al Actualizar", false);
+    }
+    return notify("Perfil Actualizado", true);
+  };
+
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -50,6 +62,56 @@ const DashProfile = props => {
     ? (valueProp.value = user.major)
     : (valueProp.defaultValue = "none");
 
+  const fields = [
+    {
+      label: "Nombres",
+      id: "firstName",
+      type: "text",
+      value: "firstName"
+    },
+    {
+      label: "Apellidos",
+      id: "lastName",
+      type: "text",
+      value: "lastName"
+    },
+    {
+      label: "Cedula de Identidad",
+      id: "dni",
+      type: "number",
+      value: "dni"
+    },
+    {
+      label: "Carnet",
+      id: "carnet",
+      type: "number",
+      value: "carnet"
+    },
+    {
+      label: "Correo Electronico",
+      id: "email",
+      type: "email",
+      value: "email"
+    }
+  ];
+
+  const renderFields = fields =>
+    fields.map(({ id, type, value, label }) => (
+      <Col md="6" key={id}>
+        <FormGroup>
+          <Label for={id}>{label}</Label>
+          <Input
+            className="form-control-alternative"
+            type={type}
+            name={id}
+            id={id}
+            value={user[value] || ""}
+            onChange={e => onChange(e.target.name, e.target.value)}
+          />
+        </FormGroup>
+      </Col>
+    ));
+
   return (
     <>
       <Header />
@@ -62,58 +124,7 @@ const DashProfile = props => {
               </CardHeader>
               <CardBody>
                 <Row>
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="firstName">Nombres</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        value={user.firstName || ""}
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="lastName">Apellidos</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        value={user.lastName || ""}
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="dni">Cedula de Identidad</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="number"
-                        name="dni"
-                        id="dni"
-                        value={user.dni || ""}
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="carnet">Carnet</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="number"
-                        name="carnet"
-                        id="carnet"
-                        value={user.carnet || ""}
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                      />
-                    </FormGroup>
-                  </Col>
+                  {renderFields(fields)}
                   <Col md="6">
                     <FormGroup>
                       <Label for="major">Carrera</Label>
@@ -139,19 +150,6 @@ const DashProfile = props => {
                       </Input>
                     </FormGroup>
                   </Col>
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="email">Correo Electronico</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="email"
-                        name="email"
-                        id="email"
-                        value={user.email}
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                      />
-                    </FormGroup>
-                  </Col>
                 </Row>
                 <Row>
                   <Col md="6" />
@@ -159,7 +157,7 @@ const DashProfile = props => {
                     <Button
                       color="success"
                       className="my-auto"
-                      onClick={e => updateUser(e, user)}
+                      onClick={e => update(e, user)}
                     >
                       Actualizar
                     </Button>
@@ -202,6 +200,7 @@ const DashProfile = props => {
           </Col>
         </Row>
       </Container>
+      <Toast />
     </>
   );
 };

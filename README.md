@@ -21,6 +21,7 @@ Esta sección es un fuerte agradecimiento todas aquellas librerías que facilita
 13. [Express](https://expressjs.com/es/)
 14. [Mongooser](https://mongoosejs.com)
 15. [Passport](http://www.passportjs.org/)
+16. [React Toastify](https://fkhadra.github.io/react-toastify/)
 
 #### Comandos
 

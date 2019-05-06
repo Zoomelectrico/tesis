@@ -11,7 +11,7 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { Navbar } from "../components";
+import { Navbar, Toast, notify } from "../components";
 
 // firstName, lastName, dni, carnet, email, password
 
@@ -22,6 +22,17 @@ const Register = props => {
       document.body.classList.remove("bg-default");
     };
   }, []);
+
+  const register = async e => {
+    e.preventDefault();
+    const [err, data] = await props.register();
+    if (err) {
+      notify("Hubo un error con el Registro", false);
+      return;
+    }
+    props.history.push("/app/dashboard");
+  };
+
   return (
     <div className="main-content">
       <Navbar {...props} />
@@ -117,7 +128,7 @@ const Register = props => {
                       <Button
                         color="success"
                         className="my-auto"
-                        onClick={props.register}
+                        onClick={register}
                       >
                         Registrarse
                       </Button>
@@ -129,6 +140,7 @@ const Register = props => {
           </Row>
         </Container>
       </div>
+      <Toast />
     </div>
   );
 };

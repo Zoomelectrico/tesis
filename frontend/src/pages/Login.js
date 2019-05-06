@@ -11,7 +11,7 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { Navbar } from "../components";
+import { Navbar, notify, Toast } from "../components";
 
 const Login = props => {
   useEffect(() => {
@@ -20,6 +20,18 @@ const Login = props => {
       document.body.classList.remove("bg-default");
     };
   }, []);
+
+  const login = async e => {
+    e.preventDefault();
+    const [err, data] = await props.login();
+    if (err) {
+      console.log(err);
+      notify("Hubo un Error en el Inicio de Sesion", false);
+      return;
+    }
+    props.history.push("/app/dashboard");
+  };
+
   return (
     <div className="main-content">
       <Navbar {...props} />
@@ -63,7 +75,7 @@ const Login = props => {
                       <Button
                         color="success"
                         className="my-auto"
-                        onClick={props.login}
+                        onClick={login}
                       >
                         Iniciar Sesion
                       </Button>
@@ -75,6 +87,7 @@ const Login = props => {
           </Row>
         </Container>
       </div>
+      <Toast />
     </div>
   );
 };
