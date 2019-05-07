@@ -16,7 +16,8 @@ import { Header, Toast, notify } from "../../components";
 import { majors, normalize, post } from "../../utils";
 
 const DashProfile = props => {
-  const { updateUser } = props;
+  const { updateUser, location } = props;
+  const query = new URLSearchParams(location.search);
 
   const update = async (e, user) => {
     e.preventDefault();
@@ -25,10 +26,14 @@ const DashProfile = props => {
     if (err) {
       return notify("Ha Ocurrido un Error al Actualizar", false);
     }
+    if (query.get("url") && query.get("reason")) {
+      props.history.push(query.get("url"));
+    }
     return notify("Perfil Actualizado", true);
   };
 
   const [user, setUser] = useState({
+    _id: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -39,6 +44,15 @@ const DashProfile = props => {
 
   useEffect(() => {
     const { user: _user } = props;
+    if (query.get("url") && query.get("reason")) {
+      notify(
+        query
+          .get("reason")
+          .toString()
+          .replace(/[-]/g, " "),
+        false
+      );
+    }
     setUser({ ..._user });
   }, [props.user]);
 
@@ -49,11 +63,11 @@ const DashProfile = props => {
   const demand = async (e, type) => {
     try {
       e.preventDefault();
-      const _demand = { type, user: user.id, representative: user.id };
+      const _demand = { type, user: user._id, representative: user._id };
       const data = await post("/demand-create", _demand);
-      console.log(data);
+      notify("Su solicitud ha sido enviada", true);
     } catch (err) {
-      console.log(err);
+      notify("Su solicitud no se ha podido enviar", false);
     }
   };
 
@@ -183,19 +197,36 @@ const DashProfile = props => {
                   </Card>
                 </Col>
               ) : null}
-              <Col sm="12" className="mb-3">
-                <Card className="bg-gradient-success py-5 px-3 border-0">
-                  <Row className="justify-content-center">
-                    <Button
-                      color="neutral"
-                      className="my-auto"
-                      onClick={e => e.preventDefault() /* Open Modal */}
-                    >
-                      Realizar Queja Formal
-                    </Button>
-                  </Row>
-                </Card>
-              </Col>
+              {user.privilege >= 3 ? (
+                <Col sm="12" className="mb-3">
+                  <Card className="bg-gradient-warning py-5 px-3 border-0">
+                    <Row className="justify-content-center">
+                      <Button
+                        color="neutral"
+                        className="my-auto"
+                        onClick={e => e.preventDefault()}
+                      >
+                        Resultados Preliminares
+                      </Button>
+                    </Row>
+                  </Card>
+                </Col>
+              ) : null}
+              {user.privilege <= 2 ? (
+                <Col sm="12" className="mb-3">
+                  <Card className="bg-gradient-success py-5 px-3 border-0">
+                    <Row className="justify-content-center">
+                      <Button
+                        color="neutral"
+                        className="my-auto"
+                        onClick={e => e.preventDefault() /* Open Modal */}
+                      >
+                        Realizar Queja Formal
+                      </Button>
+                    </Row>
+                  </Card>
+                </Col>
+              ) : null}
             </Row>
           </Col>
         </Row>

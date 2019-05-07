@@ -9,7 +9,7 @@ import {
   Table,
   Button
 } from "reactstrap";
-import { Header } from "../../components";
+import { Header, Toast, notify } from "../../components";
 import { get, post } from "../../utils";
 
 const table = (title, data) => {
@@ -49,15 +49,26 @@ const table = (title, data) => {
   return nothingCard(title);
 };
 
-const electoralR = async (e, representative) => {
+const electoralR = async (e, state, setState) => {
   try {
     e.preventDefault();
     const { id, user: userId, idx } = e.target.dataset;
     const data = await post("demand-accept-rep/", { id, userId });
     if (data.success) {
-      representative.splice(idx, 1);
+      notify("El representante Electoral ha sido creado exitosament", true);
+      setState({
+        ...state,
+        representative: [
+          ...state.demands.representative.slice(0, idx),
+          ...state.demands.representative.slice(idx + 1)
+        ]
+      });
     }
   } catch (err) {
+    notify(
+      "Ha ocurrido un error, refresque el navegador y vuelva a intentar",
+      false
+    );
     console.log(err);
   }
 };
@@ -82,8 +93,10 @@ const nothingCard = title => (
   </Card>
 );
 
-const generateTable = state => {
-  const { representative, group, postulation, complain } = state;
+const generateTable = (state, setState) => {
+  const {
+    demands: { representative, group, postulation, complain }
+  } = state;
   return (
     <>
       {representative.length > 0
@@ -97,7 +110,7 @@ const generateTable = state => {
                   color="info"
                   size="sm"
                   outline
-                  onClick={e => electoralR(e, representative)}
+                  onClick={e => electoralR(e, state, setState)}
                   data-user={_id}
                   data-id={id}
                   data-idx={idx}
@@ -138,7 +151,7 @@ const generateTable = state => {
               ]
             )
           })
-        : nothingCard("Solicitud - Representante Electoral")}
+        : nothingCard("Solicitud - Grupo Electoral")}
       {postulation.length > 0
         ? table("Solicitud - Postulacion", {
             header: [
@@ -200,8 +213,9 @@ const Demands = props => {
     <>
       <Header />
       <Container className="mt--7" fluid>
-        {state.loading ? <h2>Loading...</h2> : generateTable(state.demands)}
+        {state.loading ? <h2>Loading...</h2> : generateTable(state, setState)}
       </Container>
+      <Toast />
     </>
   );
 };

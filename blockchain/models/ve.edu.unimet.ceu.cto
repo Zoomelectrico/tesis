@@ -105,6 +105,7 @@ concept PostulacionCA {
 // Postulacion: Es el resumen de la una postulacion para un grupo electoral
 asset Postulacion identified by uuid {
   o String uuid
+  o Integer year
   o PostulacionFCE fce
   o PostulacionCoD sports
   o PostulacionCoS services
@@ -140,7 +141,7 @@ asset Voto identified by uuid {
   o PostulacionCoC culture
   o PostulacionCoA academic
   o PostulacionCoRSU responsibility
-  o Consejero academicCouncil
+  o PostulacionCA academicCouncil
   o PostulacionCE schoolsCouncil
   o PostulacionCF facultyCouncil
   o PostulacionCEE studentsCenters
@@ -175,6 +176,7 @@ transaction buildElectoralGroup {
 
 transaction buildPostulation {
   o String uuid
+  o Integer year
   o PostulacionFCE fce
   o PostulacionCoD sports
   o PostulacionCoS services

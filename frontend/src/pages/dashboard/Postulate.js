@@ -22,15 +22,16 @@ const keys = [
 
 class DashPostulate extends React.Component {
   state = {
-    electoralGroupStatus: false,
-    loading: true,
-    err: false,
-    electoralGroup: {},
-    postulation: {},
-    _id: "",
-    token: "",
-    checkout: false,
-    postulationData: {}
+    loading: true, // Esta Cargando
+    electoralGroupStatus: false, // Tiene Grupo Electoral
+    electoralGroupAccepted: false, // La solicitud fue aprobada
+    electoralGroup: {}, // Datos del Grupo Electoral
+    postulationAccepted: false, // La postulacion fue aceptada
+    postulation: {}, // Previa de la Postulacion
+    postulationData: {}, // Postulacion de la db
+    checkout: false, // Flag para mostrar la postulacion
+    _id: "", // id del user
+    token: "" // token del user
   };
 
   getUserData = () =>
@@ -80,31 +81,40 @@ class DashPostulate extends React.Component {
       };
       const { _id, token } = await this.getUserData();
       const electoralGroup = await this.getElectoralGroup(_id, token);
-      state = {
-        ...state,
-        loading: false,
-        electoralGroupStatus: true,
-        electoralGroup,
-        _id,
-        token
-      };
-      if (electoralGroup.postulation) {
+      if (electoralGroup) {
         state = {
           ...state,
-          postulationData: electoralGroup.postulation,
-          checkout: true
+          loading: false,
+          electoralGroupStatus: true,
+          electoralGroup,
+          _id,
+          token
         };
-      } else {
-        const data = await this.getCopyOfPostulation();
-        if (data.length > 0) {
-          data.forEach(({ key, data }) => {
-            state.postulation[key] = {
-              ...state.postulation[key],
-              ...data
+        if (electoralGroup.accepted === 1) {
+          state = { ...state, electoralGroupAccepted: true };
+          if (electoralGroup.postulation) {
+            state = {
+              ...state,
+              postulationData: electoralGroup.postulation,
+              checkout: true
             };
-          });
+          } else {
+            // FIXME: Reconsiderar como usar esto
+            const data = await this.getCopyOfPostulation();
+            if (data.length > 0) {
+              data.forEach(({ key, data }) => {
+                state.postulation[key] = {
+                  ...state.postulation[key],
+                  ...data
+                };
+              });
+            }
+          }
+        } else {
+          state = { ...state, electoralGroupAccepted: false };
         }
       }
+
       this.setState(state);
     } catch (err) {
       notify("Ha ocurrido un Error al iniciar", false);
@@ -224,29 +234,44 @@ class DashPostulate extends React.Component {
       );
     } else {
       if (this.state.electoralGroupStatus) {
-        if (this.state.checkout) {
-          return <Checkout postulation={this.state.postulationData} />;
+        if (this.state.electoralGroupAccepted) {
+          if (this.state.checkout) {
+            return <Checkout postulation={this.state.postulationData} />;
+          } else {
+            return (
+              <>
+                <School save={this.save} />
+                <SchoolCouncil save={this.save} />
+                <FacultyCouncil save={this.save} />
+                <Council save={this.save} />
+                <StudentFederationCenter save={this.save} />
+                <Container>
+                  <Row className="justify-content-end">
+                    <Button
+                      className="my-auto"
+                      color="info"
+                      outline
+                      onClick={this.checkout}
+                    >
+                      Salvar Postulacion
+                    </Button>
+                  </Row>
+                </Container>
+              </>
+            );
+          }
         } else {
           return (
-            <>
-              <School save={this.save} />
-              <SchoolCouncil save={this.save} />
-              <FacultyCouncil save={this.save} />
-              <Council save={this.save} />
-              <StudentFederationCenter save={this.save} />
-              <Container>
-                <Row className="justify-content-end">
-                  <Button
-                    className="my-auto"
-                    color="info"
-                    outline
-                    onClick={this.checkout}
-                  >
-                    Salvar Postulacion
-                  </Button>
-                </Row>
-              </Container>
-            </>
+            <div className="d-flex justify-content-center p-5 card">
+              <p className="text-center">
+                Su solicitud para crear el Grupo Electoral{" "}
+                <strong>{`${this.state.electoralGroup.denomination}`}</strong>{" "}
+                esta siendo procesada.
+                <br />
+                Para cualquier duda comuniquese con la{" "}
+                <a href="mailto:ceu@unimet.edu.ve">Comision Electoral</a>
+              </p>
+            </div>
           );
         }
       } else {

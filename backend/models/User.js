@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 const autoIncrement = require("mongoose-auto-increment");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 const connection = mongoose.createConnection(process.env.DATABASE);
 autoIncrement.initialize(connection);
 
@@ -47,6 +48,11 @@ const userSchema = new mongoose.Schema({
     default: 1
   },
   major: String,
+  faculty: String,
+  secret: {
+    type: String,
+    default: crypto.randomBytes(32).toString("hex")
+  },
   electoralGroups: [
     { type: mongoose.Schema.Types.ObjectId, ref: "ElectoralGroup" }
   ],

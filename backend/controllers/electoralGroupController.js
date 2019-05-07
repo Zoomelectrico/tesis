@@ -37,7 +37,7 @@ exports.createElectoralGroup = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
@@ -45,7 +45,8 @@ exports.getElectoralGroupByCreatorId = async (req, res) => {
   try {
     const { id } = req.params;
     const electoralGroup = await ElectoralGroup.findOne({
-      representative: id
+      representative: id,
+      electionYear: new Date().getFullYear()
     }).populate("postulation");
     if (electoralGroup) {
       res.json({ success: true, electoralGroup });
@@ -54,6 +55,6 @@ exports.getElectoralGroupByCreatorId = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };

@@ -23,7 +23,7 @@ const closeCollapse = setCollapseOpen => setCollapseOpen(false);
 
 const createLinks = (routes, setCollapseOpen, user) =>
   routes.map(link =>
-    link.minLevel <= user.privilege ? (
+    link.minLevel.includes(user.privilege) ? (
       <NavItem key={link.name}>
         <NavLink
           to={link.path}

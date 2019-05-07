@@ -125,7 +125,7 @@ class App extends React.Component {
 
   updateUser = async user => {
     try {
-      const data = await post(`user-update/${this.state.user.id}`, user);
+      const data = await post(`user-update/${this.state.user._id}`, user);
       this.setState({ ...this.state, user: data.user });
       return [null, data];
     } catch (err) {

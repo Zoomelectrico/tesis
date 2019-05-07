@@ -5,6 +5,7 @@ const userController = require("../controllers/userController");
 const electoralGroupController = require("../controllers/electoralGroupController");
 const demandController = require("../controllers/demandController");
 const postulationController = require("../controllers/postulationController");
+const voteController = require("../controllers/voteController");
 
 router.post("/login", passport.authenticate("signin"), authController.login);
 
@@ -98,6 +99,26 @@ router.get(
   "/postulations",
   passport.authenticate("jwt", { session: false }),
   postulationController.getPostulations
+);
+
+router.get(
+  "/voter-can-vote/:id",
+  passport.authenticate("jwt", { session: false }),
+  voteController.canVote
+);
+
+router.get(
+  "/vote-postulation/:id/:major/:faculty",
+  passport.authenticate("jwt", { session: false }),
+  voteController.canVoteMw,
+  voteController.getPostulation
+);
+
+router.post(
+  "/vote",
+  passport.authenticate("jwt", { session: false }),
+  voteController.canVoteMw,
+  voteController.vote
 );
 
 module.exports = router;

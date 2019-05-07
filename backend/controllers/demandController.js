@@ -12,7 +12,7 @@ exports.creteDemand = async (req, res) => {
     const demand = await Demand.create({ text, type, user });
     res.json({ success: true, demand });
   } catch (err) {
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
     console.log(err);
   }
 };
@@ -46,7 +46,7 @@ exports.getAll = async (req, res) => {
     res.json({ success: true, demands });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
@@ -125,7 +125,7 @@ exports.makeRepresentative = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
@@ -170,7 +170,7 @@ exports.includeElectoralGroup = async (req, res) => {
             electoralPresident: presidents[presidents.length - 1].uuid
           })
         }
-      );
+      ).then(_res => _res.json());
 
       return res.json({ success: true, demand });
     }
@@ -179,7 +179,7 @@ exports.includeElectoralGroup = async (req, res) => {
       err: new Error("No se ha encontrado la Solicitud o el Grupo Electoral")
     });
   } catch (err) {
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
@@ -214,13 +214,14 @@ exports.includePostulation = async (req, res) => {
       err: new Error("No se ha encontrado la Solicitud o la Postulacion")
     });
   } catch (err) {
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
 const buildPostulation = postulation => {
   const obj = {
     $class: "ve.edu.unimet.ceu.buildPostulation",
+    year: new Date().getFullYear(),
     uuid: postulation._id,
     fce: {
       $class: "ve.edu.unimet.ceu.PostulacionFCE",

@@ -3,14 +3,22 @@
     "composer": "^0.20.8"
   },
   "name": "uvote",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "An electoral Network",
   "scripts": {
-    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/uvote.bna",
-    "publish": "composer archive create -t dir -n . && composer network install --card PeerAdmin@hlfv1 --archiveFile uvote@0.0.5.bna && composer network start --networkName uvote --networkVersion 0.0.5 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card && composer card import --file networkadmin.card && composer network ping --card admin@tutorial-network",
+    "createNet": "npm run create && npm run installNet && npm run startNetComposer && npm run importCard && npm run ping",
+    "create": "composer archive create -t dir -n .",
+    "installNet": "composer network install --card PeerAdmin@hlfv1 --archiveFile uvote@0.0.7.bna",
+    "startNetComposer": "composer network start --networkName uvote --networkVersion 0.0.7 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
+    "ping": "composer network ping --card admin@uvote",
+    "importCard": "composer card import --file networkadmin.card",
     "pretest": "npm run lint",
+    "startComposer": "composer-rest-server -c admin@uvote -n always -w true",
+    "teardown": "cd ~/fabric-dev-servers && ./stopFabric.sh && ./teardownFabric.sh && rm -r ~/.composer && ./startFabric.sh && ./createPeerAdminCard.sh",
+    "remove": "rm uvote@0.0.6.bna && rm networkadmin.card",
     "lint": "eslint .",
-    "test": "nyc mocha -t 0 test/*.js && cucumber-js"
+    "test": "nyc mocha -t 0 test/*.js && cucumber-js",
+    "startNet": "cd ~/fabric-dev-servers && ./startFabric.sh && cd ~/tesis/blockchain && npm run startComposer"
   },
   "keywords": [
     "composer",

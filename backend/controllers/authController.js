@@ -17,7 +17,8 @@ exports.login = async (req, res, next) => {
       dni,
       carnet,
       email,
-      code
+      code,
+      major
     } = user;
     const token = jwt.sign({ id: user._id }, SECRET_JWT);
     const _user = {
@@ -28,7 +29,8 @@ exports.login = async (req, res, next) => {
       dni,
       carnet,
       email,
-      code
+      code,
+      major
     };
     return res.json({ user: _user, success: true, token });
   } catch (err) {

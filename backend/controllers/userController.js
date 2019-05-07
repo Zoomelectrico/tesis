@@ -10,7 +10,7 @@ exports.getUserByEmail = async (req, res) => {
     const user = await User.findOne({ email });
     res.json({ user, success: true });
   } catch (err) {
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
@@ -40,87 +40,107 @@ exports.createUser = async (req, res, next) => {
       email,
       password
     });
-    await fetch(`${process.env.BLOCKCHAIN_API_URL}/buildVoter`, {
-      method: "post",
-      body: JSON.stringify({
-        $class: "ve.edu.unimet.ceu.buildVoter",
-        uuid: user._id,
-        name: `${user.firstName} ${user.lastName}`,
-        email: user.email
-      }),
-      headers: { "Content-Type": "application/json" }
-    }).then(res2 => res2.json());
+    await fetch(
+      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.buildVoter`,
+      {
+        method: "post",
+        body: JSON.stringify({
+          $class: "ve.edu.unimet.ceu.buildVoter",
+          uuid: user._id,
+          name: `${user.firstName} ${user.lastName}`,
+          email: user.email
+        }),
+        headers: { "Content-Type": "application/json" }
+      }
+    ).then(res2 => res2.json());
     next();
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    const {
-      firstName,
-      lastName,
-      email,
-      privilege,
-      _id,
-      dni,
-      carnet,
-      major
-    } = user;
     res.json({
       success: true,
       user: {
-        firstName,
-        lastName,
-        email,
-        privilege,
-        id: _id,
-        dni,
-        carnet,
-        major
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        privilege: user.privilege,
+        _id: user._id,
+        dni: user.dni,
+        carnet: user.carnet,
+        major: user.major,
+        faculty: user.faculty
       }
     });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
   }
 };
 
 exports.updateUser = async (req, res) => {
   try {
+    const faculty = facultyHelper(req.body.major);
     const user = await User.findOneAndUpdate(
       { _id: req.params.id },
-      { ...req.body },
+      { ...req.body, faculty },
       { new: true }
     ).exec();
-    const {
-      firstName,
-      lastName,
-      email,
-      privilege,
-      _id,
-      dni,
-      carnet,
-      major
-    } = user;
     res.json({
       success: true,
       user: {
-        firstName,
-        lastName,
-        email,
-        privilege,
-        id: _id,
-        dni,
-        carnet,
-        major
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        privilege: user.privilege,
+        _id: user._id,
+        dni: user.dni,
+        carnet: user.carnet,
+        major: user.major,
+        faculty: user.faculty
       }
     });
   } catch (err) {
-    res.json({ success: false, err });
+    res.json({ success: false, err: new Error(err.message) });
     console.log(err);
+  }
+};
+
+const facultyHelper = major => {
+  const faces = [
+    "ciencias-administrativas",
+    "economia-empresarial",
+    "contaduria-publica"
+  ];
+  const ing = [
+    "ingenieria-civil",
+    "ingenieria-mecanica",
+    "ingenieria-de-produccion",
+    "ingenieria-quimica",
+    "ingenieria-de-sistemas",
+    "ingenieria-electrica"
+  ];
+  const ciencias = [
+    "educacion",
+    "idiomas-modernos",
+    "matematicas-industriales",
+    "psicologia"
+  ];
+  const juridica = ["estudios-liberales", "derecho"];
+  if (faces.includes(major)) {
+    return "facultad-de-ciencias-economicas-y-sociales";
+  } else if (ing.includes(major)) {
+    return "facultad-de-ingenieria";
+  } else if (ciencias.includes(major)) {
+    return "facultad-de-ciencias-y-artes";
+  } else if (juridica.includes(major)) {
+    return "facultad-de-estudios-juridicos-y-politicos";
+  } else {
+    return "error";
   }
 };

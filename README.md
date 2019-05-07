@@ -1,6 +1,40 @@
 # UVOTE
 
-Es una aplicación que utiliza [React](https://reactjs.org) [Express](https://expressjs.org) y [Composer](https://hyperledger.github.io/composer/latest/) para realizar una plataforma electoral.
+Es una plataforma electoral realizada como trabajo especial de grado por [Jose Roberto Quevedo Gabizon](https://twitter.com/quevedodev) y tutoriado por el Ing. [Nicolas Araque](https://medium.com/@nicolas_araque) para obtar al titulo de Ingeniero de Sistemas en al [Universidad Metropolitana](http://unimet.edu.ve). Esta plataforma se basa en la utilizacion del Blockchain como mecanisco generador de confianza.
+Para desarollar esta aplicacion, se utilizo Hyperledger [Composer](https://hyperledger.github.io/composer/latest/) y [Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) como herramientas de Blockchain, adicionalmente se realizar un API REST con [Express](https://expressjs.org) y [Mongo DB](https://mongodb.com) como herramienta de autenticacion, y validacion de datos, con la itencion de que el blockchain se mantuviera con la menor cantidad de alteraciones. Por ultimo, se realizado un aplicacion web utilizando [React](https://reactjs.org) para que funcionara como cliente grafico a esta plataforma.
+
+A continuacion, encontraran las instrucciones de instalacion (para Ubuntu 16.04) y un reconocimiento a algunas librerias que hicieron mi trabajo mas facil, un gran abrazo para sus creadores.
+
+## Instrucciones de Instalacion
+
+En primer lugar deberan descargar las herramientas de composer para una guia revisen los siguientes links [Prerequisitos](https://hyperledger.github.io/composer/latest/installing/installing-prereqs.html#ubuntu) [Developer tools](https://hyperledger.github.io/composer/latest/installing/development-tools.html). Una vez, instalado deberan clonar este repositorio e instalar sus dependencias
+
+```console
+$ cd ~
+$ git clone https://github.com/Zoomelectrico/tesis.git
+$ cd ~/tesis/frontend && npm install && cd ~/tesis/backend && npm install && cd ~/
+```
+
+Despues deberan abrir 3 ventanas de terminal en la primera venta se ejecutara la red blockchain
+
+```console
+$ cd ~/tesis/blockchain
+$ cd ~/fabric-dev-servers && ./startFabric.sh && cd ~/tesis/blockchain && npm run createNet
+```
+
+En la segunda ventada de la terminarl ejecutarmos este comando para Iniciar el Frontend
+
+```console
+$ cd ~/tesis/frontend && npm start
+```
+
+En la tercera ventada de la terminarl ejecutarmos este comando para Iniciar el Frontend
+
+```console
+$ cd ~/tesis/frontend && mv variables.env.example variablee.nv && npm start
+```
+
+_IMPORTANTE_: Cambiar en el archivo variables.env el string de coneccion a la DB.
 
 ## Librerías Utilizadas
 
@@ -22,12 +56,7 @@ Esta sección es un fuerte agradecimiento todas aquellas librerías que facilita
 14. [Mongooser](https://mongoosejs.com)
 15. [Passport](http://www.passportjs.org/)
 16. [React Toastify](https://fkhadra.github.io/react-toastify/)
-
-#### Comandos
-
-```bash
-composer-rest-server -c admin@uvote -n always -w true
-```
+17. [Crypto-js](https://www.npmjs.com/package/crypto-js)
 
 #### Alguna Duda?
 
