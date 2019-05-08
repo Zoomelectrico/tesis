@@ -64,7 +64,7 @@ const DashProfile = props => {
     try {
       e.preventDefault();
       const _demand = { type, user: user._id, representative: user._id };
-      const data = await post("/demand-create", _demand);
+      await post("/demand-create", _demand);
       notify("Su solicitud ha sido enviada", true);
     } catch (err) {
       notify("Su solicitud no se ha podido enviar", false);
@@ -139,31 +139,35 @@ const DashProfile = props => {
               <CardBody>
                 <Row>
                   {renderFields(fields)}
-                  <Col md="6">
-                    <FormGroup>
-                      <Label for="major">Carrera</Label>
-                      <Input
-                        className="form-control-alternative"
-                        type="select"
-                        name="major"
-                        id="major"
-                        onChange={e => onChange(e.target.name, e.target.value)}
-                        {...valueProp}
-                      >
-                        <option value="none" disabled>
-                          Selecciona Una Carrera
-                        </option>
-                        {majors.map(major => (
-                          <option
-                            key={normalize(major)}
-                            value={normalize(major)}
-                          >
-                            {major}
+                  {props.user.privilge <= 2 ? (
+                    <Col md="6">
+                      <FormGroup>
+                        <Label for="major">Carrera</Label>
+                        <Input
+                          className="form-control-alternative"
+                          type="select"
+                          name="major"
+                          id="major"
+                          onChange={e =>
+                            onChange(e.target.name, e.target.value)
+                          }
+                          {...valueProp}
+                        >
+                          <option value="none" disabled>
+                            Selecciona Una Carrera
                           </option>
-                        ))}
-                      </Input>
-                    </FormGroup>
-                  </Col>
+                          {majors.map(major => (
+                            <option
+                              key={normalize(major)}
+                              value={normalize(major)}
+                            >
+                              {major}
+                            </option>
+                          ))}
+                        </Input>
+                      </FormGroup>
+                    </Col>
+                  ) : null}
                 </Row>
                 <Row>
                   <Col md="6" />

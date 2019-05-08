@@ -17,6 +17,12 @@ const DashProfile = lazy(() => import("./dashboard/Profile"));
 const DashVote = lazy(() => import("./dashboard/Vote"));
 const DashResults = lazy(() => import("./dashboard/Results"));
 const DashDemands = lazy(() => import("./dashboard/Demands"));
+const DashElectoralGroups = lazy(() =>
+  import("./dashboard/admin/ElectoralGroups")
+);
+const DashPostulations = lazy(() => import("./dashboard/admin/Postulations"));
+const ElectoralGroup = lazy(() => import("./dashboard/admin/ElectoralGroup"));
+const Postulation = lazy(() => import("./dashboard/admin/Postulation"));
 
 const routes = [
   {
@@ -66,6 +72,38 @@ const routes = [
     exact: true,
     minLevel: [1, 2, 3, 4],
     component: props => <DashResults {...props} />
+  },
+  {
+    name: "Grupos Electorales",
+    path: "/app/dashboard/electoral-groups",
+    icon: "fas fa-users",
+    exact: true,
+    minLevel: [1, 2, 3, 4],
+    component: props => <DashElectoralGroups {...props} />
+  },
+  {
+    name: "Postulaciones",
+    path: "/app/dashboard/postulations",
+    icon: "fas fa-clipboard-list",
+    exact: true,
+    minLevel: [1, 2, 3, 4],
+    component: props => <DashPostulations {...props} />
+  },
+  {
+    name: "__none__",
+    path: "/app/dashboard/electoral-group",
+    icon: "fas fa-users",
+    exact: true,
+    minLevel: [3, 4],
+    component: props => <ElectoralGroup {...props} />
+  },
+  {
+    name: "__none__2",
+    path: "/app/dashboard/postulation",
+    icon: "fas fa-clipboard-list",
+    exact: true,
+    minLevel: [3, 4],
+    component: props => <Postulation {...props} />
   }
 ];
 

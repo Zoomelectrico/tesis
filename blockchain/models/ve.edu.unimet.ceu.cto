@@ -45,6 +45,7 @@ concept Coordinador extends Human {
 
 // Junta Directiva Centro de Estudiantes
 concept PostulacionFCE {
+  o String uuid
   o Postulado president
   o Postulado secretaryGeneral
   o Postulado internalAffairs
@@ -54,32 +55,38 @@ concept PostulacionFCE {
 
 // Coordinacion de Deportes
 concept PostulacionCoD {
+  o String uuid
   o Coordinador[] coordinators
 }
 
 // Coordinacion de Cultura
 concept PostulacionCoC {
+  o String uuid
   o Coordinador[] coordinators
 }
 
 // Coordinacion de Servicios
 concept PostulacionCoS {
+  o String uuid
   o Coordinador[] coordinators
 }
 
 // Coordinacion de Academica
 concept PostulacionCoA {
+  o String uuid
   o Coordinador[] coordinators
 }
 
 // Coordinacion de Resp. Social Universitaria
 concept PostulacionCoRSU {
+  o String uuid
   o Coordinador[] coordinators
 }
 
 // Centro de Estudiante de Escuela
 concept PostulacionCEE {
   o String school
+  o String uuid
   o Postulado president
   o Postulado generalCoordinator
   o Postulado treasurer
@@ -88,17 +95,20 @@ concept PostulacionCEE {
 // Consejo de Escuela
 concept PostulacionCE {
   o String school
+  o String uuid
   o Consejero[] advisers
 }
 
 // Consejo de Facultad
 concept PostulacionCF {
   o String faculty
+  o String uuid
   o Consejero[] advisers
 }
 
 // Consejo Academico
 concept PostulacionCA {
+  o String uuid
   o Consejero advisers
 }
 
@@ -135,16 +145,36 @@ asset GrupoElectoral identified by uuid {
 // Voto: Representacion del voto
 asset Voto identified by uuid {
   o String uuid
-  o PostulacionFCE fce
-  o PostulacionCoD sports
-  o PostulacionCoS services
-  o PostulacionCoC culture
-  o PostulacionCoA academic
-  o PostulacionCoRSU responsibility
-  o PostulacionCA academicCouncil
-  o PostulacionCE schoolsCouncil
-  o PostulacionCF facultyCouncil
-  o PostulacionCEE studentsCenters
+  o String fce
+  o String sports
+  o String services
+  o String culture
+  o String academic
+  o String responsibility
+  o String academicCouncil
+  o String schoolsCouncil
+  o String facultyCouncil
+  o String studentsCenters
+}
+
+asset Resultado identified by uuid {
+  o String uuid
+  o Integer year
+  o DateTime saveAt
+  o Human president
+  o Human secretaryGeneral
+  o Human internalAffairs
+  o Human generalCoordinator
+  o Human treasurer
+  o Human[] sports
+  o Human[] services
+  o Human[] culture
+  o Human[] academic
+  o Human[] responsibility
+  o PostulacionCE[] schoolsCouncil
+  o PostulacionCF[] facultyCouncil
+  o PostulacionCEE[] studentsCenters
+  --> PresidenteElectoral electoralPresident
 }
 
 // Constructor Transations
@@ -211,19 +241,4 @@ transaction updateVoter {
   o Boolean canVote
 }
 
-// Specific App Transations
-
-transaction vote {
-  o String uuid
-  o PostulacionFCE fce
-  o PostulacionCoD sports
-  o PostulacionCoS services
-  o PostulacionCoC culture
-  o PostulacionCoA academic
-  o PostulacionCoRSU responsibility
-  o PostulacionCA academicCouncil
-  o PostulacionCE schoolsCouncil
-  o PostulacionCF facultyCouncil
-  o PostulacionCEE studentsCenters
-}
 

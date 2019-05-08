@@ -113,8 +113,15 @@ class DashPostulate extends React.Component {
         } else {
           state = { ...state, electoralGroupAccepted: false };
         }
+      } else {
+        state = {
+          ...state,
+          loading: false,
+          electoralGroupStatus: false,
+          _id,
+          token
+        };
       }
-
       this.setState(state);
     } catch (err) {
       notify("Ha ocurrido un Error al iniciar", false);
@@ -197,7 +204,8 @@ class DashPostulate extends React.Component {
       this.setState({
         ...this.state,
         electoralGroup,
-        electoralGroupStatus: true
+        electoralGroupStatus: true,
+        electoralGroupAccepted: true
       });
     } catch (err) {
       notify("Un error ha evitado crear el Grupo electoral", false);

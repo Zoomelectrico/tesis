@@ -24,17 +24,19 @@ const closeCollapse = setCollapseOpen => setCollapseOpen(false);
 const createLinks = (routes, setCollapseOpen, user) =>
   routes.map(link =>
     link.minLevel.includes(user.privilege) ? (
-      <NavItem key={link.name}>
-        <NavLink
-          to={link.path}
-          tag={NavLinkRRD}
-          onClick={() => closeCollapse(setCollapseOpen)}
-          activeClassName="active"
-        >
-          <i className={link.icon} />
-          {link.name}
-        </NavLink>
-      </NavItem>
+      link.name.includes("__none__") ? null : (
+        <NavItem key={link.name}>
+          <NavLink
+            to={link.path}
+            tag={NavLinkRRD}
+            onClick={() => closeCollapse(setCollapseOpen)}
+            activeClassName="active"
+          >
+            <i className={link.icon} />
+            {link.name}
+          </NavLink>
+        </NavItem>
+      )
     ) : null
   );
 

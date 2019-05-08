@@ -9,7 +9,7 @@ import {
   Table,
   Button
 } from "reactstrap";
-import { Header, Toast, notify } from "../../components";
+import { Header, Toast, notify, Loading } from "../../components";
 import { get, post } from "../../utils";
 
 const table = (title, data) => {
@@ -73,14 +73,7 @@ const electoralR = async (e, state, setState) => {
   }
 };
 
-const fetch = async (demands, setDemands) => {
-  try {
-    const data = await get("demands");
-    setDemands({ ...demands, demands: data.demands, loading: false });
-  } catch (err) {
-    console.log(err);
-  }
-};
+const electoralGroup = e => {};
 
 const nothingCard = title => (
   <Card className="mb-3">
@@ -132,8 +125,9 @@ const generateTable = (state, setState) => {
             body: group.map(
               ({
                 code,
-                user: { firstName, lastName, _id: u_id },
-                electoralGroup: { denomination, _id }
+                _id,
+                user: { firstName, lastName },
+                electoralGroup: { denomination }
               }) => [
                 code,
                 `${firstName} ${lastName}`,
@@ -142,9 +136,8 @@ const generateTable = (state, setState) => {
                   color="info"
                   size="sm"
                   outline
-                  onClick={electoralR}
+                  onClick={e => electoralGroup(e)}
                   data-id={_id}
-                  data-uid={u_id}
                 >
                   Atender
                 </Button>
@@ -207,13 +200,30 @@ const generateTable = (state, setState) => {
 const Demands = props => {
   const [state, setState] = useState({ loading: true, demands: {} });
   useEffect(() => {
-    fetch(state, setState);
+    const fetch = async () => {
+      try {
+        const data = await get("demands");
+        setState({ ...state, demands: data.demands, loading: false });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetch();
   }, []);
   return (
     <>
       <Header />
       <Container className="mt--7" fluid>
-        {state.loading ? <h2>Loading...</h2> : generateTable(state, setState)}
+        {state.loading ? (
+          <Card>
+            <CardBody>
+              <Loading />
+            </CardBody>
+          </Card>
+        ) : (
+          generateTable(state, setState)
+        )}
       </Container>
       <Toast />
     </>

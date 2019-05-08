@@ -73,17 +73,18 @@ class DashVote extends React.Component {
 
   async componentDidMount() {
     if (this.props.user.major && this.props.user.faculty) {
-      const [err, { voter, secret }] = await this.userCanVote(
-        this.props.user._id
-      );
+      const [err, data] = await this.userCanVote(this.props.user._id);
       if (err) {
         notify(
-          `Ha ocurrido un problema, comuniquese con la <a href="mailto:ceu@unimet.edu.ve">CEU</a>`,
+          <p>
+            Ha ocurrido un problema, comuniquese con la{" "}
+            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+          </p>,
           false
         );
         return;
       }
-      const [err2, { postulations }] = await this.getPostulations(
+      const [err2, data2] = await this.getPostulations(
         this.props.user._id,
         this.props.user.major,
         this.props.user.faculty
@@ -95,13 +96,25 @@ class DashVote extends React.Component {
         );
         return;
       }
-      this.setState({
-        ...this.state,
-        voter,
-        secret,
-        postulations,
-        loading: false
-      });
+      if (data && data2) {
+        const { voter, secret } = data;
+        const { postulations } = data2;
+        this.setState({
+          ...this.state,
+          voter,
+          secret,
+          postulations,
+          loading: false
+        });
+      } else {
+        notify(
+          <p>
+            Ha ocurrido un problema, comuniquese con la{" "}
+            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+          </p>,
+          false
+        );
+      }
     } else {
       this.props.history.push(
         `/app/dashboard/profile?url=/app/dashboard/vote&reason=Completa-tu-perfil-para-poder-votar`

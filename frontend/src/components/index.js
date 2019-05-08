@@ -1,3 +1,4 @@
+export { default as ElectoralGroupModal } from "./electoralGroupModal";
 export { default as Footer } from "./footer";
 export { default as FooterAdmin } from "./footerAdmin";
 export { default as Header } from "./header";

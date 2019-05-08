@@ -52,7 +52,17 @@ exports.getAll = async (req, res) => {
 
 exports.getDemand = async (req, res) => {
   try {
-    const demand = await Demand.findById(req.params.id);
+    const demand = await Demand.findById(req.params.id)
+      .populate("user")
+      .populate("representative")
+      .populate("electoralGroup")
+      .populate("postulation")
+      .populate({
+        path: "postulation",
+        populate: {
+          path: "electoralGroup"
+        }
+      });
     if (demand) {
       res.json({ success: true, demand });
     } else {
@@ -62,7 +72,7 @@ exports.getDemand = async (req, res) => {
       });
     }
   } catch (err) {
-    res.json({ err, success: false });
+    res.json({ err: new Error(err.message), success: false });
   }
 };
 
@@ -80,7 +90,7 @@ exports.markComplete = async (req, res) => {
       });
     }
   } catch (err) {
-    res.json({ err, success: false });
+    res.json({ err: new Error(err.message), success: false });
   }
 };
 
@@ -225,6 +235,7 @@ const buildPostulation = postulation => {
     uuid: postulation._id,
     fce: {
       $class: "ve.edu.unimet.ceu.PostulacionFCE",
+      uuid: postulation._id,
       president: {},
       secretaryGeneral: {},
       interalAffairs: {},
@@ -243,6 +254,7 @@ const buildPostulation = postulation => {
     },
     services: {
       $class: "ve.edu.unimet.ceu.PostulacionCoS",
+      uuid: postulation._id,
       coordinators: postulation.services.map(({ name, dni }) => ({
         $class: "ve.edu.unimet.ceu.Coordinador",
         electoralGroup: postulation.electoralGroup,
@@ -253,6 +265,7 @@ const buildPostulation = postulation => {
     },
     culture: {
       $class: "ve.edu.unimet.ceu.PostulacionCoC",
+      uuid: postulation._id,
       coordinators: postulation.culture.map(({ name, dni }) => ({
         $class: "ve.edu.unimet.ceu.Coordinador",
         electoralGroup: postulation.electoralGroup,
@@ -263,6 +276,7 @@ const buildPostulation = postulation => {
     },
     academic: {
       $class: "ve.edu.unimet.ceu.PostulacionCoA",
+      uuid: postulation._id,
       coordinators: postulation.academic.map(({ name, dni }) => ({
         $class: "ve.edu.unimet.ceu.Coordinador",
         electoralGroup: postulation.electoralGroup,
@@ -273,6 +287,7 @@ const buildPostulation = postulation => {
     },
     responsibility: {
       $class: "ve.edu.unimet.ceu.PostulacionCoRSU",
+      uuid: postulation._id,
       coordinators: postulation.responsibility.map(({ name, dni }) => ({
         $class: "ve.edu.unimet.ceu.Coordinador",
         electoralGroup: postulation.electoralGroup,
@@ -283,6 +298,7 @@ const buildPostulation = postulation => {
     },
     academicCouncil: {
       $class: "ve.edu.unimet.ceu.PostulacionCA",
+      uuid: postulation._id,
       advisers: {
         $class: "ve.edu.unimet.ceu.PostulacionCA",
         advisers: {
@@ -294,11 +310,18 @@ const buildPostulation = postulation => {
         }
       }
     },
-    schoolsCouncil: schoolCouncilHelper(postulation.schoolCouncil),
-    facultyCouncil: facultyCouncilHelper(postulation.facultyCouncil),
+    schoolsCouncil: schoolCouncilHelper(
+      postulation.schoolCouncil,
+      postulation._id
+    ),
+    facultyCouncil: facultyCouncilHelper(
+      postulation.facultyCouncil,
+      postulation._id
+    ),
     studentsCenters: schoolHelper(
       postulation.schools,
-      postulation.electoralGroup
+      postulation.electoralGroup,
+      postulation._id
     ),
     electoralGroup: postulation.electoralGroup
   };
@@ -323,7 +346,7 @@ const buildPostulation = postulation => {
   return obj;
 };
 
-const schoolCouncilHelper = schoolCouncil => {
+const schoolCouncilHelper = (schoolCouncil, uuid) => {
   const vec = [];
   let key = "";
   let i = 0;
@@ -335,7 +358,8 @@ const schoolCouncilHelper = schoolCouncil => {
     vec[i] = {
       ...vec[i],
       $class: "ve.edu.unimet.ceu.PostulacionCE",
-      school
+      school,
+      uuid
     };
     if (!vec[i].advisers) {
       vec[i].advisers = [];
@@ -350,7 +374,7 @@ const schoolCouncilHelper = schoolCouncil => {
   return vec.filter(x => x !== false || null || undefined);
 };
 
-const facultyCouncilHelper = facultyCouncil => {
+const facultyCouncilHelper = (facultyCouncil, uuid) => {
   const vec = [];
   let key = "";
   let i = 0;
@@ -363,7 +387,8 @@ const facultyCouncilHelper = facultyCouncil => {
       vec[i] = {
         ...vec[i],
         $class: "ve.edu.unimet.ceu.PostulacionCF",
-        faculty
+        faculty,
+        uuid
       };
       if (!vec[i].advisers) {
         vec[i].advisers = [];
@@ -379,7 +404,7 @@ const facultyCouncilHelper = facultyCouncil => {
   return vec.filter(x => x !== false || null || undefined);
 };
 
-const schoolHelper = (schools, electoralGroup) =>
+const schoolHelper = (schools, electoralGroup, uuid) =>
   [
     "ciencias-administrativas",
     "economia-empresarial",
@@ -399,6 +424,7 @@ const schoolHelper = (schools, electoralGroup) =>
   ].map(school => ({
     $class: "ve.edu.unimet.ceu.PostulacionCEE",
     school,
+    uuid,
     president: {
       $class: "ve.edu.unimet.ceu.Postulado",
       electoralGroup,

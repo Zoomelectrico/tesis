@@ -110,3 +110,71 @@ exports.vote = async (req, res) => {
     res.json({ success: false, err: new Error(err.message) });
   }
 };
+
+exports.computeResults = async (req, res) => {
+  try {
+    const year = new Date().getFullYear();
+    let [votes, postulations] = await Promise.all([
+      fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Voto`).then(
+        _res => _res.json()
+      ),
+      fetch(
+        `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Postulacion`
+      ).then(_res => _res.json())
+    ]);
+    postulations = postulations.filter(
+      postulation => postulation.year === year
+    );
+    const results = {};
+    const postulationsIds = postulations.map(({ uuid }) => uuid);
+    votes = votes.filter(vote => vote.year === year);
+    postulationsIds.forEach(uuid => {
+      results[uuid] = {
+        fce: votes.reduce((pv, cv) => (cv.fce === uuid ? pv + 1 : pv + 0), 0),
+        sports: votes.reduce(
+          (pv, cv) => (cv.sports === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        services: votes.reduce(
+          (pv, cv) => (cv.services === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        culture: votes.reduce(
+          (pv, cv) => (cv.culture === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        academic: votes.reduce(
+          (pv, cv) => (cv.academic === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        responsibility: votes.reduce(
+          (pv, cv) => (cv.responsibility === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        academicCouncil: votes.reduce(
+          (pv, cv) => (cv.academicCouncil === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        schoolsCouncil: votes.reduce(
+          (pv, cv) => (cv.schoolsCouncil === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        facultyCouncil: votes.reduce(
+          (pv, cv) => (cv.facultyCouncil === uuid ? pv + 1 : pv + 0),
+          0
+        ),
+        studentsCenters: votes.reduce(
+          (pv, cv) => (cv.studentsCenters === uuid ? pv + 1 : pv + 0),
+          0
+        )
+      };
+    });
+    res.json({ success: true, results });
+  } catch (err) {
+    res.json({ success: false, err: new Error(err.message) });
+  }
+};
+
+exports.getResults = async (req, res) => {};
+
+exports.saveResults = async (req, res) => {};

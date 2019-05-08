@@ -19,7 +19,7 @@ Despues deberan abrir 3 ventanas de terminal en la primera venta se ejecutara la
 
 ```console
 $ cd ~/tesis/blockchain
-$ cd ~/fabric-dev-servers && ./startFabric.sh && cd ~/tesis/blockchain && npm run createNet
+$ cd ~/fabric-dev-servers && ./startFabric.sh && cd ~/tesis/blockchain && npm run createNet && npm run startComposer
 ```
 
 En la segunda ventada de la terminarl ejecutarmos este comando para Iniciar el Frontend
