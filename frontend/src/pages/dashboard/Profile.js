@@ -139,7 +139,7 @@ const DashProfile = props => {
               <CardBody>
                 <Row>
                   {renderFields(fields)}
-                  {props.user.privilge <= 2 ? (
+                  {user.privilege <= 2 ? (
                     <Col md="6">
                       <FormGroup>
                         <Label for="major">Carrera</Label>
@@ -186,7 +186,7 @@ const DashProfile = props => {
           </Col>
           <Col md="12" lg="4">
             <Row>
-              {user.privilege < 2 ? (
+              {user.privilege <= 2 ? (
                 <Col sm="12" className="mb-3">
                   <Card className="bg-gradient-warning py-5 px-3 border-0">
                     <Row className="justify-content-center">

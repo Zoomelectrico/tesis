@@ -62,6 +62,12 @@ exports.getDemand = async (req, res) => {
         populate: {
           path: "electoralGroup"
         }
+      })
+      .populate({
+        path: "electoralGroup",
+        populate: {
+          path: "representative"
+        }
       });
     if (demand) {
       res.json({ success: true, demand });

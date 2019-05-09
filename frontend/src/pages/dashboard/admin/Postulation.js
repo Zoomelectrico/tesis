@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Card, CardHeader, CardBody } from "reactstrap";
 import { Header, Footer } from "../../../components";
-import { env } from "../../../utils";
 
 const Postulation = ({ location }) => {
   const params = new URLSearchParams(location.search);

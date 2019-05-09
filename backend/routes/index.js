@@ -41,6 +41,12 @@ router.get(
   electoralGroupController.getElectoralGroupByCreatorId
 );
 
+router.get(
+  "/electoral-groups",
+  passport.authenticate("jwt", { session: false }),
+  electoralGroupController.getElectoralGroups
+);
+
 router.post(
   "/demand-create",
   passport.authenticate("jwt", { session: false }),

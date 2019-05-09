@@ -58,3 +58,21 @@ exports.getElectoralGroupByCreatorId = async (req, res) => {
     res.json({ success: false, err: new Error(err.message) });
   }
 };
+
+exports.getElectoralGroups = async (req, res) => {
+  try {
+    let electoralGroups = await ElectoralGroup.find({
+      electionYear: new Date().getFullYear(),
+      accepted: 1
+    }).populate("representative");
+    electoralGroups = electoralGroups.map(
+      ({ denomination, number, colorName }) => [denomination, number, colorName]
+    );
+    res.json({ success: true, electoralGroups });
+  } catch (err) {
+    res.json({
+      err: new Error("Ocurrio un Error en la Base de Datos"),
+      success: false
+    });
+  }
+};

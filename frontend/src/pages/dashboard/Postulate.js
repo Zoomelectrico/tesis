@@ -31,7 +31,12 @@ class DashPostulate extends React.Component {
     postulationData: {}, // Postulacion de la db
     checkout: false, // Flag para mostrar la postulacion
     _id: "", // id del user
-    token: "" // token del user
+    token: "", // token del user
+    denomination: "",
+    colorName: "",
+    colorHex: "",
+    logo: "",
+    number: ""
   };
 
   getUserData = () =>
@@ -143,12 +148,11 @@ class DashPostulate extends React.Component {
 
   onChange = e => {
     e.preventDefault();
+    console.log("onChange");
+    console.log({ [e.target.name]: e.target.value });
     const state = {
       ...this.state,
-      electoralGroup: {
-        ...this.state.electoralGroup,
-        [e.target.name]: e.target.value
-      }
+      [e.target.name]: e.target.value
     };
     this.setState(state);
   };
