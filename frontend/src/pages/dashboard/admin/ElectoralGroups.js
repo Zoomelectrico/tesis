@@ -8,7 +8,7 @@ import {
   CardBody,
   Table
 } from "reactstrap";
-import { Header, Toast, notify } from "../../../components";
+import { Header, Toast, notify, Loading } from "../../../components";
 
 import { get } from "../../../utils";
 
@@ -41,7 +41,7 @@ const ElectoralGroup = props => {
               </CardHeader>
               <CardBody>
                 {state.loading ? (
-                  <h2>Loading ...</h2>
+                  <Loading />
                 ) : state.electoralGroups.length > 0 ? (
                   <Table>
                     <thead>

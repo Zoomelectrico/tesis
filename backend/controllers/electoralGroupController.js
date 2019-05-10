@@ -75,9 +75,11 @@ exports.getElectoralGroups = async (req, res) => {
       electionYear: new Date().getFullYear(),
       accepted: 1
     }).populate("representative");
-    electoralGroups = electoralGroups.map(
-      ({ denomination, number, colorName }) => [denomination, number, colorName]
-    );
+    electoralGroups = electoralGroups.map(({ denomination, number, color }) => [
+      denomination,
+      number,
+      color
+    ]);
     res.json({ success: true, electoralGroups });
   } catch (err) {
     res.json({

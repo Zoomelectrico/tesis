@@ -67,7 +67,8 @@ async function buildPostulation(tx) {
       schoolsCouncil,
       facultyCouncil,
       studentsCenters,
-      electoralGroup
+      electoralGroup,
+      year
     } = tx;
 
     const factory = getFactory();
@@ -105,6 +106,7 @@ async function buildPostulation(tx) {
 
     const postulation = factory.newResource(NAME_SPACE, "Postulacion", uuid);
 
+    postulation.year = year;
     postulation.fce = fce;
     postulation.sports = sports;
     postulation.services = services;

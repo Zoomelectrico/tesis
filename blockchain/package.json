@@ -3,13 +3,13 @@
     "composer": "^0.20.8"
   },
   "name": "uvote",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "An electoral Network",
   "scripts": {
     "createNet": "npm run create && npm run installNet && npm run startNetComposer && npm run importCard && npm run ping",
     "create": "composer archive create -t dir -n .",
-    "installNet": "composer network install --card PeerAdmin@hlfv1 --archiveFile uvote@0.0.9.bna",
-    "startNetComposer": "composer network start --networkName uvote --networkVersion 0.0.9 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
+    "installNet": "composer network install --card PeerAdmin@hlfv1 --archiveFile uvote@0.0.10.bna",
+    "startNetComposer": "composer network start --networkName uvote --networkVersion 0.0.10 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card",
     "ping": "composer network ping --card admin@uvote",
     "importCard": "composer card import --file networkadmin.card",
     "pretest": "npm run lint",

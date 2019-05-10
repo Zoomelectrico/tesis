@@ -203,10 +203,10 @@ exports.includeElectoralGroup = async (req, res) => {
 
 exports.includePostulation = async (req, res) => {
   try {
-    const { pId, id } = req.body;
+    const { pid, id } = req.body;
     const [postulation, demand] = await Promise.all([
       Postulation.findOneAndUpdate(
-        { _id: pId },
+        { _id: pid },
         { passed: 1 },
         { new: true }
       ).exec(),
@@ -224,7 +224,7 @@ exports.includePostulation = async (req, res) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(buildPostulation(postulation))
         }
-      );
+      ).then(_res => _res.json());
       return res.json({ success: true, demand });
     }
     res.json({
@@ -237,78 +237,78 @@ exports.includePostulation = async (req, res) => {
 };
 
 const buildPostulation = postulation => {
-  const obj = {
-    $class: "ve.edu.unimet.ceu.buildPostulation",
-    year: new Date().getFullYear(),
-    uuid: postulation._id,
-    fce: {
-      $class: "ve.edu.unimet.ceu.PostulacionFCE",
+  try {
+    const obj = {
+      $class: "ve.edu.unimet.ceu.buildPostulation",
+      year: new Date().getFullYear(),
       uuid: postulation._id,
-      president: {},
-      secretaryGeneral: {},
-      interalAffairs: {},
-      generalCoordinator: {},
-      treasurer: {}
-    },
-    sports: {
-      $class: "ve.edu.unimet.ceu.PostulacionCoD",
-      coordinators: postulation.sports.map(({ name, dni }) => ({
-        $class: "ve.edu.unimet.ceu.Coordinador",
-        electoralGroup: postulation.electoralGroup,
-        name,
-        dni,
-        substitute: false
-      }))
-    },
-    services: {
-      $class: "ve.edu.unimet.ceu.PostulacionCoS",
-      uuid: postulation._id,
-      coordinators: postulation.services.map(({ name, dni }) => ({
-        $class: "ve.edu.unimet.ceu.Coordinador",
-        electoralGroup: postulation.electoralGroup,
-        name,
-        dni,
-        substitute: false
-      }))
-    },
-    culture: {
-      $class: "ve.edu.unimet.ceu.PostulacionCoC",
-      uuid: postulation._id,
-      coordinators: postulation.culture.map(({ name, dni }) => ({
-        $class: "ve.edu.unimet.ceu.Coordinador",
-        electoralGroup: postulation.electoralGroup,
-        name,
-        dni,
-        substitute: false
-      }))
-    },
-    academic: {
-      $class: "ve.edu.unimet.ceu.PostulacionCoA",
-      uuid: postulation._id,
-      coordinators: postulation.academic.map(({ name, dni }) => ({
-        $class: "ve.edu.unimet.ceu.Coordinador",
-        electoralGroup: postulation.electoralGroup,
-        name,
-        dni,
-        substitute: false
-      }))
-    },
-    responsibility: {
-      $class: "ve.edu.unimet.ceu.PostulacionCoRSU",
-      uuid: postulation._id,
-      coordinators: postulation.responsibility.map(({ name, dni }) => ({
-        $class: "ve.edu.unimet.ceu.Coordinador",
-        electoralGroup: postulation.electoralGroup,
-        name,
-        dni,
-        substitute: false
-      }))
-    },
-    academicCouncil: {
-      $class: "ve.edu.unimet.ceu.PostulacionCA",
-      uuid: postulation._id,
-      advisers: {
+      fce: {
+        $class: "ve.edu.unimet.ceu.PostulacionFCE",
+        uuid: postulation._id,
+        president: {},
+        secretaryGeneral: {},
+        internalAffairs: {},
+        generalCoordinator: {},
+        treasurer: {}
+      },
+      sports: {
+        $class: "ve.edu.unimet.ceu.PostulacionCoD",
+        uuid: postulation._id,
+        coordinators: postulation.sports.map(({ name, dni }) => ({
+          $class: "ve.edu.unimet.ceu.Coordinador",
+          electoralGroup: postulation.electoralGroup,
+          name,
+          dni,
+          substitute: false
+        }))
+      },
+      services: {
+        $class: "ve.edu.unimet.ceu.PostulacionCoS",
+        uuid: postulation._id,
+        coordinators: postulation.services.map(({ name, dni }) => ({
+          $class: "ve.edu.unimet.ceu.Coordinador",
+          electoralGroup: postulation.electoralGroup,
+          name,
+          dni,
+          substitute: false
+        }))
+      },
+      culture: {
+        $class: "ve.edu.unimet.ceu.PostulacionCoC",
+        uuid: postulation._id,
+        coordinators: postulation.culture.map(({ name, dni }) => ({
+          $class: "ve.edu.unimet.ceu.Coordinador",
+          electoralGroup: postulation.electoralGroup,
+          name,
+          dni,
+          substitute: false
+        }))
+      },
+      academic: {
+        $class: "ve.edu.unimet.ceu.PostulacionCoA",
+        uuid: postulation._id,
+        coordinators: postulation.academic.map(({ name, dni }) => ({
+          $class: "ve.edu.unimet.ceu.Coordinador",
+          electoralGroup: postulation.electoralGroup,
+          name,
+          dni,
+          substitute: false
+        }))
+      },
+      responsibility: {
+        $class: "ve.edu.unimet.ceu.PostulacionCoRSU",
+        uuid: postulation._id,
+        coordinators: postulation.responsibility.map(({ name, dni }) => ({
+          $class: "ve.edu.unimet.ceu.Coordinador",
+          electoralGroup: postulation.electoralGroup,
+          name,
+          dni,
+          substitute: false
+        }))
+      },
+      academicCouncil: {
         $class: "ve.edu.unimet.ceu.PostulacionCA",
+        uuid: postulation._id,
         advisers: {
           $class: "ve.edu.unimet.ceu.Consejero",
           school: postulation.academicCouncil.school,
@@ -316,42 +316,45 @@ const buildPostulation = postulation => {
           name: postulation.academicCouncil.name,
           dni: postulation.academicCouncil.dni
         }
-      }
-    },
-    schoolsCouncil: schoolCouncilHelper(
-      postulation.schoolCouncil,
-      postulation._id
-    ),
-    facultyCouncil: facultyCouncilHelper(
-      postulation.facultyCouncil,
-      postulation._id
-    ),
-    studentsCenters: schoolHelper(
-      postulation.schools,
-      postulation.electoralGroup,
-      postulation._id
-    ),
-    electoralGroup: postulation.electoralGroup
-  };
-
-  [
-    "president",
-    "secretaryGeneral",
-    "interalAffairs",
-    "generalCoordinator",
-    "treasurer"
-  ].forEach((key, i) => {
-    obj.fce[key] = {
-      $class: "ve.edu.unimet.ceu.Postulado",
-      school: postulation.fce[i].school,
-      charge: postulation.fce[i].charge,
-      electoralGroup: postulation.electoralGroup,
-      name: postulation.fce[i].name,
-      dni: postulation.fce[i].dni,
-      id: "string"
+      },
+      schoolsCouncil: schoolCouncilHelper(
+        postulation.schoolCouncil,
+        postulation._id
+      ),
+      facultyCouncil: facultyCouncilHelper(
+        postulation.facultyCouncil,
+        postulation._id
+      ),
+      studentsCenters: schoolHelper(
+        postulation.schools,
+        postulation.electoralGroup,
+        postulation._id
+      ),
+      electoralGroup: postulation.electoralGroup
     };
-  });
-  return obj;
+
+    [
+      "president",
+      "secretaryGeneral",
+      "internalAffairs",
+      "generalCoordinator",
+      "treasurer"
+    ].forEach((key, i) => {
+      obj.fce[key] = {
+        $class: "ve.edu.unimet.ceu.Postulado",
+        school: postulation.fce[i].school,
+        charge: postulation.fce[i].charge,
+        electoralGroup: postulation.electoralGroup,
+        name: postulation.fce[i].name,
+        dni: postulation.fce[i].dni
+      };
+    });
+    console.log(JSON.stringify(obj));
+    return obj;
+  } catch (err) {
+    console.log(err);
+    return {};
+  }
 };
 
 const schoolCouncilHelper = (schoolCouncil, uuid) => {
@@ -379,7 +382,9 @@ const schoolCouncilHelper = (schoolCouncil, uuid) => {
       substitute: substitute === 1
     });
   });
-  return vec.filter(x => x !== false || null || undefined);
+  return vec
+    .filter(x => x !== false || null || undefined)
+    .filter(x => x.advisers.length > 0);
 };
 
 const facultyCouncilHelper = (facultyCouncil, uuid) => {
@@ -409,7 +414,9 @@ const facultyCouncilHelper = (facultyCouncil, uuid) => {
       });
     }
   );
-  return vec.filter(x => x !== false || null || undefined);
+  return vec
+    .filter(x => x !== false || null || undefined)
+    .filter(x => x.advisers.length > 0);
 };
 
 const schoolHelper = (schools, electoralGroup, uuid) =>
@@ -429,46 +436,75 @@ const schoolHelper = (schools, electoralGroup, uuid) =>
     "psicologia",
     "estudios-liberales",
     "derecho"
-  ].map(school => ({
-    $class: "ve.edu.unimet.ceu.PostulacionCEE",
-    school,
-    uuid,
-    president: {
-      $class: "ve.edu.unimet.ceu.Postulado",
-      electoralGroup,
-      ...(schools.filter(
-        ({ charge, schoolKey }) =>
-          schoolKey === school && charge === "Presidente"
-      ).length > 0
-        ? schools.filter(
-            ({ charge, schoolKey }) =>
-              schoolKey === school && charge === "Presidente"
-          )[0]
-        : {})
-    },
-    generalCoordinator: {
-      $class: "ve.edu.unimet.ceu.Postulado",
-      electoralGroup,
-      ...(schools.filter(
-        ({ charge, schoolKey }) =>
-          schoolKey === school && charge === "Coordinador General"
-      ).length > 0
-        ? schools.filter(
-            ({ charge, schoolKey }) =>
-              schoolKey === school && charge === "Coordinador General"
-          )[0]
-        : {})
-    },
-    treasurer: {
-      $class: "ve.edu.unimet.ceu.Postulado",
-      electoralGroup,
-      ...(schools.filter(
-        ({ charge, schoolKey }) => schoolKey === school && charge === "Tesorero"
-      ).length > 0
-        ? schools.filter(
-            ({ charge, schoolKey }) =>
-              schoolKey === school && charge === "Tesorero"
-          )[0]
-        : {})
-    }
-  }));
+  ]
+    .map(school => ({
+      $class: "ve.edu.unimet.ceu.PostulacionCEE",
+      school,
+      uuid,
+      president: {
+        $class: "ve.edu.unimet.ceu.Postulado",
+        electoralGroup,
+        ...(schools.filter(
+          ({ charge, schoolKey }) =>
+            schoolKey === school && charge === "Presidente"
+        ).length > 0
+          ? schools
+              .filter(
+                ({ charge, schoolKey }) =>
+                  schoolKey === school && charge === "Presidente"
+              )
+              .map(({ name, charge, schoolKey: school, dni }) => ({
+                name,
+                charge,
+                school,
+                dni
+              }))[0]
+          : {})
+      },
+      generalCoordinator: {
+        $class: "ve.edu.unimet.ceu.Postulado",
+        electoralGroup,
+        ...(schools.filter(
+          ({ charge, schoolKey }) =>
+            schoolKey === school && charge === "Coordinador General"
+        ).length > 0
+          ? schools
+              .filter(
+                ({ charge, schoolKey }) =>
+                  schoolKey === school && charge === "Coordinador General"
+              )
+              .map(({ name, charge, schoolKey: school, dni }) => ({
+                name,
+                charge,
+                school,
+                dni
+              }))[0]
+          : {})
+      },
+      treasurer: {
+        $class: "ve.edu.unimet.ceu.Postulado",
+        electoralGroup,
+        ...(schools.filter(
+          ({ charge, schoolKey }) =>
+            schoolKey === school && charge === "Tesorero"
+        ).length > 0
+          ? schools
+              .filter(
+                ({ charge, schoolKey }) =>
+                  schoolKey === school && charge === "Tesorero"
+              )
+              .map(({ name, charge, schoolKey: school, dni }) => ({
+                name,
+                charge,
+                school,
+                dni
+              }))[0]
+          : {})
+      }
+    }))
+    .filter(
+      school =>
+        school.president.dni &&
+        school.generalCoordinator.dni &&
+        school.treasurer.dni
+    );

@@ -12,11 +12,13 @@ import {
 const generateTable = (headers, body) => {
   if (body.length > 0) {
     return (
-      <Table>
+      <Table hover>
         <thead>
           <tr>
             {headers.map(header => (
-              <th key={header}>{header}</th>
+              <th className="text-center" key={header}>
+                {header}
+              </th>
             ))}
           </tr>
         </thead>
@@ -24,7 +26,7 @@ const generateTable = (headers, body) => {
           {body.map((row, i) => (
             <tr key={`key-${i}`}>
               {row.map(data => (
-                <td key={data} data-info={data}>
+                <td className="text-center" key={data} data-info={data}>
                   {data}
                 </td>
               ))}
@@ -54,7 +56,7 @@ const Checkout = ({
 }) => {
   return (
     <>
-      <Container>
+      <Container className="mt--7">
         {/* Federacion de Centros de Estudiantes */}
         <Row className="mb-4">
           <Col sm="12">

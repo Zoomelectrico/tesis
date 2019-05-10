@@ -104,6 +104,11 @@ const Demands = props => {
     </Card>
   );
 
+  const postulationCheck = e => {
+    e.preventDefault();
+    props.history.push(`/app/dashboard/Postulation?id=${e.target.dataset.id}`);
+  };
+
   const generateTable = (state, setState) => {
     const {
       demands: { representative, group, postulation, complain }
@@ -177,9 +182,10 @@ const Demands = props => {
               body: postulation.map(
                 ({
                   code,
-                  user: { firstName, lastName, _id: u_id },
+                  _id,
+                  user: { firstName, lastName },
                   postulation: {
-                    _id,
+                    _id: pid,
                     electoralGroup: { denomination }
                   }
                 }) => [
@@ -190,9 +196,9 @@ const Demands = props => {
                     color="info"
                     size="sm"
                     outline
-                    onClick={electoralR}
+                    onClick={e => postulationCheck(e)}
+                    data-pid={pid}
                     data-id={_id}
-                    data-uid={u_id}
                   >
                     Atender
                   </Button>
@@ -239,16 +245,7 @@ const Demands = props => {
         {state.loading ? (
           <Card>
             <CardBody>
-              <div className="d-flex justify-content-center p-4">
-                <img
-                  alt="uvote logo"
-                  className="mb-3"
-                  src={require("../../assets/img/logo-color.svg")}
-                  height="125px"
-                  width="auto"
-                />
-              </div>
-              <h2 className="text-center">Loading ...</h2>
+              <Loading />
             </CardBody>
           </Card>
         ) : (
