@@ -1,5 +1,7 @@
 # UVOTE
 
+![UVOTE Logo](https://raw.githubusercontent.com/Zoomelectrico/tesis/master/frontend/src/assets/img/logo-color.svg)
+
 Es una plataforma electoral realizada como trabajo especial de grado por [Jose Roberto Quevedo Gabizon](https://twitter.com/quevedodev) y tutoriado por el Ing. [Nicolas Araque](https://medium.com/@nicolas_araque) para obtar al titulo de Ingeniero de Sistemas en al [Universidad Metropolitana](http://unimet.edu.ve). Esta plataforma se basa en la utilizacion del Blockchain como mecanisco generador de confianza.
 Para desarollar esta aplicacion, se utilizo Hyperledger [Composer](https://hyperledger.github.io/composer/latest/) y [Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) como herramientas de Blockchain, adicionalmente se realizar un API REST con [Express](https://expressjs.org) y [Mongo DB](https://mongodb.com) como herramienta de autenticacion, y validacion de datos, con la itencion de que el blockchain se mantuviera con la menor cantidad de alteraciones. Por ultimo, se realizado un aplicacion web utilizando [React](https://reactjs.org) para que funcionara como cliente grafico a esta plataforma.
 
@@ -34,7 +36,7 @@ En la tercera ventada de la terminarl ejecutarmos este comando para Iniciar el F
 $ cd ~/tesis/frontend && mv variables.env.example variablee.nv && npm start
 ```
 
-_IMPORTANTE_: Cambiar en el archivo variables.env el string de coneccion a la DB.
+**IMPORTANTE**: Cambiar en el archivo variables.env el string de coneccion a la DB.
 
 ## Librerías Utilizadas
 

@@ -45,7 +45,8 @@ const post = (url, body, auth = true) =>
           { ...body },
           {
             headers: {
-              Authorization: `Bearer ${token}`
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json"
             }
           }
         );

@@ -12,8 +12,7 @@ const electoralGroupSchema = new mongoose.Schema({
     type: String,
     required: "Debe Proveer un nombre para el grupo electoral",
     trim: true,
-    uppercase: true,
-    unique: true
+    uppercase: true
   },
   color: {
     type: String,
@@ -28,8 +27,7 @@ const electoralGroupSchema = new mongoose.Schema({
   number: {
     type: Number,
     required: "Debe proveer un Numero",
-    trim: true,
-    unique: true
+    trim: true
   },
   logo: {
     type: String,

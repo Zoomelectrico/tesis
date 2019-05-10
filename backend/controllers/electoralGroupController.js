@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const ElectoralGroup = mongoose.model("ElectoralGroup");
+const Demand = mongoose.model("Demand");
 const User = mongoose.model("User");
 
 exports.createElectoralGroup = async (req, res) => {
@@ -20,6 +21,7 @@ exports.createElectoralGroup = async (req, res) => {
         }
       }
     }
+
     const electoralGroup = await ElectoralGroup.create({
       denomination,
       number,
@@ -28,9 +30,17 @@ exports.createElectoralGroup = async (req, res) => {
       color: colorName,
       representative: user._id
     });
+
     if (electoralGroup) {
       user.electoralGroups.push(electoralGroup._id);
-      await user.save();
+      const [] = await Promise.all([
+        Demand.create({
+          user: user._id,
+          type: "GRUPO",
+          electoralGroup: electoralGroup._id
+        }),
+        user.save()
+      ]);
       res.json({ success: true, electoralGroup });
     } else {
       res.json({ success: false, msg: "Problemas al registrar" });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Spinner, Button } from "reactstrap";
+import { Container, Row, Col, Card, Button } from "reactstrap";
 import { Header, Toast, notify } from "../../components";
 import {
   Checkout,
@@ -148,8 +148,6 @@ class DashPostulate extends React.Component {
 
   onChange = e => {
     e.preventDefault();
-    console.log("onChange");
-    console.log({ [e.target.name]: e.target.value });
     const state = {
       ...this.state,
       [e.target.name]: e.target.value
@@ -209,7 +207,7 @@ class DashPostulate extends React.Component {
         ...this.state,
         electoralGroup,
         electoralGroupStatus: true,
-        electoralGroupAccepted: true
+        electoralGroupAccepted: false
       });
     } catch (err) {
       notify("Un error ha evitado crear el Grupo electoral", false);
@@ -236,13 +234,11 @@ class DashPostulate extends React.Component {
   conditionalRender = () => {
     if (this.state.loading) {
       return (
-        <div className="d-flex justify-content-center py-4 card">
-          <Spinner
-            className="m-auto"
-            color="primary"
-            style={{ width: "3rem", height: "3rem" }}
-          />
-        </div>
+        <Card>
+          <div className="d-flex justify-content-center p-4">
+            <h2>Loading ...</h2>
+          </div>
+        </Card>
       );
     } else {
       if (this.state.electoralGroupStatus) {
@@ -275,6 +271,13 @@ class DashPostulate extends React.Component {
         } else {
           return (
             <div className="d-flex justify-content-center p-5 card">
+              <img
+                alt="uvote logo"
+                className="mb-3"
+                src={require("../../assets/img/logo-color.svg")}
+                height="125px"
+                width="auto"
+              />
               <p className="text-center">
                 Su solicitud para crear el Grupo Electoral{" "}
                 <strong>{`${this.state.electoralGroup.denomination}`}</strong>{" "}
@@ -289,7 +292,7 @@ class DashPostulate extends React.Component {
       } else {
         return (
           <ElectoralGroup
-            onChage={this.onChange}
+            onChange={this.onChange}
             onChangeFile={this.onChangeFile}
             createElectoralGroup={this.createElectoralGroup}
           />

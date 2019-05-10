@@ -215,6 +215,7 @@ const Demands = props => {
       </>
     );
   };
+
   const electoralGroup = async e => {
     try {
       e.preventDefault();
@@ -236,7 +237,16 @@ const Demands = props => {
         {state.loading ? (
           <Card>
             <CardBody>
-              <Loading />
+              <div className="d-flex justify-content-center p-4">
+                <img
+                  alt="uvote logo"
+                  className="mb-3"
+                  src={require("../../assets/img/logo-color.svg")}
+                  height="125px"
+                  width="auto"
+                />
+              </div>
+              <h2 className="text-center">Loading ...</h2>
             </CardBody>
           </Card>
         ) : (

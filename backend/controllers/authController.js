@@ -9,28 +9,17 @@ exports.login = async (req, res, next) => {
   try {
     const user = req.user;
     await req.login(user);
-    const {
-      privilege,
-      _id,
-      firstName,
-      lastName,
-      dni,
-      carnet,
-      email,
-      code,
-      major
-    } = user;
     const token = jwt.sign({ id: user._id }, SECRET_JWT);
     const _user = {
-      privilege,
-      _id,
-      firstName,
-      lastName,
-      dni,
-      carnet,
-      email,
-      code,
-      major
+      privilege: user.privilege,
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      dni: user.dni,
+      carnet: user.carnet,
+      email: user.email,
+      code: user.code,
+      major: user.major
     };
     return res.json({ user: _user, success: true, token });
   } catch (err) {
