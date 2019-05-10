@@ -13,12 +13,16 @@ import { Header, Toast, notify } from "../../../components";
 import { get } from "../../../utils";
 
 const ElectoralGroup = props => {
-  const [state, setState] = useState({ loading: false, electoralGroup: {} });
+  const [state, setState] = useState({ loading: true, electoralGroups: [] });
   useEffect(() => {
     const fetch = async () => {
       const data = await get("electoral-groups");
       if (data.success) {
-        setState({ loading: true, electoralGroup: data.electoralGroup });
+        console.log(data);
+        setState({
+          loading: false,
+          electoralGroups: data.electoralGroups
+        });
         return;
       }
       notify("Ha Ocurrido un Error refresca la pagina", false);
@@ -38,7 +42,7 @@ const ElectoralGroup = props => {
               <CardBody>
                 {state.loading ? (
                   <h2>Loading ...</h2>
-                ) : (
+                ) : state.electoralGroups.length > 0 ? (
                   <Table>
                     <thead>
                       <tr>
@@ -48,7 +52,7 @@ const ElectoralGroup = props => {
                       </tr>
                     </thead>
                     <tbody>
-                      {state.electoralGroup.map(row => (
+                      {state.electoralGroups.map(row => (
                         <tr key={row.join("-")}>
                           {row.map(data => (
                             <td key={data}>{data}</td>
@@ -57,6 +61,8 @@ const ElectoralGroup = props => {
                       ))}
                     </tbody>
                   </Table>
+                ) : (
+                  <h2 className="text-center">No existen Grupos Electorales</h2>
                 )}
               </CardBody>
             </Card>

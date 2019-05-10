@@ -13,7 +13,9 @@ import { Header, Toast, notify, Loading } from "../../components";
 import { get, post } from "../../utils";
 
 const Demands = props => {
-  const reason = new URLSearchParams(props.location.search).get("reason");
+  const params = new URLSearchParams(props.location.search);
+  const reason = params.get("reason");
+  const bool = params.get("bool") === "true" ? true : false;
   const [state, setState] = useState({ loading: true, demands: {} });
   useEffect(() => {
     const fetch = async () => {
@@ -25,7 +27,7 @@ const Demands = props => {
       }
     };
     if (reason) {
-      notify(reason.replace(/[-]/g, " "), false);
+      notify(reason.replace(/[-]/g, " "), bool);
     }
     fetch();
   }, []);

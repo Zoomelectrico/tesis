@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 const Footer = props => (
-  <footer className="py-5">
+  <footer className="py-5 mt-5">
     <Container>
       <Row className="align-items-center justify-content-xl-between">
         <Col xl="6">

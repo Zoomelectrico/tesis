@@ -1,6 +1,14 @@
 import axios from "axios";
 import env from "./env";
 
+/**
+ * @function get
+ * @description Una funcion que abstrae una peticion AJAX para manejar errores correctamente y utilizacion del Token
+ * @author Jose Roberto Quevedo
+ * @param {String} url La ruta a la cual se hara la peticion
+ * @param {Boolean} auth Una bandera para identificar si es necesario utilizar token o no
+ * @returns {Promise<Object>} El metodo retorna una promesa nativa.
+ */
 const get = (url, auth = true) =>
   new Promise(async (resolve, reject) => {
     try {
@@ -31,6 +39,15 @@ const get = (url, auth = true) =>
     }
   });
 
+/**
+ * @function post
+ * @description Una funcion que abstrae una peticion AJAX para manejar errores correctamente y utilizacion del Token
+ * @author Jose Roberto Quevedo
+ * @param {String} url La ruta a la cual se hara la peticion
+ * @param {Object} body El cuerpo de la peticion
+ * @param {Boolean} auth Una bandera para identificar si es necesario utilizar token o no
+ * @returns {Promise<Object>} El metodo retorna una promesa nativa.
+ */
 const post = (url, body, auth = true) =>
   new Promise(async (resolve, reject) => {
     try {

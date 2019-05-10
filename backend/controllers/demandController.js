@@ -178,7 +178,7 @@ exports.includeElectoralGroup = async (req, res) => {
             uuid: electoralGroup._id,
             name: electoralGroup.denomination,
             colorHex: electoralGroup.colorHex,
-            colorName: electoralGroup.colorName,
+            colorName: electoralGroup.color,
             logo: electoralGroup.logo,
             number: electoralGroup.number,
             electionYear: new Date().getFullYear(),
@@ -190,11 +190,13 @@ exports.includeElectoralGroup = async (req, res) => {
 
       return res.json({ success: true, demand });
     }
+    console.log(eg);
     res.json({
       success: false,
       err: new Error("No se ha encontrado la Solicitud o el Grupo Electoral")
     });
   } catch (err) {
+    console.log(err);
     res.json({ success: false, err: new Error(err.message) });
   }
 };

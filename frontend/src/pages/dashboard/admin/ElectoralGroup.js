@@ -9,17 +9,28 @@ import {
   Button
 } from "reactstrap";
 
-import { get } from "../../../utils";
+import { get, post } from "../../../utils";
 import { Header, Toast, notify } from "../../../components";
 
 const ElectoralGroup = ({ location, history }) => {
   const id = new URLSearchParams(location.search).get("id");
   const [state, setState] = useState({ loading: true, demand: {} });
 
-  const accept = e => {
-    e.preventDefault();
-    const { egid, id } = e.target.dataset;
-    console.log({ egid, id });
+  const accept = async e => {
+    try {
+      e.preventDefault();
+      const { egid: egId, id } = e.target.dataset;
+      const data = await post("demand-accept-eg", { egId, id });
+      console.log(data);
+      if (data.success) {
+        history.push(
+          "/app/dashboard/demands?reason=Grupo-Electoral-Aceptado&bool=true"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      notify("Ha ocurrido un Error Incorporar este Grupo Electoral", false);
+    }
   };
 
   useEffect(() => {
@@ -27,7 +38,7 @@ const ElectoralGroup = ({ location, history }) => {
       try {
         if (!id) {
           history.push(
-            "/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral"
+            "/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false"
           );
         }
         const data = await get(`demand/${id}`);

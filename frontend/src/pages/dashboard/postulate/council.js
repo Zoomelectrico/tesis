@@ -65,6 +65,7 @@ class Council extends React.Component {
             name={id}
             id={id}
             placeholder={label}
+            onChange={this.onChange}
           >
             {majors.map(major => (
               <option key={normalize(major)} value={normalize(major)}>
@@ -79,6 +80,7 @@ class Council extends React.Component {
             name={id}
             id={id}
             placeholder={label}
+            onChange={this.onChange}
           />
         )}
       </FormGroup>

@@ -7,41 +7,45 @@ const NAME_SPACE = "ve.edu.unimet.ceu";
  * @transaction
  */
 async function buildElectoralGroup(tx) {
-  const {
-    uuid,
-    name,
-    colorHex,
-    colorName,
-    logo,
-    number,
-    electionYear,
-    electoralRepresentative,
-    electoralPresident
-  } = tx;
-  const factory = getFactory();
-  const electoralGroup = factory.newResource(
-    `${NAME_SPACE}`,
-    "GrupoElectoral",
-    uuid
-  );
-  const registry = await getAssetRegistry(`${NAME_SPACE}.GrupoElectoral`);
-  electoralGroup.name = name;
-  electoralGroup.colorHex = colorHex;
-  electoralGroup.colorName = colorName;
-  electoralGroup.logo = logo;
-  electoralGroup.number = number;
-  electoralGroup.electionYear = electionYear;
-  electoralGroup.electoralRepresentative = factory.newRelationship(
-    `${NAME_SPACE}`,
-    "RepresentanteElectoral",
-    electoralRepresentative
-  );
-  electoralGroup.electoralPresident = factory.newRelationship(
-    `${NAME_SPACE}`,
-    "PresidenteElectoral",
-    electoralPresident
-  );
-  await registry.add(electoralGroup);
+  try {
+    const {
+      uuid,
+      name,
+      colorHex,
+      colorName,
+      logo,
+      number,
+      electionYear,
+      electoralRepresentative,
+      electoralPresident
+    } = tx;
+    const factory = getFactory();
+    const electoralGroup = factory.newResource(
+      `${NAME_SPACE}`,
+      "GrupoElectoral",
+      uuid
+    );
+    const registry = await getAssetRegistry(`${NAME_SPACE}.GrupoElectoral`);
+    electoralGroup.name = name;
+    electoralGroup.colorHex = colorHex;
+    electoralGroup.colorName = colorName;
+    electoralGroup.logo = logo;
+    electoralGroup.number = number;
+    electoralGroup.electionYear = electionYear;
+    electoralGroup.electoralRepresentative = factory.newRelationship(
+      `${NAME_SPACE}`,
+      "RepresentanteElectoral",
+      electoralRepresentative
+    );
+    electoralGroup.electoralPresident = factory.newRelationship(
+      `${NAME_SPACE}`,
+      "PresidenteElectoral",
+      electoralPresident
+    );
+    await registry.add(electoralGroup);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 /**
@@ -132,7 +136,7 @@ async function buildElectoralRepresentative(tx) {
   const factory = getFactory();
   const electoralRepresentative = factory.newResource(
     NAME_SPACE,
-    "RepresentateElectoral",
+    "RepresentanteElectoral",
     uuid
   );
   electoralRepresentative.name = name;
@@ -150,7 +154,7 @@ async function buildVoter(tx) {
   try {
     const { uuid, name, email } = tx;
     const factory = getFactory();
-    const voter = await factory.newResource(`${NAME_SPACE}`, "Votante", uuid);
+    const voter = factory.newResource(`${NAME_SPACE}`, "Votante", uuid);
     voter.name = name;
     voter.email = email;
     voter.canVote = true;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "reactstrap";
-import { Header, Toast, notify } from "../../components";
+import { Header, Toast, notify, Loading } from "../../components";
 import {
   Checkout,
   Council,
@@ -235,9 +235,7 @@ class DashPostulate extends React.Component {
     if (this.state.loading) {
       return (
         <Card>
-          <div className="d-flex justify-content-center p-4">
-            <h2>Loading ...</h2>
-          </div>
+          <Loading />
         </Card>
       );
     } else {

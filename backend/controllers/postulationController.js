@@ -97,7 +97,9 @@ exports.createPostulation = async (req, res) => {
 
 exports.getPostulation = async (req, res) => {
   try {
-    const postulation = await Postulation.findById(req.params.id);
+    const postulation = await Postulation.findById(req.params.id).populate(
+      "electoralGroup"
+    );
     res.json({ success: true, postulation });
   } catch (err) {
     res.json({ success: false, err: new Error(err.message) });
@@ -106,7 +108,17 @@ exports.getPostulation = async (req, res) => {
 
 exports.getPostulations = async (req, res) => {
   try {
-    const postulations = await Postulation.find({});
+    let postulations = await Postulation.find({
+      year: new Date().getFullYear()
+      // passed: 1
+    }).populate("electoralGroup");
+    postulations = postulations.map(
+      ({ electoralGroup: { denomination }, _id }, i) => [
+        i + 1,
+        denomination,
+        _id
+      ]
+    );
     res.json({ success: true, postulations });
   } catch (err) {
     res.json({ success: false, err: new Error(err.message) });

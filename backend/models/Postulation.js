@@ -50,7 +50,11 @@ const postulationSchema = new mongoose.Schema({
       substitute: Number,
       schoolKey: String
     }
-  ]
+  ],
+  year: {
+    type: Number,
+    default: new Date().getFullYear()
+  }
 });
 
 module.exports = mongoose.model("Postulation", postulationSchema);
