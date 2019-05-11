@@ -59,6 +59,7 @@ Esta sección es un fuerte agradecimiento todas aquellas librerías que facilita
 15. [Passport](http://www.passportjs.org/)
 16. [React Toastify](https://fkhadra.github.io/react-toastify/)
 17. [Crypto-js](https://www.npmjs.com/package/crypto-js)
+18. [Cypress](https://www.cypress.io/)
 
 #### Alguna Duda?
 
