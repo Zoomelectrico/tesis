@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 const AES = require("crypto-js/aes");
 
 const User = mongoose.model("User");
+const Postulation = mongoose.model("Postulation");
 
 exports.canVote = async (req, res) => {
   try {
@@ -19,10 +20,16 @@ exports.canVote = async (req, res) => {
         voter.canVote &&
         !voter.electionsYears.includes(new Date().getFullYear())
       ) {
-        return res.json({ success: true, voter, secret: user.secret });
+        return res.json({
+          success: true,
+          canVote: true,
+          voter,
+          secret: user.secret
+        });
       }
       return res.json({
-        success: false,
+        success: true,
+        canVote: false,
         err: new Error("Este Usuario ya ha votado o no Puede votar")
       });
     }
@@ -93,6 +100,14 @@ exports.getPostulation = async (req, res) => {
         electoralGroup
       };
     });
+    const ids = postulations.map(({ uuid }) => uuid);
+    const _postulations = await Postulation.find({
+      _id: { $in: [...ids.map(id => mongoose.Types.ObjectId(id))] }
+    }).populate("electoralGroup");
+    postulations = postulations.map((p, i) => ({
+      ...p,
+      electoralGroupName: _postulations[i].electoralGroup.denomination
+    }));
     res.json({ success: true, postulations });
   } catch (err) {
     console.log(err);
@@ -102,11 +117,36 @@ exports.getPostulation = async (req, res) => {
 
 exports.vote = async (req, res) => {
   try {
-    let data = AES.decrypt(req.body.data, req.body.key);
-    data = JSON.parse(data);
-    console.log(data);
+    const user = await User.findById(req.params.id);
+    const vote = JSON.parse(
+      AES.decrypt(req.body.data, user.secret).toString(
+        require("crypto-js").enc.Utf8
+      )
+    );
+    const [] = await Promise.all([
+      fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Voto`, {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          $class: "ve.edu.unimet.ceu.Voto",
+          ...vote,
+          year: new Date().getFullYear()
+        })
+      }).then(_res => _res.json()),
+      fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.updateVoter`, {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          $class: "ve.edu.unimet.ceu.updateVoter",
+          uuid: user._id,
+          electionsYear: new Date().getFullYear(),
+          canVote: true
+        })
+      }).then(_res => _res.json())
+    ]);
     res.json({ success: true });
   } catch (err) {
+    console.log(err);
     res.json({ success: false, err: new Error(err.message) });
   }
 };
@@ -127,9 +167,16 @@ exports.computeResults = async (req, res) => {
     );
     const results = {};
     const postulationsIds = postulations.map(({ uuid }) => uuid);
+    const _postulations = await Postulation.find({
+      _id: {
+        $in: [...postulationsIds.map(id => mongoose.Types.ObjectId(id))]
+      }
+    }).populate("electoralGroup");
     votes = votes.filter(vote => vote.year === year);
-    postulationsIds.forEach(uuid => {
+    postulationsIds.forEach((uuid, i) => {
       results[uuid] = {
+        name: _postulations[i].electoralGroup.denomination,
+        color: _postulations[i].electoralGroup.colorHex,
         fce: votes.reduce((pv, cv) => (cv.fce === uuid ? pv + 1 : pv + 0), 0),
         sports: votes.reduce(
           (pv, cv) => (cv.sports === uuid ? pv + 1 : pv + 0),

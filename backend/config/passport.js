@@ -56,7 +56,7 @@ passport.use(
     },
     async (payload, done) => {
       try {
-        const user = await User.findById(payload.id);
+        const user = await User.findById(payload.id, "-password");
         if (!user) {
           done(
             new Error("Cannot access this route", false, {
@@ -64,12 +64,7 @@ passport.use(
             })
           );
         } else {
-          const { _id, firstName, lastName, dni, carnet, email, code } = user;
-          done(
-            false,
-            { _id, firstName, lastName, dni, carnet, email, code },
-            { message: "You have authorization" }
-          );
+          done(false, user, { message: "You have authorization" });
         }
       } catch (err) {
         done(err, false, { message: "Database Error" });

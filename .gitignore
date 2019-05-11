@@ -16,3 +16,4 @@
 /backend/node_modules/
 /backend/variables.env
 /blockchain/node_modules
+node_modules

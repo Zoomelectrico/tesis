@@ -121,10 +121,16 @@ router.get(
 );
 
 router.post(
-  "/vote",
+  "/vote/:id",
   passport.authenticate("jwt", { session: false }),
   voteController.canVoteMw,
   voteController.vote
+);
+
+router.get(
+  "/results",
+  // passport.authenticate("jwt", { session: false }),
+  voteController.computeResults
 );
 
 module.exports = router;

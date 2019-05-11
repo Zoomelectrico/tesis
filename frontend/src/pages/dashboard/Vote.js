@@ -12,28 +12,40 @@ import {
   Input
 } from "reactstrap";
 import AES from "crypto-js/aes";
-import { Header, Toast, notify } from "../../components";
+import { Header, Toast, notify, Loading } from "../../components";
 import { get, post } from "../../utils";
-
+import { randomBytes } from "crypto";
 class DashVote extends React.Component {
   state = {
     voter: {},
     secret: "",
     postulations: [],
     loading: true,
-    vote: {}
+    vote: {
+      uuid: randomBytes(32).toString("hex"),
+      fce: "__blank__",
+      sports: "__blank__",
+      services: "__blank__",
+      culture: "__blank__",
+      academic: "__blank__",
+      responsibility: "__blank__",
+      academicCouncil: "__blank__",
+      schoolsCouncil: "__blank__",
+      facultyCouncil: "__blank__",
+      studentsCenters: "__blank__"
+    }
   };
 
   submitVote = async e => {
     try {
       e.preventDefault();
       const { vote, secret } = this.state;
-      const encrypted = AES.encrypt(JSON.stringify(vote), secret);
-      const data = await post(``, { data: encrypted });
+      const encrypted = AES.encrypt(JSON.stringify(vote), secret).toString();
+      const data = await post(`vote/${this.props.user._id}`, {
+        data: encrypted
+      });
       if (data.success) {
-        setTimeout(() => {
-          this.props.history.push("/app/dashboard?vote=true");
-        }, 2000);
+        this.props.history.push("/app/dashboard?vote=true");
       } else {
         notify("Ha ocurrido un problema al computar su voto", false);
       }
@@ -74,6 +86,12 @@ class DashVote extends React.Component {
   async componentDidMount() {
     if (this.props.user.major && this.props.user.faculty) {
       const [err, data] = await this.userCanVote(this.props.user._id);
+      if (!data.canVote) {
+        this.props.history.push(
+          "/app/dashboard?reason=Ya-ha-votado&bool=false"
+        );
+        return;
+      }
       if (err) {
         notify(
           <p>
@@ -99,6 +117,7 @@ class DashVote extends React.Component {
       if (data && data2) {
         const { voter, secret } = data;
         const { postulations } = data2;
+        console.log(data, data2);
         this.setState({
           ...this.state,
           voter,
@@ -138,16 +157,25 @@ class DashVote extends React.Component {
             <Row>
               <Col md="6">
                 <FormGroup>
-                  <Label for="federation">Voto Lista Junta Directiva</Label>
+                  <Label for="fce">Voto Lista Junta Directiva</Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="federation"
-                    id="federation"
+                    name="fce"
+                    id="fce"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.fce ? (
+                        <option value={p.fce.uuid} key={`${p.fce.uuid}-fce`}>
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -159,10 +187,22 @@ class DashVote extends React.Component {
                     type="select"
                     name="sports"
                     id="sports"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.sports ? (
+                        <option
+                          value={p.sports.uuid}
+                          key={`${p.sports.uuid}-sports`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -176,10 +216,22 @@ class DashVote extends React.Component {
                     type="select"
                     name="culture"
                     id="culture"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.culture ? (
+                        <option
+                          value={p.culture.uuid}
+                          key={`${p.culture.uuid}-culture`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -193,10 +245,22 @@ class DashVote extends React.Component {
                     type="select"
                     name="services"
                     id="services"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.services ? (
+                        <option
+                          value={p.services.uuid}
+                          key={`${p.services.uuid}-services`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -210,27 +274,51 @@ class DashVote extends React.Component {
                     type="select"
                     name="academic"
                     id="academic"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.academic ? (
+                        <option
+                          value={p.academic.uuid}
+                          key={`${p.academic.uuid}-academic`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
               <Col md="6">
                 <FormGroup>
-                  <Label for="responsability">
+                  <Label for="responsibility">
                     Voto Lista Coordinacion de Resp. Social Universitaria
                   </Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="responsability"
-                    id="responsability"
+                    name="responsibility"
+                    id="responsibility"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.responsibility ? (
+                        <option
+                          value={p.responsibility.uuid}
+                          key={`${p.responsibility.uuid}-responsibility`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -245,16 +333,30 @@ class DashVote extends React.Component {
             <Row>
               <Col md="6">
                 <FormGroup>
-                  <Label for="adviser">Voto por Consejero Academico</Label>
+                  <Label for="academicCouncil">
+                    Voto por Consejero Academico
+                  </Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="adviser"
-                    id="adviser"
+                    name="academicCouncil"
+                    id="academicCouncil"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.academicCouncil ? (
+                        <option
+                          value={p.academicCouncil.uuid}
+                          key={`${p.academicCouncil.uuid}-academicCouncil`}
+                        >
+                          {p.academicCouncil.advisers.name}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -272,50 +374,94 @@ class DashVote extends React.Component {
             <Row>
               <Col md="4">
                 <FormGroup>
-                  <Label for="school">Voto para el Centro de Estudiantes</Label>
+                  <Label for="studentsCenters">
+                    Voto para el Centro de Estudiantes
+                  </Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="school"
-                    id="school"
+                    name="studentsCenters"
+                    id="studentsCenters"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="option 1">Opcion 1</option>
-                    <option value="option 1">Opcion 1</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.studentsCenters.length > 0 ? (
+                        <option
+                          key={`${p.studentsCenters[0].uuid}-student-center`}
+                          value={`${p.studentsCenters[0].uuid}-${
+                            this.props.user.major
+                          }`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
               <Col md="4">
                 <FormGroup>
-                  <Label for="school-council">
+                  <Label for="schoolsCouncil">
                     Voto para el Consejo de Escuela
                   </Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="school-council"
-                    id="school-council"
+                    name="schoolsCouncil"
+                    id="schoolsCouncil"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="option 1">Opcion 1</option>
-                    <option value="option 1">Opcion 1</option>
+                    <option value="none" disabled>
+                      Seleccione una Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.schoolsCouncil.length > 0 ? (
+                        <option
+                          key={`${p.schoolsCouncil[0].uuid}-schoolsCouncil`}
+                          value={`${p.schoolsCouncil[0].uuid}-${
+                            this.props.user.major
+                          }`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
               <Col md="4">
                 <FormGroup>
-                  <Label for="faculty-council">
+                  <Label for="facultyCouncil">
                     Voto para el Consejo de Facultad
                   </Label>
                   <Input
                     className="form-control-alternative"
                     type="select"
-                    name="faculty-council"
-                    id="faculty-council"
+                    name="facultyCouncil"
+                    id="facultyCouncil"
+                    defaultValue="none"
                     onChange={this.onChange}
                   >
-                    <option value="option 1">Opcion 1</option>
-                    <option value="option 1">Opcion 1</option>
+                    <option disabled value="none">
+                      Seleccione un Opcion
+                    </option>
+                    {this.state.postulations.map(p =>
+                      p.facultyCouncil.length > 0 ? (
+                        <option
+                          key={`${p.facultyCouncil[0].uuid}-facultyCouncil`}
+                          value={`${p.facultyCouncil[0].uuid}-${
+                            this.props.user.faculty
+                          }`}
+                        >
+                          {p.electoralGroupName}
+                        </option>
+                      ) : null
+                    )}
                   </Input>
                 </FormGroup>
               </Col>
@@ -357,9 +503,7 @@ class DashVote extends React.Component {
             <Col md="12">
               {this.state.loading ? (
                 <Card>
-                  <Row className="justify-content-center">
-                    <div className="p-4">Loading ...</div>
-                  </Row>
+                  <Loading />
                 </Card>
               ) : (
                 this.voteElements()

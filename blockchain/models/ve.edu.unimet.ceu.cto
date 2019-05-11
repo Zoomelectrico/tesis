@@ -145,6 +145,7 @@ asset GrupoElectoral identified by uuid {
 // Voto: Representacion del voto
 asset Voto identified by uuid {
   o String uuid
+  o Integer year
   o String fce
   o String sports
   o String services

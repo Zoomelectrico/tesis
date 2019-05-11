@@ -37,7 +37,7 @@ const routes = [
     name: "Perfil",
     path: "/app/dashboard/profile",
     icon: "fas fa-user",
-    exact: true,
+    exact: false,
     minLevel: [1, 2, 3, 4],
     component: props => <DashProfile {...props} />
   },
@@ -45,7 +45,7 @@ const routes = [
     name: "Postular",
     path: "/app/dashboard/postulate",
     icon: "fas fa-user-plus",
-    exact: true,
+    exact: false,
     minLevel: [2],
     component: props => <DashPostulate {...props} />
   },
@@ -53,7 +53,7 @@ const routes = [
     name: "Solicitudes",
     path: "/app/dashboard/demands",
     icon: "fas fa-paste",
-    exact: true,
+    exact: false,
     minLevel: [3, 4],
     component: props => <DashDemands {...props} />
   },
@@ -61,7 +61,7 @@ const routes = [
     name: "Votar",
     path: "/app/dashboard/vote",
     icon: "fas fa-receipt",
-    exact: true,
+    exact: false,
     minLevel: [1, 2],
     component: props => <DashVote {...props} />
   },
@@ -69,7 +69,7 @@ const routes = [
     name: "Resultados",
     path: "/app/dashboard/results",
     icon: "fas fa-poll",
-    exact: true,
+    exact: false,
     minLevel: [1, 2, 3, 4],
     component: props => <DashResults {...props} />
   },
@@ -77,7 +77,7 @@ const routes = [
     name: "Grupos Electorales",
     path: "/app/dashboard/electoral-groups",
     icon: "fas fa-users",
-    exact: true,
+    exact: false,
     minLevel: [1, 2, 3, 4],
     component: props => <DashElectoralGroups {...props} />
   },
@@ -85,7 +85,7 @@ const routes = [
     name: "Postulaciones",
     path: "/app/dashboard/postulations",
     icon: "fas fa-clipboard-list",
-    exact: true,
+    exact: false,
     minLevel: [1, 2, 3, 4],
     component: props => <DashPostulations {...props} />
   },
@@ -93,7 +93,7 @@ const routes = [
     name: "__none__",
     path: "/app/dashboard/electoral-group",
     icon: "fas fa-users",
-    exact: true,
+    exact: false,
     minLevel: [3, 4],
     component: props => <ElectoralGroup {...props} />
   },
@@ -101,7 +101,7 @@ const routes = [
     name: "__none__2",
     path: "/app/dashboard/postulation",
     icon: "fas fa-clipboard-list",
-    exact: true,
+    exact: false,
     minLevel: [3, 4],
     component: props => <Postulation {...props} />
   }
