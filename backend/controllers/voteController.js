@@ -175,6 +175,7 @@ exports.computeResults = async (req, res) => {
     votes = votes.filter(vote => vote.year === year);
     postulationsIds.forEach((uuid, i) => {
       results[uuid] = {
+        year: new Date().getFullYear(),
         name: _postulations[i].electoralGroup.denomination,
         color: _postulations[i].electoralGroup.colorHex,
         fce: votes.reduce((pv, cv) => (cv.fce === uuid ? pv + 1 : pv + 0), 0),
@@ -202,18 +203,9 @@ exports.computeResults = async (req, res) => {
           (pv, cv) => (cv.academicCouncil === uuid ? pv + 1 : pv + 0),
           0
         ),
-        schoolsCouncil: votes.reduce(
-          (pv, cv) => (cv.schoolsCouncil === uuid ? pv + 1 : pv + 0),
-          0
-        ),
-        facultyCouncil: votes.reduce(
-          (pv, cv) => (cv.facultyCouncil === uuid ? pv + 1 : pv + 0),
-          0
-        ),
-        studentsCenters: votes.reduce(
-          (pv, cv) => (cv.studentsCenters === uuid ? pv + 1 : pv + 0),
-          0
-        )
+        schoolsCouncil: schoolsCouncilHelper(uuid, votes),
+        facultyCouncil: facultyCouncilHelper(uuid, votes),
+        studentsCenters: studentsCentersHelper(uuid, votes)
       };
     });
     res.json({ success: true, results });
@@ -221,6 +213,84 @@ exports.computeResults = async (req, res) => {
     res.json({ success: false, err: new Error(err.message) });
   }
 };
+
+/**
+ * @function
+ * @description
+ * @param {*} uuid
+ * @param {*} votes
+ * @returns {Object}
+ */
+const studentsCentersHelper = (uuid, votes) => {
+  const obj = {};
+  majors.forEach(major => {
+    obj[major] = votes.reduce(
+      (pv, cv) => (cv.studentsCenters === `${uuid}-${major}` ? pv + 1 : pv + 0),
+      0
+    );
+  });
+  return obj;
+};
+
+/**
+ * @function
+ * @description
+ * @param {*} uuid
+ * @param {*} votes
+ * @returns {Object}
+ */
+const facultyCouncilHelper = (uuid, votes) => {
+  const obj = {};
+  faculties.forEach(faculty => {
+    obj[faculty] = votes.reduce(
+      (pv, cv) =>
+        cv.facultyCouncil === `${uuid}-${faculty}` ? pv + 1 : pv + 0,
+      0
+    );
+  });
+};
+
+/**
+ * @function
+ * @description
+ * @param {*} uuid
+ * @param {*} votes
+ * @returns {Object}
+ */
+const schoolsCouncilHelper = (uuid, votes) => {
+  const obj = {};
+  majors.forEach(major => {
+    obj[major] = votes.reduce(
+      (pv, cv) => (cv.schoolsCouncil === `${uuid}-${major}` ? pv + 1 : pv + 0),
+      0
+    );
+  });
+};
+
+const faculties = [
+  "facultad-de-ciencias-economicas-y-sociales",
+  "facultad-de-ingenieria",
+  "facultad-de-ciencias-y-artes",
+  "facultad-de-estudios-juridicos-y-politicos"
+];
+
+const majors = [
+  "ciencias-administrativas",
+  "economia-empresarial",
+  "contaduria-publica",
+  "ingenieria-civil",
+  "ingenieria-mecanica",
+  "ingenieria-de-produccion",
+  "ingenieria-quimica",
+  "ingenieria-de-sistemas",
+  "ingenieria-electrica",
+  "educacion",
+  "idiomas-modernos",
+  "matematicas-industriales",
+  "psicologia",
+  "estudios-liberales",
+  "derecho"
+];
 
 exports.getResults = async (req, res) => {};
 

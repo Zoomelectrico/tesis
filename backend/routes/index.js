@@ -128,9 +128,15 @@ router.post(
 );
 
 router.get(
-  "/results",
+  "/preliminary-results",
   // passport.authenticate("jwt", { session: false }),
   voteController.computeResults
+);
+
+router.get(
+  "/results",
+  // passport.authenticate("jwt", { session: false }),
+  voteController.getResults
 );
 
 module.exports = router;

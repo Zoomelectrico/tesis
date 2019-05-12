@@ -71,6 +71,11 @@ const DashProfile = props => {
     }
   };
 
+  const previewResults = e => {
+    e.preventDefault();
+    props.history.push("/app/dashboard/results?preliminary=true");
+  };
+
   const valueProp = {};
   user.major
     ? (valueProp.value = user.major)
@@ -208,7 +213,7 @@ const DashProfile = props => {
                       <Button
                         color="neutral"
                         className="my-auto"
-                        onClick={e => e.preventDefault()}
+                        onClick={e => previewResults(e)}
                       >
                         Resultados Preliminares
                       </Button>

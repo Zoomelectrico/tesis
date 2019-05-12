@@ -49,13 +49,28 @@ const resultHelper = (results = {}) => {
   return obj;
 };
 
-const Results = props => {
-  const [state, setState] = useState({ loading: true, results: {} });
+const Results = ({ location }) => {
+  const params = new URLSearchParams(location.search);
+  const [state, setState] = useState({
+    loading: true,
+    results: {},
+    preliminary: false
+  });
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await get("results");
-        setState({ loading: false, results: resultHelper(data.results) });
+        let data;
+        if (params.get("preliminary") === "true") {
+          data = await get("preliminary-results");
+          setState({
+            loading: false,
+            preliminary: true,
+            results: resultHelper(data.results)
+          });
+        } else {
+          data = await get("results");
+          setState({ loading: false, results: data.results });
+        }
       } catch (err) {
         notify("Ha ocurrido un error, intente refrescando el navegador", false);
       }
@@ -69,10 +84,12 @@ const Results = props => {
         {state.loading ? (
           <Row>
             <Col sm="12">
-              <Loading />
+              <Card>
+                <Loading />
+              </Card>
             </Col>
           </Row>
-        ) : (
+        ) : state.preliminary ? (
           <Row>
             <Col md="6">
               <Card style={{ backgroundColor: "#f5f7f9" }}>
@@ -82,7 +99,7 @@ const Results = props => {
                 <CardBody>
                   <Row>
                     <Col sm="12">
-                      <Pie data={data} />
+                      <Pie data={state.results.fce} />
                     </Col>
                   </Row>
                 </CardBody>
@@ -96,7 +113,38 @@ const Results = props => {
                 <CardBody>
                   <Row>
                     <Col sm="12">
-                      <Pie data={data} />
+                      <Pie data={state.results} />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        ) : (
+          <Row>
+            <Col md="6">
+              <Card style={{ backgroundColor: "#f5f7f9" }}>
+                <CardHeader>
+                  <h2> Resultados FCE </h2>
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col sm="12">
+                      <Pie data={state.results.fce} />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col md="6">
+              <Card style={{ backgroundColor: "#f5f7f9" }}>
+                <CardHeader>
+                  <h2> Resultados FCE 2 </h2>
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col sm="12">
+                      <Pie data={state.results} />
                     </Col>
                   </Row>
                 </CardBody>

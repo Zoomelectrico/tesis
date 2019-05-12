@@ -5,11 +5,11 @@ import { Header, Toast, notify } from "../../components";
 
 const DashHome = ({ user, location }) => {
   const params = new URLSearchParams(location.search);
-  const reason = params.get("reason").replace(/[-]/g, " ");
+  const reason = params.get("reason");
   const bool = params.get("bool") === "true";
   useEffect(() => {
     if (reason) {
-      notify(reason, bool);
+      notify(reason.replace(/[-]/g, " "), bool);
     }
   }, []);
   return (
