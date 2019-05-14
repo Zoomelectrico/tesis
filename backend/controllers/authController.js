@@ -19,7 +19,8 @@ exports.login = async (req, res, next) => {
       carnet: user.carnet,
       email: user.email,
       code: user.code,
-      major: user.major
+      major: user.major,
+      faculty: user.faculty
     };
     return res.json({ user: _user, success: true, token });
   } catch (err) {

@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Container, Col, Row, Card, CardHeader, CardBody } from "reactstrap";
-import { Header, Toast, notify } from "../../components";
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Col, Row, Card, CardHeader, CardBody } from 'reactstrap';
+import { Header, Toast, notify } from '../../components';
 
 const DashHome = ({ user, location }) => {
   const params = new URLSearchParams(location.search);
-  const reason = params.get("reason");
-  const bool = params.get("bool") === "true";
+  const reason = params.get('reason');
+  const vote = params.get('vote') === 'true';
+  const bool = params.get('bool') === 'true';
   useEffect(() => {
     if (reason) {
-      notify(reason.replace(/[-]/g, " "), bool);
+      notify(reason.replace(/[-]/g, ' '), bool);
+    }
+    if (vote) {
+      notify('Felicidades ha Votado', true);
     }
   }, []);
   return (
@@ -29,9 +34,9 @@ const DashHome = ({ user, location }) => {
                     <ul>
                       {!user.carnet || !user.major ? (
                         <li>
-                          {" "}
-                          Por favor, complete su{" "}
-                          <Link to="/app/dashboard/profile">Perfil</Link>{" "}
+                          {' '}
+                          Por favor, complete su{' '}
+                          <Link to="/app/dashboard/profile">Perfil</Link>{' '}
                         </li>
                       ) : null}
                     </ul>

@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 import {
   Container,
   Row,
@@ -9,50 +11,94 @@ import {
   Button,
   FormGroup,
   Label,
-  Input
-} from "reactstrap";
-import AES from "crypto-js/aes";
-import { Header, Toast, notify, Loading } from "../../components";
-import { get, post } from "../../utils";
-import { randomBytes } from "crypto";
+  Input,
+} from 'reactstrap';
+import AES from 'crypto-js/aes';
+import { randomBytes } from 'crypto';
+import { Header, Toast, notify, Loading } from '../../components';
+import { get, post } from '../../utils';
+
 class DashVote extends React.Component {
   state = {
     voter: {},
-    secret: "",
+    secret: '',
     postulations: [],
     loading: true,
     vote: {
-      uuid: randomBytes(32).toString("hex"),
-      fce: "__blank__",
-      sports: "__blank__",
-      services: "__blank__",
-      culture: "__blank__",
-      academic: "__blank__",
-      responsibility: "__blank__",
-      academicCouncil: "__blank__",
-      schoolsCouncil: "__blank__",
-      facultyCouncil: "__blank__",
-      studentsCenters: "__blank__"
-    }
+      uuid: randomBytes(32).toString('hex'),
+      fce: '__blank__',
+      sports: '__blank__',
+      services: '__blank__',
+      culture: '__blank__',
+      academic: '__blank__',
+      responsibility: '__blank__',
+      academicCouncil: '__blank__',
+      schoolsCouncil: '__blank__',
+      facultyCouncil: '__blank__',
+      studentsCenters: '__blank__',
+    },
   };
 
-  submitVote = async e => {
-    try {
-      e.preventDefault();
-      const { vote, secret } = this.state;
-      const encrypted = AES.encrypt(JSON.stringify(vote), secret).toString();
-      const data = await post(`vote/${this.props.user._id}`, {
-        data: encrypted
-      });
+  async componentDidMount() {
+    console.log(this.props.user);
+    if (this.props.user.major && this.props.user.faculty) {
+      const [err, data] = await this.userCanVote(this.props.user._id);
       if (data.success) {
-        this.props.history.push("/app/dashboard?vote=true");
-      } else {
-        notify("Ha ocurrido un problema al computar su voto", false);
+        if (!data.canVote) {
+          this.props.history.push(
+            '/app/dashboard?reason=Ya-ha-votado&bool=false'
+          );
+          return;
+        }
       }
-    } catch (err) {
-      notify("Ha ocurrido un problema con la votacion", false);
+      if (err) {
+        notify(
+          <p>
+            Ha ocurrido un problema, comuniquese con la{' '}
+            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+          </p>,
+          false
+        );
+        return;
+      }
+      const [err2, data2] = await this.getPostulations(
+        this.props.user._id,
+        this.props.user.major,
+        this.props.user.faculty
+      );
+      if (err2) {
+        notify(
+          'Ha ocurrido un problema, intente refrescado el navegador',
+          false
+        );
+        return;
+      }
+      if (data && data2) {
+        const { voter, secret } = data;
+        const { postulations } = data2;
+        console.log(data, data2);
+        this.setState({
+          ...this.state,
+          voter,
+          secret,
+          postulations,
+          loading: false,
+        });
+      } else {
+        notify(
+          <p>
+            Ha ocurrido un problema, comuniquese con la{' '}
+            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+          </p>,
+          false
+        );
+      }
+    } else {
+      this.props.history.push(
+        `/app/dashboard/profile?url=/app/dashboard/vote&reason=Completa-tu-perfil-para-poder-votar`
+      );
     }
-  };
+  }
 
   onChange = e => {
     e.preventDefault();
@@ -60,8 +106,8 @@ class DashVote extends React.Component {
       ...this.state,
       vote: {
         ...this.state.vote,
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+      },
     });
   };
 
@@ -83,67 +129,27 @@ class DashVote extends React.Component {
     }
   };
 
-  async componentDidMount() {
-    if (this.props.user.major && this.props.user.faculty) {
-      const [err, data] = await this.userCanVote(this.props.user._id);
-      if (!data.canVote) {
-        this.props.history.push(
-          "/app/dashboard?reason=Ya-ha-votado&bool=false"
-        );
-        return;
-      }
-      if (err) {
-        notify(
-          <p>
-            Ha ocurrido un problema, comuniquese con la{" "}
-            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
-          </p>,
-          false
-        );
-        return;
-      }
-      const [err2, data2] = await this.getPostulations(
-        this.props.user._id,
-        this.props.user.major,
-        this.props.user.faculty
-      );
-      if (err2) {
-        notify(
-          "Ha ocurrido un problema, intente refrescado el navegador",
-          false
-        );
-        return;
-      }
-      if (data && data2) {
-        const { voter, secret } = data;
-        const { postulations } = data2;
-        console.log(data, data2);
-        this.setState({
-          ...this.state,
-          voter,
-          secret,
-          postulations,
-          loading: false
-        });
+  submitVote = async e => {
+    try {
+      e.preventDefault();
+      const { vote, secret } = this.state;
+      const encrypted = AES.encrypt(JSON.stringify(vote), secret).toString();
+      const data = await post(`vote/${this.props.user._id}`, {
+        data: encrypted,
+      });
+      if (data.success) {
+        this.props.history.push('/app/dashboard?vote=true');
       } else {
-        notify(
-          <p>
-            Ha ocurrido un problema, comuniquese con la{" "}
-            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
-          </p>,
-          false
-        );
+        notify('Ha ocurrido un problema al computar su voto', false);
       }
-    } else {
-      this.props.history.push(
-        `/app/dashboard/profile?url=/app/dashboard/vote&reason=Completa-tu-perfil-para-poder-votar`
-      );
+    } catch (err) {
+      notify('Ha ocurrido un problema con la votacion', false);
     }
-  }
+  };
 
   voteElements = () =>
     this.state.postulations.length > 0 ? (
-      <Card style={{ backgroundColor: "#f5f7f9" }}>
+      <Card style={{ backgroundColor: '#f5f7f9' }}>
         <CardHeader>
           <h2>Emision del Voto</h2>
         </CardHeader>
