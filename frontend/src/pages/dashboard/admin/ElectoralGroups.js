@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-nested-ternary */
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Row,
@@ -6,26 +7,26 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Table
-} from "reactstrap";
-import { Header, Toast, notify, Loading } from "../../../components";
+  Table,
+} from 'reactstrap';
+import { Header, Toast, notify, Loading } from '../../../components';
 
-import { get } from "../../../utils";
+import { get } from '../../../utils';
 
 const ElectoralGroup = props => {
   const [state, setState] = useState({ loading: true, electoralGroups: [] });
   useEffect(() => {
     const fetch = async () => {
-      const data = await get("electoral-groups");
+      const data = await get('electoral-groups');
       if (data.success) {
         console.log(data);
         setState({
           loading: false,
-          electoralGroups: data.electoralGroups
+          electoralGroups: data.electoralGroups,
         });
         return;
       }
-      notify("Ha Ocurrido un Error refresca la pagina", false);
+      notify('Ha Ocurrido un Error refresca la pagina', false);
     };
     fetch();
   }, []);
@@ -43,7 +44,7 @@ const ElectoralGroup = props => {
                 {state.loading ? (
                   <Loading />
                 ) : state.electoralGroups.length > 0 ? (
-                  <Table>
+                  <Table responsive>
                     <thead>
                       <tr>
                         <td>Denominacion</td>
@@ -53,7 +54,7 @@ const ElectoralGroup = props => {
                     </thead>
                     <tbody>
                       {state.electoralGroups.map(row => (
-                        <tr key={row.join("-")}>
+                        <tr key={row.join('-')}>
                           {row.map(data => (
                             <td key={data}>{data}</td>
                           ))}

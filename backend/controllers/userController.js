@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-const fetch = require("node-fetch");
+const mongoose = require('mongoose');
+const fetch = require('node-fetch');
 
 mongoose.Promise = global.Promise;
-const User = mongoose.model("User");
+const User = mongoose.model('User');
 
 exports.getUserByEmail = async (req, res) => {
   try {
@@ -17,16 +17,16 @@ exports.getUserByEmail = async (req, res) => {
 exports.validateUser = async (req, res, next) => {
   const { dni, email, password, rePassword } = req.body;
   const checks = [
-    email.endsWith("@correo.unimet.edu.ve") || email.endsWith("@unimet.edu.ve"),
-    password === rePassword
+    email.endsWith('@correo.unimet.edu.ve') || email.endsWith('@unimet.edu.ve'),
+    password === rePassword,
   ];
   if (!checks.includes(false)) {
     if (/\./g.test(dni)) {
-      req.body.dni = dni.replace(/\./g, "");
+      req.body.dni = dni.replace(/\./g, '');
     }
     return next();
   }
-  throw new Error("Email invalido");
+  throw new Error('Email invalido');
 };
 
 exports.createUser = async (req, res, next) => {
@@ -38,19 +38,19 @@ exports.createUser = async (req, res, next) => {
       dni,
       carnet,
       email,
-      password
+      password,
     });
     await fetch(
       `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.buildVoter`,
       {
-        method: "post",
+        method: 'post',
         body: JSON.stringify({
-          $class: "ve.edu.unimet.ceu.buildVoter",
+          $class: 've.edu.unimet.ceu.buildVoter',
           uuid: user._id,
           name: `${user.firstName} ${user.lastName}`,
-          email: user.email
+          email: user.email,
         }),
-        headers: { "Content-Type": "application/json" }
+        headers: { 'Content-Type': 'application/json' },
       }
     ).then(res2 => res2.json());
     next();
@@ -74,13 +74,49 @@ exports.getProfile = async (req, res) => {
         dni: user.dni,
         carnet: user.carnet,
         major: user.major,
-        faculty: user.faculty
-      }
+        faculty: user.faculty,
+      },
     });
   } catch (err) {
     console.log(err);
     res.json({ success: false, err: new Error(err.message) });
   }
+};
+
+const facultyHelper = major => {
+  const faces = [
+    'ciencias-administrativas',
+    'economia-empresarial',
+    'contaduria-publica',
+  ];
+  const ing = [
+    'ingenieria-civil',
+    'ingenieria-mecanica',
+    'ingenieria-de-produccion',
+    'ingenieria-quimica',
+    'ingenieria-de-sistemas',
+    'ingenieria-electrica',
+  ];
+  const ciencias = [
+    'educacion',
+    'idiomas-modernos',
+    'matematicas-industriales',
+    'psicologia',
+  ];
+  const juridica = ['estudios-liberales', 'derecho'];
+  if (faces.includes(major)) {
+    return 'facultad-de-ciencias-economicas-y-sociales';
+  }
+  if (ing.includes(major)) {
+    return 'facultad-de-ingenieria';
+  }
+  if (ciencias.includes(major)) {
+    return 'facultad-de-ciencias-y-artes';
+  }
+  if (juridica.includes(major)) {
+    return 'facultad-de-estudios-juridicos-y-politicos';
+  }
+  return 'error';
 };
 
 exports.updateUser = async (req, res) => {
@@ -102,45 +138,11 @@ exports.updateUser = async (req, res) => {
         dni: user.dni,
         carnet: user.carnet,
         major: user.major,
-        faculty: user.faculty
-      }
+        faculty: user.faculty,
+      },
     });
   } catch (err) {
     res.json({ success: false, err: new Error(err.message) });
     console.log(err);
-  }
-};
-
-const facultyHelper = major => {
-  const faces = [
-    "ciencias-administrativas",
-    "economia-empresarial",
-    "contaduria-publica"
-  ];
-  const ing = [
-    "ingenieria-civil",
-    "ingenieria-mecanica",
-    "ingenieria-de-produccion",
-    "ingenieria-quimica",
-    "ingenieria-de-sistemas",
-    "ingenieria-electrica"
-  ];
-  const ciencias = [
-    "educacion",
-    "idiomas-modernos",
-    "matematicas-industriales",
-    "psicologia"
-  ];
-  const juridica = ["estudios-liberales", "derecho"];
-  if (faces.includes(major)) {
-    return "facultad-de-ciencias-economicas-y-sociales";
-  } else if (ing.includes(major)) {
-    return "facultad-de-ingenieria";
-  } else if (ciencias.includes(major)) {
-    return "facultad-de-ciencias-y-artes";
-  } else if (juridica.includes(major)) {
-    return "facultad-de-estudios-juridicos-y-politicos";
-  } else {
-    return "error";
   }
 };

@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -8,28 +11,28 @@ import {
   FormGroup,
   Input,
   Label,
-  Button
-} from "reactstrap";
+  Button,
+} from 'reactstrap';
 
 import {
   majors,
   postulationFields,
   normalize,
-  normalizeInputs
-} from "../../../utils";
+  normalizeInputs,
+} from '../../../utils';
 
 const { academicCouncil: fields } = postulationFields;
 
 class Council extends React.Component {
   state = {
     academicCouncil: {
-      name: "",
-      email: "",
+      name: '',
+      email: '',
       dni: -1,
-      phone: "",
-      school: ""
+      phone: '',
+      school: '',
     },
-    ready: false
+    ready: false,
   };
 
   onChange = e => {
@@ -38,8 +41,8 @@ class Council extends React.Component {
       ...this.state,
       academicCouncil: {
         ...this.state.academicCouncil,
-        [normalizeInputs(e.target.name)]: e.target.value
-      }
+        [normalizeInputs(e.target.name)]: e.target.value,
+      },
     };
     this.setState(state);
   };
@@ -47,10 +50,10 @@ class Council extends React.Component {
   save = e => {
     e.preventDefault();
     localStorage.setItem(
-      "academic-council",
+      'academic-council',
       JSON.stringify(this.state.academicCouncil)
     );
-    this.props.save("academic-council", this.state.academicCouncil);
+    this.props.save('academic-council', this.state.academicCouncil);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -58,7 +61,7 @@ class Council extends React.Component {
     <Col md="4" key={id}>
       <FormGroup>
         <Label for={id}>{label}</Label>
-        {type === "select" ? (
+        {type === 'select' ? (
           <Input
             className="form-control-alternative"
             type={type}
@@ -90,8 +93,8 @@ class Council extends React.Component {
   render() {
     return (
       <Card
-        style={{ backgroundColor: "#f5f7f9" }}
-        className={`mb-4 ${this.state.ready ? "d-none" : ""}`}
+        style={{ backgroundColor: '#f5f7f9' }}
+        className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
       >
         <CardHeader>
           <h2>Postulacion para Consejo Academico</h2>

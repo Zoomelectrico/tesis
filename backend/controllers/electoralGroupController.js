@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const ElectoralGroup = mongoose.model("ElectoralGroup");
-const Demand = mongoose.model("Demand");
-const User = mongoose.model("User");
+const ElectoralGroup = mongoose.model('ElectoralGroup');
+const Demand = mongoose.model('Demand');
+const User = mongoose.model('User');
 
 exports.createElectoralGroup = async (req, res) => {
   try {
@@ -12,11 +12,12 @@ exports.createElectoralGroup = async (req, res) => {
 
     if (user.electoralGroups.length > 0) {
       const year = new Date().getFullYear();
+      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < user.electoralGroups.length; i++) {
         if (user.electoralGroups[i].electionYear === year) {
           return res.json({
             success: true,
-            msg: "Ya ha registrado un grupo electoral"
+            msg: 'Ya ha registrado un grupo electoral',
           });
         }
       }
@@ -28,22 +29,22 @@ exports.createElectoralGroup = async (req, res) => {
       colorHex,
       logo,
       color: colorName,
-      representative: user._id
+      representative: user._id,
     });
 
     if (electoralGroup) {
       user.electoralGroups.push(electoralGroup._id);
-      const [] = await Promise.all([
+      await Promise.all([
         Demand.create({
           user: user._id,
-          type: "GRUPO",
-          electoralGroup: electoralGroup._id
+          type: 'GRUPO',
+          electoralGroup: electoralGroup._id,
         }),
-        user.save()
+        user.save(),
       ]);
       res.json({ success: true, electoralGroup });
     } else {
-      res.json({ success: false, msg: "Problemas al registrar" });
+      res.json({ success: false, msg: 'Problemas al registrar' });
     }
   } catch (err) {
     console.log(err);
@@ -56,8 +57,8 @@ exports.getElectoralGroupByCreatorId = async (req, res) => {
     const { id } = req.params;
     const electoralGroup = await ElectoralGroup.findOne({
       representative: id,
-      electionYear: new Date().getFullYear()
-    }).populate("postulation");
+      electionYear: new Date().getFullYear(),
+    }).populate('postulation');
     if (electoralGroup) {
       res.json({ success: true, electoralGroup });
     } else {
@@ -73,18 +74,18 @@ exports.getElectoralGroups = async (req, res) => {
   try {
     let electoralGroups = await ElectoralGroup.find({
       electionYear: new Date().getFullYear(),
-      accepted: 1
-    }).populate("representative");
+      accepted: 1,
+    }).populate('representative');
     electoralGroups = electoralGroups.map(({ denomination, number, color }) => [
       denomination,
       number,
-      color
+      color,
     ]);
     res.json({ success: true, electoralGroups });
   } catch (err) {
     res.json({
-      err: new Error("Ocurrio un Error en la Base de Datos"),
-      success: false
+      err: new Error('Ocurrio un Error en la Base de Datos'),
+      success: false,
     });
   }
 };

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import vfs_fonts from "pdfmake/build/vfs_fonts";
-import pdfMake from "pdfmake/build/pdfmake";
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect } from 'react';
+import vfs_fonts from 'pdfmake/build/vfs_fonts';
+import pdfMake from 'pdfmake/build/pdfmake';
 import {
   Container,
   Row,
@@ -9,21 +10,21 @@ import {
   CardHeader,
   CardBody,
   Table,
-  Button
-} from "reactstrap";
-import { Header, notify, Toast, Loading } from "../../../components";
-import { get, generateDD, _fetch } from "../../../utils";
+  Button,
+} from 'reactstrap';
+import { Header, notify, Toast, Loading } from '../../../components';
+import { get, generateDD, _fetch } from '../../../utils';
 
 const Postulations = props => {
   const [state, setState] = useState({ loading: true, postulations: [] });
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await get("postulations");
+        const data = await get('postulations');
         console.log(data);
         setState({ loading: false, postulations: data.postulations });
       } catch (err) {
-        notify("Ha ocurrido un Error, pruebe refrescando la pagina!", false);
+        notify('Ha ocurrido un Error, pruebe refrescando la pagina!', false);
       }
     };
     fetch();
@@ -37,13 +38,13 @@ const Postulations = props => {
       const [err, dd] = await generateDD(res.postulation);
       if (err) {
         console.log(err);
-        return notify("Ha ocurrido un error", false);
+        return notify('Ha ocurrido un error', false);
       }
       pdfMake.vfs = vfs_fonts.pdfMake.vfs;
       pdfMake.createPdf(dd).open();
     } catch (err) {
       console.log(err);
-      notify("Ha ocurrido un Error al ver la postulacion", false);
+      notify('Ha ocurrido un Error al ver la postulacion', false);
     }
   };
 
@@ -61,7 +62,7 @@ const Postulations = props => {
                 {state.loading ? (
                   <Loading />
                 ) : state.postulations.length > 0 ? (
-                  <Table>
+                  <Table responsive>
                     <thead>
                       <tr>
                         <td>#</td>
@@ -71,7 +72,7 @@ const Postulations = props => {
                     </thead>
                     <tbody>
                       {state.postulations.map(row => (
-                        <tr key={row.join("-")}>
+                        <tr key={row.join('-')}>
                           {row.map((data, i) =>
                             i === row.length - 1 ? (
                               <td>

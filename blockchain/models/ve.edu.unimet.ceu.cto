@@ -162,19 +162,7 @@ asset Resultado identified by uuid {
   o String uuid
   o Integer year
   o DateTime saveAt
-  o Human president
-  o Human secretaryGeneral
-  o Human internalAffairs
-  o Human generalCoordinator
-  o Human treasurer
-  o Human[] sports
-  o Human[] services
-  o Human[] culture
-  o Human[] academic
-  o Human[] responsibility
-  o PostulacionCE[] schoolsCouncil
-  o PostulacionCF[] facultyCouncil
-  o PostulacionCEE[] studentsCenters
+  o String resultString
   --> PresidenteElectoral electoralPresident
 }
 

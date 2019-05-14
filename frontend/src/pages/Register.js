@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 import {
   Row,
   Col,
@@ -9,17 +11,17 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
-} from "reactstrap";
-import { Navbar, Toast, notify } from "../components";
+  Button,
+} from 'reactstrap';
+import { Navbar, Toast, notify } from '../components';
 
 // firstName, lastName, dni, carnet, email, password
 
 const Register = props => {
   useEffect(() => {
-    document.body.classList.add("bg-default");
+    document.body.classList.add('bg-default');
     return function cleanup() {
-      document.body.classList.remove("bg-default");
+      document.body.classList.remove('bg-default');
     };
   }, []);
 
@@ -27,10 +29,10 @@ const Register = props => {
     e.preventDefault();
     const [err, data] = await props.register();
     if (err) {
-      notify("Hubo un error con el Registro", false);
+      notify('Hubo un error con el Registro', false);
       return;
     }
-    props.history.push("/app/dashboard");
+    props.history.push('/app/dashboard');
   };
 
   return (
@@ -40,7 +42,7 @@ const Register = props => {
         <Container>
           <Row className="justify-content-center">
             <Col sm="12" md="10" lg="7">
-              <Card style={{ backgroundColor: "#f5f7f9" }}>
+              <Card style={{ backgroundColor: '#f5f7f9' }}>
                 <CardHeader>
                   <h3>Registrarse</h3>
                 </CardHeader>

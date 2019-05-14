@@ -1,49 +1,55 @@
-const mongoose = require("mongoose");
-const fetch = require("node-fetch");
-const AES = require("crypto-js/aes");
+/* eslint-disable no-plusplus */
+const mongoose = require('mongoose');
+const fetch = require('node-fetch');
+const {
+  enc: { Utf8 },
+  AES,
+} = require('crypto-js');
 
-const User = mongoose.model("User");
-const Postulation = mongoose.model("Postulation");
+const { randomBytes } = require('crypto');
+
+const User = mongoose.model('User');
+const Postulation = mongoose.model('Postulation');
 
 const faculties = [
-  "facultad-de-ciencias-economicas-y-sociales",
-  "facultad-de-ingenieria",
-  "facultad-de-ciencias-y-artes",
-  "facultad-de-estudios-juridicos-y-politicos"
+  'facultad-de-ciencias-economicas-y-sociales',
+  'facultad-de-ingenieria',
+  'facultad-de-ciencias-y-artes',
+  'facultad-de-estudios-juridicos-y-politicos',
 ];
 
 const majors = [
-  "ciencias-administrativas",
-  "economia-empresarial",
-  "contaduria-publica",
-  "ingenieria-civil",
-  "ingenieria-mecanica",
-  "ingenieria-de-produccion",
-  "ingenieria-quimica",
-  "ingenieria-de-sistemas",
-  "ingenieria-electrica",
-  "educacion",
-  "idiomas-modernos",
-  "matematicas-industriales",
-  "psicologia",
-  "estudios-liberales",
-  "derecho"
+  'ciencias-administrativas',
+  'economia-empresarial',
+  'contaduria-publica',
+  'ingenieria-civil',
+  'ingenieria-mecanica',
+  'ingenieria-de-produccion',
+  'ingenieria-quimica',
+  'ingenieria-de-sistemas',
+  'ingenieria-electrica',
+  'educacion',
+  'idiomas-modernos',
+  'matematicas-industriales',
+  'psicologia',
+  'estudios-liberales',
+  'derecho',
 ];
 
 const fceCharges = [
-'PRESIDENTE',
-'SECRETARIO GENERAL',
-'SECRETARIO DE ASUNTOS INTERNOS',
-'COORDINADOR GENERAL',
-'TESORERO'
+  'president',
+  'secretaryGeneral',
+  'internalAffairs',
+  'generalCoordinator',
+  'treasurer',
 ];
 
 const coordinations = [
-'DEPORTES',
-'CULTURA',
-'SERVICIOS E INFRAESTRUCTURA',
-'ACADEMICA',
-'RESPONSABILIDAD SOCIAL UNIVERSITARIA'
+  'sports',
+  'culture',
+  'services',
+  'academic',
+  'responsibility',
 ];
 
 exports.canVote = async (req, res) => {
@@ -54,7 +60,7 @@ exports.canVote = async (req, res) => {
           req.params.id
         }`
       ).then(_res => _res.json()),
-      User.findById(req.params.id)
+      User.findById(req.params.id),
     ]);
     if (voter && user) {
       if (
@@ -65,23 +71,23 @@ exports.canVote = async (req, res) => {
           success: true,
           canVote: true,
           voter,
-          secret: user.secret
+          secret: user.secret,
         });
       }
       return res.json({
         success: true,
         canVote: false,
-        err: new Error("Este Usuario ya ha votado o no Puede votar")
+        err: new Error('Este Usuario ya ha votado o no Puede votar'),
       });
     }
     return res.json({
       success: false,
-      err: new Error("No se ha encontrado a un Usuario / Votante")
+      err: new Error('No se ha encontrado a un Usuario / Votante'),
     });
   } catch (err) {
     res.json({
       success: false,
-      err: new Error("Ha ocurrido un error con el servior comunicalo a la CEU")
+      err: new Error('Ha ocurrido un error con el servior comunicalo a la CEU'),
     });
   }
 };
@@ -100,7 +106,7 @@ exports.canVoteMw = async (req, res, next) => {
   }
   return res.json({
     success: false,
-    err: new Error("Este Usuario ya ha votado o no Puede votar")
+    err: new Error('Este Usuario ya ha votado o no Puede votar'),
   });
 };
 
@@ -119,7 +125,7 @@ exports.getPostulation = async (req, res) => {
         schoolsCouncil,
         facultyCouncil,
         studentsCenters,
-        electoralGroup
+        electoralGroup,
       } = postulation;
       return {
         $class: postulation.$class,
@@ -138,16 +144,16 @@ exports.getPostulation = async (req, res) => {
           council => council.faculty === faculty
         ),
         studentsCenters: studentsCenters.filter(sc => sc.school === major),
-        electoralGroup
+        electoralGroup,
       };
     });
     const ids = postulations.map(({ uuid }) => uuid);
     const _postulations = await Postulation.find({
-      _id: { $in: [...ids.map(id => mongoose.Types.ObjectId(id))] }
-    }).populate("electoralGroup");
+      _id: { $in: [...ids.map(id => mongoose.Types.ObjectId(id))] },
+    }).populate('electoralGroup');
     postulations = postulations.map((p, i) => ({
       ...p,
-      electoralGroupName: _postulations[i].electoralGroup.denomination
+      electoralGroupName: _postulations[i].electoralGroup.denomination,
     }));
     res.json({ success: true, postulations });
   } catch (err) {
@@ -160,30 +166,28 @@ exports.vote = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const vote = JSON.parse(
-      AES.decrypt(req.body.data, user.secret).toString(
-        require("crypto-js").enc.Utf8
-      )
+      AES.decrypt(req.body.data, user.secret).toString(Utf8)
     );
-    const [] = await Promise.all([
+    await Promise.all([
       fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Voto`, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          $class: "ve.edu.unimet.ceu.Voto",
+          $class: 've.edu.unimet.ceu.Voto',
           ...vote,
-          year: new Date().getFullYear()
-        })
+          year: new Date().getFullYear(),
+        }),
       }).then(_res => _res.json()),
       fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.updateVoter`, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          $class: "ve.edu.unimet.ceu.updateVoter",
+          $class: 've.edu.unimet.ceu.updateVoter',
           uuid: user._id,
           electionsYear: new Date().getFullYear(),
-          canVote: true
-        })
-      }).then(_res => _res.json())
+          canVote: true,
+        }),
+      }).then(_res => _res.json()),
     ]);
     res.json({ success: true });
   } catch (err) {
@@ -192,60 +196,12 @@ exports.vote = async (req, res) => {
   }
 };
 
-const preComputeResults = async (p, v) => {
-  const year = new Date().getFullYear();
-  const postulations = p.filter(
-      postulation => postulation.year === year
-    );
-  const results = {};
-  const postulationsIds = postulations.map(({ uuid }) => uuid);
-  const _postulations = await Postulation.find({
-    _id: {
-      $in: [...postulationsIds.map(id => mongoose.Types.ObjectId(id))]
-    }
-  }).populate("electoralGroup");
-  const votes = v.filter(vote => vote.year === year);
-  postulationsIds.forEach((uuid, i) => {
-    results[uuid] = {
-      year: new Date().getFullYear(),
-      name: _postulations[i].electoralGroup.denomination,
-      color: _postulations[i].electoralGroup.colorHex,
-      fce: votes.reduce((pv, cv) => (cv.fce === uuid ? pv + 1 : pv + 0), 0),
-      sports: votes.reduce(
-        (pv, cv) => (cv.sports === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      services: votes.reduce(
-        (pv, cv) => (cv.services === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      culture: votes.reduce(
-        (pv, cv) => (cv.culture === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      academic: votes.reduce(
-        (pv, cv) => (cv.academic === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      responsibility: votes.reduce(
-        (pv, cv) => (cv.responsibility === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      academicCouncil: votes.reduce(
-        (pv, cv) => (cv.academicCouncil === uuid ? pv + 1 : pv + 0),
-        0
-      ),
-      schoolsCouncil: schoolsCouncilHelper(uuid, votes),
-      facultyCouncil: facultyCouncilHelper(uuid, votes),
-      studentsCenters: studentsCentersHelper(uuid, votes)
-    };
-  });
-  return results;
-
-}
-
-const totalCordinationsHelper = result => result.sports + result.services + result.culture + result.academic + result.responsibility
-
+const totalCoordinationsHelper = result =>
+  result.sports +
+  result.services +
+  result.culture +
+  result.academic +
+  result.responsibility;
 
 /**
  * @function
@@ -302,117 +258,308 @@ const schoolsCouncilHelper = (uuid, votes) => {
   return obj;
 };
 
-const resolveCharge = (idx, fce = true) => fce ? fceCharges[idx] : coordinations[idx];
+const resolveCharge = (idx, fce = true) =>
+  fce ? fceCharges[idx] : coordinations[idx];
 
 const dhontMatrix = (results, steps) => {
   const groups = Object.keys(results).length; // 4
   const matrix = [];
-  for (let i = 0; i < groups; i++) { // [0...3]
+  for (let i = 0; i < groups; i++) {
+    // [0...3]
     matrix[i] = [];
     const votes = results[i];
-    for (let j = 0; j < steps; j++) { // [0...6]
-      matrix[i][j] = votes / (j+1);
-      }
+    for (let j = 0; j < steps; j++) {
+      // [0...6]
+      matrix[i][j] = votes / (j + 1);
+    }
   }
   return matrix;
-}
+};
 
 const dhont = matrix => {
   const maxs = new Array(matrix[0].length);
   for (let i = 0; i < maxs.length; i++) {
-    let max = Math.max.apply(null, matrix.map(row => Math.max.apply(Math, row)));
+    const max = Math.max.apply(
+      null,
+      // eslint-disable-next-line prefer-spread
+      matrix.map(row => Math.max.apply(Math, row))
+    );
     for (let j = 0; j < matrix.length; j++) {
       for (let k = 0; k < matrix[j].length; k++) {
-        if(matrix[j][k] === max) {
+        if (matrix[j][k] === max) {
           maxs[i] = { val: max, i: j, j: k };
           matrix[j][k] = -1;
-          ;
         }
       }
     }
   }
   return maxs;
-}
-
-const computeFCE = (results) => {
-  const preResultsFCE = Object.keys(results).map(uuid => ({ uuid, totalFCE: results[uuid].fce })).sort((a, b) => b.totalFCE - a.totalFCE);
-  return dhont(dhontMatrix(preResultsFCE.map(({ totalFCE }) => totalFCE), 5)).map(({ i }, idx) => ({ electoralGroup: preResultsFCE[i].uuid, charge: resolveCharge(idx) }));
-
-}
-
-const computeCordinations = (results) => {
-  Object.keys(results).forEach(uuid => {
-    results[uuid].totalCordinations = totalCordinationsHelper(results[uuid]);
-  })
-  const preResultsCordinations = Object.keys(results).map(uuid => ({ uuid, totalCordinations: results[uuid].totalCordinations })).sort((a, b) => b.totalCordinations - a.totalCordinations);
-  return dhont(dhontMatrix(preResultsCordinations.map(({ totalCordinations }) => totalCordinations), 5)).map(({i}, idx)=> ({ electoralGroup: preResultsCordinations[i].uuid, charge: resolveCharge(idx, false) }));
-}
-
-const computeStudentCenters = (results) => {
-  const vec = []
-  Object.keys(results).forEach(uuid => {
-    const studentsCenters = results[uuid].studentsCenters;
-    Object.keys(studentsCenters).forEach(major => {
-      vec.push({ major, uuid, val: studentsCenters[major] })
-    })
-  })
-  const obj = {}
-  majors.forEach(majorKey => {
-    const preResults = vec.map(({ major, uuid, val }) => major === majorKey ? ({ uuid, val }) : false).filter(x => x !== false).sort((a, b) => b.val - a.val);
-    obj[majorKey] = {
-      result: dhont(dhontMatrix(preResults.map(({ val }) => val), 3))
-        .map(({val, i}, idx) =>
-          val > 0 ?
-            ({ electoralGroup: preResults[i].uuid, charge: idx === 0 ? 'PRESIDENTE' : idx === 1 ? 'COORDINADOR GENERAL' : 'TESORERO' }) : false)
-        .filter(x => x !== false),
-    }
-  });
-  return obj
 };
 
-const computeSchoolCouncil = (results) => {
-const vec = []
+const computeFCE = async (results, postulations) => {
+  const preResultsFCE = Object.keys(results)
+    .map(uuid => ({ uuid, totalFCE: results[uuid].fce }))
+    .sort((a, b) => b.totalFCE - a.totalFCE);
+  const dhnotVector = dhont(
+    dhontMatrix(preResultsFCE.map(({ totalFCE }) => totalFCE), 5)
+  ).map(({ i }, idx) => ({
+    electoralGroup: preResultsFCE[i].uuid,
+    charge: resolveCharge(idx),
+  }));
+  postulations.forEach(({ uuid, fce }) => {
+    for (let i = 0; i < dhnotVector.length; i++) {
+      const { charge } = dhnotVector[i];
+      if (dhnotVector[i].electoralGroup === uuid) {
+        dhnotVector[i] = {
+          ...fce[charge],
+        };
+      }
+    }
+  });
+  return dhnotVector;
+};
+
+const computeCoordinations = async (results, postulations) => {
   Object.keys(results).forEach(uuid => {
-    const schoolsCouncil = results[uuid].schoolsCouncil;
-    Object.keys(schoolsCouncil).forEach(major => {
-      vec.push({ major, uuid, val: schoolsCouncil[major] })
-    })
-  })
-  const obj = {}
+    results[uuid].totalCoordinations = totalCoordinationsHelper(results[uuid]);
+  });
+  const preResultsCoordinations = Object.keys(results)
+    .map(uuid => ({
+      uuid,
+      totalCoordinations: results[uuid].totalCoordinations,
+    }))
+    .sort((a, b) => b.totalCoordinations - a.totalCoordinations);
+  const dhontVector = dhont(
+    dhontMatrix(
+      preResultsCoordinations.map(
+        ({ totalCoordinations }) => totalCoordinations
+      ),
+      5
+    )
+  ).map(({ i }, idx) => ({
+    electoralGroup: preResultsCoordinations[i].uuid,
+    charge: resolveCharge(idx, false),
+  }));
+  postulations.forEach(postulation => {
+    for (let i = 0; i < dhontVector.length; i++) {
+      if (postulation.uuid === dhontVector[i].electoralGroup) {
+        const { charge } = dhontVector[i];
+        dhontVector[i] = {
+          ...postulation[charge],
+        };
+      }
+    }
+  });
+  return dhontVector;
+};
+
+const computeStudentCenters = async (results, postulations) => {
+  const vec = [];
+  Object.keys(results).forEach(uuid => {
+    const { studentsCenters } = results[uuid];
+    Object.keys(studentsCenters).forEach(major => {
+      vec.push({ major, uuid, val: studentsCenters[major] });
+    });
+  });
+  const obj = {};
   majors.forEach(majorKey => {
-    const preResults = vec.map(({ major, uuid, val }) => major === majorKey ? ({ uuid, val }) : false).filter(x => x !== false).sort((a, b) => b.val - a.val);
+    const preResults = vec
+      .map(({ major, uuid, val }) =>
+        major === majorKey ? { uuid, val } : false
+      )
+      .filter(x => x !== false)
+      .sort((a, b) => b.val - a.val);
+    obj[majorKey] = {
+      result: dhont(dhontMatrix(preResults.map(({ val }) => val), 3))
+        .map(({ val, i }, idx) =>
+          val > 0
+            ? {
+                electoralGroup: preResults[i].uuid,
+                charge:
+                  // eslint-disable-next-line no-nested-ternary
+                  idx === 0
+                    ? 'president'
+                    : idx === 1
+                    ? 'generalCoordinator'
+                    : 'treasurer',
+              }
+            : false
+        )
+        .filter(x => x !== false),
+    };
+  });
+  Object.keys(obj).forEach(major => {
+    const { result } = obj[major];
+    postulations.forEach(postulation => {
+      result.forEach(({ electoralGroup, charge }, i) => {
+        if (electoralGroup === postulation.uuid) {
+          postulation.studentsCenters.forEach(studentCenter => {
+            if (studentCenter.school === major) {
+              obj[major].result[i] = {
+                ...studentCenter[charge],
+              };
+            }
+          });
+        }
+      });
+    });
+  });
+  return obj;
+};
+
+const computeSchoolCouncil = async (results, postulations) => {
+  const vec = [];
+  Object.keys(results).forEach(uuid => {
+    const { schoolsCouncil } = results[uuid];
+    Object.keys(schoolsCouncil).forEach(major => {
+      vec.push({ major, uuid, val: schoolsCouncil[major] });
+    });
+  });
+  const obj = {};
+  majors.forEach(majorKey => {
+    const preResults = vec
+      .map(({ major, uuid, val }) =>
+        major === majorKey ? { uuid, val } : false
+      )
+      .filter(x => x !== false)
+      .sort((a, b) => b.val - a.val);
     obj[majorKey] = {
       result: dhont(dhontMatrix(preResults.map(({ val }) => val), 4))
-        .map(({val, i}, idx) =>
-          val > 0 ?
-            ({ electoralGroup: preResults[i].uuid, charge: 'CONSEJERO' }) : false)
+        .map(({ val, i }) =>
+          val > 0
+            ? { electoralGroup: preResults[i].uuid, charge: 'CONSEJERO' }
+            : false
+        )
         .filter(x => x !== false),
-    }
+    };
   });
-  return obj
-}
+  Object.keys(obj).forEach(major => {
+    const { result } = obj[major];
+    result.forEach(({ electoralGroup }) => {
+      postulations.forEach(postulation => {
+        if (electoralGroup === postulation.uuid) {
+          postulation.schoolsCouncil.forEach(council => {
+            if (council.school === major) {
+              obj[major].result = council.advisers;
+            }
+          });
+        }
+      });
+    });
+  });
+  return obj;
+};
 
-const computeFacultyCouncil = (results) => {
-  const vec = []
+const computeFacultyCouncil = async (results, postulations) => {
+  const vec = [];
   Object.keys(results).forEach(uuid => {
-    const facultyCouncil = results[uuid].facultyCouncil;
+    const { facultyCouncil } = results[uuid];
     Object.keys(facultyCouncil).forEach(faculty => {
-      vec.push({ faculty, uuid, val: facultyCouncil[faculty] })
-    })
-  })
-  const obj = {}
+      vec.push({ faculty, uuid, val: facultyCouncil[faculty] });
+    });
+  });
+  const obj = {};
   faculties.forEach(facultyKey => {
-    const preResults = vec.map(({ faculty, uuid, val }) => faculty === facultyKey ? ({ uuid, val }) : false).filter(x => x !== false).sort((a, b) => b.val - a.val);
+    const preResults = vec
+      .map(({ faculty, uuid, val }) =>
+        faculty === facultyKey ? { uuid, val } : false
+      )
+      .filter(x => x !== false)
+      .sort((a, b) => b.val - a.val);
     obj[facultyKey] = {
       result: dhont(dhontMatrix(preResults.map(({ val }) => val), 4))
-        .map(({val, i}, idx) =>
-          val > 0 ?
-            ({ electoralGroup: preResults[i].uuid, charge: 'CONSEJERO' }) : false)
+        .map(({ val, i }) =>
+          val > 0
+            ? { electoralGroup: preResults[i].uuid, charge: 'CONSEJERO' }
+            : false
+        )
         .filter(x => x !== false),
+    };
+  });
+  Object.keys(obj).forEach(faculty => {
+    const { result } = obj[faculty];
+    result.forEach(({ electoralGroup }) => {
+      postulations.forEach(postulation => {
+        if (electoralGroup === postulation.uuid) {
+          postulation.facultyCouncil.forEach(advisers => {
+            if (advisers.faculty === faculty) {
+              obj[faculty].result = advisers.advisers;
+            }
+          });
+        }
+      });
+    });
+  });
+  return obj;
+};
+
+const preComputeResults = async (p, v) => {
+  const year = new Date().getFullYear();
+  const postulations = p.filter(postulation => postulation.year === year);
+  const results = {};
+  const postulationsIds = postulations.map(({ uuid }) => uuid);
+  const _postulations = await Postulation.find({
+    _id: {
+      $in: [...postulationsIds.map(id => mongoose.Types.ObjectId(id))],
+    },
+  }).populate('electoralGroup');
+  const votes = v.filter(vote => vote.year === year);
+  postulationsIds.forEach((uuid, i) => {
+    results[uuid] = {
+      year: new Date().getFullYear(),
+      name: _postulations[i].electoralGroup.denomination,
+      color: _postulations[i].electoralGroup.colorHex,
+      fce: votes.reduce((pv, cv) => (cv.fce === uuid ? pv + 1 : pv + 0), 0),
+      sports: votes.reduce(
+        (pv, cv) => (cv.sports === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      services: votes.reduce(
+        (pv, cv) => (cv.services === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      culture: votes.reduce(
+        (pv, cv) => (cv.culture === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      academic: votes.reduce(
+        (pv, cv) => (cv.academic === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      responsibility: votes.reduce(
+        (pv, cv) => (cv.responsibility === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      academicCouncil: votes.reduce(
+        (pv, cv) => (cv.academicCouncil === uuid ? pv + 1 : pv + 0),
+        0
+      ),
+      schoolsCouncil: schoolsCouncilHelper(uuid, votes),
+      facultyCouncil: facultyCouncilHelper(uuid, votes),
+      studentsCenters: studentsCentersHelper(uuid, votes),
+    };
+  });
+  return results;
+};
+
+const computeAcademicCouncil = async (results, postulations) => {
+  const preResults = Object.keys(results)
+    .map(uuid => ({ uuid, total: results[uuid].academicCouncil }))
+    .sort((a, b) => b.total - a.total);
+  const dhnotVector = dhont(
+    dhontMatrix(preResults.map(({ total }) => total), 2)
+  ).map(({ i }) => ({
+    electoralGroup: preResults[i].uuid,
+  }));
+  postulations.forEach(({ uuid, academicCouncil }) => {
+    for (let i = 0; i < dhnotVector.length; i++) {
+      if (dhnotVector[i].electoralGroup === uuid) {
+        dhnotVector[i] = { ...academicCouncil.advisers, substitute: i === 0, };
+      }
     }
   });
-  return obj
-}
+  return dhnotVector;
+};
 
 exports.computeResults = async (req, res) => {
   try {
@@ -422,16 +569,35 @@ exports.computeResults = async (req, res) => {
       ),
       fetch(
         `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Postulacion`
-      ).then(_res => _res.json())
+      ).then(_res => _res.json()),
     ]);
-    const results = await preComputeResults(postulations, votes);
-    const fceResults = computeFCE(results);
-    const cordinationsResults = computeCordinations(results);
-    const studentsCenters = computeStudentCenters(results);
-    const schoolCouncil = computeSchoolCouncil(results);
-    const facultyCouncil = computeFacultyCouncil(results);
 
-    res.json({ success: true, results, fceResults, cordinationsResults, studentsCenters, schoolCouncil,facultyCouncil });
+    const results = await preComputeResults(postulations, votes);
+    const [
+      fceResults,
+      coordinationsResults,
+      studentsCenters,
+      schoolCouncil,
+      facultyCouncil,
+      academicCouncil,
+    ] = await Promise.all([
+      computeFCE(results, postulations),
+      computeCoordinations(results, postulations),
+      computeStudentCenters(results, postulations),
+      computeSchoolCouncil(results, postulations),
+      computeFacultyCouncil(results, postulations),
+      computeAcademicCouncil(results, postulations),
+    ]);
+    res.json({
+      success: true,
+      results,
+      fceResults,
+      coordinationsResults,
+      studentsCenters,
+      schoolCouncil,
+      facultyCouncil,
+      academicCouncil,
+    });
   } catch (err) {
     console.log(err);
     res.json({ success: false, err: new Error(err.message) });
@@ -440,4 +606,61 @@ exports.computeResults = async (req, res) => {
 
 exports.getResults = async (req, res) => {};
 
-exports.saveResults = async (req, res) => {};
+const normalizeCharge = charge => {
+  switch (charge) {
+    case 'Presidente':
+      return 'president';
+    case 'Secretario General':
+      return 'secretaryGeneral';
+    case 'Secretario de Asustos Internos':
+      return 'internalAffairs';
+    case 'Coordinador General':
+      return 'generalCoordinator';
+    case 'Tesorero':
+      return 'treasurer';
+    default:
+      return '__blank__';
+  }
+};
+
+exports.saveResults = async (req, res) => {
+  try {
+    const presidents = await fetch(
+      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Presidente`
+    ).then(_res => _res.json());
+    const { year } = req.params;
+    const {
+      fceResults,
+      coordinationsResults,
+      studentsCenters,
+      schoolCouncil,
+      facultyCouncil,
+    } = req.body;
+    const body = {
+      uuid: randomBytes(32).toString('hex'),
+      year,
+      saveAt: new Date(Date.now()),
+      resultString: JSON.stringify({
+        fceResults,
+        coordinationsResults,
+        studentsCenters,
+        schoolCouncil,
+        facultyCouncil,
+      }),
+      electoralPresident: `resource:ve.edu.unimet.ceu.PresidenteElectoral#${
+        presidents[presidents.length - 1].uuid
+      }`,
+    };
+    const result = await fetch(
+      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Resultado`,
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    ).then(_res => _res.json());
+    res.json({ success: true, result });
+  } catch (err) {
+    res.json({ success: false, err: new Error(err.message) });
+  }
+};

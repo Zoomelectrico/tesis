@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 import {
   Button,
   Col,
@@ -8,15 +11,15 @@ import {
   CardBody,
   FormGroup,
   Input,
-  Label
-} from "reactstrap";
+  Label,
+} from 'reactstrap';
 
 import {
   postulationFields,
   majors,
   normalize,
-  normalizeInputs
-} from "../../../utils";
+  normalizeInputs,
+} from '../../../utils';
 
 const {
   fields,
@@ -24,7 +27,7 @@ const {
   fieldsCulture,
   fieldsResponsibility,
   fieldsServices,
-  fieldsSports
+  fieldsSports,
 } = postulationFields;
 
 class StudentFederationCenter extends React.Component {
@@ -35,7 +38,7 @@ class StudentFederationCenter extends React.Component {
     services: [],
     academic: [],
     responsibility: [],
-    ready: false
+    ready: false,
   };
 
   onChange = e => {
@@ -45,17 +48,18 @@ class StudentFederationCenter extends React.Component {
     state[key][idx] = {
       ...state[key][idx],
       charge,
-      [normalizeInputs(e.target.name)]: e.target.value
+      [normalizeInputs(e.target.name)]: e.target.value,
     };
     this.setState(state);
   };
 
+  // eslint-disable-next-line no-shadow
   renderForm = (fields, key) =>
     fields.map(({ label, id, type, idx, charge }) => (
       <Col md="4" key={id}>
         <FormGroup>
           <Label for={id}>{label}</Label>
-          {type === "select" ? (
+          {type === 'select' ? (
             <Input
               className="form-control-alternative"
               type={type}
@@ -94,13 +98,13 @@ class StudentFederationCenter extends React.Component {
     e.preventDefault();
     if (this.checkReady()) {
       localStorage.setItem(
-        "student-federation-center",
+        'student-federation-center',
         JSON.stringify(this.state)
       );
-      this.props.save("student-federation-center", this.state);
+      this.props.save('student-federation-center', this.state);
       this.setState({ ...this.state, ready: true });
     } else {
-      console.log("Not ready");
+      console.log('Not ready');
     }
   };
 
@@ -111,11 +115,11 @@ class StudentFederationCenter extends React.Component {
       culture: [],
       services: [],
       academic: [],
-      responsibility: []
+      responsibility: [],
     };
     e.preventDefault();
-    localStorage.setItem("student-federation-center", JSON.stringify(state));
-    this.props.save("student-federation-center", state);
+    localStorage.setItem('student-federation-center', JSON.stringify(state));
+    this.props.save('student-federation-center', state);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -126,7 +130,7 @@ class StudentFederationCenter extends React.Component {
       culture,
       services,
       academic,
-      responsibility
+      responsibility,
     } = this.state;
     console.log({
       fce,
@@ -134,47 +138,44 @@ class StudentFederationCenter extends React.Component {
       culture,
       services,
       academic,
-      responsibility
+      responsibility,
     });
     if (fce.length < 5) {
       return false;
-    } else {
-      const bool = !fce
-        .map(nominated => Object.keys(nominated).length === 4)
-        .includes(false);
-      if (bool) {
-        const cordinators = [
-          ...sports,
-          ...culture,
-          ...services,
-          ...academic,
-          ...responsibility
-        ];
-        if (cordinators.length < 10) {
-          console.log(4);
-          return false;
-        } else {
-          return !cordinators
-            .map(cordinator => Object.keys(cordinator).length === 4)
-            .includes(false);
-        }
-      } else {
+    }
+    const bool = !fce
+      .map(nominated => Object.keys(nominated).length === 4)
+      .includes(false);
+    if (bool) {
+      const cordinators = [
+        ...sports,
+        ...culture,
+        ...services,
+        ...academic,
+        ...responsibility,
+      ];
+      if (cordinators.length < 10) {
+        console.log(4);
         return false;
       }
+      return !cordinators
+        .map(cordinator => Object.keys(cordinator).length === 4)
+        .includes(false);
     }
+    return false;
   };
 
   render() {
     return (
       <Card
-        style={{ backgroundColor: "#f5f7f9" }}
-        className={`mb-4 ${this.state.ready ? "d-none" : ""}`}
+        style={{ backgroundColor: '#f5f7f9' }}
+        className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
       >
         <CardHeader>
           <h2>Postulacion para la Federacion de Centros de Estudiantes</h2>
         </CardHeader>
         <CardBody>
-          <Row>{this.renderForm(fields, "fce")}</Row>
+          <Row>{this.renderForm(fields, 'fce')}</Row>
           <Row>
             <div className="mb-3" />
           </Row>
@@ -184,7 +185,7 @@ class StudentFederationCenter extends React.Component {
               <h2>Coordinacion de Deportes</h2>
             </Col>
           </Row>
-          <Row>{this.renderForm(fieldsSports, "sports")}</Row>
+          <Row>{this.renderForm(fieldsSports, 'sports')}</Row>
           <Row>
             <div className="mb-3" />
           </Row>
@@ -194,7 +195,7 @@ class StudentFederationCenter extends React.Component {
               <h2>Coordinacion de Cultura</h2>
             </Col>
           </Row>
-          <Row>{this.renderForm(fieldsCulture, "culture")}</Row>
+          <Row>{this.renderForm(fieldsCulture, 'culture')}</Row>
           <Row>
             <div className="mb-3" />
           </Row>
@@ -204,7 +205,7 @@ class StudentFederationCenter extends React.Component {
               <h2>Coordinacion de Servicios</h2>
             </Col>
           </Row>
-          <Row>{this.renderForm(fieldsServices, "services")}</Row>
+          <Row>{this.renderForm(fieldsServices, 'services')}</Row>
           <Row>
             <Col sm="12">
               <div className="mb-3" />
@@ -216,7 +217,7 @@ class StudentFederationCenter extends React.Component {
               <h2>Coordinacion Academica</h2>
             </Col>
           </Row>
-          <Row>{this.renderForm(fieldsAcademic, "academic")}</Row>
+          <Row>{this.renderForm(fieldsAcademic, 'academic')}</Row>
           <Row>
             <div className="mb-3" />
           </Row>
@@ -226,7 +227,7 @@ class StudentFederationCenter extends React.Component {
               <h2>Coordinacion de Responsabilidad SU</h2>
             </Col>
           </Row>
-          <Row>{this.renderForm(fieldsResponsibility, "responsibility")}</Row>
+          <Row>{this.renderForm(fieldsResponsibility, 'responsibility')}</Row>
           <Row>
             <div className="mb-3" />
           </Row>

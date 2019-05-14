@@ -1,4 +1,7 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-access-state-in-setstate */
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -9,90 +12,90 @@ import {
   Input,
   Label,
   Button,
-  Form
-} from "reactstrap";
+  Form,
+} from 'reactstrap';
 
 import {
   majors,
   postulationFields,
   normalize,
-  normalizeInputs
-} from "../../../utils";
+  normalizeInputs,
+} from '../../../utils';
 
 const { schoolCouncil: fields } = postulationFields;
 
 class SchoolCouncil extends React.Component {
   state = {
-    schoolKey: "",
+    schoolKey: '',
     schools: {
-      "ciencias-administrativas": {
-        name: "Ciencias Administrativas",
-        advisors: []
+      'ciencias-administrativas': {
+        name: 'Ciencias Administrativas',
+        advisors: [],
       },
-      "economia-empresarial": {
-        name: "Economía Empresarial",
-        advisors: []
+      'economia-empresarial': {
+        name: 'Economía Empresarial',
+        advisors: [],
       },
-      "contaduria-publica": {
-        name: "Contaduría Pública",
-        advisors: []
+      'contaduria-publica': {
+        name: 'Contaduría Pública',
+        advisors: [],
       },
-      "ingenieria-civil": {
-        name: "Ingeniería Civil",
-        advisors: []
-      },
-
-      "ingenieria-mecanica": {
-        name: "Ingeniería Mecánica",
-        advisors: []
+      'ingenieria-civil': {
+        name: 'Ingeniería Civil',
+        advisors: [],
       },
 
-      "ingenieria-de-produccion": {
-        name: "Ingeniería de Producción",
-        advisors: []
+      'ingenieria-mecanica': {
+        name: 'Ingeniería Mecánica',
+        advisors: [],
       },
 
-      "ingenieria-quimica": {
-        name: "Ingeniería Química",
-        advisors: []
+      'ingenieria-de-produccion': {
+        name: 'Ingeniería de Producción',
+        advisors: [],
       },
 
-      "ingenieria-de-sistemas": {
-        name: "Ingeniería de Sistemas",
-        advisors: []
+      'ingenieria-quimica': {
+        name: 'Ingeniería Química',
+        advisors: [],
       },
 
-      "ingenieria-electrica": {
-        name: "Ingeniería Eléctrica",
-        advisors: []
+      'ingenieria-de-sistemas': {
+        name: 'Ingeniería de Sistemas',
+        advisors: [],
+      },
+
+      'ingenieria-electrica': {
+        name: 'Ingeniería Eléctrica',
+        advisors: [],
       },
       educacion: {
-        name: "Educación",
-        advisors: []
+        name: 'Educación',
+        advisors: [],
       },
-      "idiomas-modernos": {
-        name: "Idiomas Modernos",
-        advisors: []
+      'idiomas-modernos': {
+        name: 'Idiomas Modernos',
+        advisors: [],
       },
-      "matematicas-industriales": {
-        name: "Matemáticas Industriales",
-        advisors: []
+      'matematicas-industriales': {
+        name: 'Matemáticas Industriales',
+        advisors: [],
       },
       psicologia: {
-        name: "Psicología",
-        advisors: []
+        name: 'Psicología',
+        advisors: [],
       },
-      "estudios-liberales": {
-        name: "Estudios Liberales",
-        advisors: []
+      'estudios-liberales': {
+        name: 'Estudios Liberales',
+        advisors: [],
       },
       derecho: {
-        name: "Derecho",
-        advisors: []
-      }
+        name: 'Derecho',
+        advisors: [],
+      },
     },
     ready: false,
-    show: false
+    show: false,
   };
 
   onChangeSchool = e => {
@@ -102,7 +105,7 @@ class SchoolCouncil extends React.Component {
 
   onClickSchool = e => {
     e.preventDefault();
-    document.getElementById("schoolCouncilSelectForm").reset();
+    document.getElementById('schoolCouncilSelectForm').reset();
     this.setState({ ...this.state, show: true });
   };
 
@@ -113,21 +116,21 @@ class SchoolCouncil extends React.Component {
     schools[school].advisors[idx] = {
       ...schools[school].advisors[idx],
       [normalizeInputs(e.target.name)]: e.target.value,
-      substitute
+      substitute,
     };
     this.setState({ ...this.state, schools });
   };
 
   nextSchool = e => {
     e.preventDefault();
-    document.getElementById("schoolCouncilForm").reset();
+    document.getElementById('schoolCouncilForm').reset();
     this.setState({ ...this.state, show: false });
   };
 
   ready = e => {
     e.preventDefault();
-    localStorage.setItem("school-council", JSON.stringify(this.state.schools));
-    this.props.save("school-council", this.state.schools);
+    localStorage.setItem('school-council', JSON.stringify(this.state.schools));
+    this.props.save('school-council', this.state.schools);
     this.setState({ ...this.state, ready: true });
   };
 
@@ -222,19 +225,19 @@ class SchoolCouncil extends React.Component {
   render() {
     return (
       <Card
-        style={{ backgroundColor: "#f5f7f9" }}
-        className={`mb-4 ${this.state.ready ? "d-none" : ""}`}
+        style={{ backgroundColor: '#f5f7f9' }}
+        className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
       >
         <CardHeader>
           <h2>Postulacion para Consejo de Escuela</h2>
         </CardHeader>
         <CardBody>
-          <Row className={this.state.show ? "d-none" : ""}>
+          <Row className={this.state.show ? 'd-none' : ''}>
             <Col sm="12">{this.schoolSelect()}</Col>
           </Row>
-          <Row className={this.state.show ? "" : "d-none"}>
+          <Row className={this.state.show ? '' : 'd-none'}>
             <Col sm="12">
-              {this.state.schoolKey !== "" ? this.schoolCouncilForm() : null}
+              {this.state.schoolKey !== '' ? this.schoolCouncilForm() : null}
             </Col>
           </Row>
         </CardBody>

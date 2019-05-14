@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Row,
@@ -7,42 +10,53 @@ import {
   CardHeader,
   CardBody,
   Table,
-  Button
-} from "reactstrap";
-import { Header, Toast, notify, Loading } from "../../components";
-import { get, post } from "../../utils";
+  Button,
+} from 'reactstrap';
+import { Header, Toast, notify, Loading } from '../../components';
+import { get, post } from '../../utils';
 
 const Demands = props => {
   const params = new URLSearchParams(props.location.search);
-  const reason = params.get("reason");
-  const bool = params.get("bool") === "true" ? true : false;
+  const reason = params.get('reason');
+  const bool = params.get('bool') === 'true' ? true : false;
   const [state, setState] = useState({ loading: true, demands: {} });
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await get("demands");
+        const data = await get('demands');
         setState({ ...state, demands: data.demands, loading: false });
       } catch (err) {
         console.log(err);
       }
     };
     if (reason) {
-      notify(reason.replace(/[-]/g, " "), bool);
+      notify(reason.replace(/[-]/g, ' '), bool);
     }
     fetch();
   }, []);
+
+  const nothingCard = title => (
+    <Card className="mb-3">
+      <CardHeader>
+        <h2>{title}</h2>
+      </CardHeader>
+      <CardBody>
+        <p className="text-center">No hay nada para atender!</p>
+      </CardBody>
+    </Card>
+  );
 
   const table = (title, data) => {
     if (data.header && data.body) {
       return (
         <Row className="mb-3 border-0" key={title}>
           <Col>
-            <Card style={{ backgroundColor: "#f5f7f9" }}>
+            <Card style={{ backgroundColor: '#f5f7f9' }}>
               <CardHeader>
                 <h2>{title}</h2>
               </CardHeader>
               <CardBody>
-                <Table hover>
+                <Table responsive hover>
                   <thead>
                     <tr>
                       {data.header.map(header => (
@@ -52,7 +66,7 @@ const Demands = props => {
                   </thead>
                   <tbody>
                     {data.body.map(row => (
-                      <tr key={row.join("-")}>
+                      <tr key={row.join('-')}>
                         {row.map(_data => (
                           <td key={_data}>{_data}</td>
                         ))}
@@ -73,51 +87,54 @@ const Demands = props => {
     try {
       e.preventDefault();
       const { id, user: userId, idx } = e.target.dataset;
-      const data = await post("demand-accept-rep/", { id, userId });
+      const data = await post('demand-accept-rep/', { id, userId });
       if (data.success) {
-        notify("El representante Electoral ha sido creado exitosament", true);
+        notify('El representante Electoral ha sido creado exitosament', true);
         setState({
           ...state,
           representative: [
             ...state.demands.representative.slice(0, idx),
-            ...state.demands.representative.slice(idx + 1)
-          ]
+            ...state.demands.representative.slice(idx + 1),
+          ],
         });
       }
     } catch (err) {
       notify(
-        "Ha ocurrido un error, refresque el navegador y vuelva a intentar",
+        'Ha ocurrido un error, refresque el navegador y vuelva a intentar',
         false
       );
       console.log(err);
     }
   };
 
-  const nothingCard = title => (
-    <Card className="mb-3">
-      <CardHeader>
-        <h2>{title}</h2>
-      </CardHeader>
-      <CardBody>
-        <p className="text-center">No hay nada para atender!</p>
-      </CardBody>
-    </Card>
-  );
-
   const postulationCheck = e => {
     e.preventDefault();
     props.history.push(`/app/dashboard/Postulation?id=${e.target.dataset.id}`);
   };
 
+  const electoralGroup = async e => {
+    try {
+      e.preventDefault();
+      props.history.push(
+        `/app/dashboard/electoral-group?id=${e.target.dataset.id}`
+      );
+    } catch (err) {
+      notify(
+        'Ha ocurrido un error, refresque el navegador y vuelva a intentar',
+        false
+      );
+    }
+  };
+
   const generateTable = (state, setState) => {
     const {
-      demands: { representative, group, postulation, complain }
+      demands: { representative, group, postulation, complain },
     } = state;
     return (
       <>
         {representative.length > 0
-          ? table("Solicitud - Representante Electoral", {
-              header: ["Codigo", "Nombre del Solicitante", "Atender"],
+          ? table('Solicitud - Representante Electoral', {
+              header: ['Codigo', 'Nombre del Solicitante', 'Atender'],
               body: representative.map(
                 (
                   { code, _id: id, user: { firstName, lastName, _id } },
@@ -135,25 +152,25 @@ const Demands = props => {
                     data-idx={idx}
                   >
                     Atender
-                  </Button>
+                  </Button>,
                 ]
-              )
+              ),
             })
-          : nothingCard("Solicitud - Representante Electoral")}
+          : nothingCard('Solicitud - Representante Electoral')}
         {group.length > 0
-          ? table("Solicitud - Grupo Electoral", {
+          ? table('Solicitud - Grupo Electoral', {
               header: [
-                "Codigo",
-                "Nombre del Solicitante",
-                "Nombre del Grupo Electoral",
-                "Atender"
+                'Codigo',
+                'Nombre del Solicitante',
+                'Nombre del Grupo Electoral',
+                'Atender',
               ],
               body: group.map(
                 ({
                   code,
                   _id,
                   user: { firstName, lastName },
-                  electoralGroup: { denomination }
+                  electoralGroup: { denomination },
                 }) => [
                   code,
                   `${firstName} ${lastName}`,
@@ -166,18 +183,18 @@ const Demands = props => {
                     data-id={_id}
                   >
                     Atender
-                  </Button>
+                  </Button>,
                 ]
-              )
+              ),
             })
-          : nothingCard("Solicitud - Grupo Electoral")}
+          : nothingCard('Solicitud - Grupo Electoral')}
         {postulation.length > 0
-          ? table("Solicitud - Postulacion", {
+          ? table('Solicitud - Postulacion', {
               header: [
-                "Codigo",
-                "Nombre del Solicitante",
-                "Nombre del Grupo Electoral",
-                "Atender"
+                'Codigo',
+                'Nombre del Solicitante',
+                'Nombre del Grupo Electoral',
+                'Atender',
               ],
               body: postulation.map(
                 ({
@@ -186,8 +203,8 @@ const Demands = props => {
                   user: { firstName, lastName },
                   postulation: {
                     _id: pid,
-                    electoralGroup: { denomination }
-                  }
+                    electoralGroup: { denomination },
+                  },
                 }) => [
                   code,
                   `${firstName} ${lastName}`,
@@ -201,41 +218,27 @@ const Demands = props => {
                     data-id={_id}
                   >
                     Atender
-                  </Button>
+                  </Button>,
                 ]
-              )
+              ),
             })
-          : nothingCard("Solicitud - Postulacion")}
+          : nothingCard('Solicitud - Postulacion')}
         {complain.length > 0
-          ? table("Solicitud - Queja", {
-              header: ["Codigo", "Nombre del Solicitante"],
+          ? table('Solicitud - Queja', {
+              header: ['Codigo', 'Nombre del Solicitante'],
               body: complain.map(
                 ({ code, user: { firstName, lastName, _id } }) => [
                   code,
                   `${firstName} ${lastName}`,
                   <Button color="success" size="sm" outline data-id={_id}>
                     Atender
-                  </Button>
+                  </Button>,
                 ]
-              )
+              ),
             })
-          : nothingCard("Solicitud - Quejas")}
+          : nothingCard('Solicitud - Quejas')}
       </>
     );
-  };
-
-  const electoralGroup = async e => {
-    try {
-      e.preventDefault();
-      props.history.push(
-        `/app/dashboard/electoral-group?id=${e.target.dataset.id}`
-      );
-    } catch (err) {
-      notify(
-        "Ha ocurrido un error, refresque el navegador y vuelva a intentar",
-        false
-      );
-    }
   };
 
   return (

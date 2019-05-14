@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
-const Postulation = mongoose.model("Postulation");
-const Demand = mongoose.model("Demand");
-const ElectoralGroup = mongoose.model("ElectoralGroup");
+const mongoose = require('mongoose');
+
+const Postulation = mongoose.model('Postulation');
+const Demand = mongoose.model('Demand');
+const ElectoralGroup = mongoose.model('ElectoralGroup');
 
 const jsonToArray = json => Object.keys(json).map(key => json[key]);
 
@@ -10,9 +11,9 @@ const facultyReducer = data =>
     ...Object.keys(data).map(facultyKey =>
       data[facultyKey].advisors.map(advisor => ({
         ...advisor,
-        substitute: advisor.substitute && advisor.substitute === "true" ? 1 : 0,
+        substitute: advisor.substitute && advisor.substitute === 'true' ? 1 : 0,
         facultyKey,
-        faculty: data[facultyKey].name
+        faculty: data[facultyKey].name,
       }))
     )
   );
@@ -23,7 +24,7 @@ const schoolReducer = data =>
       data[schoolKey].sc.map(sc => ({
         ...sc,
         school: data[schoolKey].name,
-        schoolKey
+        schoolKey,
       }))
     )
   );
@@ -33,9 +34,9 @@ const schoolCouncilReducer = data =>
     ...Object.keys(data).map(schoolKey =>
       data[schoolKey].advisors.map(advisor => ({
         ...advisor,
-        substitute: advisor.substitute && advisor.substitute === "true" ? 1 : 0,
+        substitute: advisor.substitute && advisor.substitute === 'true' ? 1 : 0,
         schoolKey,
-        school: data[schoolKey].name
+        school: data[schoolKey].name,
       }))
     )
   );
@@ -44,25 +45,25 @@ exports.createPostulation = async (req, res) => {
   try {
     const data = {};
     [
-      "fce",
-      "sports",
-      "culture",
-      "services",
-      "academic",
-      "responsibility"
+      'fce',
+      'sports',
+      'culture',
+      'services',
+      'academic',
+      'responsibility',
     ].forEach(field => {
       data[field] = {
         ...data[field],
-        ...req.body["student-federation-center"][field]
+        ...req.body['student-federation-center'][field],
       };
     });
 
     data.electoralGroup = req.body.electoralGroup;
 
-    data.academicCouncil = req.body["academic-council"];
-    data.facultyCouncil = req.body["faculty-council"];
-    data.schools = req.body["schools"];
-    data.schoolCouncil = req.body["school-council"];
+    data.academicCouncil = req.body['academic-council'];
+    data.facultyCouncil = req.body['faculty-council'];
+    data.schools = req.body.schools;
+    data.schoolCouncil = req.body['school-council'];
 
     data.fce = jsonToArray(data.fce);
     data.sports = jsonToArray(data.sports);
@@ -79,14 +80,14 @@ exports.createPostulation = async (req, res) => {
     const [demand] = await Promise.all([
       Demand.create({
         user: req.body.userId,
-        type: "POSTULACION",
-        postulation: postulation._id
+        type: 'POSTULACION',
+        postulation: postulation._id,
       }),
       ElectoralGroup.findOneAndUpdate(
         { _id: req.body.electoralGroup },
         { postulation: postulation._id },
         { new: true }
-      ).exec()
+      ).exec(),
     ]);
     res.json({ success: true, postulation, demand });
   } catch (err) {
@@ -98,7 +99,7 @@ exports.createPostulation = async (req, res) => {
 exports.getPostulation = async (req, res) => {
   try {
     const postulation = await Postulation.findById(req.params.id).populate(
-      "electoralGroup"
+      'electoralGroup'
     );
     res.json({ success: true, postulation });
   } catch (err) {
@@ -109,14 +110,14 @@ exports.getPostulation = async (req, res) => {
 exports.getPostulations = async (req, res) => {
   try {
     let postulations = await Postulation.find({
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
       // passed: 1
-    }).populate("electoralGroup");
+    }).populate('electoralGroup');
     postulations = postulations.map(
       ({ electoralGroup: { denomination }, _id }, i) => [
         i + 1,
         denomination,
-        _id
+        _id,
       ]
     );
     res.json({ success: true, postulations });

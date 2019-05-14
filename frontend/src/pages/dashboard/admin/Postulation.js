@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Container, Col, Row, Card, Button } from "reactstrap";
-import { Header, notify, Loading } from "../../../components";
-import { get, post } from "../../../utils";
-import { Checkout } from "../postulate";
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
+import { Container, Col, Row, Card, Button } from 'reactstrap';
+import { Header, notify, Loading } from '../../../components';
+import { get, post } from '../../../utils';
+import { Checkout } from '../postulate';
 
 const Postulation = ({ location, history }) => {
   const params = new URLSearchParams(location.search);
   const [state, setState] = useState({
     loading: true,
     postulation: {},
-    demand: {}
+    demand: {},
   });
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await get(`demand/${params.get("id")}`);
+        const data = await get(`demand/${params.get('id')}`);
         console.log(data);
         setState({
           loading: false,
           postulation: data.demand.postulation,
-          demand: data.demand
+          demand: data.demand,
         });
       } catch (err) {
-        notify("Ha Ocurrido un Error. Intente Refrescando el navegador", false);
+        notify('Ha Ocurrido un Error. Intente Refrescando el navegador', false);
       }
     };
     fetch();
@@ -32,14 +33,14 @@ const Postulation = ({ location, history }) => {
     try {
       e.preventDefault();
       const { pid, id } = e.target.dataset;
-      const data = await post("demand-accept-pos", { pid, id });
+      const data = await post('demand-accept-pos', { pid, id });
       console.log(data);
       history.push(
-        "/app/dashboard/demands?reason=Postulacion-registrada-correctamente&bool=true"
+        '/app/dashboard/demands?reason=Postulacion-registrada-correctamente&bool=true'
       );
     } catch (err) {
       console.log(err);
-      notify("Ha ocurrido un Error al Guardar");
+      notify('Ha ocurrido un Error al Guardar');
     }
   };
 

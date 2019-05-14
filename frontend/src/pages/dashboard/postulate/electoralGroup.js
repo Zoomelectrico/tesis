@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -8,12 +10,12 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
-} from "reactstrap";
+  Button,
+} from 'reactstrap';
 
 const ElectoralGroup = props => (
   <>
-    <Card style={{ backgroundColor: "#f5f7f9" }} className="mb-4">
+    <Card style={{ backgroundColor: '#f5f7f9' }} className="mb-4">
       <CardHeader className="p-3">
         <h2>Grupo Electoral</h2>
       </CardHeader>

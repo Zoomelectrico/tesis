@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Container,
   Card,
@@ -9,8 +9,8 @@ import {
   Input,
   Row,
   Col,
-  Button
-} from "reactstrap";
+  Button,
+} from 'reactstrap';
 
 const NewUser = props => {
   const [data, setData] = useState({});

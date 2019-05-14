@@ -1,4 +1,9 @@
-import React from "react";
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable guard-for-in */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-restricted-syntax */
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -9,48 +14,48 @@ import {
   Input,
   Label,
   Button,
-  Form
-} from "reactstrap";
+  Form,
+} from 'reactstrap';
 
 import {
   majors,
   postulationFields,
   faculties,
   normalize,
-  normalizeInputs
-} from "../../../utils";
+  normalizeInputs,
+} from '../../../utils';
 
 const { facultyCouncil: fields } = postulationFields;
 
 class FacultyCouncil extends React.Component {
   state = {
-    facultyKey: "",
+    facultyKey: '',
     facultyCouncil: {
-      "facultad-de-ciencias-economicas-y-sociales": {
-        name: "Facultad de Ciencias Económicas y Sociales",
-        advisors: []
+      'facultad-de-ciencias-economicas-y-sociales': {
+        name: 'Facultad de Ciencias Económicas y Sociales',
+        advisors: [],
       },
-      "facultad-de-ingenieria": {
-        name: "Facultad de Ingeniería",
-        advisors: []
+      'facultad-de-ingenieria': {
+        name: 'Facultad de Ingeniería',
+        advisors: [],
       },
-      "facultad-de-ciencias-y-artes": {
-        name: "Facultad de Ciencias y Artes",
-        advisors: []
+      'facultad-de-ciencias-y-artes': {
+        name: 'Facultad de Ciencias y Artes',
+        advisors: [],
       },
-      "facultad-de-estudios-juridicos-y-politicos": {
-        name: "Facultad de Estudios Jurídicos y Políticos",
-        advisors: []
-      }
+      'facultad-de-estudios-juridicos-y-politicos': {
+        name: 'Facultad de Estudios Jurídicos y Políticos',
+        advisors: [],
+      },
     },
     ready: false,
-    show: false
+    show: false,
   };
 
   nextSchool = e => {
     e.preventDefault();
-    document.querySelector("#facultyForm").reset(); // Clear the form
-    this.setState({ ...this.state, facultyKey: "", show: false });
+    document.querySelector('#facultyForm').reset(); // Clear the form
+    this.setState({ ...this.state, facultyKey: '', show: false });
     this.checkReady();
   };
 
@@ -61,7 +66,7 @@ class FacultyCouncil extends React.Component {
     state.facultyCouncil[faculty].advisors[idx] = {
       ...state.facultyCouncil[faculty].advisors[idx],
       [normalizeInputs(e.target.name)]: e.target.value,
-      substitute
+      substitute,
     };
     this.setState(state);
   };
@@ -74,7 +79,7 @@ class FacultyCouncil extends React.Component {
 
   onClickFaculty = e => {
     e.preventDefault();
-    document.querySelector("#facultySelect").reset();
+    document.querySelector('#facultySelect').reset();
     const state = { ...this.state, show: true };
     this.setState(state);
   };
@@ -82,31 +87,30 @@ class FacultyCouncil extends React.Component {
   ready = e => {
     e.preventDefault();
     localStorage.setItem(
-      "faculty-council",
+      'faculty-council',
       JSON.stringify(this.state.facultyCouncil)
     );
-    this.props.save("faculty-council", this.state.facultyCouncil);
+    this.props.save('faculty-council', this.state.facultyCouncil);
     this.setState({ ...this.state, ready: true });
   };
 
   checkReady = () => {
     const { facultyCouncil } = this.state;
     for (const key in facultyCouncil) {
-      const advisors = facultyCouncil[key].advisors;
+      const { advisors } = facultyCouncil[key];
       if (advisors.length < 4) {
         return;
-      } else {
-        for (const advisor of advisors) {
-          const keys = Object.keys(advisor);
-          if (keys.length < 3) {
-            return;
-          }
+      }
+      for (const advisor of advisors) {
+        const keys = Object.keys(advisor);
+        if (keys.length < 3) {
+          return;
         }
       }
     }
-    this.props.save("faculty-council", this.state.facultyCouncil);
+    this.props.save('faculty-council', this.state.facultyCouncil);
     localStorage.setItem(
-      "faculty-council",
+      'faculty-council',
       JSON.stringify(this.state.facultyCouncil)
     );
     this.setState({ ready: true });
@@ -167,7 +171,7 @@ class FacultyCouncil extends React.Component {
             <Col md="4" key={id}>
               <FormGroup>
                 <Label for={id}>{label}</Label>
-                {type === "select" ? (
+                {type === 'select' ? (
                   <Input
                     className="form-control-alternative"
                     type={type}
@@ -231,17 +235,17 @@ class FacultyCouncil extends React.Component {
   render() {
     return (
       <Card
-        style={{ backgroundColor: "#f5f7f9" }}
-        className={`mb-4 ${this.state.ready ? "d-none" : ""}`}
+        style={{ backgroundColor: '#f5f7f9' }}
+        className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
       >
         <CardHeader>
           <h2>Postulacion para Consejo de Facultad</h2>
         </CardHeader>
         <CardBody>
-          <Row className={this.state.show ? "d-none" : ""}>
+          <Row className={this.state.show ? 'd-none' : ''}>
             {this.facultySelector()}
           </Row>
-          <Row className={this.state.show ? "" : "d-none"}>
+          <Row className={this.state.show ? '' : 'd-none'}>
             {this.advisorsForm()}
           </Row>
         </CardBody>
