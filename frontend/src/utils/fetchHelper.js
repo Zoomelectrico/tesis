@@ -1,5 +1,5 @@
-import axios from "axios";
-import env from "./env";
+import axios from 'axios';
+import env from './env';
 
 /**
  * @function get
@@ -16,16 +16,17 @@ const get = (url, auth = true) =>
       if (auth) {
         const token = localStorage.getItem(env.KEY);
         if (!token) {
-          return reject(new Error("No tiene un token disponible"));
+          return reject(new Error('No tiene un token disponible'));
         }
         data = await axios.get(`${env.API_URL}/${url}`, {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
       } else {
         data = await axios.get(`${env.API_URL}/${url}`);
       }
+      // eslint-disable-next-line prefer-destructuring
       data = data.data;
       if (data && data.success) {
         return resolve(data);
@@ -55,7 +56,7 @@ const post = (url, body, auth = true) =>
       if (auth) {
         const token = localStorage.getItem(env.KEY);
         if (!token) {
-          return reject(new Error("No tiene un token disponible"));
+          return reject(new Error('No tiene un token disponible'));
         }
         data = await axios.post(
           `${env.API_URL}/${url}`,
@@ -63,18 +64,19 @@ const post = (url, body, auth = true) =>
           {
             headers: {
               Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json"
-            }
+              'Content-Type': 'application/json',
+            },
           }
         );
       } else {
         data = await axios.post(`${env.API_URL}/${url}`, { ...body });
       }
+      // eslint-disable-next-line prefer-destructuring
       data = data.data;
       if (data && data.success) {
         return resolve(data);
       }
-      reject(new Error(data.err.message));
+      reject(new Error(data.err));
     } catch (err) {
       console.log(err);
       reject(err);

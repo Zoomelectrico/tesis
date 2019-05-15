@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardBody,
   Table,
+  Badge,
 } from 'reactstrap';
 
 const generateTable = (headers, body) => {
@@ -60,9 +61,23 @@ const Checkout = ({
       {/* Federacion de Centros de Estudiantes */}
       <Row className="mb-4">
         <Col sm="12">
-          <Card style={{ backgroundColor: '#f5f7f9' }}>
+          <Card
+            style={{ backgroundColor: '#f5f7f9' }}
+            className="border-0 shadow-lg"
+          >
             <CardHeader>
-              <h2>Federacion de Centros de Estudiantes</h2>
+              <Row>
+                <Col sm="10">
+                  <h2>Federacion de Centros de Estudiantes</h2>
+                </Col>
+                <Col sm="2">
+                  {passed === 1 ? (
+                    <Badge color="success" pill>
+                      Aprobada
+                    </Badge>
+                  ) : null}
+                </Col>
+              </Row>
             </CardHeader>
             <CardBody>
               {generateTable(
@@ -104,7 +119,10 @@ const Checkout = ({
       {/* Consejo Academico */}
       <Row className="mb-4">
         <Col sm="12">
-          <Card style={{ backgroundColor: '#f5f7f9' }}>
+          <Card
+            style={{ backgroundColor: '#f5f7f9' }}
+            className="border-0 shadow-lg"
+          >
             <CardHeader>
               <h2>Consejo Academico</h2>
             </CardHeader>
@@ -133,7 +151,10 @@ const Checkout = ({
       {/* Centros de Estudiantes */}
       <Row className="mb-4">
         <Col sm="12">
-          <Card style={{ backgroundColor: '#f5f7f9' }}>
+          <Card
+            style={{ backgroundColor: '#f5f7f9' }}
+            className="border-0 shadow-lg"
+          >
             <CardHeader>
               <h2>Centros de Estudiantes</h2>
             </CardHeader>
@@ -155,7 +176,10 @@ const Checkout = ({
       {/* Consejos de Escuela */}
       <Row className="mb-4">
         <Col sm="12">
-          <Card style={{ backgroundColor: '#f5f7f9' }}>
+          <Card
+            style={{ backgroundColor: '#f5f7f9' }}
+            className="border-0 shadow-lg"
+          >
             <CardHeader>
               <h2>Consejos de Escuelas</h2>
             </CardHeader>
@@ -176,7 +200,10 @@ const Checkout = ({
       {/* Consejos de Facultad */}
       <Row className="mb-4">
         <Col sm="12">
-          <Card style={{ backgroundColor: '#f5f7f9' }}>
+          <Card
+            style={{ backgroundColor: '#f5f7f9' }}
+            className="border-0 shadow-lg"
+          >
             <CardHeader>
               <h2>Consejos de Facultad</h2>
             </CardHeader>

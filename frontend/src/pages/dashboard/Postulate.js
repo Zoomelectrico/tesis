@@ -225,7 +225,7 @@ class DashPostulate extends React.Component {
       };
       const data = await post("postulation-create", postulation);
       keys.forEach(key => localStorage.removeItem(key));
-      this.setState({ ...this.state, checkout: true, postulationData: data });
+      this.setState({ ...this.state, checkout: true, postulationData: data.postulation });
     } catch (err) {
       notify("Un Error ha evitado enviar su postulacion", false);
     }

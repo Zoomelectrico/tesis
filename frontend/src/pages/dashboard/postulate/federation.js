@@ -70,7 +70,9 @@ class StudentFederationCenter extends React.Component {
               data-charge={charge}
               data-key={key}
               onChange={this.onChange}
+              defaultValue="none"
             >
+              <option value="none" disabled>Seleccione una Escuela</option>
               {majors.map(major => (
                 <option key={normalize(major)} value={normalize(major)}>
                   {major}

@@ -31,7 +31,7 @@ const translateCoordination = $class => {
   return 'Responsabilidad Social Universitaria';
 };
 
-const Results = ({ location, user }) => {
+const Results = ({ location, user, history }) => {
   const params = new URLSearchParams(location.search);
   const [state, setState] = useState({
     loading: true,
@@ -44,16 +44,25 @@ const Results = ({ location, user }) => {
         let data;
         if (params.get('preliminary') === 'true' && user.privilege > 2) {
           data = await get('preliminary-results');
-          setState({
-            loading: false,
-            preliminary: true,
-            results: { ...data },
-          });
-          console.log(data);
+          if (data.success) {
+            setState({
+              loading: false,
+              preliminary: true,
+              results: { ...data },
+            });
+          } else {
+            notify('Ha ocurrido un Error', false);
+          }
         } else {
           data = await get('results');
-          setState({ loading: false, results: data.results });
+          console.log(data);
+          if (data.success) {
+            setState({ loading: false, results: data.result });
+          } else {
+            notify('Ha ocurrido un Error', false);
+          }
         }
+        console.log(data);
       } catch (err) {
         console.log(err);
         notify('Ha ocurrido un error, intente refrescando el navegador', false);
@@ -62,19 +71,22 @@ const Results = ({ location, user }) => {
     fetch();
   }, []);
 
-  const savePostulation = async e => {
+  const saveResults = async e => {
     try {
       e.preventDefault();
       const data = await post(`save-results/${new Date().getFullYear()}`, {
         ...state.results,
       });
+      if (data.success) {
+        history.push('/app/dashboard?reason=Resultados-salvados&bool=true');
+      }
       console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const fceTable = () => (
+  const fceTable = fceResults => (
     <Row className="mb-3">
       <Col md="12">
         <Card
@@ -96,7 +108,7 @@ const Results = ({ location, user }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {state.results.fceResults.map(obj => (
+                    {fceResults.map(obj => (
                       <tr key={JSON.stringify(obj)}>
                         <td>{obj.charge}</td>
                         <td>{obj.name}</td>
@@ -113,7 +125,7 @@ const Results = ({ location, user }) => {
     </Row>
   );
 
-  const academicCouncilTable = () => (
+  const academicCouncilTable = academicCouncil => (
     <Row>
       <Col sm="12">
         <Card
@@ -133,7 +145,7 @@ const Results = ({ location, user }) => {
                 </tr>
               </thead>
               <tbody>
-                {state.results.academicCouncil.map(obj => (
+                {academicCouncil.map(obj => (
                   <tr key={JSON.stringify(obj)}>
                     <td>{obj.name}</td>
                     <td>{obj.dni}</td>
@@ -148,7 +160,7 @@ const Results = ({ location, user }) => {
     </Row>
   );
 
-  const coordinationsTable = () => (
+  const coordinationsTable = coordinationsResults => (
     <Row className="mb-3">
       <Col md="12">
         <Card
@@ -170,7 +182,7 @@ const Results = ({ location, user }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {state.results.coordinationsResults.map(obj => (
+                    {coordinationsResults.map(obj => (
                       <tr key={JSON.stringify(obj)}>
                         <td>{translateCoordination(obj.$class)}</td>
                         <td>{obj.coordinators[0].name}</td>
@@ -348,21 +360,21 @@ const Results = ({ location, user }) => {
     if (state.preliminary) {
       return (
         <>
-          {fceTable()}
-          {coordinationsTable()}
-          {academicCouncilTable()}
+          {fceTable(state.results.fceResults)}
+          {coordinationsTable(state.results.coordinationsResults)}
+          {academicCouncilTable(state.results.academicCouncil)}
           {studentsCenter(state.results.studentsCenters)}
           {schoolCouncils(state.results.schoolCouncil)}
           {facultyCouncil(state.results.facultyCouncil)}
-          <Row>
+          <Row className="mt-3">
             <Col sm="12">
               <div className="d-flex justify-content-end">
                 <Button
                   color="success"
-                  className="my-auto mb-3 mr-3"
-                  onClick={savePostulation}
+                  className="my-auto mb-3"
+                  onClick={saveResults}
                 >
-                  Guardar Postulacion
+                  Guardar Resultados
                 </Button>
               </div>
             </Col>
@@ -371,14 +383,14 @@ const Results = ({ location, user }) => {
       );
     }
     return (
-      <Row>
-        <Col sm="12">
-          <Card>
-            <CardHeader>{/** */}</CardHeader>
-            <CardBody>{/** */}</CardBody>
-          </Card>
-        </Col>
-      </Row>
+      <>
+        {fceTable(state.results.fceResults)}
+        {coordinationsTable(state.results.coordinationsResults)}
+        {academicCouncilTable(state.results.academicCouncil)}
+        {studentsCenter(state.results.studentsCenters)}
+        {schoolCouncils(state.results.schoolCouncil)}
+        {facultyCouncil(state.results.facultyCouncil)}
+      </>
     );
   };
 
