@@ -14,7 +14,7 @@ exports.creteDemand = async (req, res) => {
     const demand = await Demand.create({ text, type, user });
     res.json({ success: true, demand });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
     console.log(err);
   }
 };
@@ -48,7 +48,7 @@ exports.getAll = async (req, res) => {
     res.json({ success: true, demands });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -80,7 +80,7 @@ exports.getDemand = async (req, res) => {
       });
     }
   } catch (err) {
-    res.json({ err: new Error(err.message), success: false });
+    res.json({ err: err.message, success: false });
   }
 };
 
@@ -98,7 +98,7 @@ exports.markComplete = async (req, res) => {
       });
     }
   } catch (err) {
-    res.json({ err: new Error(err.message), success: false });
+    res.json({ err: err.message, success: false });
   }
 };
 
@@ -143,7 +143,7 @@ exports.makeRepresentative = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -198,7 +198,7 @@ exports.includeElectoralGroup = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -506,6 +506,6 @@ exports.includePostulation = async (req, res) => {
       err: new Error('No se ha encontrado la Solicitud o la Postulacion'),
     });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };

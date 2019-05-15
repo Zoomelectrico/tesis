@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const postulationSchema = new mongoose.Schema({
   electoralGroup: {
-    required: "Debe proveer un grupo electoral",
+    required: 'Debe proveer un grupo electoral',
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ElectoralGroup"
+    ref: 'ElectoralGroup',
   },
   passed: {
     type: Number, // Yes: 1 | No: 0
-    default: 0
+    default: 0,
   },
   fce: [{ name: String, dni: Number, school: String, charge: String }],
   sports: [{ name: String, dni: Number, school: String }],
@@ -21,7 +21,7 @@ const postulationSchema = new mongoose.Schema({
     email: String,
     dni: Number,
     phone: String,
-    school: String
+    school: String,
   },
   facultyCouncil: [
     {
@@ -30,8 +30,8 @@ const postulationSchema = new mongoose.Schema({
       school: String,
       faculty: String,
       substitute: Number,
-      facultyKey: String
-    }
+      facultyKey: String,
+    },
   ],
   schools: [
     {
@@ -39,8 +39,8 @@ const postulationSchema = new mongoose.Schema({
       dni: Number,
       charge: String,
       school: String,
-      schoolKey: String
-    }
+      schoolKey: String,
+    },
   ],
   schoolCouncil: [
     {
@@ -48,13 +48,13 @@ const postulationSchema = new mongoose.Schema({
       dni: Number,
       school: String,
       substitute: Number,
-      schoolKey: String
-    }
+      schoolKey: String,
+    },
   ],
   year: {
     type: Number,
-    default: new Date().getFullYear()
-  }
+    default: new Date().getFullYear(),
+  },
 });
 
-module.exports = mongoose.model("Postulation", postulationSchema);
+module.exports = mongoose.model('Postulation', postulationSchema);

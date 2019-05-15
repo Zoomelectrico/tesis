@@ -8,32 +8,35 @@ exports.createElectoralGroup = async (req, res) => {
   try {
     const { denomination, number, colorName, colorHex, logo } = req.body;
     const user = await User.findById(req.params.id);
-    user.privilege = 2;
-
     if (user.electoralGroups.length > 0) {
       const year = new Date().getFullYear();
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < user.electoralGroups.length; i++) {
         if (user.electoralGroups[i].electionYear === year) {
           return res.json({
-            success: true,
-            msg: 'Ya ha registrado un grupo electoral',
+            success: false,
+            err: 'Ya ha registrado un grupo electoral',
           });
         }
       }
     }
 
-    const electoralGroup = await ElectoralGroup.create({
+    const electoralGroup = new ElectoralGroup({
       denomination,
       number,
+      color: colorName,
       colorHex,
       logo,
-      color: colorName,
       representative: user._id,
     });
 
+    await electoralGroup.save();
+
     if (electoralGroup) {
+      console.log(8);
       user.electoralGroups.push(electoralGroup._id);
+      console.log(9);
+
       await Promise.all([
         Demand.create({
           user: user._id,
@@ -42,13 +45,19 @@ exports.createElectoralGroup = async (req, res) => {
         }),
         user.save(),
       ]);
+      console.log(10);
+
       res.json({ success: true, electoralGroup });
     } else {
-      res.json({ success: false, msg: 'Problemas al registrar' });
+      console.log(11);
+
+      res.json({ success: false, err: 'Problemas al registrar' });
     }
   } catch (err) {
+    console.log(12);
+
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -66,7 +75,7 @@ exports.getElectoralGroupByCreatorId = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -84,7 +93,7 @@ exports.getElectoralGroups = async (req, res) => {
     res.json({ success: true, electoralGroups });
   } catch (err) {
     res.json({
-      err: new Error('Ocurrio un Error en la Base de Datos'),
+      err: 'Ocurrio un Error en la Base de Datos',
       success: false,
     });
   }

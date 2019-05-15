@@ -92,7 +92,7 @@ exports.createPostulation = async (req, res) => {
     res.json({ success: true, postulation, demand });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -103,7 +103,7 @@ exports.getPostulation = async (req, res) => {
     );
     res.json({ success: true, postulation });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -122,6 +122,6 @@ exports.getPostulations = async (req, res) => {
     );
     res.json({ success: true, postulations });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };

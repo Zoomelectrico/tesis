@@ -77,17 +77,17 @@ exports.canVote = async (req, res) => {
       return res.json({
         success: true,
         canVote: false,
-        err: new Error('Este Usuario ya ha votado o no Puede votar'),
+        err: 'Este Usuario ya ha votado o no Puede votar',
       });
     }
     return res.json({
       success: false,
-      err: new Error('No se ha encontrado a un Usuario / Votante'),
+      err: 'No se ha encontrado a un Usuario / Votante',
     });
   } catch (err) {
     res.json({
       success: false,
-      err: new Error('Ha ocurrido un error con el servior comunicalo a la CEU'),
+      err: 'Ha ocurrido un error con el servior comunicalo a la CEU',
     });
   }
 };
@@ -106,7 +106,7 @@ exports.canVoteMw = async (req, res, next) => {
   }
   return res.json({
     success: false,
-    err: new Error('Este Usuario ya ha votado o no Puede votar'),
+    err: 'Este Usuario ya ha votado o no Puede votar',
   });
 };
 
@@ -158,7 +158,7 @@ exports.getPostulation = async (req, res) => {
     res.json({ success: true, postulations });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -192,7 +192,7 @@ exports.vote = async (req, res) => {
     res.json({ success: true });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -493,7 +493,7 @@ const computeFacultyCouncil = async (results, postulations) => {
   return obj;
 };
 
-const preComputeResults = async (p, v) => {
+const preComputeResults = async (p, votes) => {
   const year = new Date().getFullYear();
   const postulations = p.filter(postulation => postulation.year === year);
   const results = {};
@@ -503,7 +503,6 @@ const preComputeResults = async (p, v) => {
       $in: [...postulationsIds.map(id => mongoose.Types.ObjectId(id))],
     },
   }).populate('electoralGroup');
-  const votes = v.filter(vote => vote.year === year);
   postulationsIds.forEach((uuid, i) => {
     results[uuid] = {
       year: new Date().getFullYear(),
@@ -554,7 +553,7 @@ const computeAcademicCouncil = async (results, postulations) => {
   postulations.forEach(({ uuid, academicCouncil }) => {
     for (let i = 0; i < dhnotVector.length; i++) {
       if (dhnotVector[i].electoralGroup === uuid) {
-        dhnotVector[i] = { ...academicCouncil.advisers, substitute: i === 0, };
+        dhnotVector[i] = { ...academicCouncil.advisers, substitute: i === 1 };
       }
     }
   });
@@ -563,7 +562,8 @@ const computeAcademicCouncil = async (results, postulations) => {
 
 exports.computeResults = async (req, res) => {
   try {
-    const [votes, postulations] = await Promise.all([
+    const year = new Date().getFullYear();
+    let [votes, postulations] = await Promise.all([
       fetch(`${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Voto`).then(
         _res => _res.json()
       ),
@@ -571,62 +571,69 @@ exports.computeResults = async (req, res) => {
         `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Postulacion`
       ).then(_res => _res.json()),
     ]);
-
-    const results = await preComputeResults(postulations, votes);
-    const [
-      fceResults,
-      coordinationsResults,
-      studentsCenters,
-      schoolCouncil,
-      facultyCouncil,
-      academicCouncil,
-    ] = await Promise.all([
-      computeFCE(results, postulations),
-      computeCoordinations(results, postulations),
-      computeStudentCenters(results, postulations),
-      computeSchoolCouncil(results, postulations),
-      computeFacultyCouncil(results, postulations),
-      computeAcademicCouncil(results, postulations),
-    ]);
-    res.json({
-      success: true,
-      results,
-      fceResults,
-      coordinationsResults,
-      studentsCenters,
-      schoolCouncil,
-      facultyCouncil,
-      academicCouncil,
-    });
+    votes = votes.filter(vote => vote.year === year);
+    if (votes.length > 0) {
+      const results = await preComputeResults(postulations, votes);
+      const [
+        fceResults,
+        coordinationsResults,
+        studentsCenters,
+        schoolCouncil,
+        facultyCouncil,
+        academicCouncil,
+      ] = await Promise.all([
+        computeFCE(results, postulations),
+        computeCoordinations(results, postulations),
+        computeStudentCenters(results, postulations),
+        computeSchoolCouncil(results, postulations),
+        computeFacultyCouncil(results, postulations),
+        computeAcademicCouncil(results, postulations),
+      ]);
+      res.json({
+        success: true,
+        results,
+        fceResults,
+        coordinationsResults,
+        studentsCenters,
+        schoolCouncil,
+        facultyCouncil,
+        academicCouncil,
+      });
+      return;
+    }
+    res.json({ success: false, err: 'No hay votos para estas elecciones' });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
-exports.getResults = async (req, res) => {};
-
-const normalizeCharge = charge => {
-  switch (charge) {
-    case 'Presidente':
-      return 'president';
-    case 'Secretario General':
-      return 'secretaryGeneral';
-    case 'Secretario de Asustos Internos':
-      return 'internalAffairs';
-    case 'Coordinador General':
-      return 'generalCoordinator';
-    case 'Tesorero':
-      return 'treasurer';
-    default:
-      return '__blank__';
+exports.getResults = async (req, res) => {
+  try {
+    const _year = new Date().getFullYear();
+    let results = await fetch(
+      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Resultado`
+    ).then(_res => _res.json());
+    if (results.length > 0) {
+      results = results.filter(({ year }) => year === _year);
+      results = results.map(_result => ({
+        ..._result,
+        ...JSON.parse(_result.resultString),
+      }));
+      const [result] = results;
+      res.json({ success: true, result });
+      return;
+    }
+    res.json({ success: false, err: 'No hay Resultados para este anio' });
+  } catch (err) {
+    res.json({ success: false, err: err.message });
   }
 };
 
 exports.saveResults = async (req, res) => {
   try {
     const presidents = await fetch(
-      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.Presidente`
+      `${process.env.BLOCKCHAIN_API_URL}/ve.edu.unimet.ceu.PresidenteElectoral`
     ).then(_res => _res.json());
     const { year } = req.params;
     const {
@@ -635,6 +642,7 @@ exports.saveResults = async (req, res) => {
       studentsCenters,
       schoolCouncil,
       facultyCouncil,
+      academicCouncil,
     } = req.body;
     const body = {
       uuid: randomBytes(32).toString('hex'),
@@ -646,6 +654,7 @@ exports.saveResults = async (req, res) => {
         studentsCenters,
         schoolCouncil,
         facultyCouncil,
+        academicCouncil,
       }),
       electoralPresident: `resource:ve.edu.unimet.ceu.PresidenteElectoral#${
         presidents[presidents.length - 1].uuid
@@ -661,6 +670,6 @@ exports.saveResults = async (req, res) => {
     ).then(_res => _res.json());
     res.json({ success: true, result });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };

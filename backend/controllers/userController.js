@@ -10,7 +10,7 @@ exports.getUserByEmail = async (req, res) => {
     const user = await User.findOne({ email });
     res.json({ user, success: true });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -26,7 +26,7 @@ exports.validateUser = async (req, res, next) => {
     }
     return next();
   }
-  throw new Error('Email invalido');
+  res.json({ sucess: false, err: 'Email invalido' });
 };
 
 exports.createUser = async (req, res, next) => {
@@ -56,7 +56,7 @@ exports.createUser = async (req, res, next) => {
     next();
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -79,7 +79,7 @@ exports.getProfile = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
   }
 };
 
@@ -142,7 +142,7 @@ exports.updateUser = async (req, res) => {
       },
     });
   } catch (err) {
-    res.json({ success: false, err: new Error(err.message) });
+    res.json({ success: false, err: err.message });
     console.log(err);
   }
 };
