@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer render corrently 1`] = `
+<footer
+  className="py-5 mt-5"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="align-items-center justify-content-xl-between row"
+    >
+      <div
+        className="col-xl-6"
+      >
+        <div
+          className="copyright text-center text-xl-left text-muted"
+        >
+          © 2019 Jose Roberto Quevedo
+        </div>
+      </div>
+      <div
+        className="text-right col-xl-6"
+      >
+        <a
+          href="https://github.com/zoomelectrico/tesis"
+        >
+          Read me
+           
+          <span
+            aria-label="emoji"
+            role="img"
+          >
+            📚
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

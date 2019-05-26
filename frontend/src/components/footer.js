@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 const Footer = props => (
   <footer className="py-5 mt-5">
@@ -12,7 +12,7 @@ const Footer = props => (
         </Col>
         <Col xl="6" className="text-right">
           <a href="https://github.com/zoomelectrico/tesis">
-            Read me{" "}
+            Read me{' '}
             <span role="img" aria-label="emoji">
               📚
             </span>

@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable global-require */
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -9,17 +10,21 @@ import {
   Nav,
   Container,
   Row,
-  Col
-} from "reactstrap";
+  Col,
+} from 'reactstrap';
 
-const Navigationbar = props => (
+const Navigationbar = () => (
   <>
     <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
       <Container className="px-4">
         <NavbarBrand to="/" tag={Link}>
-          <img src={require("../assets/img/logo-white.svg")} alt="UVOTE Logo" />
+          <img src={require('../assets/img/logo-white.svg')} alt="UVOTE Logo" />
         </NavbarBrand>
-        <button className="navbar-toggler" id="navbar-collapse-main">
+        <button
+          className="navbar-toggler"
+          id="navbar-collapse-main"
+          type="button"
+        >
           <span className="navbar-toggler-icon" />
         </button>
         <UncontrolledCollapse navbar toggler="#navbar-collapse-main">
@@ -29,12 +34,16 @@ const Navigationbar = props => (
                 <Link to="/">
                   <img
                     alt="..."
-                    src={require("../assets/img/logo-color.svg")}
+                    src={require('../assets/img/logo-color.svg')}
                   />
                 </Link>
               </Col>
               <Col className="collapse-close" xs="6">
-                <button className="navbar-toggler" id="navbar-collapse-main">
+                <button
+                  className="navbar-toggler"
+                  id="navbar-collapse-main"
+                  type="button"
+                >
                   <span />
                   <span />
                 </button>

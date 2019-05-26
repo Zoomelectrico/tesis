@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 import {
   Row,
   Col,
@@ -9,27 +11,27 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
-} from "reactstrap";
-import { Navbar, notify, Toast } from "../components";
+  Button,
+} from 'reactstrap';
+import { Navbar, notify, Toast } from '../components';
 
 const Login = props => {
   useEffect(() => {
-    document.body.classList.add("bg-default");
+    document.body.classList.add('bg-default');
     return function cleanup() {
-      document.body.classList.remove("bg-default");
+      document.body.classList.remove('bg-default');
     };
   }, []);
 
   const login = async e => {
     e.preventDefault();
-    const [err, data] = await props.login();
+    const [err] = await props.login();
     if (err) {
       console.log(err);
-      notify("Hubo un Error en el Inicio de Sesion", false);
+      notify('Hubo un Error en el Inicio de Sesion', false);
       return;
     }
-    props.history.push("/app/dashboard");
+    props.history.push('/app/dashboard');
   };
 
   return (
@@ -39,7 +41,7 @@ const Login = props => {
         <Container>
           <Row className="justify-content-center">
             <Col sm="12" md="7" lg="5">
-              <Card style={{ backgroundColor: "#f5f7f9" }}>
+              <Card style={{ backgroundColor: '#f5f7f9' }}>
                 <CardHeader>
                   <h3>Iniciar Sesion</h3>
                 </CardHeader>

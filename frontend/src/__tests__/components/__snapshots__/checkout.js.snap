@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout Component Checkout render Props 1`] = `
+<div
+  className="mt--7 container"
+>
+  <div
+    className="mb-4 row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <div
+          className="card-header"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="col-sm-10"
+            >
+              <h2>
+                Federacion de Centros de Estudiantes
+              </h2>
+            </div>
+            <div
+              className="col-sm-2"
+            >
+              <span
+                className="badge badge-success badge-pill"
+              >
+                Aprobada
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card-body"
+        >
+          <h2
+            className="text-center"
+          >
+            No Existen Datos de esta Postulacion
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mb-4 row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <div
+          className="card-header"
+        >
+          <h2>
+            Consejo Academico
+          </h2>
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="table-responsive"
+          >
+            <table
+              className="table table-hover"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="text-center"
+                  >
+                    Cedula
+                  </th>
+                  <th
+                    className="text-center"
+                  >
+                    nombre
+                  </th>
+                  <th
+                    className="text-center"
+                  >
+                    email
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="text-center"
+                  />
+                  <td
+                    className="text-center"
+                  />
+                  <td
+                    className="text-center"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mb-4 row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <div
+          className="card-header"
+        >
+          <h2>
+            Centros de Estudiantes
+          </h2>
+        </div>
+        <div
+          className="card-body"
+        >
+          <h2
+            className="text-center"
+          >
+            No Existen Datos de esta Postulacion
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mb-4 row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <div
+          className="card-header"
+        >
+          <h2>
+            Consejos de Escuelas
+          </h2>
+        </div>
+        <div
+          className="card-body"
+        >
+          <h2
+            className="text-center"
+          >
+            No Existen Datos de esta Postulacion
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mb-4 row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <div
+          className="card-header"
+        >
+          <h2>
+            Consejos de Facultad
+          </h2>
+        </div>
+        <div
+          className="card-body"
+        >
+          <h2
+            className="text-center"
+          >
+            No Existen Datos de esta Postulacion
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checkout Component Checkout render without Props 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        className="border-0 shadow-lg card"
+        style={
+          Object {
+            "backgroundColor": "#f5f7f9",
+          }
+        }
+      >
+        <p>
+          No se han suministrado los datos necesarios a esta Vista
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

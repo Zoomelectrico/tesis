@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -11,36 +11,36 @@ import {
   FormGroup,
   Form,
   Input,
-  Label
-} from "reactstrap";
-import { Navbar, Footer } from "../components";
-import { majors, normalize, post } from "../utils";
+  Label,
+} from 'reactstrap';
+import { Navbar, Footer } from '../components';
+import { majors, normalize, post } from '../utils';
 
 const Home = props => {
   useEffect(() => {
-    document.body.classList.add("bg-default");
+    document.body.classList.add('bg-default');
     return function cleanup() {
-      document.body.classList.remove("bg-default");
+      document.body.classList.remove('bg-default');
     };
   }, []);
 
   const [formData, setFormData] = useState({
-    name: "",
-    major: "",
-    email: "",
-    message: ""
+    name: '',
+    major: '',
+    email: '',
+    message: '',
   });
 
   const onChangeForm = e => {
     e.preventDefault();
     const data = {
       ...formData,
-      [e.target.name]: [e.target.value]
+      [e.target.name]: [e.target.value],
     };
     setFormData(data);
   };
 
-  const [electoralR, setElectoralR] = useState("");
+  const [electoralR, setElectoralR] = useState('');
 
   const onChangeER = e => {
     e.preventDefault();
@@ -66,7 +66,7 @@ const Home = props => {
                 <Col lg="5" md="6">
                   <h1 className="text-white">Bienvenido!</h1>
                   <p className="text-lead text-light">
-                    uvote es un proyecto piloto, unico en su clase en Venezuela{" "}
+                    uvote es un proyecto piloto, unico en su clase en Venezuela{' '}
                     <span aria-label="venezuela flag" role="img">
                       🇻🇪
                     </span>
@@ -162,8 +162,8 @@ const Home = props => {
                     <Col sm="12" md="3">
                       <Link
                         to={{
-                          pathname: "/electoral-register",
-                          search: `?dni=${electoralR}`
+                          pathname: '/electoral-register',
+                          search: `?dni=${electoralR}`,
                         }}
                       >
                         <Button>Revisar</Button>
@@ -177,10 +177,10 @@ const Home = props => {
           <Container className="pb-5">
             <Row className="justify-content-center">
               <Col sm="12" md="8" lg="6">
-                <Card style={{ backgroundColor: "#f5f7f9" }}>
+                <Card style={{ backgroundColor: '#f5f7f9' }}>
                   <CardHeader
                     className="p-3"
-                    style={{ backgroundColor: "#f5f7f9" }}
+                    style={{ backgroundColor: '#f5f7f9' }}
                   >
                     <h2 className="text-center">Contacto!</h2>
                   </CardHeader>
@@ -195,7 +195,7 @@ const Home = props => {
                               type="text"
                               name="name"
                               id="name"
-                              required={true}
+                              required
                               placeholder="Nombre y Apellido"
                               onChange={onChangeForm}
                             />
@@ -209,7 +209,7 @@ const Home = props => {
                               type="email"
                               name="email"
                               id="email"
-                              required={true}
+                              required
                               placeholder="Correo Electronico"
                               onChange={onChangeForm}
                             />
@@ -222,7 +222,7 @@ const Home = props => {
                             type="select"
                             name="major"
                             id="major"
-                            required={true}
+                            required
                             onChange={onChangeForm}
                           >
                             {majors.map(major => (

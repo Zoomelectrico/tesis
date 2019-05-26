@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Admin render corrently 1`] = `
+<nav
+  className="navbar-top navbar-dark navbar navbar-expand-md"
+  id="navbar-main"
+>
+  <div
+    className="container-fluid"
+  >
+    <a
+      className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+      href="/"
+      onClick={[Function]}
+    >
+      uvote
+    </a>
+    <ul
+      className="align-items-center d-none d-md-flex navbar-nav"
+    >
+      <li
+        className="dropdown nav-item"
+        onKeyDown={[Function]}
+      >
+        <a
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="pr-0 nav-link"
+          href="#"
+          onClick={[Function]}
+        >
+          <div
+            className="align-items-center media"
+          >
+            <span
+              className="avatar avatar-sm rounded-circle"
+            >
+              <img
+                alt="User profile"
+                src="https://via.placeholder.com/150"
+              />
+            </span>
+            <div
+              className="ml-2 d-none d-lg-block media"
+            >
+              <span
+                className="mb-0 text-sm font-weight-bold"
+              >
+                Jose Quevedo
+              </span>
+            </div>
+          </div>
+        </a>
+        <div
+          aria-hidden={true}
+          className="dropdown-menu-arrow dropdown-menu dropdown-menu-right"
+          role="menu"
+          tabIndex="-1"
+        >
+          <a
+            className="dropdown-item"
+            href="/app/dashboard/profile"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="0"
+          >
+            <i
+              className="fas fa-user"
+            />
+            <span>
+              Mi Perfil
+            </span>
+          </a>
+          <a
+            className="dropdown-item"
+            href="/app/dashboard/vote"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="0"
+          >
+            <i
+              className="fas fa-receipt"
+            />
+            <span>
+              Votar
+            </span>
+          </a>
+          <a
+            className="dropdown-item"
+            href="/app/dashboard/results"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="0"
+          >
+            <i
+              className="fas fa-poll"
+            />
+            <span>
+              Resultados
+            </span>
+          </a>
+          <div
+            className="dropdown-divider"
+            onClick={[Function]}
+            tabIndex="-1"
+          />
+          <button
+            className="dropdown-item"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="0"
+            type="button"
+          >
+            <i
+              className="fas fa-sign-out-alt"
+            />
+            <span>
+              Cerrar Sesion
+            </span>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

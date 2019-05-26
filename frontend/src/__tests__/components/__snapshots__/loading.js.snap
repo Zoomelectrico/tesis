@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading render corrently 1`] = `
+<div
+  className="p-5"
+>
+  <div
+    className="d-flex justify-content-center"
+  >
+    <img
+      alt="uvote logo"
+      className="mb-3"
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "logo-color.svg",
+        }
+      }
+      style={
+        Object {
+          "height": "125px",
+          "width": "125px",
+        }
+      }
+    />
+  </div>
+  <h2
+    className="text-center"
+  >
+    Cargando...
+  </h2>
+</div>
+`;

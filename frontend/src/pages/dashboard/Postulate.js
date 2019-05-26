@@ -103,17 +103,6 @@ class DashPostulate extends React.Component {
               postulationData: electoralGroup.postulation,
               checkout: true
             };
-          } else {
-            // FIXME: Reconsiderar como usar esto
-            const data = await this.getCopyOfPostulation();
-            if (data.length > 0) {
-              data.forEach(({ key, data }) => {
-                state.postulation[key] = {
-                  ...state.postulation[key],
-                  ...data
-                };
-              });
-            }
           }
         } else {
           state = { ...state, electoralGroupAccepted: false };
