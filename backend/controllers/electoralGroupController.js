@@ -33,10 +33,7 @@ exports.createElectoralGroup = async (req, res) => {
     await electoralGroup.save();
 
     if (electoralGroup) {
-      console.log(8);
       user.electoralGroups.push(electoralGroup._id);
-      console.log(9);
-
       await Promise.all([
         Demand.create({
           user: user._id,
@@ -45,17 +42,11 @@ exports.createElectoralGroup = async (req, res) => {
         }),
         user.save(),
       ]);
-      console.log(10);
-
       res.json({ success: true, electoralGroup });
     } else {
-      console.log(11);
-
       res.json({ success: false, err: 'Problemas al registrar' });
     }
   } catch (err) {
-    console.log(12);
-
     console.log(err);
     res.json({ success: false, err: err.message });
   }
