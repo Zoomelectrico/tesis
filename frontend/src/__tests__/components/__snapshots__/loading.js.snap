@@ -1,37 +1,261 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading render corrently 1`] = `
-<div
-  className="p-5"
->
-  <div
-    className="d-flex justify-content-center"
-  >
-    <img
-      alt="uvote logo"
-      className="mb-3"
-      src={
-        Object {
-          "ReactComponent": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "render": [Function],
+exports[`Loading Render Corrently 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Loading />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="d-flex justify-content-center"
+        >
+          <img
+            alt="uvote logo"
+            className="mb-3"
+            src={
+              Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "logo-color.svg",
+              }
+            }
+            style={
+              Object {
+                "height": "125px",
+                "width": "125px",
+              }
+            }
+          />
+        </div>,
+        <h2
+          className="text-center"
+        >
+          Cargando...
+        </h2>,
+      ],
+      "className": "p-5",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <img
+            alt="uvote logo"
+            className="mb-3"
+            src={
+              Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "logo-color.svg",
+              }
+            }
+            style={
+              Object {
+                "height": "125px",
+                "width": "125px",
+              }
+            }
+          />,
+          "className": "d-flex justify-content-center",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "uvote logo",
+            "className": "mb-3",
+            "src": Object {
+              "ReactComponent": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              },
+              "__esModule": true,
+              "default": "logo-color.svg",
+            },
+            "style": Object {
+              "height": "125px",
+              "width": "125px",
+            },
           },
-          "__esModule": true,
-          "default": "logo-color.svg",
-        }
-      }
-      style={
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Cargando...",
+          "className": "text-center",
+        },
+        "ref": null,
+        "rendered": "Cargando...",
+        "type": "h2",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="d-flex justify-content-center"
+          >
+            <img
+              alt="uvote logo"
+              className="mb-3"
+              src={
+                Object {
+                  "ReactComponent": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                  "__esModule": true,
+                  "default": "logo-color.svg",
+                }
+              }
+              style={
+                Object {
+                  "height": "125px",
+                  "width": "125px",
+                }
+              }
+            />
+          </div>,
+          <h2
+            className="text-center"
+          >
+            Cargando...
+          </h2>,
+        ],
+        "className": "p-5",
+      },
+      "ref": null,
+      "rendered": Array [
         Object {
-          "height": "125px",
-          "width": "125px",
-        }
-      }
-    />
-  </div>
-  <h2
-    className="text-center"
-  >
-    Cargando...
-  </h2>
-</div>
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <img
+              alt="uvote logo"
+              className="mb-3"
+              src={
+                Object {
+                  "ReactComponent": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                  "__esModule": true,
+                  "default": "logo-color.svg",
+                }
+              }
+              style={
+                Object {
+                  "height": "125px",
+                  "width": "125px",
+                }
+              }
+            />,
+            "className": "d-flex justify-content-center",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "uvote logo",
+              "className": "mb-3",
+              "src": Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "logo-color.svg",
+              },
+              "style": Object {
+                "height": "125px",
+                "width": "125px",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Cargando...",
+            "className": "text-center",
+          },
+          "ref": null,
+          "rendered": "Cargando...",
+          "type": "h2",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;

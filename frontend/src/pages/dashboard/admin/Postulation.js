@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Card, Button } from 'reactstrap';
 import { Header, notify, Loading } from '../../../components';
 import { get, post } from '../../../utils';
-import { Checkout } from '../postulate';
+import { Checkout } from '../postulate/';
 
 const Postulation = ({ location, history }) => {
   const params = new URLSearchParams(location.search);

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { Row, Col, Container } from "reactstrap";
-import { Navbar } from "../components";
+import React, { useEffect } from 'react';
+import { Row, Col, Container } from 'reactstrap';
+import { Navbar } from '../components';
 
 const NotFound = props => {
   useEffect(() => {
-    document.body.classList.add("bg-default");
+    document.body.classList.add('bg-default');
     return function cleanup() {
-      document.body.classList.remove("bg-default");
+      document.body.classList.remove('bg-default');
     };
   }, []);
   return (
@@ -17,7 +17,7 @@ const NotFound = props => {
           <Row className="justify-content-center">
             <Col md="7">
               <h2 className="text-center text-white">
-                Error 404 <br /> No encontramos esta ruta{" "}
+                Error 404 <br /> No encontramos esta ruta{' '}
                 <span role="img" aria-label="emoji">
                   🙅
                 </span>

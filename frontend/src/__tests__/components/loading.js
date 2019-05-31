@@ -1,9 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Loading from '../../components/loading';
 
-test('Loading render corrently', () => {
-  const component = renderer.create(<Loading />);
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+describe('Loading', () => {
+  it('Render Corrently', () => {
+    const wrapper = shallow(<Loading />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

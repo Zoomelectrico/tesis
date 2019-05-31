@@ -9,7 +9,7 @@ import {
   School,
   SchoolCouncil,
   StudentFederationCenter
-} from "./postulate";
+} from "./postulate/index.js";
 import { env, get, post } from "../../utils";
 
 const keys = [

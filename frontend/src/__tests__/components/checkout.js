@@ -1,31 +1,81 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Checkout from '../../pages/dashboard/postulate/checkout';
 
 describe('Checkout Component', () => {
-  test('Checkout render without Props', () => {
-    const component = renderer.create(<Checkout />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('Render without props', () => {
+    const wrapper = shallow(<Checkout />);
+    expect(wrapper).toMatchSnapshot();
   });
-  test('Checkout render Props', () => {
+  it('Render With Props', () => {
     const postulation = {
-      academicCouncil: {},
-      facultyCouncil: [],
-      schools: [],
-      schoolCouncil: [],
-      fce: [],
-      sports: [],
-      culture: [],
-      services: [],
-      academic: [],
-      responsibility: [],
+      academicCouncil: {
+        dni: 'a',
+        name: '1',
+        email: 'a@b.com',
+      },
+      facultyCouncil: [
+        {
+          dni: '2',
+          name: 'b',
+          faculty: 'f-a',
+        },
+      ],
+      schools: [
+        {
+          dni: '3',
+          name: 'c',
+          charge: 'c-a',
+          school: 'e-a',
+        },
+      ],
+      schoolCouncil: [
+        {
+          dni: '4',
+          name: 'd',
+          school: 'e-b',
+        },
+      ],
+      fce: [
+        {
+          name: 'f',
+          charge: 'c-b',
+          dni: '5',
+        },
+      ],
+      sports: [
+        {
+          name: 'a',
+          dni: '11',
+        },
+      ],
+      culture: [
+        {
+          name: 'b',
+          dni: '12',
+        },
+      ],
+      services: [
+        {
+          name: 'c',
+          dni: '13',
+        },
+      ],
+      academic: [
+        {
+          name: 'd',
+          dni: '14',
+        },
+      ],
+      responsibility: [
+        {
+          name: 'e',
+          dni: '15',
+        },
+      ],
       passed: 1,
     };
-    const component = renderer.create(
-      <Checkout postulation={{ ...postulation }} />
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<Checkout postulation={{ ...postulation }} />);
+    expect(wrapper).toMatchSnapshot();
   });
 });

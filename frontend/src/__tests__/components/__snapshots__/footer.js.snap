@@ -1,41 +1,623 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer render corrently 1`] = `
-<footer
-  className="py-5 mt-5"
->
-  <div
-    className="container"
-  >
-    <div
-      className="align-items-center justify-content-xl-between row"
-    >
-      <div
-        className="col-xl-6"
+exports[`Footer Render Corrently 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Footer />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Container
+        tag="div"
       >
-        <div
-          className="copyright text-center text-xl-left text-muted"
+        <Row
+          className="align-items-center justify-content-xl-between"
+          tag="div"
         >
-          © 2019 Jose Roberto Quevedo
-        </div>
-      </div>
-      <div
-        className="text-right col-xl-6"
-      >
-        <a
-          href="https://github.com/zoomelectrico/tesis"
-        >
-          Read me
-           
-          <span
-            aria-label="emoji"
-            role="img"
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+            xl="6"
           >
-            📚
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+            <div
+              className="copyright text-center text-xl-left text-muted"
+            >
+              © 2019 Jose Roberto Quevedo
+            </div>
+          </Col>
+          <Col
+            className="text-right"
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+            xl="6"
+          >
+            <a
+              href="https://github.com/zoomelectrico/tesis"
+            >
+              Read me
+               
+              <span
+                aria-label="emoji"
+                role="img"
+              >
+                📚
+              </span>
+            </a>
+          </Col>
+        </Row>
+      </Container>,
+      "className": "py-5 mt-5",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Row
+          className="align-items-center justify-content-xl-between"
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+            xl="6"
+          >
+            <div
+              className="copyright text-center text-xl-left text-muted"
+            >
+              © 2019 Jose Roberto Quevedo
+            </div>
+          </Col>
+          <Col
+            className="text-right"
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+            xl="6"
+          >
+            <a
+              href="https://github.com/zoomelectrico/tesis"
+            >
+              Read me
+               
+              <span
+                aria-label="emoji"
+                role="img"
+              >
+                📚
+              </span>
+            </a>
+          </Col>
+        </Row>,
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <div
+                className="copyright text-center text-xl-left text-muted"
+              >
+                © 2019 Jose Roberto Quevedo
+              </div>
+            </Col>,
+            <Col
+              className="text-right"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <a
+                href="https://github.com/zoomelectrico/tesis"
+              >
+                Read me
+                 
+                <span
+                  aria-label="emoji"
+                  role="img"
+                >
+                  📚
+                </span>
+              </a>
+            </Col>,
+          ],
+          "className": "align-items-center justify-content-xl-between",
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <div
+                className="copyright text-center text-xl-left text-muted"
+              >
+                © 2019 Jose Roberto Quevedo
+              </div>,
+              "tag": "div",
+              "widths": Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ],
+              "xl": "6",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "© 2019 Jose Roberto Quevedo",
+                "className": "copyright text-center text-xl-left text-muted",
+              },
+              "ref": null,
+              "rendered": "© 2019 Jose Roberto Quevedo",
+              "type": "div",
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <a
+                href="https://github.com/zoomelectrico/tesis"
+              >
+                Read me
+                 
+                <span
+                  aria-label="emoji"
+                  role="img"
+                >
+                  📚
+                </span>
+              </a>,
+              "className": "text-right",
+              "tag": "div",
+              "widths": Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ],
+              "xl": "6",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Read me",
+                  " ",
+                  <span
+                    aria-label="emoji"
+                    role="img"
+                  >
+                    📚
+                  </span>,
+                ],
+                "href": "https://github.com/zoomelectrico/tesis",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Read me",
+                " ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-label": "emoji",
+                    "children": "📚",
+                    "role": "img",
+                  },
+                  "ref": null,
+                  "rendered": "📚",
+                  "type": "span",
+                },
+              ],
+              "type": "a",
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "footer",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Container
+          tag="div"
+        >
+          <Row
+            className="align-items-center justify-content-xl-between"
+            tag="div"
+          >
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <div
+                className="copyright text-center text-xl-left text-muted"
+              >
+                © 2019 Jose Roberto Quevedo
+              </div>
+            </Col>
+            <Col
+              className="text-right"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <a
+                href="https://github.com/zoomelectrico/tesis"
+              >
+                Read me
+                 
+                <span
+                  aria-label="emoji"
+                  role="img"
+                >
+                  📚
+                </span>
+              </a>
+            </Col>
+          </Row>
+        </Container>,
+        "className": "py-5 mt-5",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row
+            className="align-items-center justify-content-xl-between"
+            tag="div"
+          >
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <div
+                className="copyright text-center text-xl-left text-muted"
+              >
+                © 2019 Jose Roberto Quevedo
+              </div>
+            </Col>
+            <Col
+              className="text-right"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xl="6"
+            >
+              <a
+                href="https://github.com/zoomelectrico/tesis"
+              >
+                Read me
+                 
+                <span
+                  aria-label="emoji"
+                  role="img"
+                >
+                  📚
+                </span>
+              </a>
+            </Col>
+          </Row>,
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xl="6"
+              >
+                <div
+                  className="copyright text-center text-xl-left text-muted"
+                >
+                  © 2019 Jose Roberto Quevedo
+                </div>
+              </Col>,
+              <Col
+                className="text-right"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xl="6"
+              >
+                <a
+                  href="https://github.com/zoomelectrico/tesis"
+                >
+                  Read me
+                   
+                  <span
+                    aria-label="emoji"
+                    role="img"
+                  >
+                    📚
+                  </span>
+                </a>
+              </Col>,
+            ],
+            "className": "align-items-center justify-content-xl-between",
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <div
+                  className="copyright text-center text-xl-left text-muted"
+                >
+                  © 2019 Jose Roberto Quevedo
+                </div>,
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+                "xl": "6",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "© 2019 Jose Roberto Quevedo",
+                  "className": "copyright text-center text-xl-left text-muted",
+                },
+                "ref": null,
+                "rendered": "© 2019 Jose Roberto Quevedo",
+                "type": "div",
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <a
+                  href="https://github.com/zoomelectrico/tesis"
+                >
+                  Read me
+                   
+                  <span
+                    aria-label="emoji"
+                    role="img"
+                  >
+                    📚
+                  </span>
+                </a>,
+                "className": "text-right",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+                "xl": "6",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Read me",
+                    " ",
+                    <span
+                      aria-label="emoji"
+                      role="img"
+                    >
+                      📚
+                    </span>,
+                  ],
+                  "href": "https://github.com/zoomelectrico/tesis",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Read me",
+                  " ",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "aria-label": "emoji",
+                      "children": "📚",
+                      "role": "img",
+                    },
+                    "ref": null,
+                    "rendered": "📚",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "footer",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;

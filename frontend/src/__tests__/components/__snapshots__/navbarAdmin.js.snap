@@ -1,126 +1,1739 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar Admin render corrently 1`] = `
-<nav
-  className="navbar-top navbar-dark navbar navbar-expand-md"
-  id="navbar-main"
->
-  <div
-    className="container-fluid"
-  >
-    <a
-      className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-      href="/"
-      onClick={[Function]}
-    >
-      uvote
-    </a>
-    <ul
-      className="align-items-center d-none d-md-flex navbar-nav"
-    >
-      <li
-        className="dropdown nav-item"
-        onKeyDown={[Function]}
+exports[`Admin Navbar Render Corrently 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NavbarAdmin
+    brandName="uvote"
+    logout={[Function]}
+    user={
+      Object {
+        "firstName": "Jose",
+        "img": "https://via.placeholder.com/150",
+        "lastName": "Quevedo",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <Container
+        fluid={true}
+        tag="div"
       >
-        <a
-          aria-expanded={false}
-          aria-haspopup={true}
-          className="pr-0 nav-link"
-          href="#"
-          onClick={[Function]}
+        <Link
+          className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+          replace={false}
+          to="/"
         >
-          <div
-            className="align-items-center media"
+          uvote
+        </Link>
+        <Nav
+          className="align-items-center d-none d-md-flex"
+          navbar={true}
+          tag="ul"
+          vertical={false}
+        >
+          <UncontrolledDropdown
+            nav={true}
           >
-            <span
-              className="avatar avatar-sm rounded-circle"
+            <DropdownToggle
+              aria-haspopup={true}
+              className="pr-0"
+              color="secondary"
+              nav={true}
             >
-              <img
-                alt="User profile"
-                src="https://via.placeholder.com/150"
-              />
-            </span>
-            <div
-              className="ml-2 d-none d-lg-block media"
-            >
-              <span
-                className="mb-0 text-sm font-weight-bold"
+              <Media
+                className="align-items-center"
               >
-                Jose Quevedo
-              </span>
-            </div>
-          </div>
-        </a>
-        <div
-          aria-hidden={true}
-          className="dropdown-menu-arrow dropdown-menu dropdown-menu-right"
-          role="menu"
-          tabIndex="-1"
+                <span
+                  className="avatar avatar-sm rounded-circle"
+                >
+                  <img
+                    alt="User profile"
+                    src="https://via.placeholder.com/150"
+                  />
+                </span>
+                <Media
+                  className="ml-2 d-none d-lg-block"
+                >
+                  <span
+                    className="mb-0 text-sm font-weight-bold"
+                  >
+                    Jose Quevedo
+                  </span>
+                </Media>
+              </Media>
+            </DropdownToggle>
+            <DropdownMenu
+              className="dropdown-menu-arrow"
+              flip={true}
+              right={true}
+              tag="div"
+            >
+              <DropdownItem
+                tag={[Function]}
+                to="/app/dashboard/profile"
+                toggle={true}
+              >
+                <i
+                  className="fas fa-user"
+                />
+                <span>
+                  Mi Perfil
+                </span>
+              </DropdownItem>
+              <DropdownItem
+                tag={[Function]}
+                to="/app/dashboard/vote"
+                toggle={true}
+              >
+                <i
+                  className="fas fa-receipt"
+                />
+                <span>
+                  Votar
+                </span>
+              </DropdownItem>
+              <DropdownItem
+                tag={[Function]}
+                to="/app/dashboard/results"
+                toggle={true}
+              >
+                <i
+                  className="fas fa-poll"
+                />
+                <span>
+                  Resultados
+                </span>
+              </DropdownItem>
+              <DropdownItem
+                divider={true}
+                tag="button"
+                toggle={true}
+              />
+              <DropdownItem
+                onClick={[Function]}
+                tag="button"
+                toggle={true}
+              >
+                <i
+                  className="fas fa-sign-out-alt"
+                />
+                <span>
+                  Cerrar Sesion
+                </span>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </Nav>
+      </Container>,
+      "className": "navbar-top navbar-dark",
+      "expand": "md",
+      "id": "navbar-main",
+      "tag": "nav",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <Link
+            className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+            replace={false}
+            to="/"
+          >
+            uvote
+          </Link>,
+          <Nav
+            className="align-items-center d-none d-md-flex"
+            navbar={true}
+            tag="ul"
+            vertical={false}
+          >
+            <UncontrolledDropdown
+              nav={true}
+            >
+              <DropdownToggle
+                aria-haspopup={true}
+                className="pr-0"
+                color="secondary"
+                nav={true}
+              >
+                <Media
+                  className="align-items-center"
+                >
+                  <span
+                    className="avatar avatar-sm rounded-circle"
+                  >
+                    <img
+                      alt="User profile"
+                      src="https://via.placeholder.com/150"
+                    />
+                  </span>
+                  <Media
+                    className="ml-2 d-none d-lg-block"
+                  >
+                    <span
+                      className="mb-0 text-sm font-weight-bold"
+                    >
+                      Jose Quevedo
+                    </span>
+                  </Media>
+                </Media>
+              </DropdownToggle>
+              <DropdownMenu
+                className="dropdown-menu-arrow"
+                flip={true}
+                right={true}
+                tag="div"
+              >
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/profile"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-user"
+                  />
+                  <span>
+                    Mi Perfil
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/vote"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-receipt"
+                  />
+                  <span>
+                    Votar
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/results"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-poll"
+                  />
+                  <span>
+                    Resultados
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  divider={true}
+                  tag="button"
+                  toggle={true}
+                />
+                <DropdownItem
+                  onClick={[Function]}
+                  tag="button"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-sign-out-alt"
+                  />
+                  <span>
+                    Cerrar Sesion
+                  </span>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>,
+        ],
+        "fluid": true,
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "uvote",
+            "className": "h4 mb-0 text-white text-uppercase d-none d-lg-inline-block",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "uvote",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <UncontrolledDropdown
+              nav={true}
+            >
+              <DropdownToggle
+                aria-haspopup={true}
+                className="pr-0"
+                color="secondary"
+                nav={true}
+              >
+                <Media
+                  className="align-items-center"
+                >
+                  <span
+                    className="avatar avatar-sm rounded-circle"
+                  >
+                    <img
+                      alt="User profile"
+                      src="https://via.placeholder.com/150"
+                    />
+                  </span>
+                  <Media
+                    className="ml-2 d-none d-lg-block"
+                  >
+                    <span
+                      className="mb-0 text-sm font-weight-bold"
+                    >
+                      Jose Quevedo
+                    </span>
+                  </Media>
+                </Media>
+              </DropdownToggle>
+              <DropdownMenu
+                className="dropdown-menu-arrow"
+                flip={true}
+                right={true}
+                tag="div"
+              >
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/profile"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-user"
+                  />
+                  <span>
+                    Mi Perfil
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/vote"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-receipt"
+                  />
+                  <span>
+                    Votar
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/results"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-poll"
+                  />
+                  <span>
+                    Resultados
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  divider={true}
+                  tag="button"
+                  toggle={true}
+                />
+                <DropdownItem
+                  onClick={[Function]}
+                  tag="button"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-sign-out-alt"
+                  />
+                  <span>
+                    Cerrar Sesion
+                  </span>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>,
+            "className": "align-items-center d-none d-md-flex",
+            "navbar": true,
+            "tag": "ul",
+            "vertical": false,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <DropdownToggle
+                  aria-haspopup={true}
+                  className="pr-0"
+                  color="secondary"
+                  nav={true}
+                >
+                  <Media
+                    className="align-items-center"
+                  >
+                    <span
+                      className="avatar avatar-sm rounded-circle"
+                    >
+                      <img
+                        alt="User profile"
+                        src="https://via.placeholder.com/150"
+                      />
+                    </span>
+                    <Media
+                      className="ml-2 d-none d-lg-block"
+                    >
+                      <span
+                        className="mb-0 text-sm font-weight-bold"
+                      >
+                        Jose Quevedo
+                      </span>
+                    </Media>
+                  </Media>
+                </DropdownToggle>,
+                <DropdownMenu
+                  className="dropdown-menu-arrow"
+                  flip={true}
+                  right={true}
+                  tag="div"
+                >
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/profile"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-user"
+                    />
+                    <span>
+                      Mi Perfil
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/vote"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-receipt"
+                    />
+                    <span>
+                      Votar
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/results"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-poll"
+                    />
+                    <span>
+                      Resultados
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    divider={true}
+                    tag="button"
+                    toggle={true}
+                  />
+                  <DropdownItem
+                    onClick={[Function]}
+                    tag="button"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-sign-out-alt"
+                    />
+                    <span>
+                      Cerrar Sesion
+                    </span>
+                  </DropdownItem>
+                </DropdownMenu>,
+              ],
+              "nav": true,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "aria-haspopup": true,
+                  "children": <Media
+                    className="align-items-center"
+                  >
+                    <span
+                      className="avatar avatar-sm rounded-circle"
+                    >
+                      <img
+                        alt="User profile"
+                        src="https://via.placeholder.com/150"
+                      />
+                    </span>
+                    <Media
+                      className="ml-2 d-none d-lg-block"
+                    >
+                      <span
+                        className="mb-0 text-sm font-weight-bold"
+                      >
+                        Jose Quevedo
+                      </span>
+                    </Media>
+                  </Media>,
+                  "className": "pr-0",
+                  "color": "secondary",
+                  "nav": true,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <span
+                        className="avatar avatar-sm rounded-circle"
+                      >
+                        <img
+                          alt="User profile"
+                          src="https://via.placeholder.com/150"
+                        />
+                      </span>,
+                      <Media
+                        className="ml-2 d-none d-lg-block"
+                      >
+                        <span
+                          className="mb-0 text-sm font-weight-bold"
+                        >
+                          Jose Quevedo
+                        </span>
+                      </Media>,
+                    ],
+                    "className": "align-items-center",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": <img
+                          alt="User profile"
+                          src="https://via.placeholder.com/150"
+                        />,
+                        "className": "avatar avatar-sm rounded-circle",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "alt": "User profile",
+                          "src": "https://via.placeholder.com/150",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "img",
+                      },
+                      "type": "span",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <span
+                          className="mb-0 text-sm font-weight-bold"
+                        >
+                          Jose Quevedo
+                        </span>,
+                        "className": "ml-2 d-none d-lg-block",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Jose Quevedo",
+                          "className": "mb-0 text-sm font-weight-bold",
+                        },
+                        "ref": null,
+                        "rendered": "Jose Quevedo",
+                        "type": "span",
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/profile"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-user"
+                      />
+                      <span>
+                        Mi Perfil
+                      </span>
+                    </DropdownItem>,
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/vote"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-receipt"
+                      />
+                      <span>
+                        Votar
+                      </span>
+                    </DropdownItem>,
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/results"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-poll"
+                      />
+                      <span>
+                        Resultados
+                      </span>
+                    </DropdownItem>,
+                    <DropdownItem
+                      divider={true}
+                      tag="button"
+                      toggle={true}
+                    />,
+                    <DropdownItem
+                      onClick={[Function]}
+                      tag="button"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-sign-out-alt"
+                      />
+                      <span>
+                        Cerrar Sesion
+                      </span>
+                    </DropdownItem>,
+                  ],
+                  "className": "dropdown-menu-arrow",
+                  "flip": true,
+                  "right": true,
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <i
+                          className="fas fa-user"
+                        />,
+                        <span>
+                          Mi Perfil
+                        </span>,
+                      ],
+                      "tag": [Function],
+                      "to": "/app/dashboard/profile",
+                      "toggle": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "fas fa-user",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "i",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Mi Perfil",
+                        },
+                        "ref": null,
+                        "rendered": "Mi Perfil",
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <i
+                          className="fas fa-receipt"
+                        />,
+                        <span>
+                          Votar
+                        </span>,
+                      ],
+                      "tag": [Function],
+                      "to": "/app/dashboard/vote",
+                      "toggle": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "fas fa-receipt",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "i",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Votar",
+                        },
+                        "ref": null,
+                        "rendered": "Votar",
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <i
+                          className="fas fa-poll"
+                        />,
+                        <span>
+                          Resultados
+                        </span>,
+                      ],
+                      "tag": [Function],
+                      "to": "/app/dashboard/results",
+                      "toggle": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "fas fa-poll",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "i",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Resultados",
+                        },
+                        "ref": null,
+                        "rendered": "Resultados",
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "divider": true,
+                      "tag": "button",
+                      "toggle": true,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <i
+                          className="fas fa-sign-out-alt"
+                        />,
+                        <span>
+                          Cerrar Sesion
+                        </span>,
+                      ],
+                      "onClick": [Function],
+                      "tag": "button",
+                      "toggle": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "fas fa-sign-out-alt",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "i",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Cerrar Sesion",
+                        },
+                        "ref": null,
+                        "rendered": "Cerrar Sesion",
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Container
+          fluid={true}
+          tag="div"
         >
-          <a
-            className="dropdown-item"
-            href="/app/dashboard/profile"
-            onClick={[Function]}
-            role="menuitem"
-            tabIndex="0"
+          <Link
+            className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+            replace={false}
+            to="/"
           >
-            <i
-              className="fas fa-user"
-            />
-            <span>
-              Mi Perfil
-            </span>
-          </a>
-          <a
-            className="dropdown-item"
-            href="/app/dashboard/vote"
-            onClick={[Function]}
-            role="menuitem"
-            tabIndex="0"
+            uvote
+          </Link>
+          <Nav
+            className="align-items-center d-none d-md-flex"
+            navbar={true}
+            tag="ul"
+            vertical={false}
           >
-            <i
-              className="fas fa-receipt"
-            />
-            <span>
-              Votar
-            </span>
-          </a>
-          <a
-            className="dropdown-item"
-            href="/app/dashboard/results"
-            onClick={[Function]}
-            role="menuitem"
-            tabIndex="0"
-          >
-            <i
-              className="fas fa-poll"
-            />
-            <span>
-              Resultados
-            </span>
-          </a>
-          <div
-            className="dropdown-divider"
-            onClick={[Function]}
-            tabIndex="-1"
-          />
-          <button
-            className="dropdown-item"
-            onClick={[Function]}
-            role="menuitem"
-            tabIndex="0"
-            type="button"
-          >
-            <i
-              className="fas fa-sign-out-alt"
-            />
-            <span>
-              Cerrar Sesion
-            </span>
-          </button>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+            <UncontrolledDropdown
+              nav={true}
+            >
+              <DropdownToggle
+                aria-haspopup={true}
+                className="pr-0"
+                color="secondary"
+                nav={true}
+              >
+                <Media
+                  className="align-items-center"
+                >
+                  <span
+                    className="avatar avatar-sm rounded-circle"
+                  >
+                    <img
+                      alt="User profile"
+                      src="https://via.placeholder.com/150"
+                    />
+                  </span>
+                  <Media
+                    className="ml-2 d-none d-lg-block"
+                  >
+                    <span
+                      className="mb-0 text-sm font-weight-bold"
+                    >
+                      Jose Quevedo
+                    </span>
+                  </Media>
+                </Media>
+              </DropdownToggle>
+              <DropdownMenu
+                className="dropdown-menu-arrow"
+                flip={true}
+                right={true}
+                tag="div"
+              >
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/profile"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-user"
+                  />
+                  <span>
+                    Mi Perfil
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/vote"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-receipt"
+                  />
+                  <span>
+                    Votar
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  tag={[Function]}
+                  to="/app/dashboard/results"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-poll"
+                  />
+                  <span>
+                    Resultados
+                  </span>
+                </DropdownItem>
+                <DropdownItem
+                  divider={true}
+                  tag="button"
+                  toggle={true}
+                />
+                <DropdownItem
+                  onClick={[Function]}
+                  tag="button"
+                  toggle={true}
+                >
+                  <i
+                    className="fas fa-sign-out-alt"
+                  />
+                  <span>
+                    Cerrar Sesion
+                  </span>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+        </Container>,
+        "className": "navbar-top navbar-dark",
+        "expand": "md",
+        "id": "navbar-main",
+        "tag": "nav",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Link
+              className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+              replace={false}
+              to="/"
+            >
+              uvote
+            </Link>,
+            <Nav
+              className="align-items-center d-none d-md-flex"
+              navbar={true}
+              tag="ul"
+              vertical={false}
+            >
+              <UncontrolledDropdown
+                nav={true}
+              >
+                <DropdownToggle
+                  aria-haspopup={true}
+                  className="pr-0"
+                  color="secondary"
+                  nav={true}
+                >
+                  <Media
+                    className="align-items-center"
+                  >
+                    <span
+                      className="avatar avatar-sm rounded-circle"
+                    >
+                      <img
+                        alt="User profile"
+                        src="https://via.placeholder.com/150"
+                      />
+                    </span>
+                    <Media
+                      className="ml-2 d-none d-lg-block"
+                    >
+                      <span
+                        className="mb-0 text-sm font-weight-bold"
+                      >
+                        Jose Quevedo
+                      </span>
+                    </Media>
+                  </Media>
+                </DropdownToggle>
+                <DropdownMenu
+                  className="dropdown-menu-arrow"
+                  flip={true}
+                  right={true}
+                  tag="div"
+                >
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/profile"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-user"
+                    />
+                    <span>
+                      Mi Perfil
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/vote"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-receipt"
+                    />
+                    <span>
+                      Votar
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/results"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-poll"
+                    />
+                    <span>
+                      Resultados
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    divider={true}
+                    tag="button"
+                    toggle={true}
+                  />
+                  <DropdownItem
+                    onClick={[Function]}
+                    tag="button"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-sign-out-alt"
+                    />
+                    <span>
+                      Cerrar Sesion
+                    </span>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>,
+          ],
+          "fluid": true,
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "uvote",
+              "className": "h4 mb-0 text-white text-uppercase d-none d-lg-inline-block",
+              "replace": false,
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "uvote",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <UncontrolledDropdown
+                nav={true}
+              >
+                <DropdownToggle
+                  aria-haspopup={true}
+                  className="pr-0"
+                  color="secondary"
+                  nav={true}
+                >
+                  <Media
+                    className="align-items-center"
+                  >
+                    <span
+                      className="avatar avatar-sm rounded-circle"
+                    >
+                      <img
+                        alt="User profile"
+                        src="https://via.placeholder.com/150"
+                      />
+                    </span>
+                    <Media
+                      className="ml-2 d-none d-lg-block"
+                    >
+                      <span
+                        className="mb-0 text-sm font-weight-bold"
+                      >
+                        Jose Quevedo
+                      </span>
+                    </Media>
+                  </Media>
+                </DropdownToggle>
+                <DropdownMenu
+                  className="dropdown-menu-arrow"
+                  flip={true}
+                  right={true}
+                  tag="div"
+                >
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/profile"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-user"
+                    />
+                    <span>
+                      Mi Perfil
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/vote"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-receipt"
+                    />
+                    <span>
+                      Votar
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    tag={[Function]}
+                    to="/app/dashboard/results"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-poll"
+                    />
+                    <span>
+                      Resultados
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem
+                    divider={true}
+                    tag="button"
+                    toggle={true}
+                  />
+                  <DropdownItem
+                    onClick={[Function]}
+                    tag="button"
+                    toggle={true}
+                  >
+                    <i
+                      className="fas fa-sign-out-alt"
+                    />
+                    <span>
+                      Cerrar Sesion
+                    </span>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>,
+              "className": "align-items-center d-none d-md-flex",
+              "navbar": true,
+              "tag": "ul",
+              "vertical": false,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <DropdownToggle
+                    aria-haspopup={true}
+                    className="pr-0"
+                    color="secondary"
+                    nav={true}
+                  >
+                    <Media
+                      className="align-items-center"
+                    >
+                      <span
+                        className="avatar avatar-sm rounded-circle"
+                      >
+                        <img
+                          alt="User profile"
+                          src="https://via.placeholder.com/150"
+                        />
+                      </span>
+                      <Media
+                        className="ml-2 d-none d-lg-block"
+                      >
+                        <span
+                          className="mb-0 text-sm font-weight-bold"
+                        >
+                          Jose Quevedo
+                        </span>
+                      </Media>
+                    </Media>
+                  </DropdownToggle>,
+                  <DropdownMenu
+                    className="dropdown-menu-arrow"
+                    flip={true}
+                    right={true}
+                    tag="div"
+                  >
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/profile"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-user"
+                      />
+                      <span>
+                        Mi Perfil
+                      </span>
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/vote"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-receipt"
+                      />
+                      <span>
+                        Votar
+                      </span>
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={[Function]}
+                      to="/app/dashboard/results"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-poll"
+                      />
+                      <span>
+                        Resultados
+                      </span>
+                    </DropdownItem>
+                    <DropdownItem
+                      divider={true}
+                      tag="button"
+                      toggle={true}
+                    />
+                    <DropdownItem
+                      onClick={[Function]}
+                      tag="button"
+                      toggle={true}
+                    >
+                      <i
+                        className="fas fa-sign-out-alt"
+                      />
+                      <span>
+                        Cerrar Sesion
+                      </span>
+                    </DropdownItem>
+                  </DropdownMenu>,
+                ],
+                "nav": true,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "aria-haspopup": true,
+                    "children": <Media
+                      className="align-items-center"
+                    >
+                      <span
+                        className="avatar avatar-sm rounded-circle"
+                      >
+                        <img
+                          alt="User profile"
+                          src="https://via.placeholder.com/150"
+                        />
+                      </span>
+                      <Media
+                        className="ml-2 d-none d-lg-block"
+                      >
+                        <span
+                          className="mb-0 text-sm font-weight-bold"
+                        >
+                          Jose Quevedo
+                        </span>
+                      </Media>
+                    </Media>,
+                    "className": "pr-0",
+                    "color": "secondary",
+                    "nav": true,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <span
+                          className="avatar avatar-sm rounded-circle"
+                        >
+                          <img
+                            alt="User profile"
+                            src="https://via.placeholder.com/150"
+                          />
+                        </span>,
+                        <Media
+                          className="ml-2 d-none d-lg-block"
+                        >
+                          <span
+                            className="mb-0 text-sm font-weight-bold"
+                          >
+                            Jose Quevedo
+                          </span>
+                        </Media>,
+                      ],
+                      "className": "align-items-center",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": <img
+                            alt="User profile"
+                            src="https://via.placeholder.com/150"
+                          />,
+                          "className": "avatar avatar-sm rounded-circle",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "alt": "User profile",
+                            "src": "https://via.placeholder.com/150",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "img",
+                        },
+                        "type": "span",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": <span
+                            className="mb-0 text-sm font-weight-bold"
+                          >
+                            Jose Quevedo
+                          </span>,
+                          "className": "ml-2 d-none d-lg-block",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Jose Quevedo",
+                            "className": "mb-0 text-sm font-weight-bold",
+                          },
+                          "ref": null,
+                          "rendered": "Jose Quevedo",
+                          "type": "span",
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <DropdownItem
+                        tag={[Function]}
+                        to="/app/dashboard/profile"
+                        toggle={true}
+                      >
+                        <i
+                          className="fas fa-user"
+                        />
+                        <span>
+                          Mi Perfil
+                        </span>
+                      </DropdownItem>,
+                      <DropdownItem
+                        tag={[Function]}
+                        to="/app/dashboard/vote"
+                        toggle={true}
+                      >
+                        <i
+                          className="fas fa-receipt"
+                        />
+                        <span>
+                          Votar
+                        </span>
+                      </DropdownItem>,
+                      <DropdownItem
+                        tag={[Function]}
+                        to="/app/dashboard/results"
+                        toggle={true}
+                      >
+                        <i
+                          className="fas fa-poll"
+                        />
+                        <span>
+                          Resultados
+                        </span>
+                      </DropdownItem>,
+                      <DropdownItem
+                        divider={true}
+                        tag="button"
+                        toggle={true}
+                      />,
+                      <DropdownItem
+                        onClick={[Function]}
+                        tag="button"
+                        toggle={true}
+                      >
+                        <i
+                          className="fas fa-sign-out-alt"
+                        />
+                        <span>
+                          Cerrar Sesion
+                        </span>
+                      </DropdownItem>,
+                    ],
+                    "className": "dropdown-menu-arrow",
+                    "flip": true,
+                    "right": true,
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="fas fa-user"
+                          />,
+                          <span>
+                            Mi Perfil
+                          </span>,
+                        ],
+                        "tag": [Function],
+                        "to": "/app/dashboard/profile",
+                        "toggle": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "fas fa-user",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Mi Perfil",
+                          },
+                          "ref": null,
+                          "rendered": "Mi Perfil",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="fas fa-receipt"
+                          />,
+                          <span>
+                            Votar
+                          </span>,
+                        ],
+                        "tag": [Function],
+                        "to": "/app/dashboard/vote",
+                        "toggle": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "fas fa-receipt",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Votar",
+                          },
+                          "ref": null,
+                          "rendered": "Votar",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="fas fa-poll"
+                          />,
+                          <span>
+                            Resultados
+                          </span>,
+                        ],
+                        "tag": [Function],
+                        "to": "/app/dashboard/results",
+                        "toggle": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "fas fa-poll",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Resultados",
+                          },
+                          "ref": null,
+                          "rendered": "Resultados",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "divider": true,
+                        "tag": "button",
+                        "toggle": true,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="fas fa-sign-out-alt"
+                          />,
+                          <span>
+                            Cerrar Sesion
+                          </span>,
+                        ],
+                        "onClick": [Function],
+                        "tag": "button",
+                        "toggle": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "fas fa-sign-out-alt",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Cerrar Sesion",
+                          },
+                          "ref": null,
+                          "rendered": "Cerrar Sesion",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;

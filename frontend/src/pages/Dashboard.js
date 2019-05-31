@@ -109,9 +109,13 @@ const routes = [
 
 const Dashboard = props => {
   useEffect(() => {
-    if (props.user.firstName && localStorage.getItem("welcome")) {
-      notify(`Hola ${props.user.firstName}!`, true);
-      localStorage.setItem("welcome", false);
+    if (props.user) {
+      if (props.user.firstName && localStorage.getItem("welcome")) {
+        notify(`Hola ${props.user.firstName}!`, true);
+        localStorage.setItem("welcome", false);
+      }
+    } else {
+      props.history.push('/login?reason=Debe-iniciar-sesion-para-acceder&bool=false');
     }
     return () => {
       localStorage.setItem("welcome", true);

@@ -1,0 +1,2777 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Render Corrently 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Navigationbar />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <Navbar
+        className="navbar-top navbar-horizontal navbar-dark"
+        expand="md"
+        tag="nav"
+      >
+        <Container
+          className="px-4"
+          tag="div"
+        >
+          <NavbarBrand
+            tag={[Function]}
+            to="/"
+          >
+            <img
+              alt="UVOTE Logo"
+              src={
+                Object {
+                  "ReactComponent": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                  "__esModule": true,
+                  "default": "logo-white.svg",
+                }
+              }
+            />
+          </NavbarBrand>
+          <button
+            className="navbar-toggler"
+            id="navbar-collapse-main"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>
+          <Collapse
+            appear={false}
+            enter={true}
+            exit={true}
+            in={false}
+            isOpen={true}
+            mountOnEnter={false}
+            navbar={true}
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            tag="div"
+            timeout={350}
+            unmountOnExit={false}
+          >
+            <div
+              className="navbar-collapse-header d-md-none"
+            >
+              <Row
+                tag="div"
+              >
+                <Col
+                  className="collapse-brand"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs="6"
+                >
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    <img
+                      alt="..."
+                      src={
+                        Object {
+                          "ReactComponent": Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "render": [Function],
+                          },
+                          "__esModule": true,
+                          "default": "logo-color.svg",
+                        }
+                      }
+                    />
+                  </Link>
+                </Col>
+                <Col
+                  className="collapse-close"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs="6"
+                >
+                  <button
+                    className="navbar-toggler"
+                    id="navbar-collapse-main"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span />
+                    <span />
+                  </button>
+                </Col>
+              </Row>
+            </div>
+            <Nav
+              className="ml-auto"
+              navbar={true}
+              tag="ul"
+              vertical={false}
+            >
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/auth/register"
+                >
+                  <i
+                    className="ni ni-circle-08"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Register
+                  </span>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/auth/login"
+                >
+                  <i
+                    className="ni ni-key-25"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Login
+                  </span>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/app/dashboard"
+                >
+                  <i
+                    className="ni ni-single-02"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Profile
+                  </span>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Container>
+      </Navbar>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Container
+          className="px-4"
+          tag="div"
+        >
+          <NavbarBrand
+            tag={[Function]}
+            to="/"
+          >
+            <img
+              alt="UVOTE Logo"
+              src={
+                Object {
+                  "ReactComponent": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                  "__esModule": true,
+                  "default": "logo-white.svg",
+                }
+              }
+            />
+          </NavbarBrand>
+          <button
+            className="navbar-toggler"
+            id="navbar-collapse-main"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>
+          <Collapse
+            appear={false}
+            enter={true}
+            exit={true}
+            in={false}
+            isOpen={true}
+            mountOnEnter={false}
+            navbar={true}
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            tag="div"
+            timeout={350}
+            unmountOnExit={false}
+          >
+            <div
+              className="navbar-collapse-header d-md-none"
+            >
+              <Row
+                tag="div"
+              >
+                <Col
+                  className="collapse-brand"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs="6"
+                >
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    <img
+                      alt="..."
+                      src={
+                        Object {
+                          "ReactComponent": Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "render": [Function],
+                          },
+                          "__esModule": true,
+                          "default": "logo-color.svg",
+                        }
+                      }
+                    />
+                  </Link>
+                </Col>
+                <Col
+                  className="collapse-close"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs="6"
+                >
+                  <button
+                    className="navbar-toggler"
+                    id="navbar-collapse-main"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span />
+                    <span />
+                  </button>
+                </Col>
+              </Row>
+            </div>
+            <Nav
+              className="ml-auto"
+              navbar={true}
+              tag="ul"
+              vertical={false}
+            >
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/auth/register"
+                >
+                  <i
+                    className="ni ni-circle-08"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Register
+                  </span>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/auth/login"
+                >
+                  <i
+                    className="ni ni-key-25"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Login
+                  </span>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                tag="li"
+              >
+                <NavLink
+                  className="nav-link-icon"
+                  tag={[Function]}
+                  to="/app/dashboard"
+                >
+                  <i
+                    className="ni ni-single-02"
+                  />
+                  <span
+                    className="nav-link-inner--text"
+                  >
+                    Profile
+                  </span>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Container>,
+        "className": "navbar-top navbar-horizontal navbar-dark",
+        "expand": "md",
+        "tag": "nav",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <NavbarBrand
+              tag={[Function]}
+              to="/"
+            >
+              <img
+                alt="UVOTE Logo"
+                src={
+                  Object {
+                    "ReactComponent": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "render": [Function],
+                    },
+                    "__esModule": true,
+                    "default": "logo-white.svg",
+                  }
+                }
+              />
+            </NavbarBrand>,
+            <button
+              className="navbar-toggler"
+              id="navbar-collapse-main"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="navbar-toggler-icon"
+              />
+            </button>,
+            <Collapse
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              isOpen={true}
+              mountOnEnter={false}
+              navbar={true}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              tag="div"
+              timeout={350}
+              unmountOnExit={false}
+            >
+              <div
+                className="navbar-collapse-header d-md-none"
+              >
+                <Row
+                  tag="div"
+                >
+                  <Col
+                    className="collapse-brand"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <Link
+                      replace={false}
+                      to="/"
+                    >
+                      <img
+                        alt="..."
+                        src={
+                          Object {
+                            "ReactComponent": Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "render": [Function],
+                            },
+                            "__esModule": true,
+                            "default": "logo-color.svg",
+                          }
+                        }
+                      />
+                    </Link>
+                  </Col>
+                  <Col
+                    className="collapse-close"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <button
+                      className="navbar-toggler"
+                      id="navbar-collapse-main"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <span />
+                      <span />
+                    </button>
+                  </Col>
+                </Row>
+              </div>
+              <Nav
+                className="ml-auto"
+                navbar={true}
+                tag="ul"
+                vertical={false}
+              >
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/register"
+                  >
+                    <i
+                      className="ni ni-circle-08"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Register
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/login"
+                  >
+                    <i
+                      className="ni ni-key-25"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Login
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/app/dashboard"
+                  >
+                    <i
+                      className="ni ni-single-02"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Profile
+                    </span>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>,
+          ],
+          "className": "px-4",
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <img
+                alt="UVOTE Logo"
+                src={
+                  Object {
+                    "ReactComponent": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "render": [Function],
+                    },
+                    "__esModule": true,
+                    "default": "logo-white.svg",
+                  }
+                }
+              />,
+              "tag": [Function],
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "UVOTE Logo",
+                "src": Object {
+                  "ReactComponent": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                  "__esModule": true,
+                  "default": "logo-white.svg",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="navbar-toggler-icon"
+              />,
+              "className": "navbar-toggler",
+              "id": "navbar-collapse-main",
+              "onClick": [Function],
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "navbar-toggler-icon",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "span",
+            },
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "appear": false,
+              "children": Array [
+                <div
+                  className="navbar-collapse-header d-md-none"
+                >
+                  <Row
+                    tag="div"
+                  >
+                    <Col
+                      className="collapse-brand"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <Link
+                        replace={false}
+                        to="/"
+                      >
+                        <img
+                          alt="..."
+                          src={
+                            Object {
+                              "ReactComponent": Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "render": [Function],
+                              },
+                              "__esModule": true,
+                              "default": "logo-color.svg",
+                            }
+                          }
+                        />
+                      </Link>
+                    </Col>
+                    <Col
+                      className="collapse-close"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <button
+                        className="navbar-toggler"
+                        id="navbar-collapse-main"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </Col>
+                  </Row>
+                </div>,
+                <Nav
+                  className="ml-auto"
+                  navbar={true}
+                  tag="ul"
+                  vertical={false}
+                >
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/auth/register"
+                    >
+                      <i
+                        className="ni ni-circle-08"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Register
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/auth/login"
+                    >
+                      <i
+                        className="ni ni-key-25"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Login
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/app/dashboard"
+                    >
+                      <i
+                        className="ni ni-single-02"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Profile
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                </Nav>,
+              ],
+              "enter": true,
+              "exit": true,
+              "in": false,
+              "isOpen": true,
+              "mountOnEnter": false,
+              "navbar": true,
+              "onEnter": [Function],
+              "onEntered": [Function],
+              "onEntering": [Function],
+              "onExit": [Function],
+              "onExited": [Function],
+              "onExiting": [Function],
+              "tag": "div",
+              "timeout": 350,
+              "unmountOnExit": false,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <Row
+                    tag="div"
+                  >
+                    <Col
+                      className="collapse-brand"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <Link
+                        replace={false}
+                        to="/"
+                      >
+                        <img
+                          alt="..."
+                          src={
+                            Object {
+                              "ReactComponent": Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "render": [Function],
+                              },
+                              "__esModule": true,
+                              "default": "logo-color.svg",
+                            }
+                          }
+                        />
+                      </Link>
+                    </Col>
+                    <Col
+                      className="collapse-close"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <button
+                        className="navbar-toggler"
+                        id="navbar-collapse-main"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </Col>
+                  </Row>,
+                  "className": "navbar-collapse-header d-md-none",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Col
+                        className="collapse-brand"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <Link
+                          replace={false}
+                          to="/"
+                        >
+                          <img
+                            alt="..."
+                            src={
+                              Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              }
+                            }
+                          />
+                        </Link>
+                      </Col>,
+                      <Col
+                        className="collapse-close"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <button
+                          className="navbar-toggler"
+                          id="navbar-collapse-main"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <span />
+                          <span />
+                        </button>
+                      </Col>,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <Link
+                          replace={false}
+                          to="/"
+                        >
+                          <img
+                            alt="..."
+                            src={
+                              Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              }
+                            }
+                          />
+                        </Link>,
+                        "className": "collapse-brand",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": "6",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <img
+                            alt="..."
+                            src={
+                              Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              }
+                            }
+                          />,
+                          "replace": false,
+                          "to": "/",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "alt": "...",
+                            "src": Object {
+                              "ReactComponent": Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "render": [Function],
+                              },
+                              "__esModule": true,
+                              "default": "logo-color.svg",
+                            },
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "img",
+                        },
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <button
+                          className="navbar-toggler"
+                          id="navbar-collapse-main"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <span />
+                          <span />
+                        </button>,
+                        "className": "collapse-close",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": "6",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": Array [
+                            <span />,
+                            <span />,
+                          ],
+                          "className": "navbar-toggler",
+                          "id": "navbar-collapse-main",
+                          "onClick": [Function],
+                          "type": "button",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {},
+                            "ref": null,
+                            "rendered": null,
+                            "type": "span",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {},
+                            "ref": null,
+                            "rendered": null,
+                            "type": "span",
+                          },
+                        ],
+                        "type": "button",
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/register"
+                      >
+                        <i
+                          className="ni ni-circle-08"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Register
+                        </span>
+                      </NavLink>
+                    </NavItem>,
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/login"
+                      >
+                        <i
+                          className="ni ni-key-25"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Login
+                        </span>
+                      </NavLink>
+                    </NavItem>,
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/app/dashboard"
+                      >
+                        <i
+                          className="ni ni-single-02"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Profile
+                        </span>
+                      </NavLink>
+                    </NavItem>,
+                  ],
+                  "className": "ml-auto",
+                  "navbar": true,
+                  "tag": "ul",
+                  "vertical": false,
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/register"
+                      >
+                        <i
+                          className="ni ni-circle-08"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Register
+                        </span>
+                      </NavLink>,
+                      "tag": "li",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="ni ni-circle-08"
+                          />,
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Register
+                          </span>,
+                        ],
+                        "className": "nav-link-icon",
+                        "tag": [Function],
+                        "to": "/auth/register",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "ni ni-circle-08",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Register",
+                            "className": "nav-link-inner--text",
+                          },
+                          "ref": null,
+                          "rendered": "Register",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/login"
+                      >
+                        <i
+                          className="ni ni-key-25"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Login
+                        </span>
+                      </NavLink>,
+                      "tag": "li",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="ni ni-key-25"
+                          />,
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Login
+                          </span>,
+                        ],
+                        "className": "nav-link-icon",
+                        "tag": [Function],
+                        "to": "/auth/login",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "ni ni-key-25",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Login",
+                            "className": "nav-link-inner--text",
+                          },
+                          "ref": null,
+                          "rendered": "Login",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/app/dashboard"
+                      >
+                        <i
+                          className="ni ni-single-02"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Profile
+                        </span>
+                      </NavLink>,
+                      "tag": "li",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <i
+                            className="ni ni-single-02"
+                          />,
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Profile
+                          </span>,
+                        ],
+                        "className": "nav-link-icon",
+                        "tag": [Function],
+                        "to": "/app/dashboard",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "className": "ni ni-single-02",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "i",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Profile",
+                            "className": "nav-link-inner--text",
+                          },
+                          "ref": null,
+                          "rendered": "Profile",
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Navbar
+          className="navbar-top navbar-horizontal navbar-dark"
+          expand="md"
+          tag="nav"
+        >
+          <Container
+            className="px-4"
+            tag="div"
+          >
+            <NavbarBrand
+              tag={[Function]}
+              to="/"
+            >
+              <img
+                alt="UVOTE Logo"
+                src={
+                  Object {
+                    "ReactComponent": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "render": [Function],
+                    },
+                    "__esModule": true,
+                    "default": "logo-white.svg",
+                  }
+                }
+              />
+            </NavbarBrand>
+            <button
+              className="navbar-toggler"
+              id="navbar-collapse-main"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="navbar-toggler-icon"
+              />
+            </button>
+            <Collapse
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              isOpen={true}
+              mountOnEnter={false}
+              navbar={true}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              tag="div"
+              timeout={350}
+              unmountOnExit={false}
+            >
+              <div
+                className="navbar-collapse-header d-md-none"
+              >
+                <Row
+                  tag="div"
+                >
+                  <Col
+                    className="collapse-brand"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <Link
+                      replace={false}
+                      to="/"
+                    >
+                      <img
+                        alt="..."
+                        src={
+                          Object {
+                            "ReactComponent": Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "render": [Function],
+                            },
+                            "__esModule": true,
+                            "default": "logo-color.svg",
+                          }
+                        }
+                      />
+                    </Link>
+                  </Col>
+                  <Col
+                    className="collapse-close"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <button
+                      className="navbar-toggler"
+                      id="navbar-collapse-main"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <span />
+                      <span />
+                    </button>
+                  </Col>
+                </Row>
+              </div>
+              <Nav
+                className="ml-auto"
+                navbar={true}
+                tag="ul"
+                vertical={false}
+              >
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/register"
+                  >
+                    <i
+                      className="ni ni-circle-08"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Register
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/login"
+                  >
+                    <i
+                      className="ni ni-key-25"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Login
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/app/dashboard"
+                  >
+                    <i
+                      className="ni ni-single-02"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Profile
+                    </span>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Container
+            className="px-4"
+            tag="div"
+          >
+            <NavbarBrand
+              tag={[Function]}
+              to="/"
+            >
+              <img
+                alt="UVOTE Logo"
+                src={
+                  Object {
+                    "ReactComponent": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "render": [Function],
+                    },
+                    "__esModule": true,
+                    "default": "logo-white.svg",
+                  }
+                }
+              />
+            </NavbarBrand>
+            <button
+              className="navbar-toggler"
+              id="navbar-collapse-main"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="navbar-toggler-icon"
+              />
+            </button>
+            <Collapse
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              isOpen={true}
+              mountOnEnter={false}
+              navbar={true}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              tag="div"
+              timeout={350}
+              unmountOnExit={false}
+            >
+              <div
+                className="navbar-collapse-header d-md-none"
+              >
+                <Row
+                  tag="div"
+                >
+                  <Col
+                    className="collapse-brand"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <Link
+                      replace={false}
+                      to="/"
+                    >
+                      <img
+                        alt="..."
+                        src={
+                          Object {
+                            "ReactComponent": Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "render": [Function],
+                            },
+                            "__esModule": true,
+                            "default": "logo-color.svg",
+                          }
+                        }
+                      />
+                    </Link>
+                  </Col>
+                  <Col
+                    className="collapse-close"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs="6"
+                  >
+                    <button
+                      className="navbar-toggler"
+                      id="navbar-collapse-main"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <span />
+                      <span />
+                    </button>
+                  </Col>
+                </Row>
+              </div>
+              <Nav
+                className="ml-auto"
+                navbar={true}
+                tag="ul"
+                vertical={false}
+              >
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/register"
+                  >
+                    <i
+                      className="ni ni-circle-08"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Register
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/auth/login"
+                  >
+                    <i
+                      className="ni ni-key-25"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Login
+                    </span>
+                  </NavLink>
+                </NavItem>
+                <NavItem
+                  tag="li"
+                >
+                  <NavLink
+                    className="nav-link-icon"
+                    tag={[Function]}
+                    to="/app/dashboard"
+                  >
+                    <i
+                      className="ni ni-single-02"
+                    />
+                    <span
+                      className="nav-link-inner--text"
+                    >
+                      Profile
+                    </span>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>,
+          "className": "navbar-top navbar-horizontal navbar-dark",
+          "expand": "md",
+          "tag": "nav",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <NavbarBrand
+                tag={[Function]}
+                to="/"
+              >
+                <img
+                  alt="UVOTE Logo"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "logo-white.svg",
+                    }
+                  }
+                />
+              </NavbarBrand>,
+              <button
+                className="navbar-toggler"
+                id="navbar-collapse-main"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  className="navbar-toggler-icon"
+                />
+              </button>,
+              <Collapse
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                isOpen={true}
+                mountOnEnter={false}
+                navbar={true}
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                tag="div"
+                timeout={350}
+                unmountOnExit={false}
+              >
+                <div
+                  className="navbar-collapse-header d-md-none"
+                >
+                  <Row
+                    tag="div"
+                  >
+                    <Col
+                      className="collapse-brand"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <Link
+                        replace={false}
+                        to="/"
+                      >
+                        <img
+                          alt="..."
+                          src={
+                            Object {
+                              "ReactComponent": Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "render": [Function],
+                              },
+                              "__esModule": true,
+                              "default": "logo-color.svg",
+                            }
+                          }
+                        />
+                      </Link>
+                    </Col>
+                    <Col
+                      className="collapse-close"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs="6"
+                    >
+                      <button
+                        className="navbar-toggler"
+                        id="navbar-collapse-main"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </Col>
+                  </Row>
+                </div>
+                <Nav
+                  className="ml-auto"
+                  navbar={true}
+                  tag="ul"
+                  vertical={false}
+                >
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/auth/register"
+                    >
+                      <i
+                        className="ni ni-circle-08"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Register
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/auth/login"
+                    >
+                      <i
+                        className="ni ni-key-25"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Login
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem
+                    tag="li"
+                  >
+                    <NavLink
+                      className="nav-link-icon"
+                      tag={[Function]}
+                      to="/app/dashboard"
+                    >
+                      <i
+                        className="ni ni-single-02"
+                      />
+                      <span
+                        className="nav-link-inner--text"
+                      >
+                        Profile
+                      </span>
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </Collapse>,
+            ],
+            "className": "px-4",
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <img
+                  alt="UVOTE Logo"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "logo-white.svg",
+                    }
+                  }
+                />,
+                "tag": [Function],
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "UVOTE Logo",
+                  "src": Object {
+                    "ReactComponent": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "render": [Function],
+                    },
+                    "__esModule": true,
+                    "default": "logo-white.svg",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <span
+                  className="navbar-toggler-icon"
+                />,
+                "className": "navbar-toggler",
+                "id": "navbar-collapse-main",
+                "onClick": [Function],
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "navbar-toggler-icon",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "span",
+              },
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "appear": false,
+                "children": Array [
+                  <div
+                    className="navbar-collapse-header d-md-none"
+                  >
+                    <Row
+                      tag="div"
+                    >
+                      <Col
+                        className="collapse-brand"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <Link
+                          replace={false}
+                          to="/"
+                        >
+                          <img
+                            alt="..."
+                            src={
+                              Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              }
+                            }
+                          />
+                        </Link>
+                      </Col>
+                      <Col
+                        className="collapse-close"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <button
+                          className="navbar-toggler"
+                          id="navbar-collapse-main"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <span />
+                          <span />
+                        </button>
+                      </Col>
+                    </Row>
+                  </div>,
+                  <Nav
+                    className="ml-auto"
+                    navbar={true}
+                    tag="ul"
+                    vertical={false}
+                  >
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/register"
+                      >
+                        <i
+                          className="ni ni-circle-08"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Register
+                        </span>
+                      </NavLink>
+                    </NavItem>
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/auth/login"
+                      >
+                        <i
+                          className="ni ni-key-25"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Login
+                        </span>
+                      </NavLink>
+                    </NavItem>
+                    <NavItem
+                      tag="li"
+                    >
+                      <NavLink
+                        className="nav-link-icon"
+                        tag={[Function]}
+                        to="/app/dashboard"
+                      >
+                        <i
+                          className="ni ni-single-02"
+                        />
+                        <span
+                          className="nav-link-inner--text"
+                        >
+                          Profile
+                        </span>
+                      </NavLink>
+                    </NavItem>
+                  </Nav>,
+                ],
+                "enter": true,
+                "exit": true,
+                "in": false,
+                "isOpen": true,
+                "mountOnEnter": false,
+                "navbar": true,
+                "onEnter": [Function],
+                "onEntered": [Function],
+                "onEntering": [Function],
+                "onExit": [Function],
+                "onExited": [Function],
+                "onExiting": [Function],
+                "tag": "div",
+                "timeout": 350,
+                "unmountOnExit": false,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <Row
+                      tag="div"
+                    >
+                      <Col
+                        className="collapse-brand"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <Link
+                          replace={false}
+                          to="/"
+                        >
+                          <img
+                            alt="..."
+                            src={
+                              Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              }
+                            }
+                          />
+                        </Link>
+                      </Col>
+                      <Col
+                        className="collapse-close"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs="6"
+                      >
+                        <button
+                          className="navbar-toggler"
+                          id="navbar-collapse-main"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <span />
+                          <span />
+                        </button>
+                      </Col>
+                    </Row>,
+                    "className": "navbar-collapse-header d-md-none",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <Col
+                          className="collapse-brand"
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs="6"
+                        >
+                          <Link
+                            replace={false}
+                            to="/"
+                          >
+                            <img
+                              alt="..."
+                              src={
+                                Object {
+                                  "ReactComponent": Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "render": [Function],
+                                  },
+                                  "__esModule": true,
+                                  "default": "logo-color.svg",
+                                }
+                              }
+                            />
+                          </Link>
+                        </Col>,
+                        <Col
+                          className="collapse-close"
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs="6"
+                        >
+                          <button
+                            className="navbar-toggler"
+                            id="navbar-collapse-main"
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            <span />
+                            <span />
+                          </button>
+                        </Col>,
+                      ],
+                      "tag": "div",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": <Link
+                            replace={false}
+                            to="/"
+                          >
+                            <img
+                              alt="..."
+                              src={
+                                Object {
+                                  "ReactComponent": Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "render": [Function],
+                                  },
+                                  "__esModule": true,
+                                  "default": "logo-color.svg",
+                                }
+                              }
+                            />
+                          </Link>,
+                          "className": "collapse-brand",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": "6",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": <img
+                              alt="..."
+                              src={
+                                Object {
+                                  "ReactComponent": Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "render": [Function],
+                                  },
+                                  "__esModule": true,
+                                  "default": "logo-color.svg",
+                                }
+                              }
+                            />,
+                            "replace": false,
+                            "to": "/",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "alt": "...",
+                              "src": Object {
+                                "ReactComponent": Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "render": [Function],
+                                },
+                                "__esModule": true,
+                                "default": "logo-color.svg",
+                              },
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": "img",
+                          },
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": <button
+                            className="navbar-toggler"
+                            id="navbar-collapse-main"
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            <span />
+                            <span />
+                          </button>,
+                          "className": "collapse-close",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": "6",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": Array [
+                              <span />,
+                              <span />,
+                            ],
+                            "className": "navbar-toggler",
+                            "id": "navbar-collapse-main",
+                            "onClick": [Function],
+                            "type": "button",
+                          },
+                          "ref": null,
+                          "rendered": Array [
+                            Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "host",
+                              "props": Object {},
+                              "ref": null,
+                              "rendered": null,
+                              "type": "span",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "host",
+                              "props": Object {},
+                              "ref": null,
+                              "rendered": null,
+                              "type": "span",
+                            },
+                          ],
+                          "type": "button",
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <NavItem
+                        tag="li"
+                      >
+                        <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/auth/register"
+                        >
+                          <i
+                            className="ni ni-circle-08"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Register
+                          </span>
+                        </NavLink>
+                      </NavItem>,
+                      <NavItem
+                        tag="li"
+                      >
+                        <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/auth/login"
+                        >
+                          <i
+                            className="ni ni-key-25"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Login
+                          </span>
+                        </NavLink>
+                      </NavItem>,
+                      <NavItem
+                        tag="li"
+                      >
+                        <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/app/dashboard"
+                        >
+                          <i
+                            className="ni ni-single-02"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Profile
+                          </span>
+                        </NavLink>
+                      </NavItem>,
+                    ],
+                    "className": "ml-auto",
+                    "navbar": true,
+                    "tag": "ul",
+                    "vertical": false,
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/auth/register"
+                        >
+                          <i
+                            className="ni ni-circle-08"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Register
+                          </span>
+                        </NavLink>,
+                        "tag": "li",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": Array [
+                            <i
+                              className="ni ni-circle-08"
+                            />,
+                            <span
+                              className="nav-link-inner--text"
+                            >
+                              Register
+                            </span>,
+                          ],
+                          "className": "nav-link-icon",
+                          "tag": [Function],
+                          "to": "/auth/register",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "className": "ni ni-circle-08",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": "i",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Register",
+                              "className": "nav-link-inner--text",
+                            },
+                            "ref": null,
+                            "rendered": "Register",
+                            "type": "span",
+                          },
+                        ],
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/auth/login"
+                        >
+                          <i
+                            className="ni ni-key-25"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Login
+                          </span>
+                        </NavLink>,
+                        "tag": "li",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": Array [
+                            <i
+                              className="ni ni-key-25"
+                            />,
+                            <span
+                              className="nav-link-inner--text"
+                            >
+                              Login
+                            </span>,
+                          ],
+                          "className": "nav-link-icon",
+                          "tag": [Function],
+                          "to": "/auth/login",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "className": "ni ni-key-25",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": "i",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Login",
+                              "className": "nav-link-inner--text",
+                            },
+                            "ref": null,
+                            "rendered": "Login",
+                            "type": "span",
+                          },
+                        ],
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <NavLink
+                          className="nav-link-icon"
+                          tag={[Function]}
+                          to="/app/dashboard"
+                        >
+                          <i
+                            className="ni ni-single-02"
+                          />
+                          <span
+                            className="nav-link-inner--text"
+                          >
+                            Profile
+                          </span>
+                        </NavLink>,
+                        "tag": "li",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": Array [
+                            <i
+                              className="ni ni-single-02"
+                            />,
+                            <span
+                              className="nav-link-inner--text"
+                            >
+                              Profile
+                            </span>,
+                          ],
+                          "className": "nav-link-icon",
+                          "tag": [Function],
+                          "to": "/app/dashboard",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "className": "ni ni-single-02",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": "i",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Profile",
+                              "className": "nav-link-inner--text",
+                            },
+                            "ref": null,
+                            "rendered": "Profile",
+                            "type": "span",
+                          },
+                        ],
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

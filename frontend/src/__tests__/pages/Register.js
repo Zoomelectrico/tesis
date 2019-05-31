@@ -1,16 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import Home from '../../pages/Home';
+import Register from '../../pages/Register';
 
-describe('Home', () => {
-  it('Render Corectly', () => {
+describe('Register', () => {
+  it('Render corrected', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/']}>
-        <Home />
+        <Register />
       </MemoryRouter>
     );
     expect(wrapper).toMatchSnapshot();
   });
-  // Probar el form aqui!!
 });
