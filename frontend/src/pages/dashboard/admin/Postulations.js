@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line camelcase
 import vfs_fonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
 import {

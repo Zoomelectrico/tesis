@@ -31,8 +31,6 @@ const get = (url, auth = true) =>
       if (data && data.success) {
         return resolve(data);
       }
-      console.log(data);
-      console.log(data.err.message || data.err);
       reject(new Error(data.err.message));
     } catch (err) {
       console.log(err);

@@ -9,6 +9,7 @@ ShallowWrapper {
         "/app/dashboard",
       ]
     }
+    keyLength={0}
   >
     <Dashboard
       onChangeUpdate={[MockFunction]}
@@ -53,7 +54,6 @@ ShallowWrapper {
         "entries": Array [
           Object {
             "hash": "",
-            "key": "9p49o3",
             "pathname": "/app/dashboard",
             "search": "",
             "state": undefined,
@@ -67,7 +67,6 @@ ShallowWrapper {
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "9p49o3",
           "pathname": "/app/dashboard",
           "search": "",
           "state": undefined,
@@ -119,7 +118,6 @@ ShallowWrapper {
           "entries": Array [
             Object {
               "hash": "",
-              "key": "9p49o3",
               "pathname": "/app/dashboard",
               "search": "",
               "state": undefined,
@@ -133,7 +131,6 @@ ShallowWrapper {
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "key": "9p49o3",
             "pathname": "/app/dashboard",
             "search": "",
             "state": undefined,

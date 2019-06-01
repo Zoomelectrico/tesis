@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -16,18 +16,18 @@ import {
 import { Navbar, notify, Toast } from '../components';
 
 const Login = props => {
+  const [isDisabled, setDisabled] = useState(false);
   useEffect(() => {
     document.body.classList.add('bg-default');
-    return function cleanup() {
-      document.body.classList.remove('bg-default');
-    };
+    return () => document.body.classList.remove('bg-default');
   }, []);
 
   const login = async e => {
+    setDisabled(true);
     e.preventDefault();
     const [err] = await props.login();
     if (err) {
-      console.log(err);
+      setDisabled(false);
       notify('Hubo un Error en el Inicio de Sesion', false);
       return;
     }
@@ -78,6 +78,7 @@ const Login = props => {
                         color="success"
                         className="my-auto"
                         onClick={login}
+                        disabled={isDisabled}
                       >
                         Iniciar Sesion
                       </Button>

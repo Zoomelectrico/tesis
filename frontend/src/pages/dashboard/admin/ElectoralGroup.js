@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable global-require */
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Row,
@@ -6,30 +8,34 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Button
-} from "reactstrap";
+  Button,
+} from 'reactstrap';
 
-import { get, post } from "../../../utils";
-import { Header, Toast, notify } from "../../../components";
+import { get, post } from '../../../utils';
+import { Header, Toast, notify } from '../../../components';
 
 const ElectoralGroup = ({ location, history }) => {
-  const id = new URLSearchParams(location.search).get("id");
+  let id = '';
+  if (location) {
+    id = new URLSearchParams(location.search).get('id');
+  }
   const [state, setState] = useState({ loading: true, demand: {} });
 
   const accept = async e => {
     try {
       e.preventDefault();
+      // eslint-disable-next-line no-shadow
       const { egid: egId, id } = e.target.dataset;
-      const data = await post("demand-accept-eg", { egId, id });
+      const data = await post('demand-accept-eg', { egId, id });
       console.log(data);
       if (data.success) {
         history.push(
-          "/app/dashboard/demands?reason=Grupo-Electoral-Aceptado&bool=true"
+          '/app/dashboard/demands?reason=Grupo-Electoral-Aceptado&bool=true'
         );
       }
     } catch (err) {
       console.log(err);
-      notify("Ha ocurrido un Error Incorporar este Grupo Electoral", false);
+      notify('Ha ocurrido un Error Incorporar este Grupo Electoral', false);
     }
   };
 
@@ -38,14 +44,14 @@ const ElectoralGroup = ({ location, history }) => {
       try {
         if (!id) {
           history.push(
-            "/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false"
+            '/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false'
           );
         }
         const data = await get(`demand/${id}`);
         setState({ loading: false, demand: data.demand });
       } catch (err) {
         notify(
-          "Hubo un problema al cargar los datos. Refresque la Pagina",
+          'Hubo un problema al cargar los datos. Refresque la Pagina',
           false
         );
       }
@@ -67,7 +73,7 @@ const ElectoralGroup = ({ location, history }) => {
                     height="125px"
                     width="auto"
                     alt="uvote logo"
-                    src={require("../../../assets/img/logo-color.svg")}
+                    src={require('../../../assets/img/logo-color.svg')}
                   />
                 </div>
                 <h2 className="text-center">Loading ...</h2>
@@ -97,7 +103,7 @@ const ElectoralGroup = ({ location, history }) => {
                       <div>
                         <ul>
                           <li>
-                            <strong>Representante:</strong>{" "}
+                            <strong>Representante:</strong>{' '}
                             {`${electoralGroup.representative.firstName} ${
                               electoralGroup.representative.lastName
                             }`}
@@ -106,7 +112,7 @@ const ElectoralGroup = ({ location, history }) => {
                             <strong>Numero:</strong> {electoralGroup.number}
                           </li>
                           <li>
-                            <strong>Color:</strong> {electoralGroup.color}{" "}
+                            <strong>Color:</strong> {electoralGroup.color}{' '}
                           </li>
                         </ul>
                         <p className="my-2">
@@ -115,8 +121,8 @@ const ElectoralGroup = ({ location, history }) => {
                         <div
                           style={{
                             backgroundColor: electoralGroup.colorHex,
-                            height: "50px",
-                            width: "95%"
+                            height: '50px',
+                            width: '95%',
                           }}
                         />
                       </div>

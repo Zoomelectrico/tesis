@@ -1,0 +1,4700 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Council Render Correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Council
+    save={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <CardHeader
+          tag="div"
+        >
+          <h2>
+            Postulacion para Consejo Academico
+          </h2>
+        </CardHeader>,
+        <CardBody
+          tag="div"
+        >
+          <Row
+            tag="div"
+          >
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserName"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Nombre del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserName"
+                  name="adviserName"
+                  onChange={[Function]}
+                  placeholder="Nombre del Consejero"
+                  type="text"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserEmail"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Correo Electronico del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserEmail"
+                  name="adviserEmail"
+                  onChange={[Function]}
+                  placeholder="Correo Electronico del Consejero"
+                  type="email"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserDni"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Cedula del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserDni"
+                  name="adviserDni"
+                  onChange={[Function]}
+                  placeholder="Cedula del Consejero"
+                  type="number"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserPhone"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Telefono del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserPhone"
+                  name="adviserPhone"
+                  onChange={[Function]}
+                  placeholder="Telefono del Consejero"
+                  type="tel"
+                />
+              </FormGroup>
+            </Col>
+            <React.Fragment>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserSchool"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Escuela del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    defaultValue="none"
+                    id="adviserSchool"
+                    name="adviserSchool"
+                    onChange={[Function]}
+                    placeholder="Escuela del Consejero"
+                    type="select"
+                  >
+                    <option
+                      disabled={true}
+                      value="none"
+                    >
+                      Seleccione una Escuela
+                    </option>
+                    <option
+                      value="ciencias-administrativas"
+                    >
+                      Ciencias Administrativas
+                    </option>
+                    <option
+                      value="economia-empresarial"
+                    >
+                      Economía Empresarial
+                    </option>
+                    <option
+                      value="contaduria-publica"
+                    >
+                      Contaduría Pública
+                    </option>
+                    <option
+                      value="ingenieria-civil"
+                    >
+                      Ingeniería Civil
+                    </option>
+                    <option
+                      value="ingenieria-mecanica"
+                    >
+                      Ingeniería Mecánica
+                    </option>
+                    <option
+                      value="ingenieria-de-produccion"
+                    >
+                      Ingeniería de Producción
+                    </option>
+                    <option
+                      value="ingenieria-quimica"
+                    >
+                      Ingeniería Química
+                    </option>
+                    <option
+                      value="ingenieria-de-sistemas"
+                    >
+                      Ingeniería de Sistemas
+                    </option>
+                    <option
+                      value="ingenieria-electrica"
+                    >
+                      Ingeniería Eléctrica
+                    </option>
+                    <option
+                      value="educacion"
+                    >
+                      Educación
+                    </option>
+                    <option
+                      value="idiomas-modernos"
+                    >
+                      Idiomas Modernos
+                    </option>
+                    <option
+                      value="matematicas-industriales"
+                    >
+                      Matemáticas Industriales
+                    </option>
+                    <option
+                      value="psicologia"
+                    >
+                      Psicología
+                    </option>
+                    <option
+                      value="estudios-liberales"
+                    >
+                      Estudios Liberales
+                    </option>
+                    <option
+                      value="derecho"
+                    >
+                      Derecho
+                    </option>
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col
+                className="d-flex justify-content-center"
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <Button
+                  className="my-auto mr-3 mb-3"
+                  color="warning"
+                  onClick={[Function]}
+                  outline={true}
+                  tag="button"
+                >
+                  Cerrar
+                </Button>
+                <Button
+                  className="my-auto mr-3 mb-3"
+                  color="success"
+                  onClick={[Function]}
+                  tag="button"
+                >
+                  Agregar
+                </Button>
+              </Col>
+            </React.Fragment>
+          </Row>
+        </CardBody>,
+      ],
+      "className": "mb-4 ",
+      "style": Object {
+        "backgroundColor": "#f5f7f9",
+      },
+      "tag": "div",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <h2>
+            Postulacion para Consejo Academico
+          </h2>,
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Postulacion para Consejo Academico",
+          },
+          "ref": null,
+          "rendered": "Postulacion para Consejo Academico",
+          "type": "h2",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row
+            tag="div"
+          >
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserName"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Nombre del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserName"
+                  name="adviserName"
+                  onChange={[Function]}
+                  placeholder="Nombre del Consejero"
+                  type="text"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserEmail"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Correo Electronico del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserEmail"
+                  name="adviserEmail"
+                  onChange={[Function]}
+                  placeholder="Correo Electronico del Consejero"
+                  type="email"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserDni"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Cedula del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserDni"
+                  name="adviserDni"
+                  onChange={[Function]}
+                  placeholder="Cedula del Consejero"
+                  type="number"
+                />
+              </FormGroup>
+            </Col>
+            <Col
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <FormGroup
+                tag="div"
+              >
+                <Label
+                  for="adviserPhone"
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Telefono del Consejero
+                </Label>
+                <Input
+                  className="form-control-alternative"
+                  id="adviserPhone"
+                  name="adviserPhone"
+                  onChange={[Function]}
+                  placeholder="Telefono del Consejero"
+                  type="tel"
+                />
+              </FormGroup>
+            </Col>
+            <React.Fragment>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserSchool"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Escuela del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    defaultValue="none"
+                    id="adviserSchool"
+                    name="adviserSchool"
+                    onChange={[Function]}
+                    placeholder="Escuela del Consejero"
+                    type="select"
+                  >
+                    <option
+                      disabled={true}
+                      value="none"
+                    >
+                      Seleccione una Escuela
+                    </option>
+                    <option
+                      value="ciencias-administrativas"
+                    >
+                      Ciencias Administrativas
+                    </option>
+                    <option
+                      value="economia-empresarial"
+                    >
+                      Economía Empresarial
+                    </option>
+                    <option
+                      value="contaduria-publica"
+                    >
+                      Contaduría Pública
+                    </option>
+                    <option
+                      value="ingenieria-civil"
+                    >
+                      Ingeniería Civil
+                    </option>
+                    <option
+                      value="ingenieria-mecanica"
+                    >
+                      Ingeniería Mecánica
+                    </option>
+                    <option
+                      value="ingenieria-de-produccion"
+                    >
+                      Ingeniería de Producción
+                    </option>
+                    <option
+                      value="ingenieria-quimica"
+                    >
+                      Ingeniería Química
+                    </option>
+                    <option
+                      value="ingenieria-de-sistemas"
+                    >
+                      Ingeniería de Sistemas
+                    </option>
+                    <option
+                      value="ingenieria-electrica"
+                    >
+                      Ingeniería Eléctrica
+                    </option>
+                    <option
+                      value="educacion"
+                    >
+                      Educación
+                    </option>
+                    <option
+                      value="idiomas-modernos"
+                    >
+                      Idiomas Modernos
+                    </option>
+                    <option
+                      value="matematicas-industriales"
+                    >
+                      Matemáticas Industriales
+                    </option>
+                    <option
+                      value="psicologia"
+                    >
+                      Psicología
+                    </option>
+                    <option
+                      value="estudios-liberales"
+                    >
+                      Estudios Liberales
+                    </option>
+                    <option
+                      value="derecho"
+                    >
+                      Derecho
+                    </option>
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col
+                className="d-flex justify-content-center"
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <Button
+                  className="my-auto mr-3 mb-3"
+                  color="warning"
+                  onClick={[Function]}
+                  outline={true}
+                  tag="button"
+                >
+                  Cerrar
+                </Button>
+                <Button
+                  className="my-auto mr-3 mb-3"
+                  color="success"
+                  onClick={[Function]}
+                  tag="button"
+                >
+                  Agregar
+                </Button>
+              </Col>
+            </React.Fragment>
+          </Row>,
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserName"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Nombre del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserName"
+                    name="adviserName"
+                    onChange={[Function]}
+                    placeholder="Nombre del Consejero"
+                    type="text"
+                  />
+                </FormGroup>
+              </Col>,
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserEmail"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Correo Electronico del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserEmail"
+                    name="adviserEmail"
+                    onChange={[Function]}
+                    placeholder="Correo Electronico del Consejero"
+                    type="email"
+                  />
+                </FormGroup>
+              </Col>,
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserDni"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Cedula del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserDni"
+                    name="adviserDni"
+                    onChange={[Function]}
+                    placeholder="Cedula del Consejero"
+                    type="number"
+                  />
+                </FormGroup>
+              </Col>,
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserPhone"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Telefono del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserPhone"
+                    name="adviserPhone"
+                    onChange={[Function]}
+                    placeholder="Telefono del Consejero"
+                    type="tel"
+                  />
+                </FormGroup>
+              </Col>,
+              <React.Fragment>
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserSchool"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Escuela del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      defaultValue="none"
+                      id="adviserSchool"
+                      name="adviserSchool"
+                      onChange={[Function]}
+                      placeholder="Escuela del Consejero"
+                      type="select"
+                    >
+                      <option
+                        disabled={true}
+                        value="none"
+                      >
+                        Seleccione una Escuela
+                      </option>
+                      <option
+                        value="ciencias-administrativas"
+                      >
+                        Ciencias Administrativas
+                      </option>
+                      <option
+                        value="economia-empresarial"
+                      >
+                        Economía Empresarial
+                      </option>
+                      <option
+                        value="contaduria-publica"
+                      >
+                        Contaduría Pública
+                      </option>
+                      <option
+                        value="ingenieria-civil"
+                      >
+                        Ingeniería Civil
+                      </option>
+                      <option
+                        value="ingenieria-mecanica"
+                      >
+                        Ingeniería Mecánica
+                      </option>
+                      <option
+                        value="ingenieria-de-produccion"
+                      >
+                        Ingeniería de Producción
+                      </option>
+                      <option
+                        value="ingenieria-quimica"
+                      >
+                        Ingeniería Química
+                      </option>
+                      <option
+                        value="ingenieria-de-sistemas"
+                      >
+                        Ingeniería de Sistemas
+                      </option>
+                      <option
+                        value="ingenieria-electrica"
+                      >
+                        Ingeniería Eléctrica
+                      </option>
+                      <option
+                        value="educacion"
+                      >
+                        Educación
+                      </option>
+                      <option
+                        value="idiomas-modernos"
+                      >
+                        Idiomas Modernos
+                      </option>
+                      <option
+                        value="matematicas-industriales"
+                      >
+                        Matemáticas Industriales
+                      </option>
+                      <option
+                        value="psicologia"
+                      >
+                        Psicología
+                      </option>
+                      <option
+                        value="estudios-liberales"
+                      >
+                        Estudios Liberales
+                      </option>
+                      <option
+                        value="derecho"
+                      >
+                        Derecho
+                      </option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col
+                  className="d-flex justify-content-center"
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="warning"
+                    onClick={[Function]}
+                    outline={true}
+                    tag="button"
+                  >
+                    Cerrar
+                  </Button>
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="success"
+                    onClick={[Function]}
+                    tag="button"
+                  >
+                    Agregar
+                  </Button>
+                </Col>
+              </React.Fragment>,
+            ],
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "adviserName",
+              "nodeType": "function",
+              "props": Object {
+                "children": <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserName"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Nombre del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserName"
+                    name="adviserName"
+                    onChange={[Function]}
+                    placeholder="Nombre del Consejero"
+                    type="text"
+                  />
+                </FormGroup>,
+                "md": "4",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Label
+                      for="adviserName"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Nombre del Consejero
+                    </Label>,
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserName"
+                      name="adviserName"
+                      onChange={[Function]}
+                      placeholder="Nombre del Consejero"
+                      type="text"
+                    />,
+                  ],
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Nombre del Consejero",
+                      "for": "adviserName",
+                      "tag": "label",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Nombre del Consejero",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "className": "form-control-alternative",
+                      "id": "adviserName",
+                      "name": "adviserName",
+                      "onChange": [Function],
+                      "placeholder": "Nombre del Consejero",
+                      "type": "text",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "adviserEmail",
+              "nodeType": "function",
+              "props": Object {
+                "children": <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserEmail"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Correo Electronico del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserEmail"
+                    name="adviserEmail"
+                    onChange={[Function]}
+                    placeholder="Correo Electronico del Consejero"
+                    type="email"
+                  />
+                </FormGroup>,
+                "md": "4",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Label
+                      for="adviserEmail"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Correo Electronico del Consejero
+                    </Label>,
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserEmail"
+                      name="adviserEmail"
+                      onChange={[Function]}
+                      placeholder="Correo Electronico del Consejero"
+                      type="email"
+                    />,
+                  ],
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Correo Electronico del Consejero",
+                      "for": "adviserEmail",
+                      "tag": "label",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Correo Electronico del Consejero",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "className": "form-control-alternative",
+                      "id": "adviserEmail",
+                      "name": "adviserEmail",
+                      "onChange": [Function],
+                      "placeholder": "Correo Electronico del Consejero",
+                      "type": "email",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "adviserDni",
+              "nodeType": "function",
+              "props": Object {
+                "children": <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserDni"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Cedula del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserDni"
+                    name="adviserDni"
+                    onChange={[Function]}
+                    placeholder="Cedula del Consejero"
+                    type="number"
+                  />
+                </FormGroup>,
+                "md": "4",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Label
+                      for="adviserDni"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Cedula del Consejero
+                    </Label>,
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserDni"
+                      name="adviserDni"
+                      onChange={[Function]}
+                      placeholder="Cedula del Consejero"
+                      type="number"
+                    />,
+                  ],
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Cedula del Consejero",
+                      "for": "adviserDni",
+                      "tag": "label",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Cedula del Consejero",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "className": "form-control-alternative",
+                      "id": "adviserDni",
+                      "name": "adviserDni",
+                      "onChange": [Function],
+                      "placeholder": "Cedula del Consejero",
+                      "type": "number",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "adviserPhone",
+              "nodeType": "function",
+              "props": Object {
+                "children": <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserPhone"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Telefono del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserPhone"
+                    name="adviserPhone"
+                    onChange={[Function]}
+                    placeholder="Telefono del Consejero"
+                    type="tel"
+                  />
+                </FormGroup>,
+                "md": "4",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Label
+                      for="adviserPhone"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Telefono del Consejero
+                    </Label>,
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserPhone"
+                      name="adviserPhone"
+                      onChange={[Function]}
+                      placeholder="Telefono del Consejero"
+                      type="tel"
+                    />,
+                  ],
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Telefono del Consejero",
+                      "for": "adviserPhone",
+                      "tag": "label",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Telefono del Consejero",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "className": "form-control-alternative",
+                      "id": "adviserPhone",
+                      "name": "adviserPhone",
+                      "onChange": [Function],
+                      "placeholder": "Telefono del Consejero",
+                      "type": "tel",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "adviserSchool-4",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <Col
+                    md="4"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <FormGroup
+                      tag="div"
+                    >
+                      <Label
+                        for="adviserSchool"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Escuela del Consejero
+                      </Label>
+                      <Input
+                        className="form-control-alternative"
+                        defaultValue="none"
+                        id="adviserSchool"
+                        name="adviserSchool"
+                        onChange={[Function]}
+                        placeholder="Escuela del Consejero"
+                        type="select"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Seleccione una Escuela
+                        </option>
+                        <option
+                          value="ciencias-administrativas"
+                        >
+                          Ciencias Administrativas
+                        </option>
+                        <option
+                          value="economia-empresarial"
+                        >
+                          Economía Empresarial
+                        </option>
+                        <option
+                          value="contaduria-publica"
+                        >
+                          Contaduría Pública
+                        </option>
+                        <option
+                          value="ingenieria-civil"
+                        >
+                          Ingeniería Civil
+                        </option>
+                        <option
+                          value="ingenieria-mecanica"
+                        >
+                          Ingeniería Mecánica
+                        </option>
+                        <option
+                          value="ingenieria-de-produccion"
+                        >
+                          Ingeniería de Producción
+                        </option>
+                        <option
+                          value="ingenieria-quimica"
+                        >
+                          Ingeniería Química
+                        </option>
+                        <option
+                          value="ingenieria-de-sistemas"
+                        >
+                          Ingeniería de Sistemas
+                        </option>
+                        <option
+                          value="ingenieria-electrica"
+                        >
+                          Ingeniería Eléctrica
+                        </option>
+                        <option
+                          value="educacion"
+                        >
+                          Educación
+                        </option>
+                        <option
+                          value="idiomas-modernos"
+                        >
+                          Idiomas Modernos
+                        </option>
+                        <option
+                          value="matematicas-industriales"
+                        >
+                          Matemáticas Industriales
+                        </option>
+                        <option
+                          value="psicologia"
+                        >
+                          Psicología
+                        </option>
+                        <option
+                          value="estudios-liberales"
+                        >
+                          Estudios Liberales
+                        </option>
+                        <option
+                          value="derecho"
+                        >
+                          Derecho
+                        </option>
+                      </Input>
+                    </FormGroup>
+                  </Col>,
+                  <Col
+                    className="d-flex justify-content-center"
+                    md="4"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <Button
+                      className="my-auto mr-3 mb-3"
+                      color="warning"
+                      onClick={[Function]}
+                      outline={true}
+                      tag="button"
+                    >
+                      Cerrar
+                    </Button>
+                    <Button
+                      className="my-auto mr-3 mb-3"
+                      color="success"
+                      onClick={[Function]}
+                      tag="button"
+                    >
+                      Agregar
+                    </Button>
+                  </Col>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "adviserSchool",
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <FormGroup
+                      tag="div"
+                    >
+                      <Label
+                        for="adviserSchool"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Escuela del Consejero
+                      </Label>
+                      <Input
+                        className="form-control-alternative"
+                        defaultValue="none"
+                        id="adviserSchool"
+                        name="adviserSchool"
+                        onChange={[Function]}
+                        placeholder="Escuela del Consejero"
+                        type="select"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Seleccione una Escuela
+                        </option>
+                        <option
+                          value="ciencias-administrativas"
+                        >
+                          Ciencias Administrativas
+                        </option>
+                        <option
+                          value="economia-empresarial"
+                        >
+                          Economía Empresarial
+                        </option>
+                        <option
+                          value="contaduria-publica"
+                        >
+                          Contaduría Pública
+                        </option>
+                        <option
+                          value="ingenieria-civil"
+                        >
+                          Ingeniería Civil
+                        </option>
+                        <option
+                          value="ingenieria-mecanica"
+                        >
+                          Ingeniería Mecánica
+                        </option>
+                        <option
+                          value="ingenieria-de-produccion"
+                        >
+                          Ingeniería de Producción
+                        </option>
+                        <option
+                          value="ingenieria-quimica"
+                        >
+                          Ingeniería Química
+                        </option>
+                        <option
+                          value="ingenieria-de-sistemas"
+                        >
+                          Ingeniería de Sistemas
+                        </option>
+                        <option
+                          value="ingenieria-electrica"
+                        >
+                          Ingeniería Eléctrica
+                        </option>
+                        <option
+                          value="educacion"
+                        >
+                          Educación
+                        </option>
+                        <option
+                          value="idiomas-modernos"
+                        >
+                          Idiomas Modernos
+                        </option>
+                        <option
+                          value="matematicas-industriales"
+                        >
+                          Matemáticas Industriales
+                        </option>
+                        <option
+                          value="psicologia"
+                        >
+                          Psicología
+                        </option>
+                        <option
+                          value="estudios-liberales"
+                        >
+                          Estudios Liberales
+                        </option>
+                        <option
+                          value="derecho"
+                        >
+                          Derecho
+                        </option>
+                      </Input>
+                    </FormGroup>,
+                    "md": "4",
+                    "tag": "div",
+                    "widths": Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <Label
+                          for="adviserSchool"
+                          tag="label"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                        >
+                          Escuela del Consejero
+                        </Label>,
+                        <Input
+                          className="form-control-alternative"
+                          defaultValue="none"
+                          id="adviserSchool"
+                          name="adviserSchool"
+                          onChange={[Function]}
+                          placeholder="Escuela del Consejero"
+                          type="select"
+                        >
+                          <option
+                            disabled={true}
+                            value="none"
+                          >
+                            Seleccione una Escuela
+                          </option>
+                          <option
+                            value="ciencias-administrativas"
+                          >
+                            Ciencias Administrativas
+                          </option>
+                          <option
+                            value="economia-empresarial"
+                          >
+                            Economía Empresarial
+                          </option>
+                          <option
+                            value="contaduria-publica"
+                          >
+                            Contaduría Pública
+                          </option>
+                          <option
+                            value="ingenieria-civil"
+                          >
+                            Ingeniería Civil
+                          </option>
+                          <option
+                            value="ingenieria-mecanica"
+                          >
+                            Ingeniería Mecánica
+                          </option>
+                          <option
+                            value="ingenieria-de-produccion"
+                          >
+                            Ingeniería de Producción
+                          </option>
+                          <option
+                            value="ingenieria-quimica"
+                          >
+                            Ingeniería Química
+                          </option>
+                          <option
+                            value="ingenieria-de-sistemas"
+                          >
+                            Ingeniería de Sistemas
+                          </option>
+                          <option
+                            value="ingenieria-electrica"
+                          >
+                            Ingeniería Eléctrica
+                          </option>
+                          <option
+                            value="educacion"
+                          >
+                            Educación
+                          </option>
+                          <option
+                            value="idiomas-modernos"
+                          >
+                            Idiomas Modernos
+                          </option>
+                          <option
+                            value="matematicas-industriales"
+                          >
+                            Matemáticas Industriales
+                          </option>
+                          <option
+                            value="psicologia"
+                          >
+                            Psicología
+                          </option>
+                          <option
+                            value="estudios-liberales"
+                          >
+                            Estudios Liberales
+                          </option>
+                          <option
+                            value="derecho"
+                          >
+                            Derecho
+                          </option>
+                        </Input>,
+                      ],
+                      "tag": "div",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": "Escuela del Consejero",
+                          "for": "adviserSchool",
+                          "tag": "label",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": "Escuela del Consejero",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": Array [
+                            <option
+                              disabled={true}
+                              value="none"
+                            >
+                              Seleccione una Escuela
+                            </option>,
+                            Array [
+                              <option
+                                value="ciencias-administrativas"
+                              >
+                                Ciencias Administrativas
+                              </option>,
+                              <option
+                                value="economia-empresarial"
+                              >
+                                Economía Empresarial
+                              </option>,
+                              <option
+                                value="contaduria-publica"
+                              >
+                                Contaduría Pública
+                              </option>,
+                              <option
+                                value="ingenieria-civil"
+                              >
+                                Ingeniería Civil
+                              </option>,
+                              <option
+                                value="ingenieria-mecanica"
+                              >
+                                Ingeniería Mecánica
+                              </option>,
+                              <option
+                                value="ingenieria-de-produccion"
+                              >
+                                Ingeniería de Producción
+                              </option>,
+                              <option
+                                value="ingenieria-quimica"
+                              >
+                                Ingeniería Química
+                              </option>,
+                              <option
+                                value="ingenieria-de-sistemas"
+                              >
+                                Ingeniería de Sistemas
+                              </option>,
+                              <option
+                                value="ingenieria-electrica"
+                              >
+                                Ingeniería Eléctrica
+                              </option>,
+                              <option
+                                value="educacion"
+                              >
+                                Educación
+                              </option>,
+                              <option
+                                value="idiomas-modernos"
+                              >
+                                Idiomas Modernos
+                              </option>,
+                              <option
+                                value="matematicas-industriales"
+                              >
+                                Matemáticas Industriales
+                              </option>,
+                              <option
+                                value="psicologia"
+                              >
+                                Psicología
+                              </option>,
+                              <option
+                                value="estudios-liberales"
+                              >
+                                Estudios Liberales
+                              </option>,
+                              <option
+                                value="derecho"
+                              >
+                                Derecho
+                              </option>,
+                            ],
+                          ],
+                          "className": "form-control-alternative",
+                          "defaultValue": "none",
+                          "id": "adviserSchool",
+                          "name": "adviserSchool",
+                          "onChange": [Function],
+                          "placeholder": "Escuela del Consejero",
+                          "type": "select",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Seleccione una Escuela",
+                              "disabled": true,
+                              "value": "none",
+                            },
+                            "ref": null,
+                            "rendered": "Seleccione una Escuela",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ciencias-administrativas",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ciencias Administrativas",
+                              "value": "ciencias-administrativas",
+                            },
+                            "ref": null,
+                            "rendered": "Ciencias Administrativas",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "economia-empresarial",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Economía Empresarial",
+                              "value": "economia-empresarial",
+                            },
+                            "ref": null,
+                            "rendered": "Economía Empresarial",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "contaduria-publica",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Contaduría Pública",
+                              "value": "contaduria-publica",
+                            },
+                            "ref": null,
+                            "rendered": "Contaduría Pública",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-civil",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería Civil",
+                              "value": "ingenieria-civil",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería Civil",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-mecanica",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería Mecánica",
+                              "value": "ingenieria-mecanica",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería Mecánica",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-de-produccion",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería de Producción",
+                              "value": "ingenieria-de-produccion",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería de Producción",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-quimica",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería Química",
+                              "value": "ingenieria-quimica",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería Química",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-de-sistemas",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería de Sistemas",
+                              "value": "ingenieria-de-sistemas",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería de Sistemas",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ingenieria-electrica",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Ingeniería Eléctrica",
+                              "value": "ingenieria-electrica",
+                            },
+                            "ref": null,
+                            "rendered": "Ingeniería Eléctrica",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "educacion",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Educación",
+                              "value": "educacion",
+                            },
+                            "ref": null,
+                            "rendered": "Educación",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "idiomas-modernos",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Idiomas Modernos",
+                              "value": "idiomas-modernos",
+                            },
+                            "ref": null,
+                            "rendered": "Idiomas Modernos",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "matematicas-industriales",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Matemáticas Industriales",
+                              "value": "matematicas-industriales",
+                            },
+                            "ref": null,
+                            "rendered": "Matemáticas Industriales",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "psicologia",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Psicología",
+                              "value": "psicologia",
+                            },
+                            "ref": null,
+                            "rendered": "Psicología",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "estudios-liberales",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Estudios Liberales",
+                              "value": "estudios-liberales",
+                            },
+                            "ref": null,
+                            "rendered": "Estudios Liberales",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "derecho",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Derecho",
+                              "value": "derecho",
+                            },
+                            "ref": null,
+                            "rendered": "Derecho",
+                            "type": "option",
+                          },
+                        ],
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Button
+                        className="my-auto mr-3 mb-3"
+                        color="warning"
+                        onClick={[Function]}
+                        outline={true}
+                        tag="button"
+                      >
+                        Cerrar
+                      </Button>,
+                      <Button
+                        className="my-auto mr-3 mb-3"
+                        color="success"
+                        onClick={[Function]}
+                        tag="button"
+                      >
+                        Agregar
+                      </Button>,
+                    ],
+                    "className": "d-flex justify-content-center",
+                    "md": "4",
+                    "tag": "div",
+                    "widths": Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Cerrar",
+                        "className": "my-auto mr-3 mb-3",
+                        "color": "warning",
+                        "onClick": [Function],
+                        "outline": true,
+                        "tag": "button",
+                      },
+                      "ref": null,
+                      "rendered": "Cerrar",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Agregar",
+                        "className": "my-auto mr-3 mb-3",
+                        "color": "success",
+                        "onClick": [Function],
+                        "tag": "button",
+                      },
+                      "ref": null,
+                      "rendered": "Agregar",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <CardHeader
+            tag="div"
+          >
+            <h2>
+              Postulacion para Consejo Academico
+            </h2>
+          </CardHeader>,
+          <CardBody
+            tag="div"
+          >
+            <Row
+              tag="div"
+            >
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserName"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Nombre del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserName"
+                    name="adviserName"
+                    onChange={[Function]}
+                    placeholder="Nombre del Consejero"
+                    type="text"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserEmail"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Correo Electronico del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserEmail"
+                    name="adviserEmail"
+                    onChange={[Function]}
+                    placeholder="Correo Electronico del Consejero"
+                    type="email"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserDni"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Cedula del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserDni"
+                    name="adviserDni"
+                    onChange={[Function]}
+                    placeholder="Cedula del Consejero"
+                    type="number"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserPhone"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Telefono del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserPhone"
+                    name="adviserPhone"
+                    onChange={[Function]}
+                    placeholder="Telefono del Consejero"
+                    type="tel"
+                  />
+                </FormGroup>
+              </Col>
+              <React.Fragment>
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserSchool"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Escuela del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      defaultValue="none"
+                      id="adviserSchool"
+                      name="adviserSchool"
+                      onChange={[Function]}
+                      placeholder="Escuela del Consejero"
+                      type="select"
+                    >
+                      <option
+                        disabled={true}
+                        value="none"
+                      >
+                        Seleccione una Escuela
+                      </option>
+                      <option
+                        value="ciencias-administrativas"
+                      >
+                        Ciencias Administrativas
+                      </option>
+                      <option
+                        value="economia-empresarial"
+                      >
+                        Economía Empresarial
+                      </option>
+                      <option
+                        value="contaduria-publica"
+                      >
+                        Contaduría Pública
+                      </option>
+                      <option
+                        value="ingenieria-civil"
+                      >
+                        Ingeniería Civil
+                      </option>
+                      <option
+                        value="ingenieria-mecanica"
+                      >
+                        Ingeniería Mecánica
+                      </option>
+                      <option
+                        value="ingenieria-de-produccion"
+                      >
+                        Ingeniería de Producción
+                      </option>
+                      <option
+                        value="ingenieria-quimica"
+                      >
+                        Ingeniería Química
+                      </option>
+                      <option
+                        value="ingenieria-de-sistemas"
+                      >
+                        Ingeniería de Sistemas
+                      </option>
+                      <option
+                        value="ingenieria-electrica"
+                      >
+                        Ingeniería Eléctrica
+                      </option>
+                      <option
+                        value="educacion"
+                      >
+                        Educación
+                      </option>
+                      <option
+                        value="idiomas-modernos"
+                      >
+                        Idiomas Modernos
+                      </option>
+                      <option
+                        value="matematicas-industriales"
+                      >
+                        Matemáticas Industriales
+                      </option>
+                      <option
+                        value="psicologia"
+                      >
+                        Psicología
+                      </option>
+                      <option
+                        value="estudios-liberales"
+                      >
+                        Estudios Liberales
+                      </option>
+                      <option
+                        value="derecho"
+                      >
+                        Derecho
+                      </option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col
+                  className="d-flex justify-content-center"
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="warning"
+                    onClick={[Function]}
+                    outline={true}
+                    tag="button"
+                  >
+                    Cerrar
+                  </Button>
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="success"
+                    onClick={[Function]}
+                    tag="button"
+                  >
+                    Agregar
+                  </Button>
+                </Col>
+              </React.Fragment>
+            </Row>
+          </CardBody>,
+        ],
+        "className": "mb-4 ",
+        "style": Object {
+          "backgroundColor": "#f5f7f9",
+        },
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <h2>
+              Postulacion para Consejo Academico
+            </h2>,
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Postulacion para Consejo Academico",
+            },
+            "ref": null,
+            "rendered": "Postulacion para Consejo Academico",
+            "type": "h2",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Row
+              tag="div"
+            >
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserName"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Nombre del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserName"
+                    name="adviserName"
+                    onChange={[Function]}
+                    placeholder="Nombre del Consejero"
+                    type="text"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserEmail"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Correo Electronico del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserEmail"
+                    name="adviserEmail"
+                    onChange={[Function]}
+                    placeholder="Correo Electronico del Consejero"
+                    type="email"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserDni"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Cedula del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserDni"
+                    name="adviserDni"
+                    onChange={[Function]}
+                    placeholder="Cedula del Consejero"
+                    type="number"
+                  />
+                </FormGroup>
+              </Col>
+              <Col
+                md="4"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <FormGroup
+                  tag="div"
+                >
+                  <Label
+                    for="adviserPhone"
+                    tag="label"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    Telefono del Consejero
+                  </Label>
+                  <Input
+                    className="form-control-alternative"
+                    id="adviserPhone"
+                    name="adviserPhone"
+                    onChange={[Function]}
+                    placeholder="Telefono del Consejero"
+                    type="tel"
+                  />
+                </FormGroup>
+              </Col>
+              <React.Fragment>
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserSchool"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Escuela del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      defaultValue="none"
+                      id="adviserSchool"
+                      name="adviserSchool"
+                      onChange={[Function]}
+                      placeholder="Escuela del Consejero"
+                      type="select"
+                    >
+                      <option
+                        disabled={true}
+                        value="none"
+                      >
+                        Seleccione una Escuela
+                      </option>
+                      <option
+                        value="ciencias-administrativas"
+                      >
+                        Ciencias Administrativas
+                      </option>
+                      <option
+                        value="economia-empresarial"
+                      >
+                        Economía Empresarial
+                      </option>
+                      <option
+                        value="contaduria-publica"
+                      >
+                        Contaduría Pública
+                      </option>
+                      <option
+                        value="ingenieria-civil"
+                      >
+                        Ingeniería Civil
+                      </option>
+                      <option
+                        value="ingenieria-mecanica"
+                      >
+                        Ingeniería Mecánica
+                      </option>
+                      <option
+                        value="ingenieria-de-produccion"
+                      >
+                        Ingeniería de Producción
+                      </option>
+                      <option
+                        value="ingenieria-quimica"
+                      >
+                        Ingeniería Química
+                      </option>
+                      <option
+                        value="ingenieria-de-sistemas"
+                      >
+                        Ingeniería de Sistemas
+                      </option>
+                      <option
+                        value="ingenieria-electrica"
+                      >
+                        Ingeniería Eléctrica
+                      </option>
+                      <option
+                        value="educacion"
+                      >
+                        Educación
+                      </option>
+                      <option
+                        value="idiomas-modernos"
+                      >
+                        Idiomas Modernos
+                      </option>
+                      <option
+                        value="matematicas-industriales"
+                      >
+                        Matemáticas Industriales
+                      </option>
+                      <option
+                        value="psicologia"
+                      >
+                        Psicología
+                      </option>
+                      <option
+                        value="estudios-liberales"
+                      >
+                        Estudios Liberales
+                      </option>
+                      <option
+                        value="derecho"
+                      >
+                        Derecho
+                      </option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col
+                  className="d-flex justify-content-center"
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="warning"
+                    onClick={[Function]}
+                    outline={true}
+                    tag="button"
+                  >
+                    Cerrar
+                  </Button>
+                  <Button
+                    className="my-auto mr-3 mb-3"
+                    color="success"
+                    onClick={[Function]}
+                    tag="button"
+                  >
+                    Agregar
+                  </Button>
+                </Col>
+              </React.Fragment>
+            </Row>,
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserName"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Nombre del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserName"
+                      name="adviserName"
+                      onChange={[Function]}
+                      placeholder="Nombre del Consejero"
+                      type="text"
+                    />
+                  </FormGroup>
+                </Col>,
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserEmail"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Correo Electronico del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserEmail"
+                      name="adviserEmail"
+                      onChange={[Function]}
+                      placeholder="Correo Electronico del Consejero"
+                      type="email"
+                    />
+                  </FormGroup>
+                </Col>,
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserDni"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Cedula del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserDni"
+                      name="adviserDni"
+                      onChange={[Function]}
+                      placeholder="Cedula del Consejero"
+                      type="number"
+                    />
+                  </FormGroup>
+                </Col>,
+                <Col
+                  md="4"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserPhone"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Telefono del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserPhone"
+                      name="adviserPhone"
+                      onChange={[Function]}
+                      placeholder="Telefono del Consejero"
+                      type="tel"
+                    />
+                  </FormGroup>
+                </Col>,
+                <React.Fragment>
+                  <Col
+                    md="4"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <FormGroup
+                      tag="div"
+                    >
+                      <Label
+                        for="adviserSchool"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Escuela del Consejero
+                      </Label>
+                      <Input
+                        className="form-control-alternative"
+                        defaultValue="none"
+                        id="adviserSchool"
+                        name="adviserSchool"
+                        onChange={[Function]}
+                        placeholder="Escuela del Consejero"
+                        type="select"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Seleccione una Escuela
+                        </option>
+                        <option
+                          value="ciencias-administrativas"
+                        >
+                          Ciencias Administrativas
+                        </option>
+                        <option
+                          value="economia-empresarial"
+                        >
+                          Economía Empresarial
+                        </option>
+                        <option
+                          value="contaduria-publica"
+                        >
+                          Contaduría Pública
+                        </option>
+                        <option
+                          value="ingenieria-civil"
+                        >
+                          Ingeniería Civil
+                        </option>
+                        <option
+                          value="ingenieria-mecanica"
+                        >
+                          Ingeniería Mecánica
+                        </option>
+                        <option
+                          value="ingenieria-de-produccion"
+                        >
+                          Ingeniería de Producción
+                        </option>
+                        <option
+                          value="ingenieria-quimica"
+                        >
+                          Ingeniería Química
+                        </option>
+                        <option
+                          value="ingenieria-de-sistemas"
+                        >
+                          Ingeniería de Sistemas
+                        </option>
+                        <option
+                          value="ingenieria-electrica"
+                        >
+                          Ingeniería Eléctrica
+                        </option>
+                        <option
+                          value="educacion"
+                        >
+                          Educación
+                        </option>
+                        <option
+                          value="idiomas-modernos"
+                        >
+                          Idiomas Modernos
+                        </option>
+                        <option
+                          value="matematicas-industriales"
+                        >
+                          Matemáticas Industriales
+                        </option>
+                        <option
+                          value="psicologia"
+                        >
+                          Psicología
+                        </option>
+                        <option
+                          value="estudios-liberales"
+                        >
+                          Estudios Liberales
+                        </option>
+                        <option
+                          value="derecho"
+                        >
+                          Derecho
+                        </option>
+                      </Input>
+                    </FormGroup>
+                  </Col>
+                  <Col
+                    className="d-flex justify-content-center"
+                    md="4"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <Button
+                      className="my-auto mr-3 mb-3"
+                      color="warning"
+                      onClick={[Function]}
+                      outline={true}
+                      tag="button"
+                    >
+                      Cerrar
+                    </Button>
+                    <Button
+                      className="my-auto mr-3 mb-3"
+                      color="success"
+                      onClick={[Function]}
+                      tag="button"
+                    >
+                      Agregar
+                    </Button>
+                  </Col>
+                </React.Fragment>,
+              ],
+              "tag": "div",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "adviserName",
+                "nodeType": "function",
+                "props": Object {
+                  "children": <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserName"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Nombre del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserName"
+                      name="adviserName"
+                      onChange={[Function]}
+                      placeholder="Nombre del Consejero"
+                      type="text"
+                    />
+                  </FormGroup>,
+                  "md": "4",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Label
+                        for="adviserName"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Nombre del Consejero
+                      </Label>,
+                      <Input
+                        className="form-control-alternative"
+                        id="adviserName"
+                        name="adviserName"
+                        onChange={[Function]}
+                        placeholder="Nombre del Consejero"
+                        type="text"
+                      />,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Nombre del Consejero",
+                        "for": "adviserName",
+                        "tag": "label",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": "Nombre del Consejero",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "className": "form-control-alternative",
+                        "id": "adviserName",
+                        "name": "adviserName",
+                        "onChange": [Function],
+                        "placeholder": "Nombre del Consejero",
+                        "type": "text",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "adviserEmail",
+                "nodeType": "function",
+                "props": Object {
+                  "children": <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserEmail"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Correo Electronico del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserEmail"
+                      name="adviserEmail"
+                      onChange={[Function]}
+                      placeholder="Correo Electronico del Consejero"
+                      type="email"
+                    />
+                  </FormGroup>,
+                  "md": "4",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Label
+                        for="adviserEmail"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Correo Electronico del Consejero
+                      </Label>,
+                      <Input
+                        className="form-control-alternative"
+                        id="adviserEmail"
+                        name="adviserEmail"
+                        onChange={[Function]}
+                        placeholder="Correo Electronico del Consejero"
+                        type="email"
+                      />,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Correo Electronico del Consejero",
+                        "for": "adviserEmail",
+                        "tag": "label",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": "Correo Electronico del Consejero",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "className": "form-control-alternative",
+                        "id": "adviserEmail",
+                        "name": "adviserEmail",
+                        "onChange": [Function],
+                        "placeholder": "Correo Electronico del Consejero",
+                        "type": "email",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "adviserDni",
+                "nodeType": "function",
+                "props": Object {
+                  "children": <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserDni"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Cedula del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserDni"
+                      name="adviserDni"
+                      onChange={[Function]}
+                      placeholder="Cedula del Consejero"
+                      type="number"
+                    />
+                  </FormGroup>,
+                  "md": "4",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Label
+                        for="adviserDni"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Cedula del Consejero
+                      </Label>,
+                      <Input
+                        className="form-control-alternative"
+                        id="adviserDni"
+                        name="adviserDni"
+                        onChange={[Function]}
+                        placeholder="Cedula del Consejero"
+                        type="number"
+                      />,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Cedula del Consejero",
+                        "for": "adviserDni",
+                        "tag": "label",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": "Cedula del Consejero",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "className": "form-control-alternative",
+                        "id": "adviserDni",
+                        "name": "adviserDni",
+                        "onChange": [Function],
+                        "placeholder": "Cedula del Consejero",
+                        "type": "number",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "adviserPhone",
+                "nodeType": "function",
+                "props": Object {
+                  "children": <FormGroup
+                    tag="div"
+                  >
+                    <Label
+                      for="adviserPhone"
+                      tag="label"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      Telefono del Consejero
+                    </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="adviserPhone"
+                      name="adviserPhone"
+                      onChange={[Function]}
+                      placeholder="Telefono del Consejero"
+                      type="tel"
+                    />
+                  </FormGroup>,
+                  "md": "4",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <Label
+                        for="adviserPhone"
+                        tag="label"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        Telefono del Consejero
+                      </Label>,
+                      <Input
+                        className="form-control-alternative"
+                        id="adviserPhone"
+                        name="adviserPhone"
+                        onChange={[Function]}
+                        placeholder="Telefono del Consejero"
+                        type="tel"
+                      />,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Telefono del Consejero",
+                        "for": "adviserPhone",
+                        "tag": "label",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": "Telefono del Consejero",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "className": "form-control-alternative",
+                        "id": "adviserPhone",
+                        "name": "adviserPhone",
+                        "onChange": [Function],
+                        "placeholder": "Telefono del Consejero",
+                        "type": "tel",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "adviserSchool-4",
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Col
+                      md="4"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      <FormGroup
+                        tag="div"
+                      >
+                        <Label
+                          for="adviserSchool"
+                          tag="label"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                        >
+                          Escuela del Consejero
+                        </Label>
+                        <Input
+                          className="form-control-alternative"
+                          defaultValue="none"
+                          id="adviserSchool"
+                          name="adviserSchool"
+                          onChange={[Function]}
+                          placeholder="Escuela del Consejero"
+                          type="select"
+                        >
+                          <option
+                            disabled={true}
+                            value="none"
+                          >
+                            Seleccione una Escuela
+                          </option>
+                          <option
+                            value="ciencias-administrativas"
+                          >
+                            Ciencias Administrativas
+                          </option>
+                          <option
+                            value="economia-empresarial"
+                          >
+                            Economía Empresarial
+                          </option>
+                          <option
+                            value="contaduria-publica"
+                          >
+                            Contaduría Pública
+                          </option>
+                          <option
+                            value="ingenieria-civil"
+                          >
+                            Ingeniería Civil
+                          </option>
+                          <option
+                            value="ingenieria-mecanica"
+                          >
+                            Ingeniería Mecánica
+                          </option>
+                          <option
+                            value="ingenieria-de-produccion"
+                          >
+                            Ingeniería de Producción
+                          </option>
+                          <option
+                            value="ingenieria-quimica"
+                          >
+                            Ingeniería Química
+                          </option>
+                          <option
+                            value="ingenieria-de-sistemas"
+                          >
+                            Ingeniería de Sistemas
+                          </option>
+                          <option
+                            value="ingenieria-electrica"
+                          >
+                            Ingeniería Eléctrica
+                          </option>
+                          <option
+                            value="educacion"
+                          >
+                            Educación
+                          </option>
+                          <option
+                            value="idiomas-modernos"
+                          >
+                            Idiomas Modernos
+                          </option>
+                          <option
+                            value="matematicas-industriales"
+                          >
+                            Matemáticas Industriales
+                          </option>
+                          <option
+                            value="psicologia"
+                          >
+                            Psicología
+                          </option>
+                          <option
+                            value="estudios-liberales"
+                          >
+                            Estudios Liberales
+                          </option>
+                          <option
+                            value="derecho"
+                          >
+                            Derecho
+                          </option>
+                        </Input>
+                      </FormGroup>
+                    </Col>,
+                    <Col
+                      className="d-flex justify-content-center"
+                      md="4"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      <Button
+                        className="my-auto mr-3 mb-3"
+                        color="warning"
+                        onClick={[Function]}
+                        outline={true}
+                        tag="button"
+                      >
+                        Cerrar
+                      </Button>
+                      <Button
+                        className="my-auto mr-3 mb-3"
+                        color="success"
+                        onClick={[Function]}
+                        tag="button"
+                      >
+                        Agregar
+                      </Button>
+                    </Col>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": "adviserSchool",
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <FormGroup
+                        tag="div"
+                      >
+                        <Label
+                          for="adviserSchool"
+                          tag="label"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                        >
+                          Escuela del Consejero
+                        </Label>
+                        <Input
+                          className="form-control-alternative"
+                          defaultValue="none"
+                          id="adviserSchool"
+                          name="adviserSchool"
+                          onChange={[Function]}
+                          placeholder="Escuela del Consejero"
+                          type="select"
+                        >
+                          <option
+                            disabled={true}
+                            value="none"
+                          >
+                            Seleccione una Escuela
+                          </option>
+                          <option
+                            value="ciencias-administrativas"
+                          >
+                            Ciencias Administrativas
+                          </option>
+                          <option
+                            value="economia-empresarial"
+                          >
+                            Economía Empresarial
+                          </option>
+                          <option
+                            value="contaduria-publica"
+                          >
+                            Contaduría Pública
+                          </option>
+                          <option
+                            value="ingenieria-civil"
+                          >
+                            Ingeniería Civil
+                          </option>
+                          <option
+                            value="ingenieria-mecanica"
+                          >
+                            Ingeniería Mecánica
+                          </option>
+                          <option
+                            value="ingenieria-de-produccion"
+                          >
+                            Ingeniería de Producción
+                          </option>
+                          <option
+                            value="ingenieria-quimica"
+                          >
+                            Ingeniería Química
+                          </option>
+                          <option
+                            value="ingenieria-de-sistemas"
+                          >
+                            Ingeniería de Sistemas
+                          </option>
+                          <option
+                            value="ingenieria-electrica"
+                          >
+                            Ingeniería Eléctrica
+                          </option>
+                          <option
+                            value="educacion"
+                          >
+                            Educación
+                          </option>
+                          <option
+                            value="idiomas-modernos"
+                          >
+                            Idiomas Modernos
+                          </option>
+                          <option
+                            value="matematicas-industriales"
+                          >
+                            Matemáticas Industriales
+                          </option>
+                          <option
+                            value="psicologia"
+                          >
+                            Psicología
+                          </option>
+                          <option
+                            value="estudios-liberales"
+                          >
+                            Estudios Liberales
+                          </option>
+                          <option
+                            value="derecho"
+                          >
+                            Derecho
+                          </option>
+                        </Input>
+                      </FormGroup>,
+                      "md": "4",
+                      "tag": "div",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": Array [
+                          <Label
+                            for="adviserSchool"
+                            tag="label"
+                            widths={
+                              Array [
+                                "xs",
+                                "sm",
+                                "md",
+                                "lg",
+                                "xl",
+                              ]
+                            }
+                          >
+                            Escuela del Consejero
+                          </Label>,
+                          <Input
+                            className="form-control-alternative"
+                            defaultValue="none"
+                            id="adviserSchool"
+                            name="adviserSchool"
+                            onChange={[Function]}
+                            placeholder="Escuela del Consejero"
+                            type="select"
+                          >
+                            <option
+                              disabled={true}
+                              value="none"
+                            >
+                              Seleccione una Escuela
+                            </option>
+                            <option
+                              value="ciencias-administrativas"
+                            >
+                              Ciencias Administrativas
+                            </option>
+                            <option
+                              value="economia-empresarial"
+                            >
+                              Economía Empresarial
+                            </option>
+                            <option
+                              value="contaduria-publica"
+                            >
+                              Contaduría Pública
+                            </option>
+                            <option
+                              value="ingenieria-civil"
+                            >
+                              Ingeniería Civil
+                            </option>
+                            <option
+                              value="ingenieria-mecanica"
+                            >
+                              Ingeniería Mecánica
+                            </option>
+                            <option
+                              value="ingenieria-de-produccion"
+                            >
+                              Ingeniería de Producción
+                            </option>
+                            <option
+                              value="ingenieria-quimica"
+                            >
+                              Ingeniería Química
+                            </option>
+                            <option
+                              value="ingenieria-de-sistemas"
+                            >
+                              Ingeniería de Sistemas
+                            </option>
+                            <option
+                              value="ingenieria-electrica"
+                            >
+                              Ingeniería Eléctrica
+                            </option>
+                            <option
+                              value="educacion"
+                            >
+                              Educación
+                            </option>
+                            <option
+                              value="idiomas-modernos"
+                            >
+                              Idiomas Modernos
+                            </option>
+                            <option
+                              value="matematicas-industriales"
+                            >
+                              Matemáticas Industriales
+                            </option>
+                            <option
+                              value="psicologia"
+                            >
+                              Psicología
+                            </option>
+                            <option
+                              value="estudios-liberales"
+                            >
+                              Estudios Liberales
+                            </option>
+                            <option
+                              value="derecho"
+                            >
+                              Derecho
+                            </option>
+                          </Input>,
+                        ],
+                        "tag": "div",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "children": "Escuela del Consejero",
+                            "for": "adviserSchool",
+                            "tag": "label",
+                            "widths": Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ],
+                          },
+                          "ref": null,
+                          "rendered": "Escuela del Consejero",
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": Array [
+                              <option
+                                disabled={true}
+                                value="none"
+                              >
+                                Seleccione una Escuela
+                              </option>,
+                              Array [
+                                <option
+                                  value="ciencias-administrativas"
+                                >
+                                  Ciencias Administrativas
+                                </option>,
+                                <option
+                                  value="economia-empresarial"
+                                >
+                                  Economía Empresarial
+                                </option>,
+                                <option
+                                  value="contaduria-publica"
+                                >
+                                  Contaduría Pública
+                                </option>,
+                                <option
+                                  value="ingenieria-civil"
+                                >
+                                  Ingeniería Civil
+                                </option>,
+                                <option
+                                  value="ingenieria-mecanica"
+                                >
+                                  Ingeniería Mecánica
+                                </option>,
+                                <option
+                                  value="ingenieria-de-produccion"
+                                >
+                                  Ingeniería de Producción
+                                </option>,
+                                <option
+                                  value="ingenieria-quimica"
+                                >
+                                  Ingeniería Química
+                                </option>,
+                                <option
+                                  value="ingenieria-de-sistemas"
+                                >
+                                  Ingeniería de Sistemas
+                                </option>,
+                                <option
+                                  value="ingenieria-electrica"
+                                >
+                                  Ingeniería Eléctrica
+                                </option>,
+                                <option
+                                  value="educacion"
+                                >
+                                  Educación
+                                </option>,
+                                <option
+                                  value="idiomas-modernos"
+                                >
+                                  Idiomas Modernos
+                                </option>,
+                                <option
+                                  value="matematicas-industriales"
+                                >
+                                  Matemáticas Industriales
+                                </option>,
+                                <option
+                                  value="psicologia"
+                                >
+                                  Psicología
+                                </option>,
+                                <option
+                                  value="estudios-liberales"
+                                >
+                                  Estudios Liberales
+                                </option>,
+                                <option
+                                  value="derecho"
+                                >
+                                  Derecho
+                                </option>,
+                              ],
+                            ],
+                            "className": "form-control-alternative",
+                            "defaultValue": "none",
+                            "id": "adviserSchool",
+                            "name": "adviserSchool",
+                            "onChange": [Function],
+                            "placeholder": "Escuela del Consejero",
+                            "type": "select",
+                          },
+                          "ref": null,
+                          "rendered": Array [
+                            Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Seleccione una Escuela",
+                                "disabled": true,
+                                "value": "none",
+                              },
+                              "ref": null,
+                              "rendered": "Seleccione una Escuela",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ciencias-administrativas",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ciencias Administrativas",
+                                "value": "ciencias-administrativas",
+                              },
+                              "ref": null,
+                              "rendered": "Ciencias Administrativas",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "economia-empresarial",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Economía Empresarial",
+                                "value": "economia-empresarial",
+                              },
+                              "ref": null,
+                              "rendered": "Economía Empresarial",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "contaduria-publica",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Contaduría Pública",
+                                "value": "contaduria-publica",
+                              },
+                              "ref": null,
+                              "rendered": "Contaduría Pública",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-civil",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería Civil",
+                                "value": "ingenieria-civil",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería Civil",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-mecanica",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería Mecánica",
+                                "value": "ingenieria-mecanica",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería Mecánica",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-de-produccion",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería de Producción",
+                                "value": "ingenieria-de-produccion",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería de Producción",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-quimica",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería Química",
+                                "value": "ingenieria-quimica",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería Química",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-de-sistemas",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería de Sistemas",
+                                "value": "ingenieria-de-sistemas",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería de Sistemas",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "ingenieria-electrica",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Ingeniería Eléctrica",
+                                "value": "ingenieria-electrica",
+                              },
+                              "ref": null,
+                              "rendered": "Ingeniería Eléctrica",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "educacion",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Educación",
+                                "value": "educacion",
+                              },
+                              "ref": null,
+                              "rendered": "Educación",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "idiomas-modernos",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Idiomas Modernos",
+                                "value": "idiomas-modernos",
+                              },
+                              "ref": null,
+                              "rendered": "Idiomas Modernos",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "matematicas-industriales",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Matemáticas Industriales",
+                                "value": "matematicas-industriales",
+                              },
+                              "ref": null,
+                              "rendered": "Matemáticas Industriales",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "psicologia",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Psicología",
+                                "value": "psicologia",
+                              },
+                              "ref": null,
+                              "rendered": "Psicología",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "estudios-liberales",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Estudios Liberales",
+                                "value": "estudios-liberales",
+                              },
+                              "ref": null,
+                              "rendered": "Estudios Liberales",
+                              "type": "option",
+                            },
+                            Object {
+                              "instance": null,
+                              "key": "derecho",
+                              "nodeType": "host",
+                              "props": Object {
+                                "children": "Derecho",
+                                "value": "derecho",
+                              },
+                              "ref": null,
+                              "rendered": "Derecho",
+                              "type": "option",
+                            },
+                          ],
+                          "type": [Function],
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <Button
+                          className="my-auto mr-3 mb-3"
+                          color="warning"
+                          onClick={[Function]}
+                          outline={true}
+                          tag="button"
+                        >
+                          Cerrar
+                        </Button>,
+                        <Button
+                          className="my-auto mr-3 mb-3"
+                          color="success"
+                          onClick={[Function]}
+                          tag="button"
+                        >
+                          Agregar
+                        </Button>,
+                      ],
+                      "className": "d-flex justify-content-center",
+                      "md": "4",
+                      "tag": "div",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": "Cerrar",
+                          "className": "my-auto mr-3 mb-3",
+                          "color": "warning",
+                          "onClick": [Function],
+                          "outline": true,
+                          "tag": "button",
+                        },
+                        "ref": null,
+                        "rendered": "Cerrar",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": "Agregar",
+                          "className": "my-auto mr-3 mb-3",
+                          "color": "success",
+                          "onClick": [Function],
+                          "tag": "button",
+                        },
+                        "ref": null,
+                        "rendered": "Agregar",
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": Symbol(react.fragment),
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

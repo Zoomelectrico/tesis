@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
@@ -40,62 +41,67 @@ class DashVote extends React.Component {
   };
 
   async componentDidMount() {
-    console.log(this.props.user);
-    if (this.props.user.major && this.props.user.faculty) {
-      const [err, data] = await this.userCanVote(this.props.user._id);
-      if (data.success) {
-        if (!data.canVote) {
-          this.props.history.push(
-            '/app/dashboard?reason=Ya-ha-votado&bool=false'
+    if (this.props.user) {
+      if (this.props.user.major && this.props.user.faculty) {
+        const [err, data] = await this.userCanVote(this.props.user._id);
+        if (data.success) {
+          if (!data.canVote) {
+            this.props.history.push(
+              '/app/dashboard?reason=Ya-ha-votado&bool=false'
+            );
+            return;
+          }
+        }
+        if (err) {
+          notify(
+            <p>
+              Ha ocurrido un problema, comuniquese con la{' '}
+              <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+            </p>,
+            false
           );
           return;
         }
-      }
-      if (err) {
-        notify(
-          <p>
-            Ha ocurrido un problema, comuniquese con la{' '}
-            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
-          </p>,
-          false
+        const [err2, data2] = await this.getPostulations(
+          this.props.user._id,
+          this.props.user.major,
+          this.props.user.faculty
         );
-        return;
-      }
-      const [err2, data2] = await this.getPostulations(
-        this.props.user._id,
-        this.props.user.major,
-        this.props.user.faculty
-      );
-      if (err2) {
-        notify(
-          'Ha ocurrido un problema, intente refrescado el navegador',
-          false
-        );
-        return;
-      }
-      if (data && data2) {
-        const { voter, secret } = data;
-        const { postulations } = data2;
-        console.log(data, data2);
-        this.setState({
-          ...this.state,
-          voter,
-          secret,
-          postulations,
-          loading: false,
-        });
+        if (err2) {
+          notify(
+            'Ha ocurrido un problema, intente refrescado el navegador',
+            false
+          );
+          return;
+        }
+        if (data && data2) {
+          const { voter, secret } = data;
+          const { postulations } = data2;
+          console.log(data, data2);
+          this.setState({
+            ...this.state,
+            voter,
+            secret,
+            postulations,
+            loading: false,
+          });
+        } else {
+          notify(
+            <p>
+              Ha ocurrido un problema, comuniquese con la{' '}
+              <a href="mailto:ceu@unimet.edu.ve">CEU</a>
+            </p>,
+            false
+          );
+        }
       } else {
-        notify(
-          <p>
-            Ha ocurrido un problema, comuniquese con la{' '}
-            <a href="mailto:ceu@unimet.edu.ve">CEU</a>
-          </p>,
-          false
+        this.props.history.push(
+          `/app/dashboard/profile?url=/app/dashboard/vote&reason=Completa-tu-perfil-para-poder-votar`
         );
       }
     } else {
       this.props.history.push(
-        `/app/dashboard/profile?url=/app/dashboard/vote&reason=Completa-tu-perfil-para-poder-votar`
+        '/app/dashboard/profile?url=/app/dashboard/vote&reason=Ha-ocurrido-un-error-comuniquese-con-la-CEU'
       );
     }
   }

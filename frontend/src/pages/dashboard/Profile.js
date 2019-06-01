@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Col,
@@ -9,11 +12,11 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
-} from "reactstrap";
+  Button,
+} from 'reactstrap';
 
-import { Header, Toast, notify } from "../../components";
-import { majors, normalize, post } from "../../utils";
+import { Header, Toast, notify } from '../../components';
+import { majors, normalize, post } from '../../utils';
 
 const DashProfile = props => {
   const { updateUser, location } = props;
@@ -22,34 +25,33 @@ const DashProfile = props => {
   const update = async (e, user) => {
     e.preventDefault();
     const [err, data] = await updateUser(user);
-    console.log(data);
     if (err) {
-      return notify("Ha Ocurrido un Error al Actualizar", false);
+      return notify('Ha Ocurrido un Error al Actualizar', false);
     }
-    if (query.get("url") && query.get("reason")) {
-      props.history.push(query.get("url"));
+    if (query.get('url') && query.get('reason')) {
+      props.history.push(query.get('url'));
     }
-    return notify("Perfil Actualizado", true);
+    return notify('Perfil Actualizado', true);
   };
 
   const [user, setUser] = useState({
-    _id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    major: "",
-    carnet: "",
-    dni: ""
+    _id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    major: '',
+    carnet: '',
+    dni: '',
   });
 
   useEffect(() => {
     const { user: _user } = props;
-    if (query.get("url") && query.get("reason")) {
+    if (query.get('url') && query.get('reason')) {
       notify(
         query
-          .get("reason")
+          .get('reason')
           .toString()
-          .replace(/[-]/g, " "),
+          .replace(/[-]/g, ' '),
         false
       );
     }
@@ -64,54 +66,56 @@ const DashProfile = props => {
     try {
       e.preventDefault();
       const _demand = { type, user: user._id, representative: user._id };
-      await post("/demand-create", _demand);
-      notify("Su solicitud ha sido enviada", true);
+      await post('/demand-create', _demand);
+      notify('Su solicitud ha sido enviada', true);
     } catch (err) {
-      notify("Su solicitud no se ha podido enviar", false);
+      notify('Su solicitud no se ha podido enviar', false);
     }
   };
 
   const previewResults = e => {
     e.preventDefault();
-    props.history.push("/app/dashboard/results?preliminary=true");
+    props.history.push('/app/dashboard/results?preliminary=true');
   };
 
   const valueProp = {};
-  user.major
-    ? (valueProp.value = user.major)
-    : (valueProp.defaultValue = "none");
+  if (user.major) {
+    valueProp.value = user.major;
+  } else {
+    valueProp.defaultValue = 'none';
+  }
 
   const fields = [
     {
-      label: "Nombres",
-      id: "firstName",
-      type: "text",
-      value: "firstName"
+      label: 'Nombres',
+      id: 'firstName',
+      type: 'text',
+      value: 'firstName',
     },
     {
-      label: "Apellidos",
-      id: "lastName",
-      type: "text",
-      value: "lastName"
+      label: 'Apellidos',
+      id: 'lastName',
+      type: 'text',
+      value: 'lastName',
     },
     {
-      label: "Cedula de Identidad",
-      id: "dni",
-      type: "number",
-      value: "dni"
+      label: 'Cedula de Identidad',
+      id: 'dni',
+      type: 'number',
+      value: 'dni',
     },
     {
-      label: "Carnet",
-      id: "carnet",
-      type: "number",
-      value: "carnet"
+      label: 'Carnet',
+      id: 'carnet',
+      type: 'number',
+      value: 'carnet',
     },
     {
-      label: "Correo Electronico",
-      id: "email",
-      type: "email",
-      value: "email"
-    }
+      label: 'Correo Electronico',
+      id: 'email',
+      type: 'email',
+      value: 'email',
+    },
   ];
 
   const renderFields = fields =>
@@ -124,7 +128,7 @@ const DashProfile = props => {
             type={type}
             name={id}
             id={id}
-            value={user[value] || ""}
+            value={user[value] || ''}
             onChange={e => onChange(e.target.name, e.target.value)}
           />
         </FormGroup>
@@ -137,7 +141,7 @@ const DashProfile = props => {
       <Container fluid className="mt--7">
         <Row>
           <Col md="12" lg="8">
-            <Card style={{ backgroundColor: "#f5f7f9" }}>
+            <Card style={{ backgroundColor: '#f5f7f9' }}>
               <CardHeader>
                 <h2>Informacion del Usuario</h2>
               </CardHeader>
@@ -178,6 +182,7 @@ const DashProfile = props => {
                   <Col md="6" />
                   <Col md="6" className="d-flex justify-content-end">
                     <Button
+                      id="btnUpdate"
                       color="success"
                       className="my-auto"
                       onClick={e => update(e, user)}
@@ -198,7 +203,7 @@ const DashProfile = props => {
                       <Button
                         color="neutral"
                         className="my-auto"
-                        onClick={e => demand(e, "REPRESENTANTE")}
+                        onClick={e => demand(e, 'REPRESENTANTE')}
                       >
                         Solicitar - Representante Electoral
                       </Button>

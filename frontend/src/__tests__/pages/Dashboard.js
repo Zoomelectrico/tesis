@@ -16,7 +16,7 @@ const props = {
 describe('Dashboad', () => {
   it('Render Correctly', () => {
     const wrapper = shallow(
-      <MemoryRouter initialEntries={['/app/dashboard']}>
+      <MemoryRouter keyLength={0} initialEntries={['/app/dashboard']}>
         <Dashboard {...props} />
       </MemoryRouter>
     );
@@ -24,10 +24,10 @@ describe('Dashboad', () => {
   });
   it('Redirect to Login', () => {
     const wrapper = shallow(
-      <MemoryRouter initialEntries={['/app/dashboard']}>
+      <MemoryRouter keyLength={0} initialEntries={['/app/dashboard']}>
         <Dashboard />
       </MemoryRouter>
     );
-    console.log(wrapper);
+    // expect(wrapper)
   });
 });

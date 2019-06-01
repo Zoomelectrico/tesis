@@ -9,6 +9,7 @@ ShallowWrapper {
         "/",
       ]
     }
+    keyLength={0}
   >
     <Register />
   </MemoryRouter>,
@@ -35,7 +36,6 @@ ShallowWrapper {
         "entries": Array [
           Object {
             "hash": "",
-            "key": "q5i5gy",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -49,7 +49,6 @@ ShallowWrapper {
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "q5i5gy",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -85,7 +84,6 @@ ShallowWrapper {
           "entries": Array [
             Object {
               "hash": "",
-              "key": "q5i5gy",
               "pathname": "/",
               "search": "",
               "state": undefined,
@@ -99,7 +97,6 @@ ShallowWrapper {
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "key": "q5i5gy",
             "pathname": "/",
             "search": "",
             "state": undefined,

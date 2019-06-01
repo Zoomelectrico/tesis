@@ -6,7 +6,10 @@ import { get, post } from '../../../utils';
 import { Checkout } from '../postulate/';
 
 const Postulation = ({ location, history }) => {
-  const params = new URLSearchParams(location.search);
+  let params = {};
+  if (location) {
+    params = new URLSearchParams(location.search);
+  }
   const [state, setState] = useState({
     loading: true,
     postulation: {},

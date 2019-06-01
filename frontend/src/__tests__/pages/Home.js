@@ -1,12 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import Home from '../../pages/Home';
 
 describe('Home', () => {
   it('Render Corectly', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/']}>
+    const wrapper = shallow(
+      <MemoryRouter keyLength={0} initialEntries={['/']}>
         <Home />
       </MemoryRouter>
     );
