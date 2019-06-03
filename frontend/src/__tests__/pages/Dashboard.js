@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import Dashboard from '../../pages/Dashboard';
-import Login from '../../pages/Login';
 
 const props = {
   user: {
@@ -21,13 +20,5 @@ describe('Dashboad', () => {
       </MemoryRouter>
     );
     expect(wrapper).toMatchSnapshot();
-  });
-  it('Redirect to Login', () => {
-    const wrapper = shallow(
-      <MemoryRouter keyLength={0} initialEntries={['/app/dashboard']}>
-        <Dashboard />
-      </MemoryRouter>
-    );
-    // expect(wrapper)
   });
 });

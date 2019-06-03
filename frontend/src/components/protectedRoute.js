@@ -1,6 +1,7 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { env } from "../utils";
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { env } from '../utils';
 
 const ProtectedRoute = ({
   component: Component,
@@ -22,7 +23,7 @@ const ProtectedRoute = ({
             onChangeUpdate={onChangeUpdate}
           />
         ) : (
-          <Redirect to={{ pathname: "/auth/login" }} />
+          <Redirect to={{ pathname: '/auth/login' }} />
         )
       }
     />

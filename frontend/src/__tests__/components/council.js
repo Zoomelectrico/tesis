@@ -4,7 +4,7 @@ import Council from '../../pages/dashboard/postulate/council';
 
 describe('Council', () => {
   it('Render Correctly', () => {
-    const wrapper = shallow(<Council save={jest.fn()} />);
+    const wrapper = shallow(<Council save={() => {}} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

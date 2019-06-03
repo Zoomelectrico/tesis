@@ -4,7 +4,7 @@ exports[`Council Render Correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Council
-    save={[MockFunction]}
+    save={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -349,6 +349,7 @@ ShallowWrapper {
                 <Button
                   className="my-auto mr-3 mb-3"
                   color="success"
+                  id="btnSave"
                   onClick={[Function]}
                   tag="button"
                 >
@@ -714,6 +715,7 @@ ShallowWrapper {
                 <Button
                   className="my-auto mr-3 mb-3"
                   color="success"
+                  id="btnSave"
                   onClick={[Function]}
                   tag="button"
                 >
@@ -1046,6 +1048,7 @@ ShallowWrapper {
                   <Button
                     className="my-auto mr-3 mb-3"
                     color="success"
+                    id="btnSave"
                     onClick={[Function]}
                     tag="button"
                   >
@@ -1686,6 +1689,7 @@ ShallowWrapper {
                     <Button
                       className="my-auto mr-3 mb-3"
                       color="success"
+                      id="btnSave"
                       onClick={[Function]}
                       tag="button"
                     >
@@ -2278,6 +2282,7 @@ ShallowWrapper {
                       <Button
                         className="my-auto mr-3 mb-3"
                         color="success"
+                        id="btnSave"
                         onClick={[Function]}
                         tag="button"
                       >
@@ -2321,6 +2326,7 @@ ShallowWrapper {
                         "children": "Agregar",
                         "className": "my-auto mr-3 mb-3",
                         "color": "success",
+                        "id": "btnSave",
                         "onClick": [Function],
                         "tag": "button",
                       },
@@ -2677,6 +2683,7 @@ ShallowWrapper {
                   <Button
                     className="my-auto mr-3 mb-3"
                     color="success"
+                    id="btnSave"
                     onClick={[Function]}
                     tag="button"
                   >
@@ -3042,6 +3049,7 @@ ShallowWrapper {
                   <Button
                     className="my-auto mr-3 mb-3"
                     color="success"
+                    id="btnSave"
                     onClick={[Function]}
                     tag="button"
                   >
@@ -3374,6 +3382,7 @@ ShallowWrapper {
                     <Button
                       className="my-auto mr-3 mb-3"
                       color="success"
+                      id="btnSave"
                       onClick={[Function]}
                       tag="button"
                     >
@@ -4014,6 +4023,7 @@ ShallowWrapper {
                       <Button
                         className="my-auto mr-3 mb-3"
                         color="success"
+                        id="btnSave"
                         onClick={[Function]}
                         tag="button"
                       >
@@ -4606,6 +4616,7 @@ ShallowWrapper {
                         <Button
                           className="my-auto mr-3 mb-3"
                           color="success"
+                          id="btnSave"
                           onClick={[Function]}
                           tag="button"
                         >
@@ -4649,6 +4660,7 @@ ShallowWrapper {
                           "children": "Agregar",
                           "className": "my-auto mr-3 mb-3",
                           "color": "success",
+                          "id": "btnSave",
                           "onClick": [Function],
                           "tag": "button",
                         },

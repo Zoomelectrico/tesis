@@ -24,7 +24,7 @@ const DashProfile = props => {
 
   const update = async (e, user) => {
     e.preventDefault();
-    const [err, data] = await updateUser(user);
+    const [err] = await updateUser(user);
     if (err) {
       return notify('Ha Ocurrido un Error al Actualizar', false);
     }

@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -14,10 +14,12 @@ import {
   Button,
 } from 'reactstrap';
 import { Navbar, Toast, notify } from '../components';
+import { errorString } from '../utils';
 
 // firstName, lastName, dni, carnet, email, password
 
 const Register = props => {
+  const [disabled, setDisable] = useState(false);
   useEffect(() => {
     document.body.classList.add('bg-default');
     return function cleanup() {
@@ -26,10 +28,12 @@ const Register = props => {
   }, []);
 
   const register = async e => {
+    setDisable(true);
     e.preventDefault();
-    const [err, data] = await props.register();
+    const [err] = await props.register();
     if (err) {
-      notify('Hubo un error con el Registro', false);
+      setDisable(false);
+      notify(errorString(err.message), false);
       return;
     }
     props.history.push('/app/dashboard');
@@ -131,6 +135,8 @@ const Register = props => {
                         color="success"
                         className="my-auto"
                         onClick={register}
+                        disabled={disabled}
+                        id="btnRegister"
                       >
                         Registrarse
                       </Button>

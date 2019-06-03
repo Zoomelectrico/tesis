@@ -16,6 +16,15 @@ import {
 import { Navbar, notify, Toast } from '../components';
 
 const Login = props => {
+  if (props.location && props.location.search) {
+    const params = new URLSearchParams(props.location.search);
+    if (params.get('reason')) {
+      notify(
+        params.get('reason').replace(/[-]/g, ' '),
+        params.get('bool') === 'true'
+      );
+    }
+  }
   const [isDisabled, setDisabled] = useState(false);
   useEffect(() => {
     document.body.classList.add('bg-default');

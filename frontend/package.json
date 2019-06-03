@@ -166,6 +166,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/react": "^8.0.1",
     "axios-mock-adapter": "^1.16.0",
     "babel-eslint": "^10.0.1",
     "enzyme": "^3.9.0",

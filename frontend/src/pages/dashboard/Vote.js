@@ -47,7 +47,7 @@ class DashVote extends React.Component {
         if (data.success) {
           if (!data.canVote) {
             this.props.history.push(
-              '/app/dashboard?reason=Ya-ha-votado&bool=false'
+              `/app/dashboard?reason=Ya-ha-votado&bool=false`
             );
             return;
           }

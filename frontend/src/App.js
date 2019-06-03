@@ -1,26 +1,29 @@
-import React, { lazy, Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router";
-import { NotFound } from "./pages";
-import { Loading, ProtectedRoute } from "./components";
-import { env, get, post } from "./utils";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { NotFound } from './pages';
+import { Loading, ProtectedRoute, notify } from './components';
+import { env, get, post, errorString } from './utils';
 
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/Login"));
-const Register = lazy(() => import("./pages/Register"));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
 
 class App extends React.Component {
   routes = [
     {
-      path: "/",
+      path: '/',
       exact: true,
       component: props => (
         <Home {...props} user={this.state.user} logout={this.logout} />
-      )
+      ),
     },
     {
-      path: "/auth/register",
+      path: '/auth/register',
       exact: true,
       component: props => (
         <Register
@@ -29,10 +32,10 @@ class App extends React.Component {
           logout={this.logout}
           onChangeRegister={this.onChangeRegister}
         />
-      )
+      ),
     },
     {
-      path: "/auth/login",
+      path: '/auth/login',
       exact: true,
       component: props => (
         <Login
@@ -41,10 +44,10 @@ class App extends React.Component {
           logout={this.logout}
           onChangeLogin={this.onChangeLogin}
         />
-      )
+      ),
     },
     {
-      path: "/app/dashboard",
+      path: '/app/dashboard',
       exact: false,
       component: props => (
         <Dashboard
@@ -54,29 +57,35 @@ class App extends React.Component {
           updateUser={this.updateUser}
           onChangeUpdate={this.onChangeUpdate}
         />
-      )
-    }
+      ),
+    },
   ];
 
   state = {
     user: {},
     registerData: {},
     loginData: {},
-    err: false
+    err: {
+      happend: false,
+      message: '',
+    },
   };
 
   async componentDidMount() {
     try {
       const token = localStorage.getItem(env.KEY);
       if (token) {
-        const { id } = JSON.parse(atob(token.split(".")[1]));
+        const { id } = JSON.parse(atob(token.split('.')[1]));
         const data = await get(`profile/${id}`);
         if (data && data.success) {
           const state = { ...this.state, user: data.user };
           this.setState(state);
+        } else {
+          notify(errorString(data.err), false);
         }
       }
     } catch (err) {
+      notify(errorString(err.message), false);
       console.log(err);
     }
   }
@@ -89,13 +98,55 @@ class App extends React.Component {
   };
 
   setError = err => {
-    this.setState({ ...this.state, err });
+    this.setState({
+      ...this.state,
+      err: { happend: true, message: err.message },
+    });
+  };
+
+  // clearError = () => {
+  //   this.setState({ ...this.state, err: { happend: false, message: '' } });
+  // };
+
+  emailCheck = email =>
+    email.endsWith('@correo.unimet.edu.ve') || email.endsWith('@unimet.edu.ve');
+
+  passwordCheck = (password, rePassword) =>
+    password.length >= 8 && password === rePassword;
+
+  fieldsCheck = (data = {}) =>
+    ['firstName', 'lastName', 'dni', 'email', 'password', 'rePassword'].map(
+      key => !!data[key]
+    );
+
+  validateRegister = () => {
+    if (this.fieldsCheck(this.state.registerData).includes(false)) {
+      this.setError(new Error('Debe llenar todos los campos'));
+      return false;
+    }
+    if (!this.emailCheck(this.state.registerData.email)) {
+      this.setError(new Error('Debe utilizar su correo institucional'));
+      return false;
+    }
+    if (
+      !this.passwordCheck(
+        this.state.registerData.password,
+        this.state.registerData.rePassword
+      )
+    ) {
+      this.setError(new Error('Las contrasenas deben coincidir'));
+      return false;
+    }
+    return true;
   };
 
   register = async () => {
     try {
       const datos = this.state.registerData;
-      const data = await post("register-user", datos, false);
+      if (!this.validateRegister()) {
+        return [new Error(this.state.err.message), null];
+      }
+      const data = await post('register-user', datos, false);
       this.setUser(data);
       return [null, data];
     } catch (err) {
@@ -106,7 +157,7 @@ class App extends React.Component {
   login = async () => {
     try {
       const datos = this.state.loginData;
-      const data = await post("login", datos, false);
+      const data = await post('login', datos, false);
       this.setUser(data);
       return [null, data];
     } catch (err) {
@@ -120,7 +171,7 @@ class App extends React.Component {
     const state = { ...this.state };
     state.user = {};
     this.setState(state);
-    this.props.history.push("/");
+    this.props.history.push('/');
   };
 
   updateUser = async user => {
@@ -140,22 +191,22 @@ class App extends React.Component {
       ...this.state,
       [key]: {
         ...this.state[key],
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+      },
     };
     this.setState(state);
   };
 
   onChangeRegister = e => {
-    this.onChangeFactory(e, "registerData");
+    this.onChangeFactory(e, 'registerData');
   };
 
   onChangeLogin = e => {
-    this.onChangeFactory(e, "loginData");
+    this.onChangeFactory(e, 'loginData');
   };
 
   onChangeUpdate = e => {
-    this.onChangeFactory(e, "updateData");
+    this.onChangeFactory(e, 'updateData');
   };
 
   render() {
@@ -164,7 +215,7 @@ class App extends React.Component {
         <Suspense fallback={<Loading />}>
           <Switch>
             {this.routes.map(({ path, exact, component }) =>
-              path.includes("app") ? (
+              path.includes('app') ? (
                 <ProtectedRoute
                   path={path}
                   exact={exact}

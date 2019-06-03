@@ -16,7 +16,9 @@ const get = (url, auth = true) =>
       if (auth) {
         const token = localStorage.getItem(env.KEY);
         if (!token) {
-          return reject(new Error('No tiene un token disponible'));
+          return reject(
+            new Error('Necesita iniciar sesion para realizar esta accion')
+          );
         }
         data = await axios.get(`${env.API_URL}/${url}`, {
           headers: {
@@ -31,10 +33,9 @@ const get = (url, auth = true) =>
       if (data && data.success) {
         return resolve(data);
       }
-      reject(new Error(data.err.message));
+      reject(new Error(data.err));
     } catch (err) {
-      console.log(err);
-      reject(err);
+      reject(new Error('Ha ocurrido con el internet :('));
     }
   });
 
@@ -54,7 +55,9 @@ const post = (url, body, auth = true) =>
       if (auth) {
         const token = localStorage.getItem(env.KEY);
         if (!token) {
-          return reject(new Error('No tiene un token disponible'));
+          return reject(
+            new Error('Necesita iniciar sesion para realizar esta accion')
+          );
         }
         data = await axios.post(
           `${env.API_URL}/${url}`,
@@ -76,8 +79,7 @@ const post = (url, body, auth = true) =>
       }
       reject(new Error(data.err));
     } catch (err) {
-      console.log(err);
-      reject(err);
+      reject(new Error('Ha ocurrido con el internet :('));
     }
   });
 

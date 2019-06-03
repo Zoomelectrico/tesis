@@ -71,7 +71,9 @@ class Council extends React.Component {
             onChange={this.onChange}
             defaultValue="none"
           >
-          <option value='none' disabled>Seleccione una Escuela</option>
+            <option value="none" disabled>
+              Seleccione una Escuela
+            </option>
             {majors.map(major => (
               <option key={normalize(major)} value={normalize(major)}>
                 {major}
@@ -117,6 +119,7 @@ class Council extends React.Component {
                       Cerrar
                     </Button>
                     <Button
+                      id="btnSave"
                       color="success"
                       className="my-auto mr-3 mb-3"
                       onClick={this.save}

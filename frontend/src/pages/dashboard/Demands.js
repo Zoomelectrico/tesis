@@ -13,12 +13,16 @@ import {
   Button,
 } from 'reactstrap';
 import { Header, Toast, notify, Loading } from '../../components';
-import { get, post } from '../../utils';
+import { get, post, errorString } from '../../utils';
 
 const Demands = props => {
-  const params = new URLSearchParams(props.location.search);
-  const reason = params.get('reason');
-  const bool = params.get('bool') === 'true' ? true : false;
+  let reason = '';
+  let bool = false;
+  if (props.location && props.location.search) {
+    const params = new URLSearchParams(props.location.search);
+    reason = params.get('reason');
+    bool = params.get('bool') === 'true';
+  }
   const [state, setState] = useState({ loading: true, demands: {} });
   useEffect(() => {
     const fetch = async () => {
@@ -27,6 +31,7 @@ const Demands = props => {
         setState({ ...state, demands: data.demands, loading: false });
       } catch (err) {
         console.log(err);
+        notify(errorString(err), false);
       }
     };
     if (reason) {
@@ -56,7 +61,11 @@ const Demands = props => {
                 <h2>{title}</h2>
               </CardHeader>
               <CardBody>
-                <Table responsive hover>
+                <Table
+                  responsive
+                  hover
+                  id={title.replace(/[ ]/g, '-').toLowerCase()}
+                >
                   <thead>
                     <tr>
                       {data.header.map(header => (

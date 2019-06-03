@@ -75,16 +75,6 @@ const Navigationbar = () => {
                   <span className="nav-link-inner--text">Login</span>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  className="nav-link-icon"
-                  to="/app/dashboard"
-                  tag={Link}
-                >
-                  <i className="ni ni-single-02" />
-                  <span className="nav-link-inner--text">Profile</span>
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>

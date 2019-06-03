@@ -180,24 +180,6 @@ ShallowWrapper {
                   </span>
                 </NavLink>
               </NavItem>
-              <NavItem
-                tag="li"
-              >
-                <NavLink
-                  className="nav-link-icon"
-                  tag={[Function]}
-                  to="/app/dashboard"
-                >
-                  <i
-                    className="ni ni-single-02"
-                  />
-                  <span
-                    className="nav-link-inner--text"
-                  >
-                    Profile
-                  </span>
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>
@@ -366,24 +348,6 @@ ShallowWrapper {
                   </span>
                 </NavLink>
               </NavItem>
-              <NavItem
-                tag="li"
-              >
-                <NavLink
-                  className="nav-link-icon"
-                  tag={[Function]}
-                  to="/app/dashboard"
-                >
-                  <i
-                    className="ni ni-single-02"
-                  />
-                  <span
-                    className="nav-link-inner--text"
-                  >
-                    Profile
-                  </span>
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>,
@@ -548,24 +512,6 @@ ShallowWrapper {
                       className="nav-link-inner--text"
                     >
                       Login
-                    </span>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  tag="li"
-                >
-                  <NavLink
-                    className="nav-link-icon"
-                    tag={[Function]}
-                    to="/app/dashboard"
-                  >
-                    <i
-                      className="ni ni-single-02"
-                    />
-                    <span
-                      className="nav-link-inner--text"
-                    >
-                      Profile
                     </span>
                   </NavLink>
                 </NavItem>
@@ -758,24 +704,6 @@ ShallowWrapper {
                         className="nav-link-inner--text"
                       >
                         Login
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem
-                    tag="li"
-                  >
-                    <NavLink
-                      className="nav-link-icon"
-                      tag={[Function]}
-                      to="/app/dashboard"
-                    >
-                      <i
-                        className="ni ni-single-02"
-                      />
-                      <span
-                        className="nav-link-inner--text"
-                      >
-                        Profile
                       </span>
                     </NavLink>
                   </NavItem>
@@ -1128,24 +1056,6 @@ ShallowWrapper {
                         </span>
                       </NavLink>
                     </NavItem>,
-                    <NavItem
-                      tag="li"
-                    >
-                      <NavLink
-                        className="nav-link-icon"
-                        tag={[Function]}
-                        to="/app/dashboard"
-                      >
-                        <i
-                          className="ni ni-single-02"
-                        />
-                        <span
-                          className="nav-link-inner--text"
-                        >
-                          Profile
-                        </span>
-                      </NavLink>
-                    </NavItem>,
                   ],
                   "className": "ml-auto",
                   "navbar": true,
@@ -1289,77 +1199,6 @@ ShallowWrapper {
                           },
                           "ref": null,
                           "rendered": "Login",
-                          "type": "span",
-                        },
-                      ],
-                      "type": [Function],
-                    },
-                    "type": [Function],
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "children": <NavLink
-                        className="nav-link-icon"
-                        tag={[Function]}
-                        to="/app/dashboard"
-                      >
-                        <i
-                          className="ni ni-single-02"
-                        />
-                        <span
-                          className="nav-link-inner--text"
-                        >
-                          Profile
-                        </span>
-                      </NavLink>,
-                      "tag": "li",
-                    },
-                    "ref": null,
-                    "rendered": Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "children": Array [
-                          <i
-                            className="ni ni-single-02"
-                          />,
-                          <span
-                            className="nav-link-inner--text"
-                          >
-                            Profile
-                          </span>,
-                        ],
-                        "className": "nav-link-icon",
-                        "tag": [Function],
-                        "to": "/app/dashboard",
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "className": "ni ni-single-02",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "i",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": "Profile",
-                            "className": "nav-link-inner--text",
-                          },
-                          "ref": null,
-                          "rendered": "Profile",
                           "type": "span",
                         },
                       ],
@@ -1548,24 +1387,6 @@ ShallowWrapper {
                     </span>
                   </NavLink>
                 </NavItem>
-                <NavItem
-                  tag="li"
-                >
-                  <NavLink
-                    className="nav-link-icon"
-                    tag={[Function]}
-                    to="/app/dashboard"
-                  >
-                    <i
-                      className="ni ni-single-02"
-                    />
-                    <span
-                      className="nav-link-inner--text"
-                    >
-                      Profile
-                    </span>
-                  </NavLink>
-                </NavItem>
               </Nav>
             </Collapse>
           </Container>
@@ -1734,24 +1555,6 @@ ShallowWrapper {
                     </span>
                   </NavLink>
                 </NavItem>
-                <NavItem
-                  tag="li"
-                >
-                  <NavLink
-                    className="nav-link-icon"
-                    tag={[Function]}
-                    to="/app/dashboard"
-                  >
-                    <i
-                      className="ni ni-single-02"
-                    />
-                    <span
-                      className="nav-link-inner--text"
-                    >
-                      Profile
-                    </span>
-                  </NavLink>
-                </NavItem>
               </Nav>
             </Collapse>
           </Container>,
@@ -1916,24 +1719,6 @@ ShallowWrapper {
                         className="nav-link-inner--text"
                       >
                         Login
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem
-                    tag="li"
-                  >
-                    <NavLink
-                      className="nav-link-icon"
-                      tag={[Function]}
-                      to="/app/dashboard"
-                    >
-                      <i
-                        className="ni ni-single-02"
-                      />
-                      <span
-                        className="nav-link-inner--text"
-                      >
-                        Profile
                       </span>
                     </NavLink>
                   </NavItem>
@@ -2126,24 +1911,6 @@ ShallowWrapper {
                           className="nav-link-inner--text"
                         >
                           Login
-                        </span>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem
-                      tag="li"
-                    >
-                      <NavLink
-                        className="nav-link-icon"
-                        tag={[Function]}
-                        to="/app/dashboard"
-                      >
-                        <i
-                          className="ni ni-single-02"
-                        />
-                        <span
-                          className="nav-link-inner--text"
-                        >
-                          Profile
                         </span>
                       </NavLink>
                     </NavItem>
@@ -2496,24 +2263,6 @@ ShallowWrapper {
                           </span>
                         </NavLink>
                       </NavItem>,
-                      <NavItem
-                        tag="li"
-                      >
-                        <NavLink
-                          className="nav-link-icon"
-                          tag={[Function]}
-                          to="/app/dashboard"
-                        >
-                          <i
-                            className="ni ni-single-02"
-                          />
-                          <span
-                            className="nav-link-inner--text"
-                          >
-                            Profile
-                          </span>
-                        </NavLink>
-                      </NavItem>,
                     ],
                     "className": "ml-auto",
                     "navbar": true,
@@ -2657,77 +2406,6 @@ ShallowWrapper {
                             },
                             "ref": null,
                             "rendered": "Login",
-                            "type": "span",
-                          },
-                        ],
-                        "type": [Function],
-                      },
-                      "type": [Function],
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "children": <NavLink
-                          className="nav-link-icon"
-                          tag={[Function]}
-                          to="/app/dashboard"
-                        >
-                          <i
-                            className="ni ni-single-02"
-                          />
-                          <span
-                            className="nav-link-inner--text"
-                          >
-                            Profile
-                          </span>
-                        </NavLink>,
-                        "tag": "li",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "children": Array [
-                            <i
-                              className="ni ni-single-02"
-                            />,
-                            <span
-                              className="nav-link-inner--text"
-                            >
-                              Profile
-                            </span>,
-                          ],
-                          "className": "nav-link-icon",
-                          "tag": [Function],
-                          "to": "/app/dashboard",
-                        },
-                        "ref": null,
-                        "rendered": Array [
-                          Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "host",
-                            "props": Object {
-                              "className": "ni ni-single-02",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": "i",
-                          },
-                          Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "host",
-                            "props": Object {
-                              "children": "Profile",
-                              "className": "nav-link-inner--text",
-                            },
-                            "ref": null,
-                            "rendered": "Profile",
                             "type": "span",
                           },
                         ],
