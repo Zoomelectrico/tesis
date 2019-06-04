@@ -30,7 +30,6 @@ const Demands = props => {
         const data = await get('demands');
         setState({ ...state, demands: data.demands, loading: false });
       } catch (err) {
-        console.log(err);
         notify(errorString(err), false);
       }
     };
@@ -264,7 +263,6 @@ const Demands = props => {
           generateTable(state, setState)
         )}
       </Container>
-      <Toast />
     </>
   );
 };

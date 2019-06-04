@@ -1,4 +1,5 @@
 // System modules
+const path = require('path');
 // npm dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,6 +15,8 @@ const routes = require('./routes/index');
 // App Creation
 const app = express();
 // Regular Middleware
+app.disable('x-powered-by');
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
@@ -36,6 +39,15 @@ require('./config/passport');
 // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+app.get('/auth/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+app.get('/app/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 app.use('/api', routes);
 app.use((err, req, res, next) => {
   if (err) {

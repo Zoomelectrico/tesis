@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable global-require */
+/* eslint-disable no-nested-ternary */
+import React, { useState } from 'react';
+import { NavLink as NavLinkRRD, Link } from 'react-router-dom';
 import {
   Collapse,
   Media,
@@ -10,11 +14,11 @@ import {
   Nav,
   Container,
   Row,
-  Col
-} from "reactstrap";
+  Col,
+} from 'reactstrap';
 
 const activeRoute = (pathName, routeName) =>
-  pathName.indexOf(routeName) > -1 ? "active" : "";
+  pathName.indexOf(routeName) > -1 ? 'active' : '';
 
 const toggleCollapse = (collapseOpen, setCollapseOpen) =>
   setCollapseOpen(!collapseOpen);
@@ -24,12 +28,13 @@ const closeCollapse = setCollapseOpen => setCollapseOpen(false);
 const createLinks = (routes, setCollapseOpen, user) =>
   routes.map(link =>
     link.minLevel.includes(user.privilege) ? (
-      link.name.includes("__none__") ? null : (
+      link.name.includes('__none__') ? null : (
         <NavItem key={link.name}>
           <NavLink
             to={link.path}
             tag={NavLinkRRD}
             onClick={() => closeCollapse(setCollapseOpen)}
+            id={link.name}
             activeClassName="active"
           >
             <i className={link.icon} />
@@ -66,7 +71,7 @@ const Sidebar = props => {
                 alt="User profile"
                 src={
                   props.user.img ||
-                  require("../assets/img/user-placeholder.png")
+                  require('../assets/img/user-placeholder.png')
                 }
               />
             </span>

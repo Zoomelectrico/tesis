@@ -88,6 +88,7 @@ const Login = props => {
                         className="my-auto"
                         onClick={login}
                         disabled={isDisabled}
+                        id="btnLogin"
                       >
                         Iniciar Sesion
                       </Button>

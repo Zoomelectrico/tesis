@@ -13,7 +13,7 @@ import {
   Input,
   Label,
 } from 'reactstrap';
-import { Navbar, Footer } from '../components';
+import { Navbar, Footer, notify, Toast } from '../components';
 import { majors, normalize, post } from '../utils';
 
 const Home = props => {
@@ -51,7 +51,7 @@ const Home = props => {
     e.preventDefault();
     const data = await post(`home-form`, formData, false);
     if (data && data.success) {
-      // All good, send a flash
+      notify('Formulario enviado con exito!', true);
     }
   };
 
@@ -271,6 +271,7 @@ const Home = props => {
           </Row>
         </Container>
       </div>
+      <Toast />
     </>
   );
 };
