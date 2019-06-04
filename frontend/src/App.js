@@ -86,7 +86,6 @@ class App extends React.Component {
       }
     } catch (err) {
       notify(errorString(err.message), false);
-      console.log(err);
     }
   }
 
@@ -180,7 +179,6 @@ class App extends React.Component {
       this.setState({ ...this.state, user: data.user });
       return [null, data];
     } catch (err) {
-      console.log(err);
       return [err, null];
     }
   };

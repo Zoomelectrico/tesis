@@ -111,7 +111,6 @@ const Demands = props => {
         'Ha ocurrido un error, refresque el navegador y vuelva a intentar',
         false
       );
-      console.log(err);
     }
   };
 

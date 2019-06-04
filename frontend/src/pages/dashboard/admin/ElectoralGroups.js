@@ -19,7 +19,6 @@ const ElectoralGroup = props => {
     const fetch = async () => {
       const data = await get('electoral-groups');
       if (data.success) {
-        console.log(data);
         setState({
           loading: false,
           electoralGroups: data.electoralGroups,

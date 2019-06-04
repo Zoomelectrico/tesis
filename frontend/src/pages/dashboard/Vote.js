@@ -77,7 +77,6 @@ class DashVote extends React.Component {
         if (data && data2) {
           const { voter, secret } = data;
           const { postulations } = data2;
-          console.log(data, data2);
           this.setState({
             ...this.state,
             voter,

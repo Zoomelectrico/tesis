@@ -140,7 +140,7 @@ const DashProfile = props => {
       <Header />
       <Container fluid className="mt--7">
         <Row>
-          <Col md="12" lg="8">
+          <Col md="12" lg="8" className="mb-3">
             <Card style={{ backgroundColor: '#f5f7f9' }}>
               <CardHeader>
                 <h2>Informacion del Usuario</h2>
@@ -231,6 +231,7 @@ const DashProfile = props => {
                   <Card className="bg-gradient-success py-5 px-3 border-0">
                     <Row className="justify-content-center">
                       <Button
+                        disabled
                         color="neutral"
                         className="my-auto"
                         onClick={e => e.preventDefault() /* Open Modal */}

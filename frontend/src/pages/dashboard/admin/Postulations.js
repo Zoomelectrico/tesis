@@ -22,7 +22,7 @@ const Postulations = props => {
     const fetch = async () => {
       try {
         const data = await get('postulations');
-        console.log(data);
+
         setState({ loading: false, postulations: data.postulations });
       } catch (err) {
         notify('Ha ocurrido un Error, pruebe refrescando la pagina!', false);
@@ -35,16 +35,14 @@ const Postulations = props => {
     try {
       e.preventDefault();
       const res = await _fetch(e.target.dataset.id);
-      console.log(res);
+
       const [err, dd] = await generateDD(res.postulation);
       if (err) {
-        console.log(err);
         return notify('Ha ocurrido un error', false);
       }
       pdfMake.vfs = vfs_fonts.pdfMake.vfs;
       pdfMake.createPdf(dd).open();
     } catch (err) {
-      console.log(err);
       notify('Ha ocurrido un Error al ver la postulacion', false);
     }
   };

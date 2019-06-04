@@ -37,6 +37,7 @@ const Results = ({ location, user, history }) => {
     loading: true,
     results: {},
     preliminary: false,
+    noResults: false,
   });
   useEffect(() => {
     const fetch = async () => {
@@ -55,16 +56,21 @@ const Results = ({ location, user, history }) => {
           }
         } else {
           data = await get('results');
-          console.log(data);
+
           if (data.success) {
             setState({ loading: false, results: data.result });
           } else {
             notify('Ha ocurrido un Error', false);
           }
         }
-        console.log(data);
       } catch (err) {
-        console.log(err);
+        if (
+          err.message &&
+          err.message.includes('No hay Resultados para este anio')
+        ) {
+          setState({ noResults: true });
+          return notify('No hay resultados para estas Elecciones', false);
+        }
         notify('Ha ocurrido un error, intente refrescando el navegador', false);
       }
     };
@@ -80,9 +86,8 @@ const Results = ({ location, user, history }) => {
       if (data.success) {
         history.push('/app/dashboard?reason=Resultados-salvados&bool=true');
       }
-      console.log(data);
     } catch (err) {
-      console.log(err);
+      notify('No se han podido guardar los resultados', false);
     }
   };
 
@@ -352,6 +357,19 @@ const Results = ({ location, user, history }) => {
           <Col sm="12">
             <Card className="border-0 shadow-lg">
               <Loading />
+            </Card>
+          </Col>
+        </Row>
+      );
+    }
+    if (state.noResults) {
+      return (
+        <Row>
+          <Col sm="12">
+            <Card className="border-0 shadow-lg">
+              <h2 className="text-center">
+                No hay resultados para estas elecciones
+              </h2>
             </Card>
           </Col>
         </Row>

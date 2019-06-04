@@ -6,6 +6,7 @@ const electoralGroupController = require('../controllers/electoralGroupControlle
 const demandController = require('../controllers/demandController');
 const postulationController = require('../controllers/postulationController');
 const voteController = require('../controllers/voteController');
+const formResponseController = require('../controllers/formResponseController');
 
 router.post('/login', passport.authenticate('signin'), authController.login);
 
@@ -14,6 +15,8 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   userController.getProfile
 );
+
+router.post('/home-form', formResponseController.create);
 
 router.post(
   '/register-user',

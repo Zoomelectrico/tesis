@@ -40,13 +40,6 @@ const Home = props => {
     setFormData(data);
   };
 
-  const [electoralR, setElectoralR] = useState('');
-
-  const onChangeER = e => {
-    e.preventDefault();
-    setElectoralR(e.target.value);
-  };
-
   const sendForm = async e => {
     e.preventDefault();
     const data = await post(`home-form`, formData, false);
@@ -139,42 +132,6 @@ const Home = props => {
         </div>
         <div>
           <Container className="py-5">
-            <Row className="justify-content-center">
-              <Col sm="12" className="text-center">
-                <h2 className="text-white">Consultar el Registro Electoral</h2>
-              </Col>
-              <Col sm="12" md="7" lg="5">
-                <FormGroup>
-                  <Label for="dni" className="text-white">
-                    Cedula de Identidad
-                  </Label>
-                  <Row>
-                    <Col sm="12" md="9">
-                      <Input
-                        className="form-control-alternative"
-                        type="number"
-                        name="dni"
-                        id="dni"
-                        placeholder="cedula de identidad"
-                        onChange={onChangeER}
-                      />
-                    </Col>
-                    <Col sm="12" md="3">
-                      <Link
-                        to={{
-                          pathname: '/electoral-register',
-                          search: `?dni=${electoralR}`,
-                        }}
-                      >
-                        <Button>Revisar</Button>
-                      </Link>
-                    </Col>
-                  </Row>
-                </FormGroup>
-              </Col>
-            </Row>
-          </Container>
-          <Container className="pb-5">
             <Row className="justify-content-center">
               <Col sm="12" md="8" lg="6">
                 <Card style={{ backgroundColor: '#f5f7f9' }}>

@@ -1,6 +1,6 @@
-import React from "react";
-import { Container, Row, Col, Card, Button } from "reactstrap";
-import { Header, Toast, notify, Loading } from "../../components";
+import React from 'react';
+import { Container, Row, Col, Card, Button } from 'reactstrap';
+import { Header, Toast, notify, Loading } from '../../components';
 import {
   Checkout,
   Council,
@@ -8,16 +8,16 @@ import {
   FacultyCouncil,
   School,
   SchoolCouncil,
-  StudentFederationCenter
-} from "./postulate/index.js";
-import { env, get, post } from "../../utils";
+  StudentFederationCenter,
+} from './postulate/index.js';
+import { env, get, post } from '../../utils';
 
 const keys = [
-  "academic-council",
-  "faculty-council",
-  "student-federation-center",
-  "schools",
-  "school-council"
+  'academic-council',
+  'faculty-council',
+  'student-federation-center',
+  'schools',
+  'school-council'
 ];
 
 class DashPostulate extends React.Component {
@@ -30,13 +30,13 @@ class DashPostulate extends React.Component {
     postulation: {}, // Previa de la Postulacion
     postulationData: {}, // Postulacion de la db
     checkout: false, // Flag para mostrar la postulacion
-    _id: "", // id del user
-    token: "", // token del user
-    denomination: "",
-    colorName: "",
-    colorHex: "",
-    logo: "",
-    number: ""
+    _id: '', // id del user
+    token: '', // token del user
+    denomination: '',
+    colorName: '',
+    colorHex: '',
+    logo: '',
+    number: ''
   };
 
   getUserData = () =>
@@ -47,12 +47,11 @@ class DashPostulate extends React.Component {
         resolve({ _id, token });
       } else {
         reject(new Error(`Can't do it!`));
-        this.props.history.push("/login");
+        this.props.history.push('/login');
       }
     });
 
-  getElectoralGroup = _id => {
-    return new Promise(async (resolve, reject) => {
+  getElectoralGroup = _id => new Promise(async (resolve, reject) => {
       try {
         const data = await get(`electoral-group/${_id}`);
         const { electoralGroup } = data;
@@ -61,7 +60,6 @@ class DashPostulate extends React.Component {
         reject(new Error(err));
       }
     });
-  };
 
   getCopyOfPostulation = () =>
     new Promise((resolve, reject) => {
@@ -82,7 +80,7 @@ class DashPostulate extends React.Component {
   async componentDidMount() {
     try {
       let state = {
-        ...this.state
+        ...this.state,
       };
       const { _id, token } = await this.getUserData();
       const electoralGroup = await this.getElectoralGroup(_id, token);
@@ -93,7 +91,7 @@ class DashPostulate extends React.Component {
           electoralGroupStatus: true,
           electoralGroup,
           _id,
-          token
+          token,
         };
         if (electoralGroup.accepted === 1) {
           state = { ...state, electoralGroupAccepted: true };
@@ -101,7 +99,7 @@ class DashPostulate extends React.Component {
             state = {
               ...state,
               postulationData: electoralGroup.postulation,
-              checkout: true
+              checkout: true,
             };
           }
         } else {
@@ -113,12 +111,12 @@ class DashPostulate extends React.Component {
           loading: false,
           electoralGroupStatus: false,
           _id,
-          token
+          token,
         };
       }
       this.setState(state);
     } catch (err) {
-      notify("Ha ocurrido un Error al iniciar", false);
+      notify('Ha ocurrido un Error al iniciar', false);
     }
   }
 
@@ -139,7 +137,7 @@ class DashPostulate extends React.Component {
     e.preventDefault();
     const state = {
       ...this.state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
     this.setState(state);
   };
@@ -148,13 +146,13 @@ class DashPostulate extends React.Component {
     e.preventDefault();
     const state = { ...this.state };
     const file = e.target.files[0];
-    const name = e.target.name;
+    const {name} = e.target;
     const base64 = await this.getBase64(file);
-    if (base64.startsWith("data:image/")) {
+    if (base64.startsWith('data:image/')) {
       state[name] = base64;
       this.setState(state);
     } else {
-      notify("No logramos reconocer este archivo", false);
+      notify('No logramos reconocer este archivo', false);
     }
   };
 
@@ -164,7 +162,7 @@ class DashPostulate extends React.Component {
     colorHex,
     logo,
     number,
-    _id
+    _id,
   }) =>
     new Promise(async (resolve, reject) => {
       try {
@@ -173,7 +171,7 @@ class DashPostulate extends React.Component {
           colorName,
           colorHex,
           logo,
-          number
+          number,
         });
         if (data && data.success) {
           const { electoralGroup } = data;
@@ -196,11 +194,11 @@ class DashPostulate extends React.Component {
         ...this.state,
         electoralGroup,
         electoralGroupStatus: true,
-        electoralGroupAccepted: false
+        electoralGroupAccepted: false,
       });
     } catch (err) {
-      notify("Un error ha evitado crear el Grupo electoral", false);
-      console.log(err);
+      notify('Un error ha evitado crear el Grupo electoral', false);
+
     }
   };
 
@@ -210,13 +208,17 @@ class DashPostulate extends React.Component {
       const postulation = {
         ...this.state.postulation,
         userId: this.state._id,
-        electoralGroup: this.state.electoralGroup._id
+        electoralGroup: this.state.electoralGroup._id,
       };
-      const data = await post("postulation-create", postulation);
+      const data = await post('postulation-create', postulation);
       keys.forEach(key => localStorage.removeItem(key));
-      this.setState({ ...this.state, checkout: true, postulationData: data.postulation });
+      this.setState({
+        ...this.state,
+        checkout: true,
+        postulationData: data.postulation,
+      });
     } catch (err) {
-      notify("Un Error ha evitado enviar su postulacion", false);
+      notify('Un Error ha evitado enviar su postulacion', false);
     }
   };
 
@@ -227,7 +229,7 @@ class DashPostulate extends React.Component {
           <Loading />
         </Card>
       );
-    } else {
+    } 
       if (this.state.electoralGroupStatus) {
         if (this.state.electoralGroupAccepted) {
           if (this.state.checkout) {
@@ -285,7 +287,7 @@ class DashPostulate extends React.Component {
           />
         );
       }
-    }
+    
   };
 
   render() {

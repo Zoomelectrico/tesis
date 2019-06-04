@@ -19,7 +19,7 @@ const Postulation = ({ location, history }) => {
     const fetch = async () => {
       try {
         const data = await get(`demand/${params.get('id')}`);
-        console.log(data);
+
         setState({
           loading: false,
           postulation: data.demand.postulation,
@@ -37,12 +37,11 @@ const Postulation = ({ location, history }) => {
       e.preventDefault();
       const { pid, id } = e.target.dataset;
       const data = await post('demand-accept-pos', { pid, id });
-      console.log(data);
+
       history.push(
         '/app/dashboard/demands?reason=Postulacion-registrada-correctamente&bool=true'
       );
     } catch (err) {
-      console.log(err);
       notify('Ha ocurrido un Error al Guardar');
     }
   };

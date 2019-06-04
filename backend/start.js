@@ -12,6 +12,7 @@ require("./models/User");
 require("./models/ElectoralGroup");
 require("./models/Demand");
 require("./models/Postulation");
+require("./models/FormResponse");
 
 const app = require("./app");
 app.set("port", process.env.PORT || 7777);

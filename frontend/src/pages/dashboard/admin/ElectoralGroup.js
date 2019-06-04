@@ -27,14 +27,12 @@ const ElectoralGroup = ({ location, history }) => {
       // eslint-disable-next-line no-shadow
       const { egid: egId, id } = e.target.dataset;
       const data = await post('demand-accept-eg', { egId, id });
-      console.log(data);
       if (data.success) {
         history.push(
           '/app/dashboard/demands?reason=Grupo-Electoral-Aceptado&bool=true'
         );
       }
     } catch (err) {
-      console.log(err);
       notify('Ha ocurrido un Error Incorporar este Grupo Electoral', false);
     }
   };

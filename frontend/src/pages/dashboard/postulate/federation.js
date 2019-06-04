@@ -108,7 +108,6 @@ class StudentFederationCenter extends React.Component {
       this.props.save('student-federation-center', this.state);
       this.setState({ ...this.state, ready: true });
     } else {
-      console.log('Not ready');
     }
   };
 
@@ -136,14 +135,6 @@ class StudentFederationCenter extends React.Component {
       academic,
       responsibility,
     } = this.state;
-    console.log({
-      fce,
-      sports,
-      culture,
-      services,
-      academic,
-      responsibility,
-    });
     if (fce.length < 5) {
       return false;
     }
@@ -159,7 +150,6 @@ class StudentFederationCenter extends React.Component {
         ...responsibility,
       ];
       if (cordinators.length < 10) {
-        console.log(4);
         return false;
       }
       return !cordinators
