@@ -24,6 +24,6 @@ const formResponseSchema = new mongoose.Schema({
   },
 });
 
-electoralGroupSchema.plugin(mongodbErrorHandler);
+formResponseSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('FormResponse', formResponseSchema);
