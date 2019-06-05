@@ -39,15 +39,7 @@ require('./config/passport');
 // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
-app.get('/auth/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
-app.get('/app/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
+app.use('/', require('./routes/react'));
 app.use('/api', routes);
 app.use((err, req, res, next) => {
   if (err) {

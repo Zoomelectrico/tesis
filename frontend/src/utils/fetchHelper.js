@@ -35,6 +35,7 @@ const get = (url, auth = true) =>
       }
       reject(new Error(data.err));
     } catch (err) {
+      console.log(err);
       reject(new Error('Ha ocurrido con el internet :('));
     }
   });

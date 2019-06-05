@@ -366,7 +366,7 @@ const Results = ({ location, user, history }) => {
       return (
         <Row>
           <Col sm="12">
-            <Card className="border-0 shadow-lg">
+            <Card className="border-0 shadow-lg py-5">
               <h2 className="text-center">
                 No hay resultados para estas elecciones
               </h2>

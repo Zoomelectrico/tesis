@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { MemoryRouter } from 'react-router-dom';
@@ -12,6 +13,8 @@ const sleep = time =>
     setTimeout(resolve, time);
   });
 
+let container;
+
 describe('Integration Testing: Profile', () => {
   const mockApi = new MockAdapter(axios);
   const mockData = {
@@ -19,7 +22,7 @@ describe('Integration Testing: Profile', () => {
     user: {
       _id: '123',
       firstName: 'Jose',
-      lastName: 'Quevedo',
+      lastName: 'Quevedo G',
       email: 'jose.quevedo@correo.unimet.edu.ve',
       privilege: 2,
       dni: '27014788',
@@ -29,9 +32,15 @@ describe('Integration Testing: Profile', () => {
     },
   };
   beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
     mockApi
       .onPost('https://uvote.tk/api/user-update/123')
-      .replay(200, { ...mockData });
+      .reply(200, { ...mockData });
+  });
+  afterEach(() => {
+    document.body.removeChild(container);
+    container = null;
   });
   const props = {
     user: {
@@ -47,27 +56,21 @@ describe('Integration Testing: Profile', () => {
       search: {},
     },
   };
-  it('Render Correctly', async () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/app/dashboard/profile']} keyLength={0}>
-        <Profile {...props} />
-      </MemoryRouter>
-    );
+  it('Render Correctly & Ppdate the User', async () => {
+    act(() => {
+      ReactDOM.render(
+        <MemoryRouter initialEntries={['/app/dashboard/profile']} keyLength={0}>
+          <Profile {...props} />
+        </MemoryRouter>,
+        container
+      );
+    });
     await sleep(5000);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.unmount();
-  });
-  it('Update the user', () => {
-    // const wrapper = shallow(
-    //   <MemoryRouter initialEntries={['/app/dashboard/profile']} keyLength={0}>
-    //     <Profile {...props} />
-    //   </MemoryRouter>
-    // );
-    // mockApi.onPost('https://uvote/api/user-update/123').reply(200, {
-    //   data: mockData,
-    // });
-    // wrapper.find('#btnUpdate').simulate('click');
-    // expect(props.updateUser).toHaveBeenCalled();
-    // expect(wrapper.props().carnet).toBe('20161111008');
+    expect(document.querySelector('#lastName')).toBeTruthy();
+    expect(document.querySelector('#lastName').value).toMatch(/Quevedo/);
+    document.querySelector('#lastName').value = `Quevedo G`;
+    const event = new Event('click');
+    document.querySelector('#btnUpdate').dispatchEvent(event);
+    expect(document.querySelector('#lastName').value).toMatch(/Quevedo G/);
   });
 });

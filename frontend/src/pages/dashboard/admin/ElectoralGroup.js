@@ -15,11 +15,32 @@ import { get, post } from '../../../utils';
 import { Header, Toast, notify } from '../../../components';
 
 const ElectoralGroup = ({ location, history }) => {
-  let id = '';
+  let id;
   if (location) {
     id = new URLSearchParams(location.search).get('id');
   }
   const [state, setState] = useState({ loading: true, demand: {} });
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        if (!id) {
+          history.push(
+            '/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false'
+          );
+        }
+        console.log(id);
+        const data = await get(`demand/${id}`);
+        setState({ loading: false, demand: data.demand });
+      } catch (err) {
+        notify(
+          'Hubo un problema al cargar los datos. Refresque la Pagina',
+          false
+        );
+      }
+    };
+    fetch();
+  }, []);
 
   const accept = async e => {
     try {
@@ -36,26 +57,6 @@ const ElectoralGroup = ({ location, history }) => {
       notify('Ha ocurrido un Error Incorporar este Grupo Electoral', false);
     }
   };
-
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        if (!id) {
-          history.push(
-            '/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false'
-          );
-        }
-        const data = await get(`demand/${id}`);
-        setState({ loading: false, demand: data.demand });
-      } catch (err) {
-        notify(
-          'Hubo un problema al cargar los datos. Refresque la Pagina',
-          false
-        );
-      }
-    };
-    fetch();
-  }, []);
 
   const { electoralGroup } = state.demand;
   return (

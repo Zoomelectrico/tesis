@@ -70,7 +70,6 @@ describe('App Component', () => {
       </MemoryRouter>
     );
     await sleep(5000);
-    wrapper.find('#email').forEach(node => console.log(node.text()));
     // wrapper.find('#email').simulate('change', {
     //   target: { name: 'email', value: 'jose.quevedo@correo.unimet.edu.ve' },
     // });
