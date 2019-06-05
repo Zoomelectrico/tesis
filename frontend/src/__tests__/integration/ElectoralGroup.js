@@ -53,7 +53,7 @@ describe('Integration Testing: ElectoralGroup', () => {
   });
   const props = {
     location: {
-      search: '?id=1233',
+      search: '?id=123',
     },
     history: {
       push: jest.fn(),
@@ -71,7 +71,13 @@ describe('Integration Testing: ElectoralGroup', () => {
         container
       );
     });
-    await sleep(5000);
-    console.log(document.body.innerHTML);
+    await sleep(10000);
+    expect(document.querySelector('.btn.btn-success')).toBeTruthy();
+    expect(document.querySelector('.btn.btn-success').dataset.id).toMatch(
+      /123/
+    );
+    expect(document.querySelector('.btn.btn-success').dataset.egid).toMatch(
+      /234/
+    );
   });
 });
