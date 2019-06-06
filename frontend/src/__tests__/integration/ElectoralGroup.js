@@ -71,7 +71,7 @@ describe('Integration Testing: ElectoralGroup', () => {
         container
       );
     });
-    await sleep(10000);
+    await sleep(15000);
     expect(document.querySelector('.btn.btn-success')).toBeTruthy();
     expect(document.querySelector('.btn.btn-success').dataset.id).toMatch(
       /123/

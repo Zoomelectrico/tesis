@@ -11,7 +11,9 @@ const Loading = () => (
         className="mb-3"
       />
     </div>
-    <h2 className="text-center">Cargando...</h2>
+    <h2 className="text-center" id="loading-text">
+      Cargando...
+    </h2>
   </div>
 );
 

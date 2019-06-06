@@ -45,6 +45,7 @@ ShallowWrapper {
         </div>,
         <h2
           className="text-center"
+          id="loading-text"
         >
           Cargando...
         </h2>,
@@ -114,6 +115,7 @@ ShallowWrapper {
         "props": Object {
           "children": "Cargando...",
           "className": "text-center",
+          "id": "loading-text",
         },
         "ref": null,
         "rendered": "Cargando...",
@@ -155,6 +157,7 @@ ShallowWrapper {
           </div>,
           <h2
             className="text-center"
+            id="loading-text"
           >
             Cargando...
           </h2>,
@@ -224,6 +227,7 @@ ShallowWrapper {
           "props": Object {
             "children": "Cargando...",
             "className": "text-center",
+            "id": "loading-text",
           },
           "ref": null,
           "rendered": "Cargando...",

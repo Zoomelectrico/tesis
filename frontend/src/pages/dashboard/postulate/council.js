@@ -99,6 +99,7 @@ class Council extends React.Component {
       <Card
         style={{ backgroundColor: '#f5f7f9' }}
         className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
+        id="academic-council"
       >
         <CardHeader>
           <h2>Postulacion para Consejo Academico</h2>

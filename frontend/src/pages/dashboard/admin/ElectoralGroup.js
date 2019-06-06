@@ -29,7 +29,6 @@ const ElectoralGroup = ({ location, history }) => {
             '/app/dashboard/demands?reason=No-se-encuentra-el-grupo-electoral?bool=false'
           );
         }
-        console.log(id);
         const data = await get(`demand/${id}`);
         setState({ loading: false, demand: data.demand });
       } catch (err) {

@@ -237,6 +237,7 @@ class FacultyCouncil extends React.Component {
       <Card
         style={{ backgroundColor: '#f5f7f9' }}
         className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
+        id="faculty-council"
       >
         <CardHeader>
           <h2>Postulacion para Consejo de Facultad</h2>

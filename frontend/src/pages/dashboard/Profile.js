@@ -203,6 +203,7 @@ const DashProfile = props => {
                       <Button
                         color="neutral"
                         className="my-auto"
+                        id="btnRepresentative"
                         onClick={e => demand(e, 'REPRESENTANTE')}
                       >
                         Solicitar - Representante Electoral

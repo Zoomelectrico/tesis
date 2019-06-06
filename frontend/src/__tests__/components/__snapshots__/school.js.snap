@@ -22,6 +22,7 @@ ShallowWrapper {
     "props": Object {
       "children": <Card
         className="mb-4 "
+        id="school"
         style={
           Object {
             "backgroundColor": "#f5f7f9",
@@ -428,6 +429,7 @@ ShallowWrapper {
           </CardBody>,
         ],
         "className": "mb-4 ",
+        "id": "school",
         "style": Object {
           "backgroundColor": "#f5f7f9",
         },
@@ -1690,6 +1692,7 @@ ShallowWrapper {
       "props": Object {
         "children": <Card
           className="mb-4 "
+          id="school"
           style={
             Object {
               "backgroundColor": "#f5f7f9",
@@ -2096,6 +2099,7 @@ ShallowWrapper {
             </CardBody>,
           ],
           "className": "mb-4 ",
+          "id": "school",
           "style": Object {
             "backgroundColor": "#f5f7f9",
           },

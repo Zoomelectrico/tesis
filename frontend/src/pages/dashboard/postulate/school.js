@@ -232,6 +232,7 @@ class School extends React.Component {
         <Card
           style={{ backgroundColor: '#f5f7f9' }}
           className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
+          id="school"
         >
           <CardHeader className="p-3">
             <h2>Postulacion para Centro de Estudiante</h2>

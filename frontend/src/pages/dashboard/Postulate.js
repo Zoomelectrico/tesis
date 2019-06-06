@@ -1,3 +1,7 @@
+/* eslint-disable global-require */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'reactstrap';
 import { Header, Toast, notify, Loading } from '../../components';
@@ -17,7 +21,7 @@ const keys = [
   'faculty-council',
   'student-federation-center',
   'schools',
-  'school-council'
+  'school-council',
 ];
 
 class DashPostulate extends React.Component {
@@ -36,46 +40,8 @@ class DashPostulate extends React.Component {
     colorName: '',
     colorHex: '',
     logo: '',
-    number: ''
+    number: '',
   };
-
-  getUserData = () =>
-    new Promise((resolve, reject) => {
-      const { _id } = JSON.parse(localStorage.getItem(env.USER));
-      const token = localStorage.getItem(env.KEY);
-      if (_id && token) {
-        resolve({ _id, token });
-      } else {
-        reject(new Error(`Can't do it!`));
-        this.props.history.push('/login');
-      }
-    });
-
-  getElectoralGroup = _id => new Promise(async (resolve, reject) => {
-      try {
-        const data = await get(`electoral-group/${_id}`);
-        const { electoralGroup } = data;
-        resolve(electoralGroup);
-      } catch (err) {
-        reject(new Error(err));
-      }
-    });
-
-  getCopyOfPostulation = () =>
-    new Promise((resolve, reject) => {
-      try {
-        const data = keys
-          .map(key =>
-            localStorage.getItem(key)
-              ? { key, data: JSON.parse(localStorage.getItem(key)) }
-              : false
-          )
-          .filter(x => x !== false);
-        resolve(data);
-      } catch (err) {
-        reject(err);
-      }
-    });
 
   async componentDidMount() {
     try {
@@ -116,9 +82,49 @@ class DashPostulate extends React.Component {
       }
       this.setState(state);
     } catch (err) {
+      console.log(err);
       notify('Ha ocurrido un Error al iniciar', false);
     }
   }
+
+  getUserData = () =>
+    new Promise((resolve, reject) => {
+      const { _id } = JSON.parse(localStorage.getItem(env.USER));
+      const token = localStorage.getItem(env.KEY);
+      if (_id && token) {
+        resolve({ _id, token });
+      } else {
+        reject(new Error(`Can't do it!`));
+        this.props.history.push('/login');
+      }
+    });
+
+  getElectoralGroup = _id =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const data = await get(`electoral-group/${_id}`);
+        const { electoralGroup } = data;
+        resolve(electoralGroup);
+      } catch (err) {
+        reject(new Error(err));
+      }
+    });
+
+  getCopyOfPostulation = () =>
+    new Promise((resolve, reject) => {
+      try {
+        const data = keys
+          .map(key =>
+            localStorage.getItem(key)
+              ? { key, data: JSON.parse(localStorage.getItem(key)) }
+              : false
+          )
+          .filter(x => x !== false);
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
 
   save = (key, value) => {
     const postulation = { ...this.state.postulation, [key]: value };
@@ -146,7 +152,7 @@ class DashPostulate extends React.Component {
     e.preventDefault();
     const state = { ...this.state };
     const file = e.target.files[0];
-    const {name} = e.target;
+    const { name } = e.target;
     const base64 = await this.getBase64(file);
     if (base64.startsWith('data:image/')) {
       state[name] = base64;
@@ -198,7 +204,6 @@ class DashPostulate extends React.Component {
       });
     } catch (err) {
       notify('Un error ha evitado crear el Grupo electoral', false);
-
     }
   };
 
@@ -229,65 +234,61 @@ class DashPostulate extends React.Component {
           <Loading />
         </Card>
       );
-    } 
-      if (this.state.electoralGroupStatus) {
-        if (this.state.electoralGroupAccepted) {
-          if (this.state.checkout) {
-            return <Checkout postulation={this.state.postulationData} />;
-          } else {
-            return (
-              <>
-                <School save={this.save} />
-                <SchoolCouncil save={this.save} />
-                <FacultyCouncil save={this.save} />
-                <Council save={this.save} />
-                <StudentFederationCenter save={this.save} />
-                <Container>
-                  <Row className="justify-content-end">
-                    <Button
-                      className="my-auto"
-                      color="info"
-                      outline
-                      onClick={this.checkout}
-                    >
-                      Salvar Postulacion
-                    </Button>
-                  </Row>
-                </Container>
-              </>
-            );
-          }
-        } else {
-          return (
-            <div className="d-flex justify-content-center p-5 card">
-              <img
-                alt="uvote logo"
-                className="mb-3"
-                src={require("../../assets/img/logo-color.svg")}
-                height="125px"
-                width="auto"
-              />
-              <p className="text-center">
-                Su solicitud para crear el Grupo Electoral{" "}
-                <strong>{`${this.state.electoralGroup.denomination}`}</strong>{" "}
-                esta siendo procesada.
-                <br />
-                Para cualquier duda comuniquese con la{" "}
-                <a href="mailto:ceu@unimet.edu.ve">Comision Electoral</a>
-              </p>
-            </div>
-          );
+    }
+    if (this.state.electoralGroupStatus) {
+      if (this.state.electoralGroupAccepted) {
+        if (this.state.checkout) {
+          return <Checkout postulation={this.state.postulationData} />;
         }
-      } else {
         return (
-          <ElectoralGroup
-            onChange={this.onChange}
-            onChangeFile={this.onChangeFile}
-            createElectoralGroup={this.createElectoralGroup}
-          />
+          <>
+            <School save={this.save} />
+            <SchoolCouncil save={this.save} />
+            <FacultyCouncil save={this.save} />
+            <Council save={this.save} />
+            <StudentFederationCenter save={this.save} />
+            <Container>
+              <Row className="justify-content-end">
+                <Button
+                  className="my-auto"
+                  color="info"
+                  outline
+                  onClick={this.checkout}
+                >
+                  Salvar Postulacion
+                </Button>
+              </Row>
+            </Container>
+          </>
         );
       }
-    
+      return (
+        <div className="d-flex justify-content-center p-5 card">
+          <img
+            alt="uvote logo"
+            className="mb-3"
+            src={require('../../assets/img/logo-color.svg')}
+            height="125px"
+            width="auto"
+          />
+          <p className="text-center" id="wait-message">
+            Su solicitud para crear el Grupo Electoral{' '}
+            <strong>{`${this.state.electoralGroup.denomination}`}</strong> esta
+            siendo procesada.
+            <br />
+            Para cualquier duda comuniquese con la{' '}
+            <a href="mailto:ceu@unimet.edu.ve">Comision Electoral</a>
+          </p>
+        </div>
+      );
+    }
+    return (
+      <ElectoralGroup
+        onChange={this.onChange}
+        onChangeFile={this.onChangeFile}
+        createElectoralGroup={this.createElectoralGroup}
+      />
+    );
   };
 
   render() {

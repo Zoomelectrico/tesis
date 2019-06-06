@@ -107,7 +107,6 @@ class StudentFederationCenter extends React.Component {
       );
       this.props.save('student-federation-center', this.state);
       this.setState({ ...this.state, ready: true });
-    } else {
     }
   };
 
@@ -164,6 +163,7 @@ class StudentFederationCenter extends React.Component {
       <Card
         style={{ backgroundColor: '#f5f7f9' }}
         className={`mb-4 ${this.state.ready ? 'd-none' : ''}`}
+        id="fce"
       >
         <CardHeader>
           <h2>Postulacion para la Federacion de Centros de Estudiantes</h2>
