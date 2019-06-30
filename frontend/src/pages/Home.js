@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -84,46 +83,40 @@ const Home = props => {
             </svg>
           </div>
           <Container>
-            <Row>
+            <Row className="align-content-stretch">
               <Col sm="12" md="12" lg="4" className="mb-3">
-                <Card>
+                <Card style={{ height: '100%' }}>
                   <CardHeader className="p-3">
                     <div className="text-muted text">
-                      <h2>Como funciona</h2>
+                      <h2>¿Cómo funciona?</h2>
                     </div>
                   </CardHeader>
                   <CardBody>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Voluptatum aspernatur nihil, assumenda est sequi corporis
-                    suscipit in veritatis quod natus!
+                   Te registras, ingresas a la plataforma de diriges al área de votación, escoges a los candidatos de tu preferencia, le das click a votar y ¡listo!
                   </CardBody>
                 </Card>
               </Col>
               <Col sm="12" md="12" lg="4" className="mb-3">
-                <Card>
+                <Card style={{ height: '100%' }}>
                   <CardHeader className="p-3">
                     <div className="text-muted text">
-                      <h2>Como funciona</h2>
+                      <h2>¿Cómo protegen mi voto?</h2>
                     </div>
                   </CardHeader>
                   <CardBody>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Voluptatum aspernatur nihil, assumenda est sequi corporis
-                    suscipit in veritatis quod natus!
+                    Uvote almacena tu vota en una cadena de bloques (blockchain), en donde todas las operaciones quedan registradas. Además de eso su voto viaja de manera encriptada a través de la web con un clave única para cada elector.
                   </CardBody>
                 </Card>
               </Col>
               <Col sm="12" md="12" lg="4" className="mb-3">
-                <Card>
+                <Card style={{ height: '100%' }}>
                   <CardHeader className="p-3">
                     <div className="text-muted text">
-                      <h2>Como funciona</h2>
+                      <h2>¿Mi voto es Secreto?</h2>
                     </div>
                   </CardHeader>
                   <CardBody>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Voluptatum aspernatur nihil, assumenda est sequi corporis
-                    suscipit in veritatis quod natus!
+                    ¡Si! en uvote la seguridad es muy importante, por eso los votos se almacenan en una estructura especial, que los hace fácil de encriptar y en donde no se almacena ninguna tipo de información personal.
                   </CardBody>
                 </Card>
               </Col>
@@ -160,14 +153,14 @@ const Home = props => {
                         </Col>
                         <Col sm="12">
                           <FormGroup>
-                            <Label for="email">Correo Electronico</Label>
+                            <Label for="email">Correo Electrónico</Label>
                             <Input
                               className="form-control-alternative"
                               type="email"
                               name="email"
                               id="email"
                               required
-                              placeholder="Correo Electronico"
+                              placeholder="Correo Electrónico"
                               onChange={onChangeForm}
                             />
                           </FormGroup>
@@ -182,6 +175,9 @@ const Home = props => {
                             required
                             onChange={onChangeForm}
                           >
+                            <option disabled>
+                              Seleccione una Carrera
+                            </option>
                             {majors.map(major => (
                               <option
                                 key={normalize(major)}

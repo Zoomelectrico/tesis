@@ -10,8 +10,8 @@ const Footer = props => (
             © 2019 Jose Roberto Quevedo
           </div>
         </Col>
-        <Col xl="6" className="text-right">
-          <a href="https://github.com/zoomelectrico/tesis">
+        <Col xl="6" className="text-center text-xl-right">
+          <a href="https://github.com/zoomelectrico/tesis#readme">
             Read me{' '}
             <span role="img" aria-label="emoji">
               📚
