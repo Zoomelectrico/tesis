@@ -1,3 +1,7 @@
-const { exec } = require('child_process')
+const { exec } = require("child_process");
 
-exec('npm run startComposer');
+try {
+  exec("npm run startComposer");
+} catch (err) {
+  console.log(err);
+}

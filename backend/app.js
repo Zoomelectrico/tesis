@@ -16,7 +16,6 @@ const routes = require('./routes/index');
 const app = express();
 // Regular Middleware
 app.disable('x-powered-by');
-app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
@@ -39,7 +38,6 @@ require('./config/passport');
 // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', require('./routes/react'));
 app.use('/api', routes);
 app.use((err, req, res, next) => {
   if (err) {
