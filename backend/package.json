@@ -30,7 +30,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.4",
+    "mongoose": "^5.7.5",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-mongodb-errors": "0.0.2",
     "node-fetch": "^2.5.0",
